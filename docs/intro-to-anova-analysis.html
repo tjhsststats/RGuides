@@ -1,211 +1,86 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Intro to ANOVA Analysis | R Guides</title>
-  <meta name="description" content="Chapter 3 Intro to ANOVA Analysis | R Guides" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 3 Intro to ANOVA Analysis | R Guides" />
-  <meta property="og:type" content="book" />
-  
-  
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Intro to ANOVA Analysis | R Guides" />
-  
-  
-  
-
-<meta name="author" content="Mr. Ng &amp; Others" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="intro-to-two-sample-t-tests.html"/>
-<link rel="next" href="references.html"/>
-<script src="book_assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="book_assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="book_assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="book_assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="book_assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="book_assets/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Intro to ANOVA Analysis | R Guides</title>
+<meta name="author" content="Mr. Ng &amp; Others">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Intro to ANOVA Analysis | R Guides">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 3 Intro to ANOVA Analysis | R Guides">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bootstrap.min.css">
+<meta name="description" content="3.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
+<meta property="og:description" content="3.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
+<meta name="twitter:description" content="3.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#casper-biting"><i class="fa fa-check"></i>Casper Biting</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#casper-sleeping"><i class="fa fa-check"></i>Casper Sleeping</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="census-data-and-linear-regression.html"><a href="census-data-and-linear-regression.html"><i class="fa fa-check"></i><b>1</b> Census Data and Linear Regression</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="census-data-and-linear-regression.html"><a href="census-data-and-linear-regression.html#install-packages-and-census-api-key"><i class="fa fa-check"></i><b>1.1</b> Install packages and Census API Key</a></li>
-<li class="chapter" data-level="1.2" data-path="census-data-and-linear-regression.html"><a href="census-data-and-linear-regression.html#pull-data-from-the-census"><i class="fa fa-check"></i><b>1.2</b> Pull data from the Census</a></li>
-<li class="chapter" data-level="1.3" data-path="census-data-and-linear-regression.html"><a href="census-data-and-linear-regression.html#construct-a-linear-model"><i class="fa fa-check"></i><b>1.3</b> Construct a Linear Model</a></li>
-<li class="chapter" data-level="1.4" data-path="census-data-and-linear-regression.html"><a href="census-data-and-linear-regression.html#create-two-data-displays."><i class="fa fa-check"></i><b>1.4</b> Create two data displays.</a>
-<ul>
-<li class="chapter" data-level="1.4.1" data-path="census-data-and-linear-regression.html"><a href="census-data-and-linear-regression.html#how-to-remove-nas"><i class="fa fa-check"></i><b>1.4.1</b> How to remove NA’s</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html"><i class="fa fa-check"></i><b>2</b> Intro to Two-Sample T-Tests</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html#loading-data."><i class="fa fa-check"></i><b>2.1</b> Loading Data.</a></li>
-<li class="chapter" data-level="2.2" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html#data-wrangling"><i class="fa fa-check"></i><b>2.2</b> Data Wrangling</a></li>
-<li class="chapter" data-level="2.3" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html#isolate-the-variables-of-interest."><i class="fa fa-check"></i><b>2.3</b> Isolate the variables of interest.</a></li>
-<li class="chapter" data-level="2.4" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html#graph-boxplots."><i class="fa fa-check"></i><b>2.4</b> Graph boxplots.</a></li>
-<li class="chapter" data-level="2.5" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html#run-a-two-sample-t-test."><i class="fa fa-check"></i><b>2.5</b> Run a Two Sample T-Test.</a></li>
-<li class="chapter" data-level="2.6" data-path="intro-to-two-sample-t-tests.html"><a href="intro-to-two-sample-t-tests.html#graph-the-t-distribution-and-test-statistic."><i class="fa fa-check"></i><b>2.6</b> Graph the t-distribution and test statistic.</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html"><i class="fa fa-check"></i><b>3</b> Intro to ANOVA Analysis</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#comparing-several-means-hummingbirds-and-tropical-flowers"><i class="fa fa-check"></i><b>3.1</b> Comparing Several means: Hummingbirds and Tropical Flowers</a></li>
-<li class="chapter" data-level="3.2" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#the-f-test"><i class="fa fa-check"></i><b>3.2</b> The F Test</a></li>
-<li class="chapter" data-level="3.3" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#check-for-conditions"><i class="fa fa-check"></i><b>3.3</b> Check for Conditions</a></li>
-<li class="chapter" data-level="3.4" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#the-f-distribution"><i class="fa fa-check"></i><b>3.4</b> The F Distribution</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#finding-the-degrees-of-freedom-for-f"><i class="fa fa-check"></i><b>3.4.1</b> Finding the Degrees of Freedom for F</a></li>
-<li class="chapter" data-level="3.4.2" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#understanding-the-f-statistic"><i class="fa fa-check"></i><b>3.4.2</b> Understanding the F Statistic</a></li>
-<li class="chapter" data-level="3.4.3" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#calculate-the-f-statistic"><i class="fa fa-check"></i><b>3.4.3</b> Calculate the F Statistic</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#conducting-the-one-way-anova"><i class="fa fa-check"></i><b>3.5</b> Conducting the one-way ANOVA</a></li>
-<li class="chapter" data-level="3.6" data-path="intro-to-anova-analysis.html"><a href="intro-to-anova-analysis.html#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><i class="fa fa-check"></i><b>3.6</b> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R Guides</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Guides</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="active" href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="intro-to-anova-analysis" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Intro to ANOVA Analysis<a href="intro-to-anova-analysis.html#intro-to-anova-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="comparing-several-means-hummingbirds-and-tropical-flowers" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Comparing Several means: Hummingbirds and Tropical Flowers<a href="intro-to-anova-analysis.html#comparing-several-means-hummingbirds-and-tropical-flowers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-anova-analysis" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Intro to ANOVA Analysis<a class="anchor" aria-label="anchor" href="#intro-to-anova-analysis"><i class="fas fa-link"></i></a>
+</h1>
+<div id="comparing-several-means-hummingbirds-and-tropical-flowers" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Comparing Several means: Hummingbirds and Tropical Flowers<a class="anchor" aria-label="anchor" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><i class="fas fa-link"></i></a>
+</h2>
 <p>Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.</p>
 <p>The table below gives length measurements (in millimeters) for random samples of three varieties of Heliconia, each pollinated by a different species of humming- bird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="intro-to-anova-analysis.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb53-2"><a href="intro-to-anova-analysis.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb53-3"><a href="intro-to-anova-analysis.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></code></pre></div>
 <p>For the flower data, I made a CSV file from the textbook data, and then imported it into R.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="intro-to-anova-analysis.html#cb54-1" aria-hidden="true" tabindex="-1"></a>Flowers<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;resources/data/Flowers.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Flowers</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/Flowers.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 23 Columns: 3
-## ── Column specification ───────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
+## ── Column specification ──────────────────────────────────────────────────────────────────────
+## Delimiter: ","
 ## dbl (3): H. bihai, H. caribea red, H. caribea yellow
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="intro-to-anova-analysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Flowers)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   `H. bihai` `H. caribea red` `H. caribea yellow`
 ##        &lt;dbl&gt;            &lt;dbl&gt;               &lt;dbl&gt;
@@ -216,8 +91,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5       46.7             41.5                36.0
 ## 6       47.4             41.7                35.4</code></pre>
 <p>In order for R to process the data, I need to convert the data from “wide” format to “long” format. I also need to let R know that each species should be treated as a “factor,” which means that it is a type of categorical variable (so I can sort out data based on Species) later on.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="intro-to-anova-analysis.html#cb58-1" aria-hidden="true" tabindex="-1"></a>Flowers_long<span class="ot">&lt;-</span> <span class="fu">gather</span>(Flowers, <span class="st">&quot;Species&quot;</span>, <span class="st">&quot;Length&quot;</span>, <span class="at">factor_key=</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-2"><a href="intro-to-anova-analysis.html#cb58-2" aria-hidden="true" tabindex="-1"></a>Flowers_long</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Flowers_long</span><span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">Flowers</span>, <span class="st">"Species"</span>, <span class="st">"Length"</span>, factor_key<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">Flowers_long</span></code></pre></div>
 <pre><code>## # A tibble: 69 × 2
 ##    Species  Length
 ##    &lt;fct&gt;     &lt;dbl&gt;
@@ -233,12 +109,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 H. bihai   48.3
 ## # … with 59 more rows</code></pre>
 <p>Let’s follow the strategy we learned way back in Unit 1: use graphs and numerical summaries to compare the three distributions of flower length. Here are the summary statistics we will use in further analysis:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="intro-to-anova-analysis.html#cb60-1" aria-hidden="true" tabindex="-1"></a>mean_and_sd<span class="ot">&lt;-</span> Flowers_long <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a href="intro-to-anova-analysis.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb60-3"><a href="intro-to-anova-analysis.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean=</span><span class="fu">mean</span>(Length, <span class="at">na.rm=</span>T), </span>
-<span id="cb60-4"><a href="intro-to-anova-analysis.html#cb60-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(Length, <span class="at">na.rm=</span>T))</span>
-<span id="cb60-5"><a href="intro-to-anova-analysis.html#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-6"><a href="intro-to-anova-analysis.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mean_and_sd)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mean_and_sd</span><span class="op">&lt;-</span> <span class="va">Flowers_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span>, 
+            sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mean_and_sd</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   Species            mean    sd
 ##   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt;
@@ -247,8 +124,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 H. caribea yellow  36.2 0.975</code></pre>
 <p>What do we see? The three varieties differ so much in flower length that there is little overlap among them. In particular, the flowers of bihai are longer than either red or yellow. The mean lengths are 47.6 mm for H. bihai, 39.7 mm for H. caribaea red, and 36.2 mm for H. caribaea yellow. Are these observed differences in sample means statistically significant? We must develop a test for comparing more than two population means.</p>
 </div>
-<div id="the-f-test" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> The F Test<a href="intro-to-anova-analysis.html#the-f-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-f-test" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> The F Test<a class="anchor" aria-label="anchor" href="#the-f-test"><i class="fas fa-link"></i></a>
+</h2>
 <p>We want to test the null hypothesis that there are no differences among the mean lengths for the three populations of flowers:</p>
 <p>H0:μ1 =μ2 =μ3</p>
 <p>The alternative hypothesis is that there is some difference. That is, not all three population means are equal:</p>
@@ -257,18 +136,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For example, Ha includes the case in which m2 = m3 but m1 has a different value.</p>
 <p>When the conditions for inference are met, the appropriate significance test for comparing means is the analysis of variance F test. Analysis of variance is usually abbreviated as ANOVA.</p>
 </div>
-<div id="check-for-conditions" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Check for Conditions<a href="intro-to-anova-analysis.html#check-for-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="check-for-conditions" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Check for Conditions<a class="anchor" aria-label="anchor" href="#check-for-conditions"><i class="fas fa-link"></i></a>
+</h2>
 <p>Now that we have stated our Null and Alternative Hypotheses, we can check for conditions:</p>
 <ul>
 <li><p>Random: Researchers took separate random samples of 16 bihaii, 23 red, and 15 Heliconia flowers.</p></li>
 <li><p>Normal: We entered the data into R and made side by side boxplots. Although the distributions for the bihai and red varieties show some right-skewness, we don’t see nay strong skewness or outliers that would prevent the use of one-way ANOVA.</p></li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="intro-to-anova-analysis.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Flowers_long, <span class="fu">aes</span>(<span class="at">x=</span>Length, <span class="at">y=</span>Species, <span class="at">fill=</span>Species))<span class="sc">+</span></span>
-<span id="cb62-2"><a href="intro-to-anova-analysis.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>)<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Flower Lengths from Textbook&quot;</span>)<span class="sc">+</span><span class="fu">theme_gdocs</span>()<span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Flowers_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Length</span>, y<span class="op">=</span><span class="va">Species</span>, fill<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"Flower Lengths from Textbook"</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_gdocs.html">theme_gdocs</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 15 rows containing non-finite values (stat_boxplot).</code></pre>
 <pre><code>## Warning: Removed 15 rows containing missing values (geom_point).</code></pre>
-<p><img src="book_temp_files/figure-html/boxplot%20Flowers-1.png" width="672" /></p>
+<div class="inline-figure"><img src="book_temp_files/figure-html/boxplot%20Flowers-1.png" width="672"></div>
 <ul>
 <li><p>Independent: Researchers took independent samples of bihai, red, and yellow Heliconia. because sampling without replacement was used, there must be at least 10(16) = 160 bihai, 10(23) = 230 red, and 10(15) = 150 yellow flowers. This is pretty safe to assume.</p></li>
 <li><p>Same SD: In a one-way ANOVA, you must check whether the largest sample SD divided by the smallest SD has a ratio less than 2. Our sample standard deviations are:</p></li>
@@ -282,49 +164,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>These standard deviations satisfy our rule of thumb that (largest SD)/ (smallest SD) is less than 2, so we can proceed.</p>
 <p>Since we have satifised all 3 conditions, we can safely use ANOVA to compare the mean lengths of the three populations.</p>
 </div>
-<div id="the-f-distribution" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> The F Distribution<a href="intro-to-anova-analysis.html#the-f-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-f-distribution" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> The F Distribution<a class="anchor" aria-label="anchor" href="#the-f-distribution"><i class="fas fa-link"></i></a>
+</h2>
 <p>The variances for <em>three</em> populations is naturally larger than the variance of two populations. Just like how two populations naturally have a larger variance, and thus requires the t-distribution (which has more “area” under the tails), we need to use a different distribution that takes into account this larger variance (which has even more “area” under the tails. This distribution is called the <strong>F-Distribution</strong>.</p>
-<p><img src="resources/images/03-ANOVA-Analysis/F_Dist.png" width="35%" style="float:right; padding:10px" /></p>
+<div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/F_Dist.png" width="35%" style="float:right; padding:10px"></div>
 <p>The <strong><code>*F* distributions</code></strong> are a family of right-skewed distributions that take only values greater than 0. Above are some possible shapes. A specific F distribution is determined by the degrees of freedom of the numerator and denominator of the F statistic. When describing an F distribution, always give the numerator degrees of freedom first. Our notation will be F (df1, df2) for the F distribution with df1 degrees of freedom in the numerator and df2 degrees of freedom in the denominator. <em>Interchanging the degrees of freedom changes the distribution, so the order is important. </em></p>
-<div id="finding-the-degrees-of-freedom-for-f" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Finding the Degrees of Freedom for F<a href="intro-to-anova-analysis.html#finding-the-degrees-of-freedom-for-f" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In the two earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom
-<img src="resources/images/03-ANOVA-Analysis/F_Dist_Overview.png" width="55%" style="float:right; padding:10px" /></p>
+<div id="finding-the-degrees-of-freedom-for-f" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Finding the Degrees of Freedom for F<a class="anchor" aria-label="anchor" href="#finding-the-degrees-of-freedom-for-f"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure">In the two earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom
+<img src="resources/images/03-ANOVA-Analysis/F_Dist_Overview.png" width="55%" style="float:right; padding:10px">
+</div>
 <p>k - 1 = 3 - 1 = 2</p>
 <p>and denominator degrees of freedom</p>
 <p>N - k = 54 - 3 = 51</p>
 </div>
-<div id="understanding-the-f-statistic" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Understanding the F Statistic<a href="intro-to-anova-analysis.html#understanding-the-f-statistic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="understanding-the-f-statistic" class="section level3" number="3.4.2">
+<h3>
+<span class="header-section-number">3.4.2</span> Understanding the F Statistic<a class="anchor" aria-label="anchor" href="#understanding-the-f-statistic"><i class="fas fa-link"></i></a>
+</h3>
 <p>Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the distance the statistic is away from our Null Hypothesis. This distance is called the F Statistic.</p>
 <p>The F Statistic is calculated by doing:</p>
 <p><span class="math display">\[ F= \frac{\text{variation among the sample means}}{\text{variation among individuals within the same sample}} \]</span></p>
 <p>Specifically, the variation is calculated by dividing the <em>Mean Square for Groups</em> by the <em>Mean Square for Error</em>. The statistic is reproduced below, but you should know that you’d never have to do this by hand– R will do it all for you.</p>
-<p><img src="resources/images/03-ANOVA-Analysis/ANOVA_F_Test.png" width="45%" /></p>
+<div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/ANOVA_F_Test.png" width="45%"></div>
 </div>
-<div id="calculate-the-f-statistic" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Calculate the F Statistic<a href="intro-to-anova-analysis.html#calculate-the-f-statistic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="calculate-the-f-statistic" class="section level3" number="3.4.3">
+<h3>
+<span class="header-section-number">3.4.3</span> Calculate the F Statistic<a class="anchor" aria-label="anchor" href="#calculate-the-f-statistic"><i class="fas fa-link"></i></a>
+</h3>
 <p>Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the <em>distance</em> the statistic is away from our Null Hypothesis. This distance is called the F Statistic.</p>
 <p>The F Statistic is calculated by doing:</p>
 </div>
 </div>
-<div id="conducting-the-one-way-anova" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Conducting the one-way ANOVA<a href="intro-to-anova-analysis.html#conducting-the-one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conducting-the-one-way-anova" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Conducting the one-way ANOVA<a class="anchor" aria-label="anchor" href="#conducting-the-one-way-anova"><i class="fas fa-link"></i></a>
+</h2>
 <p>Of course, the previous pages gave you a <em>very</em> brief background of a one-way ANOVA test.</p>
 <p>It turns out that conducting the test itself in R is very easy– R even calculates the degrees of freedom for you.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="intro-to-anova-analysis.html#cb66-1" aria-hidden="true" tabindex="-1"></a>Flowers_long <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Flowers_long)</span>
-<span id="cb66-2"><a href="intro-to-anova-analysis.html#cb66-2" aria-hidden="true" tabindex="-1"></a>anova.test <span class="ot">&lt;-</span> <span class="fu">aov</span>(Length <span class="sc">~</span> Species, <span class="at">data=</span><span class="fu">na.omit</span>(Flowers_long))</span>
-<span id="cb66-3"><a href="intro-to-anova-analysis.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova.test)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Flowers_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span>
+<span class="va">anova.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Length</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova.test</span><span class="op">)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 ## Species      2 1082.9   541.4   259.1 &lt;2e-16 ***
 ## Residuals   51  106.6     2.1                   
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther <em>is</em> a significant difference between the three species.</p>
 </div>
-<div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons<a href="intro-to-anova-analysis.html#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="3.6">
+<h2>
+<span class="header-section-number">3.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons<a class="anchor" aria-label="anchor" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><i class="fas fa-link"></i></a>
+</h2>
 <p>Knowing that there is a difference is often not enough– what if you want to know exactly <em>which</em> means were significantly different from each other? In this case, we’d have to conduct a two-sample t-test for every possible two means that we have, which could be irritating, especially if we are comparing many means with each other.</p>
 <p>This is where a Tukey Post-Hoc Pairwise Comparison comes into play. The name sounds scary, but the following is true:</p>
 <ul>
@@ -333,93 +229,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>“Pairwise Comparision” means you compare two things with each other.</p></li>
 </ul>
 <p>To perform the pairwise comparison, run the <em>TukeyHSD()</em> command on your anova.test model.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="intro-to-anova-analysis.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anova.test, <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conf.level<span class="op">=</span><span class="fl">.95</span><span class="op">)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
 ## Fit: aov(formula = Length ~ Species, data = na.omit(Flowers_long))
 ## 
 ## $Species
-##                                        diff        lwr        upr
-## H. caribea red-H. bihai           -7.886196  -9.022163  -6.750229
-## H. caribea yellow-H. bihai       -11.417500 -12.671601 -10.163399
-## H. caribea yellow-H. caribea red  -3.531304  -4.689387  -2.373222
-##                                  p adj
-## H. caribea red-H. bihai              0
-## H. caribea yellow-H. bihai           0
-## H. caribea yellow-H. caribea red     0</code></pre>
+##                                        diff        lwr        upr p adj
+## H. caribea red-H. bihai           -7.886196  -9.022163  -6.750229     0
+## H. caribea yellow-H. bihai       -11.417500 -12.671601 -10.163399     0
+## H. caribea yellow-H. caribea red  -3.531304  -4.689387  -2.373222     0</code></pre>
 <p>You can also plot these results, as shown below:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="intro-to-anova-analysis.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Margins will spill over, so you need to adjust these</span></span>
-<span id="cb70-2"><a href="intro-to-anova-analysis.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">13</span>, <span class="dv">4</span>, <span class="dv">4</span>)<span class="sc">+</span><span class="fl">0.1</span>)</span>
-<span id="cb70-3"><a href="intro-to-anova-analysis.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="intro-to-anova-analysis.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">TukeyHSD</span>(anova.test, <span class="at">conflevel=</span>.<span class="dv">95</span>), <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="book_temp_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Margins will spill over, so you need to adjust these</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">13</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conflevel<span class="op">=</span><span class="fl">.95</span><span class="op">)</span>, las<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
 <p>Notice that the x-axis doesn’t even include 0– our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).</p>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></div>
+<div class="next"><a href="references.html">References</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro-to-anova-analysis"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
+<li><a class="nav-link" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><span class="header-section-number">3.1</span> Comparing Several means: Hummingbirds and Tropical Flowers</a></li>
+<li><a class="nav-link" href="#the-f-test"><span class="header-section-number">3.2</span> The F Test</a></li>
+<li><a class="nav-link" href="#check-for-conditions"><span class="header-section-number">3.3</span> Check for Conditions</a></li>
+<li>
+<a class="nav-link" href="#the-f-distribution"><span class="header-section-number">3.4</span> The F Distribution</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#finding-the-degrees-of-freedom-for-f"><span class="header-section-number">3.4.1</span> Finding the Degrees of Freedom for F</a></li>
+<li><a class="nav-link" href="#understanding-the-f-statistic"><span class="header-section-number">3.4.2</span> Understanding the F Statistic</a></li>
+<li><a class="nav-link" href="#calculate-the-f-statistic"><span class="header-section-number">3.4.3</span> Calculate the F Statistic</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#conducting-the-one-way-anova"><span class="header-section-number">3.5</span> Conducting the one-way ANOVA</a></li>
+<li><a class="nav-link" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><span class="header-section-number">3.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="intro-to-two-sample-t-tests.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/master/03-ANOVA-Analysis.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/master/03-ANOVA-Analysis.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R Guides</strong>" was written by Mr. Ng &amp; Others. </p>
   </div>
-<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="book_assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -431,7 +308,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
