@@ -1,0 +1,38 @@
+---
+title: "R Guides"
+author: "Mr. Ng & Others"
+site: bookdown::bookdown_site
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+nocite: '@*'
+colorlinks: yes
+lot: false
+lof: false
+always_allow_html: yes
+graphics: yes
+output:
+  bookdown::gitbook:
+    lib_dir: "book_assets"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Preface {.unnumbered}
+
+This is where guides to R Things will be posted. 
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/images/casper.jpeg") 
+```
+
+## Casper Biting {-}
+```{r, echo = FALSE}
+knitr::include_graphics("resources/images/casper_biting.jpeg") 
+```
+
+## Casper Sleeping {-}
+```{r, echo = FALSE}
+knitr::include_graphics("resources/images/casper_sleeping.jpeg") 
+```
