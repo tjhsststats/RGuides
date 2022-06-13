@@ -1,0 +1,219 @@
+---
+title: "ANOVA Analysis"
+author: "Mr. Ng w/ a little help from the Practice of Statistics, Chapter 13"
+date: "12/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Comparing Several means: Hummingbirds and Tropical Flowers
+
+
+Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.
+
+
+The table below gives length measurements (in millimeters) for random samples of three varieties of Heliconia, each pollinated by a different species of humming- bird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?
+
+
+```{r library, echo=TRUE, results='hide', error=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(ggthemes)
+library(markdrive)
+library(officedown)
+
+```
+
+For the flower data, I made a CSV file from the textbook data, and then imported it into R.
+
+
+```{r}
+Flowers<- read_csv("Flowers.csv")
+
+Flowers
+```
+
+
+In order for R to process the data, I need to convert the data from "wide" format to "long" format. I also need to let R know that each species should be treated as a "factor," which means that it is a type of categorical variable (so I can sort out data based on Species) later on. 
+
+
+```{r}
+Flowers_long<- gather(Flowers, "Species", "Length", factor_key= TRUE)
+Flowers_long
+```
+
+
+
+
+Let’s follow the strategy we learned way back in Unit 1: use graphs and numerical summaries to compare the three distributions of flower length. Here are the summary statistics we will use in further analysis:
+
+
+```{r mean_and_sd}
+mean_and_sd<- Flowers_long %>%
+  group_by(Species) %>%
+  summarize(mean=mean(Length, na.rm=T), 
+            sd=sd(Length, na.rm=T))
+
+mean_and_sd
+```
+
+
+What do we see? The three varieties differ so much in flower length that there is little overlap among them. In particular, the flowers of bihai are longer than either red or yellow. The mean lengths are 47.6 mm for H. bihai, 39.7 mm for H. caribaea red, and 36.2 mm for H. caribaea yellow. Are these observed differences in sample means statistically significant? We must develop a test for comparing more than two population means.
+
+
+# The F Test
+
+
+We want to test the null hypothesis that there are no differences among the mean lengths for the three populations of flowers:
+
+
+H0:μ1 =μ2 =μ3
+
+
+The alternative hypothesis is that there is some difference. That is, not all three population means are equal:
+
+
+Ha : not all of μ1, μ2, and μ3 are equal
+
+
+The alternative hypothesis is no longer one-sided or two-sided. It is “many-sided” because it allows any relationship other than “all three equal.”
+
+
+For example, Ha includes the case in which m2 = m3 but m1 has a different value.
+
+
+When the conditions for inference are met, the appropriate significance test for comparing means is the analysis of variance F test. Analysis of variance is usually abbreviated as ANOVA.
+
+
+# Check for Conditions
+
+
+Now that we have stated our Null and Alternative Hypotheses, we can check for conditions:
+
+
+* Random: Researchers took separate random samples of 16 bihaii, 23 red, and 15 Heliconia flowers.
+
+
+* Normal: We entered the data into R and made side by side boxplots. Although the distributions for the bihai and red varieties show some right-skewness, we don't see nay strong skewness or outliers that would prevent the use of one-way ANOVA.
+
+
+
+```{r boxplot}
+ggplot(Flowers_long, aes(x=Length, y=Species, fill=Species))+
+  geom_boxplot(color="black")+ labs(title= "Flower Lengths from Textbook")+theme_gdocs()+ geom_jitter(width=0.1)
+```
+
+
+* Independent: Researchers took independent samples of bihai, red, and yellow Heliconia. because sampling without replacement was used, there must be at least 10(16) = 160 bihai, 10(23) = 230 red, and 10(15) = 150 yellow flowers. This is pretty safe to assume.
+
+# Same SD: In a one-way ANOVA, you must check whether the largest sample SD divided by the smallest SD has a ratio less than 2. Our sample standard deviations are:
+
+```{r mean_and_sd_again, echo=FALSE}
+mean_and_sd
+```
+
+
+These standard deviations satisfy our rule of thumb that (largest SD)/ (smallest SD) is less than 2, so we can proceed.
+
+
+Since we have satifised all 3 conditions, we can safely use ANOVA to compare the mean lengths of the three populations. 
+
+
+# The F Distribution
+
+
+
+# Finding the Degrees of Freedom for F
+
+
+In the two  earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom
+
+
+k - 1 = 3 - 1 = 2
+
+
+and denominator degrees of freedom
+
+
+N - k = 54 - 3 = 51
+
+
+# Calculate the F Statistic
+
+
+Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the _distance_ the statistic is away from our Null Hypothesis. This distance is called the F Statistic. 
+
+
+The F Statistic is calculated by doing:
+
+
+
+# Conducting the one-way ANOVA
+
+
+Of course, the previous pages gave you a _very_ brief background of a one-way ANOVA test. 
+
+
+It turns out that conducting the test itself in R is very easy-- R even calculates the degrees of freedom for you.
+
+
+```{r}
+Flowers_long <- na.omit(Flowers_long)
+anova.test <- aov(Length ~ Species, data=na.omit(Flowers_long))
+summary(anova.test)
+```
+
+
+Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther _is_ a significant difference between the three species.
+
+
+
+# Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons
+
+
+Knowing that there is a difference is often not enough-- what if you want to know exactly _which_ means were significantly different from each other? In this case, we'd have to conduct a two-sample t-test for every possible two means that we have, which could be irritating, especially if we are comparing many means with each other.
+
+
+This is where a Tukey Post-Hoc Pairwise Comparison comes into play. The name sounds scary, but the following is true:
+
+
+* A guy named Tukey created this method.
+
+* "Post-Hoc"  means "after the fact" in Latin. After knowing the fact that there is a difference among all three means from a one-way ANOVA, you can perform this procedure.
+
+* "Pairwise Comparision" means you compare two things with each other.
+
+
+To perform the pairwise comparison, run the *TukeyHSD()* command on your anova.test model.
+
+
+```{r}
+TukeyHSD(anova.test, conf.level=.95)
+
+```
+
+
+You can also plot these results, as shown below:
+
+
+```{r}
+#Margins will spill over, so you need to adjust these
+par(mar=c(4, 13, 4, 4)+0.1)
+
+plot(TukeyHSD(anova.test, conflevel=.95), las=1, col="blue")
+```
+
+
+Notice that the x-axis doesn't even include 0-- our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?). 
+
+
+```{r publish to gdoc, echo=FALSE, eval=FALSE}
+#gdoc_render(filename="ANOVA.Rmd")
+```
+
+

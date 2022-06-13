@@ -1,0 +1,145 @@
+---
+title: "Units 2+3 Project"
+output: officedown::rdocx_document
+author: "Kai Sam Ng"
+date: "`r Sys.Date()`"
+  # html_document:
+  #   fig_crop: no
+  #   fig_height: 8
+  #   fig_width: 12
+  # pdf_document:
+  #   df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Install packages and Census API Key
+
+Start by loading the required libraries.
+
+```{r eval=FALSE}
+install.packages(c("tidyverse", "tidycensus", "reshape"))
+```
+
+
+```{r eval=TRUE}
+
+library("tidycensus")
+library("tidyverse")
+library("reshape")
+```
+
+Install your Census API Key into R with this call.
+
+```{r eval=FALSE}
+census_api_key("0047417f53c1160f7c485bfee065458498a296c7", install=TRUE, overwrite=TRUE)
+```
+
+## Pull data from the Census
+
+Pull variable data into dataframe. 
+
+* Notice the "geography" is "zcta," which is the Census Bureau's equivalent of a ZIP Code. 
+
+* state="VA" variable helps limit the scope of our data to just VA, otherwise it will download all US.
+
+```{r}
+income_with_children <- get_acs(geography="zcta",
+                  state="VA",
+                  variables=c("B19125_002"),
+                  year=2019)
+
+head(income_with_children)
+
+income_no_children<- get_acs(geography="zcta",
+                            state="VA",
+                            variables=c("B19125_003"),
+                            year=2019)
+head(income_no_children)
+```
+
+
+## Construct a Linear Model
+
+Code not provided, because you should know. Construct a scatterplot, construct a linear model, and fit the linear model on top of your scatterplot:
+```{r}
+x= income_no_children$estimate
+y= income_with_children$estimate
+scatter_plot <- plot(x, y,
+                     xlab= "No Children",
+                     ylab="With Children",
+                     main= "Median Household of Income in Virginia, by Zip Code")
+reg_line<- lm(income_with_children$estimate ~ income_no_children$estimate)
+abline(reg_line, col="red")
+summary(reg_line)
+
+plot(reg_line$residuals, 
+     ylab= "Residual",
+     main= "Residual Plot for Linear Model")
+```
+
+
+## Create two data displays.
+
+I want to know if households with children tend to have a higher median income than households with no children. Let's make those two histograms.
+
+```{r}
+par(mfrow=c(2, 1))
+no_children_histo <- hist(income_no_children$estimate,
+                          xlab= "Median Household Income",
+                          ylab= "Count (number of Zip Codes)",
+                          main= "Median Income of Households with No Children in VA, by Zip Code",
+                          col= "sky blue")
+
+no_children_boxplot <- boxplot(income_no_children$estimate,
+                               horizontal=TRUE,
+                               xlab="Median Household Income",
+                               main= "Boxplot with 1.5*IQR Outliers"
+                               )
+text(x=fivenum(income_no_children$estimate), labels=fivenum(income_no_children$estimate), y=1.3)
+
+par(mfrow=c(2, 1))
+with_children_histo <- hist(income_with_children$estimate,
+                            xlab= "Median Income",
+                            ylab= "Count (number of Zip Codes)",
+                            main= "Median Income of Households with Children in VA, by Zip Code",
+                            col= "light green")
+with_children_boxplot <- boxplot(income_with_children$estimate,
+                               horizontal=TRUE,
+                               xlab="Median Household Income",
+                               main= "Boxplot with 1.5*IQR Outliers"
+                               )
+text(x=fivenum(income_with_children$estimate), labels=fivenum(income_with_children$estimate), y=1.3)
+```
+
+This looks nice, but notice the y-scales are not the same. To make them more comparable, stack the histograms on top of each other using the plot() function. 
+
+```{r}
+plot(no_children_histo, 
+     col= alpha("sky blue", 1),
+     xlim= c(0, 300000),
+     xlab= "Median Income",
+     main= "Median Household Income in VA, by Zip Code")
+
+plot(with_children_histo,
+     col= alpha("light green", 0.5),
+     xlim=c(0,300000),
+     add= TRUE)
+
+legend(200000, 150, c("No Children", "With Children"), fill= c("sky blue", "light green"), title= "Zoomer Status")
+```
+
+
+
+How to remove NA's
+```{r}
+mean(income_with_children$estimate)
+
+mean(na.omit(income_with_children$estimate))
+
+
+```
+
+
