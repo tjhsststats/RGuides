@@ -1,9 +1,9 @@
 # RGuides
 
-This will be the host of anything related to R Markdown guides that we make.
+This will host R-releated guides we want for high school students.
 
 ##### To Do
 
--   Publish the ANOVA Guide.
-
--   Publish the Linear Regression Guide.
+-   Modify R Code Chunks to be evaled, not-evaled, or evaled and no-show.
+-   Separate Census and Linear Regression into Separate Pages
+-   Create a new page called "Getting Started with R"
