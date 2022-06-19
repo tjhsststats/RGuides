@@ -32,6 +32,9 @@ rmd_files:
 # tab. If not, building the book will still "work", but it will include all the Rmd
 # files in the directory and in alphabetical order. It won't use your list.
 
+html: 
+  ["header.html"]
+
 # By default, we set output_dir to "junk". This is where built files get put. The
 # .gitignore ignores that directory, so chapter writers are not bothered. They are
 # also prevented from, mistakenly, writing their new versions to docs. The

@@ -14,8 +14,11 @@ graphics: yes
 output:
   bookdown::gitbook:
     lib_dir: "book_assets"
+    theme: minty
 favicon: resources/images/favicon.png
 ---
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
