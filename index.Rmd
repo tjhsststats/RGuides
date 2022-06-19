@@ -14,7 +14,7 @@ graphics: yes
 output:
   bookdown::gitbook:
     lib_dir: "book_assets"
-    df_print: paged
+favicon: resources/images/favicon.png
 ---
 
 ```{r setup, include=FALSE}

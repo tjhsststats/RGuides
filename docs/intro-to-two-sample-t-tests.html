@@ -69,8 +69,7 @@
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
 <span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/anime.csv"</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>MAL_ID <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Score <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Episodes <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Popularity <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Members <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Favorites <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Watching <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Completed <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `On-Hold` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Dropped <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Plan to Watch` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-10` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-9` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-8` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-7` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-6` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-5` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-4` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-3` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-2` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Score-1` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: One or more parsing issues, see `problems()` for
-## details</code></pre>
+<pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
 </div>
 <div id="data-wrangling" class="section level2" number="2.2">
 <h2>
@@ -80,67 +79,50 @@
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 16,570 × 5
-##      row   col expected actual  file                        
-##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;                       
-##  1    13     8 a number Unknown /Users/kaisamng/Github/reso…
-##  2   213     8 a number Unknown /Users/kaisamng/Github/reso…
-##  3   873     8 a number Unknown /Users/kaisamng/Github/reso…
-##  4  1095     8 a number Unknown /Users/kaisamng/Github/reso…
-##  5  1267    33 a number Unknown /Users/kaisamng/Github/reso…
-##  6  1406     3 a number Unknown /Users/kaisamng/Github/reso…
-##  7  1506     3 a number Unknown /Users/kaisamng/Github/reso…
-##  8  1580     3 a number Unknown /Users/kaisamng/Github/reso…
-##  9  1580    34 a number Unknown /Users/kaisamng/Github/reso…
-## 10  1701     3 a number Unknown /Users/kaisamng/Github/reso…
+##      row   col expected actual  file                                           
+##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;                                          
+##  1    13     8 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  2   213     8 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  3   873     8 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  4  1095     8 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  5  1267    33 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  6  1406     3 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  7  1506     3 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  8  1580     3 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+##  9  1580    34 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
+## 10  1701     3 a number Unknown /Users/kaisamng/Github/resources/data/anime.csv
 ## # … with 16,560 more rows</code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name   Score Genders `English name` `Japanese name`
-##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;          
-## 1      1 Cowbo…  8.78 Action… Cowboy Bebop   カウボーイビバ…
-## 2      5 Cowbo…  8.39 Action… Cowboy Bebop:… カウボーイビバ…
-## 3      6 Trigun  8.24 Action… Trigun         トライガン     
-## 4      7 Witch…  7.27 Action… Witch Hunter … Witch Hunter R…
-## 5      8 Bouke…  6.98 Advent… Beet the Vand… 冒険王ビィト   
-## 6     15 Eyesh…  7.95 Action… Unknown        アイシールド21 
-## # … with 29 more variables: Type &lt;chr&gt;, Episodes &lt;dbl&gt;,
-## #   Aired &lt;chr&gt;, Premiered &lt;chr&gt;, Producers &lt;chr&gt;,
-## #   Licensors &lt;chr&gt;, Studios &lt;chr&gt;, Source &lt;chr&gt;,
-## #   Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;,
-## #   Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;,
-## #   Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
-## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, …</code></pre>
+##   MAL_ID Name  Score Genders `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors Studios Source
+##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; 
+## 1      1 Cowb…  8.78 Action… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati… Sunrise Origi…
+## 2      5 Cowb…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic… Bones   Origi…
+## 3      6 Trig…  8.24 Action… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati… Madhou… Manga 
+## 4      7 Witc…  7.27 Action… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati… Sunrise Origi…
+## 5      8 Bouk…  6.98 Advent… Beet the Vand… 冒険王ビィト    TV          52 Sep … Fall 2004 TV Tokyo… Unknown   Toei A… Manga 
+## 6     15 Eyes…  7.95 Action… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi… Gallop  Manga 
+## # … with 21 more variables: Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;,
+## #   Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;,
+## #   `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;, `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;,
+## #   `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"        
-##  [4] "Genders"       "English name"  "Japanese name"
-##  [7] "Type"          "Episodes"      "Aired"        
-## [10] "Premiered"     "Producers"     "Licensors"    
-## [13] "Studios"       "Source"        "Duration"     
-## [16] "Rating"        "Ranked"        "Popularity"   
-## [19] "Members"       "Favorites"     "Watching"     
-## [22] "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"      
-## [28] "Score-8"       "Score-7"       "Score-6"      
-## [31] "Score-5"       "Score-4"       "Score-3"      
-## [34] "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"       "English name"  "Japanese name" "Type"         
+##  [8] "Episodes"      "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"       
+## [15] "Duration"      "Rating"        "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"     
+## [22] "Completed"     "On-Hold"       "Dropped"       "Plan to Watch" "Score-10"      "Score-9"       "Score-8"      
+## [29] "Score-7"       "Score-6"       "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>If you look, for some reason the “Genres” column is named “Genders.” Let’s rename to “Genres.”</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">==</span><span class="st">"Genders"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Genres"</span></code></pre></div>
 <p>Verify that the column names are now correct.</p>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"        
-##  [4] "Genres"        "English name"  "Japanese name"
-##  [7] "Type"          "Episodes"      "Aired"        
-## [10] "Premiered"     "Producers"     "Licensors"    
-## [13] "Studios"       "Source"        "Duration"     
-## [16] "Rating"        "Ranked"        "Popularity"   
-## [19] "Members"       "Favorites"     "Watching"     
-## [22] "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"      
-## [28] "Score-8"       "Score-7"       "Score-6"      
-## [31] "Score-5"       "Score-4"       "Score-3"      
-## [34] "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"        "English name"  "Japanese name" "Type"         
+##  [8] "Episodes"      "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"       
+## [15] "Duration"      "Rating"        "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"     
+## [22] "Completed"     "On-Hold"       "Dropped"       "Plan to Watch" "Score-10"      "Score-9"       "Score-8"      
+## [29] "Score-7"       "Score-6"       "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>Save the new file as a R dataframe.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></code></pre></div>
@@ -156,21 +138,18 @@
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name    Score Genres `English name` `Japanese name`
-##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;          
-## 1      1 Cowboy…  8.78 Actio… Cowboy Bebop   カウボーイビバ…
-## 2      5 Cowboy…  8.39 Actio… Cowboy Bebop:… カウボーイビバ…
-## 3      6 Trigun   8.24 Actio… Trigun         トライガン     
-## 4      7 Witch …  7.27 Actio… Witch Hunter … Witch Hunter R…
-## 5     15 Eyeshi…  7.95 Actio… Unknown        アイシールド21 
-## 6     18 Initia…  8.15 Actio… Unknown        頭文字〈イニシ…
-## # … with 29 more variables: Type &lt;chr&gt;, Episodes &lt;dbl&gt;,
-## #   Aired &lt;chr&gt;, Premiered &lt;chr&gt;, Producers &lt;chr&gt;,
-## #   Licensors &lt;chr&gt;, Studios &lt;chr&gt;, Source &lt;chr&gt;,
-## #   Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;,
-## #   Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;,
-## #   Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
-## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, …</code></pre>
+##   MAL_ID Name   Score Genres `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors Studios Source
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; 
+## 1      1 Cowbo…  8.78 Actio… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati… Sunrise Origi…
+## 2      5 Cowbo…  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic… Bones   Origi…
+## 3      6 Trigun  8.24 Actio… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati… Madhou… Manga 
+## 4      7 Witch…  7.27 Actio… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati… Sunrise Origi…
+## 5     15 Eyesh…  7.95 Actio… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi… Gallop  Manga 
+## 6     18 Initi…  8.15 Actio… Unknown        頭文字〈イニシ… TV          24 Apr … Spring 2… OB Plann… Funimati… A.C.G.… Manga 
+## # … with 21 more variables: Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;,
+## #   Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;,
+## #   `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;, `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;,
+## #   `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <p>We’re interested in how people rated these animes. Let’s calculate the score column for each.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
