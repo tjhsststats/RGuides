@@ -1,6 +1,6 @@
 bookdown::bs4_book:
   theme:
-    primary: "#C90016"
+    primary: "#07679f"
   repo: https://github.com/kaisamng/RGuides
   config:
     toc:
