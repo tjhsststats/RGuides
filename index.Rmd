@@ -14,8 +14,8 @@ graphics: yes
 output:
   bookdown::gitbook:
     lib_dir: "book_assets"
-    theme: minty
-favicon: resources/images/favicon.png
+    includes:
+      in_header: header.html
 ---
 
 

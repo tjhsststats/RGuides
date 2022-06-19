@@ -9,4 +9,5 @@ bookdown::bs4_book:
       facebook: no
       twitter: no
       github: no
-      
+  includes:
+    in_header: header.html
