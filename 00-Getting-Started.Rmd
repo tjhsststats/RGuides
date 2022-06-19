@@ -75,7 +75,8 @@ knitr::include_graphics("resources/images/00-Getting-Started/McAfee_3.png")
 ```
 
 
-6. Close out of the McAfee Endpoint Security window then head to Software Center to get R Studio installed.  This should go through without a problem this time around, if you are still experiencing issues try restarting your laptop to see if a previous installation was halting you from getting the software installed.
+6. Close out of the McAfee Endpoint Security window then head to Software Center to get R Studio installed.  
+  + This should go through without a problem this time around. If you are still experiencing issues try restarting your laptop to see if a previous installation was halting you from getting the software installed.
 
 
 7. If you are still unable to get the software installed please stop by Room 281 during lunch or during 8A (A block of 8th period) for further assistance by a member of the Tech Team.

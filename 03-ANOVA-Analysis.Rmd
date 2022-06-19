@@ -23,7 +23,10 @@ head(Flowers) #View the Flowers Dataset
 ```
 
 ```{r, echo=FALSE, fig.align='center'}
-kable_styling(scroll_box(knitr::kable(Flowers, booktabs= TRUE, caption= "The Flowers Dataset"), width="500px", height="500px"), position="center")
+knitr::kable(Flowers, booktabs= TRUE, caption= "The Flowers Dataset") %>%
+  scroll_box(width="500px", height="500px") %>%
+  kable_styling(position= "center")
+
 ```
 
 In order for R to process the data, I need to convert the data from "wide" format to "long" format. I also need to let R know that each species should be treated as a "factor," which means that it is a type of categorical variable (so I can sort out data based on Species) later on. 
@@ -35,7 +38,9 @@ head(Flowers_long)
 ```
 
 ```{r, echo=FALSE, fig.align='center'}
-kable_styling(scroll_box(knitr::kable(Flowers_long, caption="Flowers Dataset, Long-Form Data"), height="600px"), position="center")
+knitr::kable(Flowers_long, caption="Flowers Dataset, Long-Form Data") %>%
+  scroll_box(width="500px", height="500px") %>%
+  kable_styling(position= "center")
 ```
 
 
