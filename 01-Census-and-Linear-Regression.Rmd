@@ -4,16 +4,16 @@
 
 Start by loading the required libraries.
 
-```{r echo=TRUE, results=FALSE}
+```{r echo=TRUE, results='hide'}
 
 library("tidycensus")
 library("tidyverse")
 library("reshape")
 ```
 
-Install your Census API Key into R with this call.
+Install your Census API Key into R with this call. This uses the `census_api_key` command in tidycensus.
 
-```{r eval=FALSE, }
+```{r eval=FALSE}
 census_api_key("<Census Key Goes Here>", install=TRUE, overwrite=TRUE)
 ```
 
@@ -25,7 +25,7 @@ Pull variable data into dataframe.
 
 * state="VA" variable helps limit the scope of our data to just VA, otherwise it will download all US.
 
-```{r}
+```{r, results='hide'}
 income_with_children <- get_acs(geography="zcta",
                   state="VA",
                   variables=c("B19125_002"),
@@ -40,10 +40,17 @@ income_no_children<- get_acs(geography="zcta",
 head(income_no_children)
 ```
 
+```{r, echo=FALSE}
+knitr::kable(list(income_with_children, income_no_children), caption="Income with and Without Children", booktabs=TRUE) %>%
+  scroll_box(height="500px") %>%
+  kable_styling(position= "center", font_size = 8)
+```
+
 
 ## Construct a Linear Model
 
 Every scatterplot consists of a **Explanatory Variable**, and a **Response Variable**. In this example, I set the Explanatory Variable as as a separate variable `x`, and the Response Variable as a separate variable `y`, because they are going to be graphed along the **x** and **y** axes respectively, in the scatterplot. construct a linear model, and fit the linear model on top of your scatterplot:
+
 ```{r}
 x= income_no_children$estimate
 y= income_with_children$estimate
@@ -138,7 +145,15 @@ legend(200000, 150, c("No Children", "With Children"), fill= c("sky blue", "ligh
 
 
 
-### How to remove NA's
+### Removing NA's
+
+Let's say you want to find the average household income for households with children. You run the following command.
+
+```{r}
+mean(income_with_children$estimate)
+```
+
+But the result returns `NA` instead, rather than the actual statistic. Why?
 
 **NA's** show up when either data is not available, or the sample size is so small that the data can be personally identifiable. The Census suppresses such data.
 
@@ -147,11 +162,9 @@ Whether you completely remove the NA's is up to you, and dependent on context. W
 In some contexts, you may want to replace NA's with a specific number like 0. Talk to your teacher about this before you continue. 
 
 ```{r}
-mean(income_with_children$estimate)
-
 mean(na.omit(income_with_children$estimate))
-
-
 ```
+
+
 
 

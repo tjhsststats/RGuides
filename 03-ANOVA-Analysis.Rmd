@@ -3,10 +3,10 @@
 ## Comparing Several means: Hummingbirds and Tropical Flowers
 
 
-Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.
+Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower *Heliconia* on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.
 
 
-The table below gives length measurements (in millimeters) for random samples of three varieties of Heliconia, each pollinated by a different species of humming- bird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?
+The table below gives length measurements (in millimeters) for random samples of three varieties of *Heliconia*, each pollinated by a different species of hummingbird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?
 
 
 ```{r library, echo=TRUE, results='hide', error=FALSE, warning=FALSE, message=FALSE}

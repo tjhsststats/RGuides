@@ -1,9 +1,10 @@
 fig:unnamed-chunk-4
 fig:unnamed-chunk-5
 fig:unnamed-chunk-6
-tab:unnamed-chunk-24
+tab:unnamed-chunk-14
 tab:unnamed-chunk-26
-fig:unnamed-chunk-29
+tab:unnamed-chunk-28
+fig:unnamed-chunk-31
 using-a-personal-laptop
 using-an-fcps-laptop
 software-center-troubleshooting
@@ -12,7 +13,7 @@ install-packages-and-census-api-key
 pull-data-from-the-census
 construct-a-linear-model
 create-two-data-displays.
-how-to-remove-nas
+removing-nas
 intro-to-two-sample-t-tests
 loading-data.
 data-wrangling

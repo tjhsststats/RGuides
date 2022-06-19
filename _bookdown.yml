@@ -17,7 +17,6 @@ rmd_files:
   [ "index.Rmd",
     "00-Getting-Started.Rmd",
     "01-Census-and-Linear-Regression.Rmd",
-
     "02-Two-Sample-T-Test.Rmd",
     "03-ANOVA-Analysis.Rmd",
     "references.Rmd", # Must have comma after last entry
