@@ -17,7 +17,7 @@ Examine any problems with the dataset. Notice that there are a lot of randome pr
 
 ```{r problems}
 problems(anime)
-View(anime)
+head(anime)
 names(anime)
 ```
 
@@ -45,7 +45,6 @@ action_anime<- anime[grep("Action", anime$Genres), ]
 
 View the dataframe. How many animes do you recognize? 
 ```{r view action anime}
-View(action_anime)
 head(action_anime)
 ```
 

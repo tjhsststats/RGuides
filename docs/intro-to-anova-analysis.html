@@ -4,21 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 Intro to ANOVA Analysis | R Guides</title>
+<title>Chapter 3 Intro to ANOVA Analysis | TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng &amp; Others">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 3 Intro to ANOVA Analysis | R Guides">
+<meta property="og:title" content="Chapter 3 Intro to ANOVA Analysis | TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 Intro to ANOVA Analysis | R Guides">
+<meta name="twitter:title" content="Chapter 3 Intro to ANOVA Analysis | TJ RS1 with R">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<link rel="stylesheet" href="bootstrap.min.css">
 <meta name="description" content="3.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
 <meta property="og:description" content="3.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
 <meta name="twitter:description" content="3.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
@@ -31,7 +31,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">R Guides</a>
+        <a href="index.html" title="">TJ RS1 with R</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -44,6 +44,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="active" href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
@@ -65,63 +66,914 @@
 </h2>
 <p>Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.</p>
 <p>The table below gives length measurements (in millimeters) for random samples of three varieties of Heliconia, each pollinated by a different species of humming- bird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <p>For the flower data, I made a CSV file from the textbook data, and then imported it into R.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">Flowers</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/Flowers.csv"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 23 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────
-## Delimiter: ","
-## dbl (3): H. bihai, H. caribea red, H. caribea yellow
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 3
-##   `H. bihai` `H. caribea red` `H. caribea yellow`
-##        &lt;dbl&gt;            &lt;dbl&gt;               &lt;dbl&gt;
-## 1       47.1             41.9                36.8
-## 2       46.8             42.0                37.0
-## 3       46.8             41.9                36.5
-## 4       47.1             43.1                36.1
-## 5       46.7             41.5                36.0
-## 6       47.4             41.7                35.4</code></pre>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Flowers</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/Flowers.csv"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers</span><span class="op">)</span> <span class="co">#View the Flowers Dataset</span></code></pre></div>
+<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-24">TABLE 3.1: </span>The Flowers Dataset
+</caption>
+<thead><tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+H. bihai
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+H. caribea red
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+H. caribea yellow
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+47.12
+</td>
+<td style="text-align:right;">
+41.90
+</td>
+<td style="text-align:right;">
+36.78
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.75
+</td>
+<td style="text-align:right;">
+42.01
+</td>
+<td style="text-align:right;">
+37.02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.81
+</td>
+<td style="text-align:right;">
+41.93
+</td>
+<td style="text-align:right;">
+36.52
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47.12
+</td>
+<td style="text-align:right;">
+43.09
+</td>
+<td style="text-align:right;">
+36.11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.67
+</td>
+<td style="text-align:right;">
+41.47
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47.43
+</td>
+<td style="text-align:right;">
+41.69
+</td>
+<td style="text-align:right;">
+35.45
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.44
+</td>
+<td style="text-align:right;">
+39.78
+</td>
+<td style="text-align:right;">
+38.13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.64
+</td>
+<td style="text-align:right;">
+40.57
+</td>
+<td style="text-align:right;">
+37.10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.07
+</td>
+<td style="text-align:right;">
+39.63
+</td>
+<td style="text-align:right;">
+35.17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.34
+</td>
+<td style="text-align:right;">
+42.18
+</td>
+<td style="text-align:right;">
+36.82
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.15
+</td>
+<td style="text-align:right;">
+40.66
+</td>
+<td style="text-align:right;">
+36.66
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50.26
+</td>
+<td style="text-align:right;">
+37.87
+</td>
+<td style="text-align:right;">
+35.68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50.12
+</td>
+<td style="text-align:right;">
+39.16
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.34
+</td>
+<td style="text-align:right;">
+37.40
+</td>
+<td style="text-align:right;">
+34.57
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.94
+</td>
+<td style="text-align:right;">
+38.20
+</td>
+<td style="text-align:right;">
+34.63
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.36
+</td>
+<td style="text-align:right;">
+38.07
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.10
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+37.97
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.79
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.23
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.87
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+37.78
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.01
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
 <p>In order for R to process the data, I need to convert the data from “wide” format to “long” format. I also need to let R know that each species should be treated as a “factor,” which means that it is a type of categorical variable (so I can sort out data based on Species) later on.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers_long</span><span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">Flowers</span>, <span class="st">"Species"</span>, <span class="st">"Length"</span>, factor_key<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">Flowers_long</span></code></pre></div>
-<pre><code>## # A tibble: 69 × 2
-##    Species  Length
-##    &lt;fct&gt;     &lt;dbl&gt;
-##  1 H. bihai   47.1
-##  2 H. bihai   46.8
-##  3 H. bihai   46.8
-##  4 H. bihai   47.1
-##  5 H. bihai   46.7
-##  6 H. bihai   47.4
-##  7 H. bihai   46.4
-##  8 H. bihai   46.6
-##  9 H. bihai   48.1
-## 10 H. bihai   48.3
-## # … with 59 more rows</code></pre>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></code></pre></div>
+<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px;  margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-26">TABLE 3.2: </span>Flowers Dataset, Long-Form Data
+</caption>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Species
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Length
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+50.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+50.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+42.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+43.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+40.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+42.18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+40.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+37.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+35.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+38.13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+37.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+35.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+35.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+34.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+34.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
 <p>Let’s follow the strategy we learned way back in Unit 1: use graphs and numerical summaries to compare the three distributions of flower length. Here are the summary statistics we will use in further analysis:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mean_and_sd</span><span class="op">&lt;-</span> <span class="va">Flowers_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span>, 
             sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mean_and_sd</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 3
-##   Species            mean    sd
-##   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt;
-## 1 H. bihai           47.6 1.21 
-## 2 H. caribea red     39.7 1.80 
-## 3 H. caribea yellow  36.2 0.975</code></pre>
+<span class="va">mean_and_sd</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.5975
+</td>
+<td style="text-align:right;">
+1.2128781
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.7113
+</td>
+<td style="text-align:right;">
+1.7987630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.1800
+</td>
+<td style="text-align:right;">
+0.9753241
+</td>
+</tr>
+</tbody>
+</table></div>
 <p>What do we see? The three varieties differ so much in flower length that there is little overlap among them. In particular, the flowers of bihai are longer than either red or yellow. The mean lengths are 47.6 mm for H. bihai, 39.7 mm for H. caribaea red, and 36.2 mm for H. caribaea yellow. Are these observed differences in sample means statistically significant? We must develop a test for comparing more than two population means.</p>
 </div>
 <div id="the-f-test" class="section level2" number="3.2">
@@ -129,9 +981,9 @@
 <span class="header-section-number">3.2</span> The F Test<a class="anchor" aria-label="anchor" href="#the-f-test"><i class="fas fa-link"></i></a>
 </h2>
 <p>We want to test the null hypothesis that there are no differences among the mean lengths for the three populations of flowers:</p>
-<p>H0:μ1 =μ2 =μ3</p>
+<p><em>H0:μ1 =μ2 =μ3</em></p>
 <p>The alternative hypothesis is that there is some difference. That is, not all three population means are equal:</p>
-<p>Ha : not all of μ1, μ2, and μ3 are equal</p>
+<p><em>Ha : not all of μ1, μ2, and μ3 are equal</em></p>
 <p>The alternative hypothesis is no longer one-sided or two-sided. It is “many-sided” because it allows any relationship other than “all three equal.”</p>
 <p>For example, Ha includes the case in which m2 = m3 but m1 has a different value.</p>
 <p>When the conditions for inference are met, the appropriate significance test for comparing means is the analysis of variance F test. Analysis of variance is usually abbreviated as ANOVA.</p>
@@ -145,22 +997,66 @@
 <li><p>Random: Researchers took separate random samples of 16 bihaii, 23 red, and 15 Heliconia flowers.</p></li>
 <li><p>Normal: We entered the data into R and made side by side boxplots. Although the distributions for the bihai and red varieties show some right-skewness, we don’t see nay strong skewness or outliers that would prevent the use of one-way ANOVA.</p></li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Flowers_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Length</span>, y<span class="op">=</span><span class="va">Species</span>, fill<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"Flower Lengths from Textbook"</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_gdocs.html">theme_gdocs</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: Removed 15 rows containing non-finite values (stat_boxplot).</code></pre>
-<pre><code>## Warning: Removed 15 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 15 rows containing non-finite values
+## (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 15 rows containing missing values
+## (geom_point).</code></pre>
 <div class="inline-figure"><img src="book_temp_files/figure-html/boxplot%20Flowers-1.png" width="672"></div>
 <ul>
 <li><p>Independent: Researchers took independent samples of bihai, red, and yellow Heliconia. because sampling without replacement was used, there must be at least 10(16) = 160 bihai, 10(23) = 230 red, and 10(15) = 150 yellow flowers. This is pretty safe to assume.</p></li>
 <li><p>Same SD: In a one-way ANOVA, you must check whether the largest sample SD divided by the smallest SD has a ratio less than 2. Our sample standard deviations are:</p></li>
 </ul>
-<pre><code>## # A tibble: 3 × 3
-##   Species            mean    sd
-##   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt;
-## 1 H. bihai           47.6 1.21 
-## 2 H. caribea red     39.7 1.80 
-## 3 H. caribea yellow  36.2 0.975</code></pre>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.5975
+</td>
+<td style="text-align:right;">
+1.2128781
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.7113
+</td>
+<td style="text-align:right;">
+1.7987630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.1800
+</td>
+<td style="text-align:right;">
+0.9753241
+</td>
+</tr>
+</tbody>
+</table></div>
 <p>These standard deviations satisfy our rule of thumb that (largest SD)/ (smallest SD) is less than 2, so we can proceed.</p>
 <p>Since we have satifised all 3 conditions, we can safely use ANOVA to compare the mean lengths of the three populations.</p>
 </div>
@@ -168,19 +1064,22 @@
 <h2>
 <span class="header-section-number">3.4</span> The F Distribution<a class="anchor" aria-label="anchor" href="#the-f-distribution"><i class="fas fa-link"></i></a>
 </h2>
+<div class="floating">
 <p>The variances for <em>three</em> populations is naturally larger than the variance of two populations. Just like how two populations naturally have a larger variance, and thus requires the t-distribution (which has more “area” under the tails), we need to use a different distribution that takes into account this larger variance (which has even more “area” under the tails. This distribution is called the <strong>F-Distribution</strong>.</p>
-<div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/F_Dist.png" width="35%" style="float:right; padding:10px"></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-29"></span>
+<img src="resources/images/03-ANOVA-Analysis/F_Dist.png" alt="The F-Distribution" width="35%" style="float:right; padding:10px"><p class="caption">
+FIGURE 3.1: The F-Distribution
+</p>
+</div>
 <p>The <strong><code>*F* distributions</code></strong> are a family of right-skewed distributions that take only values greater than 0. Above are some possible shapes. A specific F distribution is determined by the degrees of freedom of the numerator and denominator of the F statistic. When describing an F distribution, always give the numerator degrees of freedom first. Our notation will be F (df1, df2) for the F distribution with df1 degrees of freedom in the numerator and df2 degrees of freedom in the denominator. <em>Interchanging the degrees of freedom changes the distribution, so the order is important. </em></p>
+</div>
 <div id="finding-the-degrees-of-freedom-for-f" class="section level3" number="3.4.1">
 <h3>
 <span class="header-section-number">3.4.1</span> Finding the Degrees of Freedom for F<a class="anchor" aria-label="anchor" href="#finding-the-degrees-of-freedom-for-f"><i class="fas fa-link"></i></a>
 </h3>
-<div class="inline-figure">In the two earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom
-<img src="resources/images/03-ANOVA-Analysis/F_Dist_Overview.png" width="55%" style="float:right; padding:10px">
-</div>
-<p>k - 1 = 3 - 1 = 2</p>
-<p>and denominator degrees of freedom</p>
-<p>N - k = 54 - 3 = 51</p>
+<p>In the two earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom <span class="math display">\[k - 1 = 3 - 1 = 2\]</span> and denominator degrees of freedom <span class="math display">\[N - k = 54 - 3 = 51\]</span>.</p>
+<div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/F_Dist_Overview.png" width="55%" style="float:center; padding:10px"></div>
 </div>
 <div id="understanding-the-f-statistic" class="section level3" number="3.4.2">
 <h3>
@@ -190,7 +1089,7 @@
 <p>The F Statistic is calculated by doing:</p>
 <p><span class="math display">\[ F= \frac{\text{variation among the sample means}}{\text{variation among individuals within the same sample}} \]</span></p>
 <p>Specifically, the variation is calculated by dividing the <em>Mean Square for Groups</em> by the <em>Mean Square for Error</em>. The statistic is reproduced below, but you should know that you’d never have to do this by hand– R will do it all for you.</p>
-<div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/ANOVA_F_Test.png" width="45%"></div>
+<div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/ANOVA_F_Test.png" width="65%"></div>
 </div>
 <div id="calculate-the-f-statistic" class="section level3" number="3.4.3">
 <h3>
@@ -206,7 +1105,7 @@
 </h2>
 <p>Of course, the previous pages gave you a <em>very</em> brief background of a one-way ANOVA test.</p>
 <p>It turns out that conducting the test itself in R is very easy– R even calculates the degrees of freedom for you.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span>
 <span class="va">anova.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Length</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova.test</span><span class="op">)</span></code></pre></div>
@@ -214,7 +1113,8 @@
 ## Species      2 1082.9   541.4   259.1 &lt;2e-16 ***
 ## Residuals   51  106.6     2.1                   
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther <em>is</em> a significant difference between the three species.</p>
 </div>
 <div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="3.6">
@@ -229,7 +1129,7 @@
 <li><p>“Pairwise Comparision” means you compare two things with each other.</p></li>
 </ul>
 <p>To perform the pairwise comparison, run the <em>TukeyHSD()</em> command on your anova.test model.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conf.level<span class="op">=</span><span class="fl">.95</span><span class="op">)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -237,17 +1137,21 @@
 ## Fit: aov(formula = Length ~ Species, data = na.omit(Flowers_long))
 ## 
 ## $Species
-##                                        diff        lwr        upr p adj
-## H. caribea red-H. bihai           -7.886196  -9.022163  -6.750229     0
-## H. caribea yellow-H. bihai       -11.417500 -12.671601 -10.163399     0
-## H. caribea yellow-H. caribea red  -3.531304  -4.689387  -2.373222     0</code></pre>
+##                                        diff        lwr
+## H. caribea red-H. bihai           -7.886196  -9.022163
+## H. caribea yellow-H. bihai       -11.417500 -12.671601
+## H. caribea yellow-H. caribea red  -3.531304  -4.689387
+##                                         upr p adj
+## H. caribea red-H. bihai           -6.750229     0
+## H. caribea yellow-H. bihai       -10.163399     0
+## H. caribea yellow-H. caribea red  -2.373222     0</code></pre>
 <p>You can also plot these results, as shown below:</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Margins will spill over, so you need to adjust these</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">13</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conflevel<span class="op">=</span><span class="fl">.95</span><span class="op">)</span>, las<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
 <p>Notice that the x-axis doesn’t even include 0– our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).</p>
 
 </div>
@@ -288,7 +1192,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R Guides</strong>" was written by Mr. Ng &amp; Others. </p>
+    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng &amp; Others. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

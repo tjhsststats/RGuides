@@ -4,7 +4,7 @@
 
 Start by loading the required libraries.
 
-```{r eval=TRUE}
+```{r echo=TRUE, results=FALSE}
 
 library("tidycensus")
 library("tidyverse")
@@ -13,8 +13,8 @@ library("reshape")
 
 Install your Census API Key into R with this call.
 
-```{r eval=FALSE}
-census_api_key("0047417f53c1160f7c485bfee065458498a296c7", install=TRUE, overwrite=TRUE)
+```{r eval=FALSE, }
+census_api_key("<Census Key Goes Here>", install=TRUE, overwrite=TRUE)
 ```
 
 ## Pull data from the Census
@@ -43,23 +43,48 @@ head(income_no_children)
 
 ## Construct a Linear Model
 
-Code not provided, because you should know. Construct a scatterplot, construct a linear model, and fit the linear model on top of your scatterplot:
+Every scatterplot consists of a **Explanatory Variable**, and a **Response Variable**. In this example, I set the Explanatory Variable as as a separate variable `x`, and the Response Variable as a separate variable `y`, because they are going to be graphed along the **x** and **y** axes respectively, in the scatterplot. construct a linear model, and fit the linear model on top of your scatterplot:
 ```{r}
 x= income_no_children$estimate
 y= income_with_children$estimate
-scatter_plot <- plot(x, y,
+plot(x, y,
                      xlab= "No Children",
                      ylab="With Children",
                      main= "Median Household of Income in Virginia, by Zip Code")
-reg_line<- lm(income_with_children$estimate ~ income_no_children$estimate)
-abline(reg_line, col="red")
-summary(reg_line)
+```
 
+Construct a linear model using the `lm` command, and store it into the variable **reg_line**.
+
+```{r}
+reg_line<- lm(income_with_children$estimate ~ income_no_children$estimate)
+summary(reg_line)
+```
+
+By using `summary`, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the **standard deviation of the residuals** and the **R-Squared Value**. In R, that is labeled as *Multiple R-Squared*.
+
+```{r}
+knitr::include_graphics("resources/images/01-Census-and-Linear-Regression/Regression-Printout.png") 
+```
+
+Finally, plot the line of best fit on top of your data, using the `abline` command.
+
+```{r}
+plot(x, y,
+                     xlab= "No Children",
+                     ylab="With Children",
+                     main= "Median Household of Income in Virginia, by Zip Code")
+abline(reg_line, col="red")
+```
+## Create a Residual Plot.
+
+You should always evaluate whether a linear regression line is a good fit for the model. One of those tools to evaluate whether the regression is a good fit is to examine the residual plot.
+
+Whenever you create a linear model using the `lm` command, 
+```{r}
 plot(reg_line$residuals, 
      ylab= "Residual",
      main= "Residual Plot for Linear Model")
 ```
-
 
 ## Create two data displays.
 

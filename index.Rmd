@@ -1,5 +1,5 @@
 ---
-title: "R Guides"
+title: "TJ RS1 with R"
 author: "Mr. Ng & Others"
 site: bookdown::bookdown_site
 documentclass: book
@@ -14,25 +14,46 @@ graphics: yes
 output:
   bookdown::gitbook:
     lib_dir: "book_assets"
+    df_print: paged
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+options(width = 60)
+local({
+  hook_output <- knitr::knit_hooks$get('output')
+  knitr::knit_hooks$set(output = function(x, options) {
+    if (!is.null(options$max.height)) options$attr.output <- c(
+      options$attr.output,
+      sprintf('style="max-height: %s;"', options$max.height)
+    )
+    hook_output(x, options)
+  })
+})
+
+library(ggthemes)
+library(kableExtra)
 ```
 
 # Preface {.unnumbered}
 
-This is where guides to R Things will be posted. 
+This is your 1-Stop-Shop for the RS1 with R course. Materials and format here are heavily inspired and borrowed from the [Preceptor's Primer for Bayesian Data Science](https://ppbds.github.io/primer/) and *The Practice of Statistics, 4th Ed* by Starnes, Yates, and Moore.
+
+Almost everything else was written by Mr. Ng and Mr. McFee.
 
 ```{r, echo = FALSE}
 knitr::include_graphics("resources/images/casper.jpeg") 
 ```
 
-## Casper Biting {-}
-```{r, echo = FALSE}
+## Casper Biting {.unnumbered}
+
+```{r echo= FALSE, out.width= "65%", out.extra='style="float:right; padding:10px"'}
 knitr::include_graphics("resources/images/casper_biting.jpeg") 
 ```
 
-## Casper Sleeping {-}
+
+## Casper Sleeping {.unnumbered}
+
 ```{r, echo = FALSE}
 knitr::include_graphics("resources/images/casper_sleeping.jpeg") 
 ```

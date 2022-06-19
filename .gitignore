@@ -1,3 +1,5 @@
 **/.DS_Store
 **/.RHistory
 **/.RData
+_bookdown_files/
+**/book_temp.Rmd

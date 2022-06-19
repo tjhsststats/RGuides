@@ -2,7 +2,6 @@ bookdown::bs4_book:
   theme:
     primary: "#C90016"
   repo: https://github.com/kaisamng/RGuides
-  css: bootstrap.min.css
   config:
     toc:
       collapse: null
