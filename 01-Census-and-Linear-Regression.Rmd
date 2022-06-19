@@ -4,7 +4,7 @@
 
 Start by loading the required libraries.
 
-```{r echo=TRUE, results='hide'}
+```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
 
 library("tidycensus")
 library("tidyverse")
@@ -40,10 +40,10 @@ income_no_children<- get_acs(geography="zcta",
 head(income_no_children)
 ```
 
-```{r, echo=FALSE}
-knitr::kable(list(income_with_children, income_no_children), caption="Income with and Without Children", booktabs=TRUE) %>%
+```{r, echo=FALSE, fig.cap="Zip Code Data for Household Income for Households with Children, and Without Children"}
+knitr::kable(list(income_with_children, income_no_children), caption="Zip Code Data for Household Income for Households with Children, and Without Children", booktabs=TRUE) %>%
   scroll_box(height="500px") %>%
-  kable_styling(position= "center", font_size = 8)
+  kable_styling(position= "center", font_size = 10)
 ```
 
 
@@ -51,7 +51,7 @@ knitr::kable(list(income_with_children, income_no_children), caption="Income wit
 
 Every scatterplot consists of a **Explanatory Variable**, and a **Response Variable**. In this example, I set the Explanatory Variable as as a separate variable `x`, and the Response Variable as a separate variable `y`, because they are going to be graphed along the **x** and **y** axes respectively, in the scatterplot. construct a linear model, and fit the linear model on top of your scatterplot:
 
-```{r}
+```{r, fig.cap="Creating a Scatterplot"}
 x= income_no_children$estimate
 y= income_with_children$estimate
 plot(x, y,
@@ -62,38 +62,39 @@ plot(x, y,
 
 Construct a linear model using the `lm` command, and store it into the variable **reg_line**.
 
-```{r}
+```{r, fig.cap="Creating a Regression Model, and Creating a Computer Printout"}
 reg_line<- lm(income_with_children$estimate ~ income_no_children$estimate)
 summary(reg_line)
 ```
 
 By using `summary`, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the **standard deviation of the residuals** and the **R-Squared Value**. In R, that is labeled as *Multiple R-Squared*.
 
-```{r}
+```{r, echo=FALSE, out.width="90%", fig.cap="Interpreting a Regression Printout"}
 knitr::include_graphics("resources/images/01-Census-and-Linear-Regression/Regression-Printout.png") 
 ```
 
 Finally, plot the line of best fit on top of your data, using the `abline` command.
 
-```{r}
+```{r, fig.cap="Scatterplot with Best Fit Line added"}
 plot(x, y,
-                     xlab= "No Children",
-                     ylab="With Children",
-                     main= "Median Household of Income in Virginia, by Zip Code")
+     xlab= "No Children",
+     ylab="With Children",
+     main= "Median Household of Income in Virginia, by Zip Code")
 abline(reg_line, col="red")
 ```
-## Create a Residual Plot.
+
+## Create a Residual Plot
 
 You should always evaluate whether a linear regression line is a good fit for the model. One of those tools to evaluate whether the regression is a good fit is to examine the residual plot.
 
 Whenever you create a linear model using the `lm` command, 
-```{r}
+```{r, fig.cap="Resdial Plot for the linear model stored as reg_line"}
 plot(reg_line$residuals, 
      ylab= "Residual",
      main= "Residual Plot for Linear Model")
 ```
 
-## Create two data displays.
+## Creating boxplots with Five-Number Summaries
 
 I want to know if households with children tend to have a higher median income than households with no children. Let's make those two histograms.
 
@@ -128,7 +129,7 @@ text(x=fivenum(income_with_children$estimate), labels=fivenum(income_with_childr
 
 This looks nice, but notice the y-scales are not the same. To make them more comparable, stack the histograms on top of each other using the plot() function. 
 
-```{r}
+```{r, out.width="90%"}
 plot(no_children_histo, 
      col= alpha("sky blue", 1),
      xlim= c(0, 300000),

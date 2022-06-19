@@ -23,9 +23,9 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content="1.1 Install packages and Census API Key Start by loading the required libraries. library(&quot;tidycensus&quot;) ## Warning: package 'tidycensus' was built under R version 4.1.2 library(&quot;tidyverse&quot;)...">
-<meta property="og:description" content="1.1 Install packages and Census API Key Start by loading the required libraries. library(&quot;tidycensus&quot;) ## Warning: package 'tidycensus' was built under R version 4.1.2 library(&quot;tidyverse&quot;)...">
-<meta name="twitter:description" content="1.1 Install packages and Census API Key Start by loading the required libraries. library(&quot;tidycensus&quot;) ## Warning: package 'tidycensus' was built under R version 4.1.2 library(&quot;tidyverse&quot;)...">
+<meta name="description" content='1.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
+<meta property="og:description" content='1.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
+<meta name="twitter:description" content='1.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -70,22 +70,11 @@
 </h2>
 <p>Start by loading the required libraries.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://walker-data.com/tidycensus/">"tidycensus"</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: package 'tidycensus' was built under R version 4.1.2</code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://walker-data.com/tidycensus/">"tidycensus"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="http://had.co.nz/reshape">"reshape"</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: package 'reshape' was built under R version 4.1.2</code></pre>
-<pre><code>## 
-## Attaching package: 'reshape'</code></pre>
-<pre><code>## The following object is masked from 'package:dplyr':
-## 
-##     rename</code></pre>
-<pre><code>## The following objects are masked from 'package:tidyr':
-## 
-##     expand, smiths</code></pre>
 <p>Install your Census API Key into R with this call. This uses the <code>census_api_key</code> command in tidycensus.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://walker-data.com/tidycensus/reference/census_api_key.html">census_api_key</a></span><span class="op">(</span><span class="st">"&lt;Census Key Goes Here&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="pull-data-from-the-census" class="section level2" number="1.2">
@@ -97,14 +86,14 @@
 <li><p>Notice the “geography” is “zcta,” which is the Census Bureau’s equivalent of a ZIP Code.</p></li>
 <li><p>state=“VA” variable helps limit the scope of our data to just VA, otherwise it will download all US.</p></li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">income_with_children</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://walker-data.com/tidycensus/reference/get_acs.html">get_acs</a></span><span class="op">(</span>geography<span class="op">=</span><span class="st">"zcta"</span>,
                   state<span class="op">=</span><span class="st">"VA"</span>,
                   variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B19125_002"</span><span class="op">)</span>,
                   year<span class="op">=</span><span class="fl">2019</span><span class="op">)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <pre><code>## Using FIPS code '51' for state 'VA'</code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">)</span>
 
 <span class="va">income_no_children</span><span class="op">&lt;-</span> <span class="fu"><a href="https://walker-data.com/tidycensus/reference/get_acs.html">get_acs</a></span><span class="op">(</span>geography<span class="op">=</span><span class="st">"zcta"</span>,
@@ -113,12 +102,12 @@
                             year<span class="op">=</span><span class="fl">2019</span><span class="op">)</span></code></pre></div>
 <pre><code>## Getting data from the 2015-2019 5-year ACS
 ## Using FIPS code '51' for state 'VA'</code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">)</span></code></pre></div>
-<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 8px; margin-left: auto; margin-right: auto;">
+<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-14">TABLE 1.1: </span>Income with and Without Children
+<span id="tab:unnamed-chunk-14">TABLE 1.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
 </caption>
 <tbody><tr>
 <td>
@@ -30640,16 +30629,21 @@ B19125_003
 <span class="header-section-number">1.3</span> Construct a Linear Model<a class="anchor" aria-label="anchor" href="#construct-a-linear-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Every scatterplot consists of a <strong>Explanatory Variable</strong>, and a <strong>Response Variable</strong>. In this example, I set the Explanatory Variable as as a separate variable <code>x</code>, and the Response Variable as a separate variable <code>y</code>, because they are going to be graphed along the <strong>x</strong> and <strong>y</strong> axes respectively, in the scatterplot. construct a linear model, and fit the linear model on top of your scatterplot:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">=</span> <span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span>
 <span class="va">y</span><span class="op">=</span> <span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>,
                      xlab<span class="op">=</span> <span class="st">"No Children"</span>,
                      ylab<span class="op">=</span><span class="st">"With Children"</span>,
                      main<span class="op">=</span> <span class="st">"Median Household of Income in Virginia, by Zip Code"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-15-1.png" alt="Creating a Scatterplot" width="672"><p class="caption">
+FIGURE 1.1: Creating a Scatterplot
+</p>
+</div>
 <p>Construct a linear model using the <code>lm</code> command, and store it into the variable <strong>reg_line</strong>.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">reg_line</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span> <span class="op">~</span> <span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_line</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
@@ -30672,33 +30666,49 @@ B19125_003
 ## Multiple R-squared:  0.6597, Adjusted R-squared:  0.6591 
 ## F-statistic:  1233 on 1 and 636 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>By using <code>summary</code>, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the <strong>standard deviation of the residuals</strong> and the <strong>R-Squared Value</strong>. In R, that is labeled as <em>Multiple R-Squared</em>.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"resources/images/01-Census-and-Linear-Regression/Regression-Printout.png"</span><span class="op">)</span> </code></pre></div>
-<div class="inline-figure"><img src="resources/images/01-Census-and-Linear-Regression/Regression-Printout.png" width="848"></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-17"></span>
+<img src="resources/images/01-Census-and-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="90%"><p class="caption">
+FIGURE 1.2: Interpreting a Regression Printout
+</p>
+</div>
 <p>Finally, plot the line of best fit on top of your data, using the <code>abline</code> command.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>,
-                     xlab<span class="op">=</span> <span class="st">"No Children"</span>,
-                     ylab<span class="op">=</span><span class="st">"With Children"</span>,
-                     main<span class="op">=</span> <span class="st">"Median Household of Income in Virginia, by Zip Code"</span><span class="op">)</span>
+     xlab<span class="op">=</span> <span class="st">"No Children"</span>,
+     ylab<span class="op">=</span><span class="st">"With Children"</span>,
+     main<span class="op">=</span> <span class="st">"Median Household of Income in Virginia, by Zip Code"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">reg_line</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure">
-<img src="book_temp_files/figure-html/unnamed-chunk-18-1.png" width="672">
-## Create a Residual Plot.</div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-18-1.png" alt="Scatterplot with Best Fit Line added" width="672"><p class="caption">
+FIGURE 1.3: Scatterplot with Best Fit Line added
+</p>
+</div>
+</div>
+<div id="create-a-residual-plot" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Create a Residual Plot<a class="anchor" aria-label="anchor" href="#create-a-residual-plot"><i class="fas fa-link"></i></a>
+</h2>
 <p>You should always evaluate whether a linear regression line is a good fit for the model. One of those tools to evaluate whether the regression is a good fit is to examine the residual plot.</p>
 <p>Whenever you create a linear model using the <code>lm</code> command,</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">reg_line</span><span class="op">$</span><span class="va">residuals</span>, 
      ylab<span class="op">=</span> <span class="st">"Residual"</span>,
      main<span class="op">=</span> <span class="st">"Residual Plot for Linear Model"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-19"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-19-1.png" alt="Resdial Plot for the linear model stored as reg_line" width="672"><p class="caption">
+FIGURE 1.4: Resdial Plot for the linear model stored as reg_line
+</p>
 </div>
-<div id="create-two-data-displays." class="section level2" number="1.4">
+</div>
+<div id="creating-boxplots-with-five-number-summaries" class="section level2" number="1.5">
 <h2>
-<span class="header-section-number">1.4</span> Create two data displays.<a class="anchor" aria-label="anchor" href="#create-two-data-displays."><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.5</span> Creating boxplots with Five-Number Summaries<a class="anchor" aria-label="anchor" href="#creating-boxplots-with-five-number-summaries"><i class="fas fa-link"></i></a>
 </h2>
 <p>I want to know if households with children tend to have a higher median income than households with no children. Let’s make those two histograms.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="va">no_children_histo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span>,
                           xlab<span class="op">=</span> <span class="st">"Median Household Income"</span>,
@@ -30713,7 +30723,7 @@ B19125_003
                                <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, y<span class="op">=</span><span class="fl">1.3</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="va">with_children_histo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span>,
                             xlab<span class="op">=</span> <span class="st">"Median Income"</span>,
@@ -30728,7 +30738,7 @@ B19125_003
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, y<span class="op">=</span><span class="fl">1.3</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-20-2.png" width="672"></div>
 <p>This looks nice, but notice the y-scales are not the same. To make them more comparable, stack the histograms on top of each other using the plot() function.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">no_children_histo</span>, 
      col<span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/alpha.html">alpha</a></span><span class="op">(</span><span class="st">"sky blue"</span>, <span class="fl">1</span><span class="op">)</span>,
      xlim<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">300000</span><span class="op">)</span>,
@@ -30741,20 +30751,20 @@ B19125_003
      add<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">200000</span>, <span class="fl">150</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No Children"</span>, <span class="st">"With Children"</span><span class="op">)</span>, fill<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sky blue"</span>, <span class="st">"light green"</span><span class="op">)</span>, title<span class="op">=</span> <span class="st">"Zoomer Status"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
-<div id="removing-nas" class="section level3" number="1.4.1">
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-21-1.png" width="90%"></div>
+<div id="removing-nas" class="section level3" number="1.5.1">
 <h3>
-<span class="header-section-number">1.4.1</span> Removing NA’s<a class="anchor" aria-label="anchor" href="#removing-nas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.5.1</span> Removing NA’s<a class="anchor" aria-label="anchor" href="#removing-nas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s say you want to find the average household income for households with children. You run the following command.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>But the result returns <code>NA</code> instead, rather than the actual statistic. Why?</p>
 <p><strong>NA’s</strong> show up when either data is not available, or the sample size is so small that the data can be personally identifiable. The Census suppresses such data.</p>
 <p>Whether you completely remove the NA’s is up to you, and dependent on context. When you create any data visualization, R will automatically exclude NA’s from this analysis.</p>
 <p>In some contexts, you may want to replace NA’s with a specific number like 0. Talk to your teacher about this before you continue.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 83832.43</code></pre>
 
@@ -30771,8 +30781,9 @@ B19125_003
 <li><a class="nav-link" href="#install-packages-and-census-api-key"><span class="header-section-number">1.1</span> Install packages and Census API Key</a></li>
 <li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">1.2</span> Pull data from the Census</a></li>
 <li><a class="nav-link" href="#construct-a-linear-model"><span class="header-section-number">1.3</span> Construct a Linear Model</a></li>
+<li><a class="nav-link" href="#create-a-residual-plot"><span class="header-section-number">1.4</span> Create a Residual Plot</a></li>
 <li>
-<a class="nav-link" href="#create-two-data-displays."><span class="header-section-number">1.4</span> Create two data displays.</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#removing-nas"><span class="header-section-number">1.4.1</span> Removing NA’s</a></li></ul>
+<a class="nav-link" href="#creating-boxplots-with-five-number-summaries"><span class="header-section-number">1.5</span> Creating boxplots with Five-Number Summaries</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#removing-nas"><span class="header-section-number">1.5.1</span> Removing NA’s</a></li></ul>
 </li>
 </ul>
 
