@@ -49,6 +49,8 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="active" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
+<li><a class="" href="r-studio-basics.html">R Studio Basics</a></li>
+<li><a class="" href="using-r.html">Using R</a></li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
@@ -66,17 +68,16 @@
 <p>You will never interact with R in this class.</p>
 <p>Yes, you heard that right. In a class called RS1 with R, you will not be using R.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="resources/images/00-Getting-Started/R_vs_RStudio_1.png" alt="Analogy of difference between R and RStudio." width="758"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="resources/images/00-Getting-Started/R_vs_RStudio_1.png" alt="Analogy of difference between R and RStudio." width="100%"><p class="caption">
 FIGURE 0.1: Analogy of difference between R and RStudio.
 </p>
 </div>
 <p>Though out this book, you will be using R via RStudio. R is to RStudio as a car’s engine is to its dashboard.</p>
 <p>More precisely, R is a programming language that runs computations, while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface with many convenient features. Just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier.</p>
 <p>However, depending on what kind of computer you have, you have two different ways of installing RStudio.</p>
-<div id="using-a-personal-laptop" class="section level2" number="0.1">
-<h2>
-<span class="header-section-number">0.1</span> Using a Personal Laptop<a class="anchor" aria-label="anchor" href="#using-a-personal-laptop"><i class="fas fa-link"></i></a>
+<div id="using-a-personal-laptop" class="section level2 unnumbered">
+<h2>Using a Personal Laptop<a class="anchor" aria-label="anchor" href="#using-a-personal-laptop"><i class="fas fa-link"></i></a>
 </h2>
 <p>Download and install R and RStudio (Desktop version) on your computer.</p>
 <ol style="list-style-type: decimal">
@@ -84,9 +85,8 @@ FIGURE 0.1: Analogy of difference between R and RStudio.
 <li><p><strong>Do this second:</strong> <a href="https://rstudio.com/products/rstudio/download/#download">Download and install RStudio Desktop</a> (the free version).</p></li>
 </ol>
 </div>
-<div id="using-an-fcps-laptop" class="section level2" number="0.2">
-<h2>
-<span class="header-section-number">0.2</span> Using an FCPS Laptop<a class="anchor" aria-label="anchor" href="#using-an-fcps-laptop"><i class="fas fa-link"></i></a>
+<div id="using-an-fcps-laptop" class="section level2 unnumbered">
+<h2>Using an FCPS Laptop<a class="anchor" aria-label="anchor" href="#using-an-fcps-laptop"><i class="fas fa-link"></i></a>
 </h2>
 <p>FCPS Policy only allows apps to be installed through their version of an App Store called the <strong>Software Center</strong>. Depending on the county and the middle school you come from, you may already be familar with the following procedure.</p>
 <ol style="list-style-type: decimal">
@@ -95,7 +95,7 @@ FIGURE 0.1: Analogy of difference between R and RStudio.
 </li>
 </ol>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="resources/images/00-Getting-Started/Software_Center.png" alt="Analogy of difference between R and RStudio." width="90%"><p class="caption">
 FIGURE 0.2: Analogy of difference between R and RStudio.
 </p>
@@ -105,14 +105,13 @@ FIGURE 0.2: Analogy of difference between R and RStudio.
 <li><p>Select the app, and click <strong>Install</strong>. Be patient– sometimes, the process can take up to 10 minutes.</p></li>
 </ol>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<span style="display:block;" id="fig:unnamed-chunk-9"></span>
 <img src="resources/images/00-Getting-Started/RStudio_and_Software_Center.png" alt="Analogy of difference between R and RStudio." width="90%"><p class="caption">
 FIGURE 0.3: Analogy of difference between R and RStudio.
 </p>
 </div>
-<div id="software-center-troubleshooting" class="section level3" number="0.2.1">
-<h3>
-<span class="header-section-number">0.2.1</span> Software Center Troubleshooting<a class="anchor" aria-label="anchor" href="#software-center-troubleshooting"><i class="fas fa-link"></i></a>
+<div id="software-center-troubleshooting" class="section level3 unnumbered">
+<h3>Software Center Troubleshooting<a class="anchor" aria-label="anchor" href="#software-center-troubleshooting"><i class="fas fa-link"></i></a>
 </h3>
 <p>If Software Center is taking longer than 10 minutes to install, follow these steps:</p>
 <ol style="list-style-type: decimal">
@@ -124,7 +123,7 @@ FIGURE 0.3: Analogy of difference between R and RStudio.
 <li>Next, click <strong>McAfee Agent Status Monitor.</strong>
 </li>
 </ul>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/McAfee_1.png" width="407"></div>
+<div class="inline-figure"><img src="resources/images/00-Getting-Started/McAfee_1.png" width="100%"></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Once the McAfee Agent Status window has loaded, click on <strong>Check New Policies</strong> and then click on <strong>Enforce Policies</strong>.</li>
 </ol>
@@ -152,21 +151,21 @@ FIGURE 0.3: Analogy of difference between R and RStudio.
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html">Preface</a></div>
-<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></div>
+<div class="next"><a href="r-studio-basics.html">R Studio Basics</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#installing-r-and-rstudio">Installing R and RStudio</a></li>
-<li><a class="nav-link" href="#using-a-personal-laptop"><span class="header-section-number">0.1</span> Using a Personal Laptop</a></li>
+<li><a class="nav-link" href="#using-a-personal-laptop">Using a Personal Laptop</a></li>
 <li>
-<a class="nav-link" href="#using-an-fcps-laptop"><span class="header-section-number">0.2</span> Using an FCPS Laptop</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#software-center-troubleshooting"><span class="header-section-number">0.2.1</span> Software Center Troubleshooting</a></li></ul>
+<a class="nav-link" href="#using-an-fcps-laptop">Using an FCPS Laptop</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#software-center-troubleshooting">Software Center Troubleshooting</a></li></ul>
 </li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/master/00-Getting-Started.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/master/00-Getting-Started.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/master/00A-Installing-RStudio.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/master/00A-Installing-RStudio.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

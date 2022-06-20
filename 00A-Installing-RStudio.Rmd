@@ -14,7 +14,7 @@ More precisely, R is a programming language that runs computations, while RStudi
 
 However, depending on what kind of computer you have, you have two different ways of installing RStudio. 
 
-## Using a Personal Laptop
+## Using a Personal Laptop {-}
 
 Download and install R and RStudio (Desktop version) on your computer. 
 
@@ -22,7 +22,7 @@ Download and install R and RStudio (Desktop version) on your computer.
 
 2. **Do this second:** [Download and install RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) (the free version).
 
-## Using an FCPS Laptop
+## Using an FCPS Laptop {-}
 
 FCPS Policy only allows apps to be installed through their version of an App Store called the **Software Center**. Depending on the county and the middle school you come from, you may already be familar with the following procedure. 
 
@@ -40,7 +40,7 @@ knitr::include_graphics("resources/images/00-Getting-Started/Software_Center.png
 knitr::include_graphics("resources/images/00-Getting-Started/RStudio_and_Software_Center.png")
 ```
 
-### Software Center Troubleshooting
+### Software Center Troubleshooting {-}
 
 If Software Center is taking longer than 10 minutes to install, follow these steps:
 

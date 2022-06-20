@@ -15,7 +15,9 @@
 output_dir: "docs"
 rmd_files:
   [ "index.Rmd",
-    "00-Getting-Started.Rmd",
+    "00A-Installing-RStudio.Rmd",
+    "00B-Interacting-with-RStudio.Rmd",
+    "00C-Basic-R-Commands.Rmd",
     "01-Census-and-Linear-Regression.Rmd",
     "02-Two-Sample-T-Test.Rmd",
     "03-ANOVA-Analysis.Rmd",
@@ -74,8 +76,8 @@ delete_merged_file: true
 # that book_start.R and book_end.R are only run once each.
 
 
-# before_chapter_script: "book_start.R"
-# after_chapter_script: "book_end.R"
+before_chapter_script: "book_start.R"
+after_chapter_script: "book_end.R"
 
 # More comments:
 

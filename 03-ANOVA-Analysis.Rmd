@@ -8,12 +8,6 @@ Ethan Temeles and W. John Kress of Amherst College studied the relationship betw
 
 The table below gives length measurements (in millimeters) for random samples of three varieties of *Heliconia*, each pollinated by a different species of hummingbird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?
 
-
-```{r library, echo=TRUE, results='hide', error=FALSE, warning=FALSE, message=FALSE}
-library(ggplot2)
-library(tidyverse)
-```
-
 For the flower data, I made a CSV file from the textbook data, and then imported it into R.
 
 
