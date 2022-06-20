@@ -1,5 +1,5 @@
 ---
-title: "TJ RS1 with R"
+title: "TJ Research Stats 1 with R"
 author: "Mr. Ng"
 site: bookdown::bookdown_site
 documentclass: book
@@ -12,23 +12,11 @@ lot: false
 lof: false
 always_allow_html: yes
 graphics: yes
-output:
-  bookdown::gitbook:
-    lib_dir: "book_assets"
-    includes:
-      in_header: header.html
 ---
-
-
-
-```{r setup, include=FALSE}
-
-
-```
 
 # Preface {.unnumbered}
 
-This is your 1-Stop-Shop for the RS1 with R course. Materials and format here are heavily inspired and borrowed from the [Preceptor's Primer for Bayesian Data Science](https://ppbds.github.io/primer/) and *The Practice of Statistics, 4th Ed* by Starnes, Yates, and Moore.
+This is your 1-Stop-Shop for the RS1 with R course. Materials and format here are heavily inspired and borrowed from @kane2022 and @starnes_yates_moore_2012 .
 
 Almost everything else was written by Mr. Ng and Mr. McFee.
 
@@ -36,15 +24,12 @@ Almost everything else was written by Mr. Ng and Mr. McFee.
 knitr::include_graphics("resources/images/casper.jpeg") 
 ```
 
-## Casper Biting {.unnumbered}
-
-```{r echo= FALSE, out.width= "65%", fig.align='center'}
-knitr::include_graphics("resources/images/casper_biting.jpeg") 
-```
-
-
 ## Casper Sleeping {.unnumbered}
 
 ```{r, echo = FALSE, fig.align='center'}
 knitr::include_graphics("resources/images/casper_sleeping.jpeg") 
+```
+
+```{r, echo = FALSE}
+knitr::include_app("https://youtube.com/embed/EAV6J6hE9rk?t=10")
 ```

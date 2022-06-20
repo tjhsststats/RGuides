@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 1 Interacting with R Studio | TJ RS1 with R</title>
+<title>Chapter 1 Interacting with R Studio | TJ Research Stats 1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 1 Interacting with R Studio | TJ RS1 with R">
+<meta property="og:title" content="Chapter 1 Interacting with R Studio | TJ Research Stats 1 with R">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 1 Interacting with R Studio | TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 1 Interacting with R Studio | TJ Research Stats 1 with R">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -57,7 +57,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">TJ RS1 with R</a>
+        <a href="index.html" title="">TJ Research Stats 1 with R</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -72,7 +72,7 @@
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="active" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
-<li><a class="" href="using-r.html"><span class="header-section-number">2</span> Using R</a></li>
+<li><a class="" href="manipulating-data.html"><span class="header-section-number">2</span> Manipulating Data</a></li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">5</span> Intro to ANOVA Analysis</a></li>
@@ -95,7 +95,7 @@
 <h2>
 <span class="header-section-number">1.1</span> Using RStudio<a class="anchor" aria-label="anchor" href="#using-rstudio"><i class="fas fa-link"></i></a>
 </h2>
-<div class="figure">
+<div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-16"></span>
 <img src="resources/images/00-Getting-Started/R_vs_RStudio.png" alt="Icons of R versus RStudio on your computer." width="100%"><p class="caption">
 FIGURE 1.1: Icons of R versus RStudio on your computer.
@@ -103,17 +103,17 @@ FIGURE 1.1: Icons of R versus RStudio on your computer.
 </div>
 <p>Much as we don’t drive a car by interacting directly with the engine but rather by interacting with elements on the car’s dashboard, we won’t be using R directly but rather we will use RStudio’s interface. After you install R and RStudio on your computer, you’ll have two new <em>programs</em> (also called <em>applications</em>) you can open. Always work in RStudio and not directly in the R application.</p>
 <p>Let’s get familiar with RStudio. Open up RStudio. You should see three <em>panes</em>, or panels, dividing the screen: the <em>Console pane</em>, the <em>Files pane</em>, and the <em>Environment pane</em>.</p>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/rstudio_box.png" width="100%"></div>
+<div class="inline-figure"><img src="resources/images/00-Getting-Started/rstudio_box.png" width="100%" style="display: block; margin: auto;"></div>
 <p>This is your workspace. Start with the big pane on the left:</p>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/left_window.png" width="100%"></div>
+<div class="inline-figure"><img src="resources/images/00-Getting-Started/left_window.png" width="100%" style="display: block; margin: auto;"></div>
 <p>There are three panels (or tabs) in this window, we’ll be focusing on the Console and Terminal. When you first start R, the Console gives you some information about your version of R. The Console is where you can type and run R code. For example, if you type 1 + 1 and hit return, the Console returns 2.</p>
 <p>Look at the top right:</p>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/top_right_window.png" width="100%"></div>
+<div class="inline-figure"><img src="resources/images/00-Getting-Started/top_right_window.png" width="100%" style="display: block; margin: auto;"></div>
 <p>The main two tabs you’ll be using are Environment and Git (which is not yet visible). The Environment tab shows you the datasets and variables you currently have loaded into R. In this case, we loaded in a dataset with 3407 rows and 5 columns and a variable <code>x</code> equal to 5. For you, the Environment should be empty. Let’s change that. Go to your Console and type:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></code></pre></div>
 <p>This assigned the value 5 to an object, x. <code>&lt;-</code> is the operator used to assign values to objects in R. Now, hit return/enter and you should see a variable x equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command. Look at the bottom right window:</p>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/bottom_right_window.png" width="100%"></div>
+<div class="inline-figure"><img src="resources/images/00-Getting-Started/bottom_right_window.png" width="100%" style="display: block; margin: auto;"></div>
 <p>The Files tab displays your computer’s file system. When you create a project later, this tab will automatically show the contents of your project’s folder. The Plots tab will show you a preview of any plots you make in RStudio.</p>
 </div>
 <div id="packages" class="section level2" number="1.2">
@@ -121,7 +121,7 @@ FIGURE 1.1: Icons of R versus RStudio on your computer.
 <span class="header-section-number">1.2</span> Packages<a class="anchor" aria-label="anchor" href="#packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>R <em>packages</em>, also known as <em>libraries</em>, extend the power of R by providing additional functions and data.</p>
-<div class="figure">
+<div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-22"></span>
 <img src="resources/images/00-Getting-Started/R_vs_R_packages.png" alt="Analogy of R versus R packages." width="100%"><p class="caption">
 FIGURE 1.2: Analogy of R versus R packages.
@@ -136,7 +136,7 @@ FIGURE 1.2: Analogy of R versus R packages.
 <em>Open the app</em>: After you’ve installed Instagram, you need to open it. You need to do this every time you use the app.</li>
 </ol>
 <p>The process is very similar for an R package. You need to:</p>
-<div class="figure">
+<div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-23"></span>
 <img src="resources/images/00-Getting-Started/install_vs_load.jpg" alt="Installing versus loading an R package" width="100%"><p class="caption">
 FIGURE 1.3: Installing versus loading an R package
@@ -187,7 +187,7 @@ FIGURE 1.3: Installing versus loading an R package
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="installing-r-and-rstudio.html">Installing R and RStudio</a></div>
-<div class="next"><a href="using-r.html"><span class="header-section-number">2</span> Using R</a></div>
+<div class="next"><a href="manipulating-data.html"><span class="header-section-number">2</span> Manipulating Data</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -217,7 +217,7 @@ FIGURE 1.3: Installing versus loading an R package
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng. </p>
+    <p>"<strong>TJ Research Stats 1 with R</strong>" was written by Mr. Ng. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

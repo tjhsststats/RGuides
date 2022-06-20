@@ -17,7 +17,7 @@ rmd_files:
   [ "index.Rmd",
     "00-Installing-RStudio.Rmd",
     "01-Interacting-with-RStudio.Rmd",
-    "02-Basic-R-Commands.Rmd",
+    "02-Basic-R.Rmd",
     "03-Census-and-Linear-Regression.Rmd",
     "04-Two-Sample-T-Test.Rmd",
     "05-ANOVA-Analysis.Rmd",
