@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 1 Census Data and Linear Regression | TJ RS1 with R</title>
-<meta name="author" content="Mr. Ng &amp; Others">
+<title>Chapter 3 Census Data and Linear Regression | TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 1 Census Data and Linear Regression | TJ RS1 with R">
+<meta property="og:title" content="Chapter 3 Census Data and Linear Regression | TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 1 Census Data and Linear Regression | TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 3 Census Data and Linear Regression | TJ RS1 with R">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -23,9 +23,31 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content='1.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
-<meta property="og:description" content='1.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
-<meta name="twitter:description" content='1.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<meta name="description" content='3.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
+<meta property="og:description" content='3.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
+<meta name="twitter:description" content='3.1 Install packages and Census API Key Start by loading the required libraries. library("tidycensus") library("tidyverse") library("reshape") Install your Census API Key into R with this call....'>
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -49,11 +71,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="r-studio-basics.html">R Studio Basics</a></li>
-<li><a class="" href="using-r.html">Using R</a></li>
-<li><a class="active" href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li><a class="" href="using-r.html"><span class="header-section-number">2</span> Using R</a></li>
+<li><a class="active" href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">5</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -62,13 +84,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="census-data-and-linear-regression" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="census-data-and-linear-regression" class="section level1" number="3">
 <h1>
-<span class="header-section-number">1</span> Census Data and Linear Regression<a class="anchor" aria-label="anchor" href="#census-data-and-linear-regression"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> Census Data and Linear Regression<a class="anchor" aria-label="anchor" href="#census-data-and-linear-regression"><i class="fas fa-link"></i></a>
 </h1>
-<div id="install-packages-and-census-api-key" class="section level2" number="1.1">
+<div id="install-packages-and-census-api-key" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">1.1</span> Install packages and Census API Key<a class="anchor" aria-label="anchor" href="#install-packages-and-census-api-key"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Install packages and Census API Key<a class="anchor" aria-label="anchor" href="#install-packages-and-census-api-key"><i class="fas fa-link"></i></a>
 </h2>
 <p>Start by loading the required libraries.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -79,9 +101,9 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://walker-data.com/tidycensus/reference/census_api_key.html">census_api_key</a></span><span class="op">(</span><span class="st">"&lt;Census Key Goes Here&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="pull-data-from-the-census" class="section level2" number="1.2">
+<div id="pull-data-from-the-census" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">1.2</span> Pull data from the Census<a class="anchor" aria-label="anchor" href="#pull-data-from-the-census"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Pull data from the Census<a class="anchor" aria-label="anchor" href="#pull-data-from-the-census"><i class="fas fa-link"></i></a>
 </h2>
 <p>Pull variable data into dataframe.</p>
 <ul>
@@ -109,7 +131,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-35">TABLE 1.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
+<span id="tab:unnamed-chunk-35">TABLE 3.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
 </caption>
 <tbody><tr>
 <td>
@@ -30626,9 +30648,9 @@ B19125_003
 </table></div>
 </div>
 </div>
-<div id="construct-a-linear-model" class="section level2" number="1.3">
+<div id="construct-a-linear-model" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">1.3</span> Construct a Linear Model<a class="anchor" aria-label="anchor" href="#construct-a-linear-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Construct a Linear Model<a class="anchor" aria-label="anchor" href="#construct-a-linear-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Every scatterplot consists of a <strong>Explanatory Variable</strong>, and a <strong>Response Variable</strong>. In this example, I set the Explanatory Variable as as a separate variable <code>x</code>, and the Response Variable as a separate variable <code>y</code>, because they are going to be graphed along the <strong>x</strong> and <strong>y</strong> axes respectively, in the scatterplot. construct a linear model, and fit the linear model on top of your scatterplot:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -30641,7 +30663,7 @@ B19125_003
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-36"></span>
 <img src="book_temp_files/figure-html/unnamed-chunk-36-1.png" alt="Creating a Scatterplot" width="100%"><p class="caption">
-FIGURE 1.1: Creating a Scatterplot
+FIGURE 3.1: Creating a Scatterplot
 </p>
 </div>
 <p>Construct a linear model using the <code>lm</code> command, and store it into the variable <strong>reg_line</strong>.</p>
@@ -30671,7 +30693,7 @@ FIGURE 1.1: Creating a Scatterplot
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-38"></span>
 <img src="resources/images/01-Census-and-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="90%"><p class="caption">
-FIGURE 1.2: Interpreting a Regression Printout
+FIGURE 3.2: Interpreting a Regression Printout
 </p>
 </div>
 <p>Finally, plot the line of best fit on top of your data, using the <code>abline</code> command.</p>
@@ -30684,13 +30706,13 @@ FIGURE 1.2: Interpreting a Regression Printout
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-39"></span>
 <img src="book_temp_files/figure-html/unnamed-chunk-39-1.png" alt="Scatterplot with Best Fit Line added" width="100%"><p class="caption">
-FIGURE 1.3: Scatterplot with Best Fit Line added
+FIGURE 3.3: Scatterplot with Best Fit Line added
 </p>
 </div>
 </div>
-<div id="create-a-residual-plot" class="section level2" number="1.4">
+<div id="create-a-residual-plot" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">1.4</span> Create a Residual Plot<a class="anchor" aria-label="anchor" href="#create-a-residual-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Create a Residual Plot<a class="anchor" aria-label="anchor" href="#create-a-residual-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>You should always evaluate whether a linear regression line is a good fit for the model. One of those tools to evaluate whether the regression is a good fit is to examine the residual plot.</p>
 <p>Whenever you create a linear model using the <code>lm</code> command,</p>
@@ -30701,13 +30723,13 @@ FIGURE 1.3: Scatterplot with Best Fit Line added
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-40"></span>
 <img src="book_temp_files/figure-html/unnamed-chunk-40-1.png" alt="Resdial Plot for the linear model stored as reg_line" width="100%"><p class="caption">
-FIGURE 1.4: Resdial Plot for the linear model stored as reg_line
+FIGURE 3.4: Resdial Plot for the linear model stored as reg_line
 </p>
 </div>
 </div>
-<div id="creating-boxplots-with-five-number-summaries" class="section level2" number="1.5">
+<div id="creating-boxplots-with-five-number-summaries" class="section level2" number="3.5">
 <h2>
-<span class="header-section-number">1.5</span> Creating boxplots with Five-Number Summaries<a class="anchor" aria-label="anchor" href="#creating-boxplots-with-five-number-summaries"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> Creating boxplots with Five-Number Summaries<a class="anchor" aria-label="anchor" href="#creating-boxplots-with-five-number-summaries"><i class="fas fa-link"></i></a>
 </h2>
 <p>I want to know if households with children tend to have a higher median income than households with no children. Let’s make those two histograms.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
@@ -30754,9 +30776,9 @@ FIGURE 1.4: Resdial Plot for the linear model stored as reg_line
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">200000</span>, <span class="fl">150</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No Children"</span>, <span class="st">"With Children"</span><span class="op">)</span>, fill<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sky blue"</span>, <span class="st">"light green"</span><span class="op">)</span>, title<span class="op">=</span> <span class="st">"Zoomer Status"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-42-1.png" width="90%"></div>
-<div id="removing-nas" class="section level3" number="1.5.1">
+<div id="removing-nas" class="section level3" number="3.5.1">
 <h3>
-<span class="header-section-number">1.5.1</span> Removing NA’s<a class="anchor" aria-label="anchor" href="#removing-nas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.1</span> Removing NA’s<a class="anchor" aria-label="anchor" href="#removing-nas"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s say you want to find the average household income for households with children. You run the following command.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
@@ -30774,25 +30796,25 @@ FIGURE 1.4: Resdial Plot for the linear model stored as reg_line
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="using-r.html">Using R</a></div>
-<div class="next"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></div>
+<div class="prev"><a href="using-r.html"><span class="header-section-number">2</span> Using R</a></div>
+<div class="next"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#census-data-and-linear-regression"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
-<li><a class="nav-link" href="#install-packages-and-census-api-key"><span class="header-section-number">1.1</span> Install packages and Census API Key</a></li>
-<li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">1.2</span> Pull data from the Census</a></li>
-<li><a class="nav-link" href="#construct-a-linear-model"><span class="header-section-number">1.3</span> Construct a Linear Model</a></li>
-<li><a class="nav-link" href="#create-a-residual-plot"><span class="header-section-number">1.4</span> Create a Residual Plot</a></li>
+<li><a class="nav-link" href="#census-data-and-linear-regression"><span class="header-section-number">3</span> Census Data and Linear Regression</a></li>
+<li><a class="nav-link" href="#install-packages-and-census-api-key"><span class="header-section-number">3.1</span> Install packages and Census API Key</a></li>
+<li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">3.2</span> Pull data from the Census</a></li>
+<li><a class="nav-link" href="#construct-a-linear-model"><span class="header-section-number">3.3</span> Construct a Linear Model</a></li>
+<li><a class="nav-link" href="#create-a-residual-plot"><span class="header-section-number">3.4</span> Create a Residual Plot</a></li>
 <li>
-<a class="nav-link" href="#creating-boxplots-with-five-number-summaries"><span class="header-section-number">1.5</span> Creating boxplots with Five-Number Summaries</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#removing-nas"><span class="header-section-number">1.5.1</span> Removing NA’s</a></li></ul>
+<a class="nav-link" href="#creating-boxplots-with-five-number-summaries"><span class="header-section-number">3.5</span> Creating boxplots with Five-Number Summaries</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#removing-nas"><span class="header-section-number">3.5.1</span> Removing NA’s</a></li></ul>
 </li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/master/01-Census-and-Linear-Regression.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/master/01-Census-and-Linear-Regression.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/03-Census-and-Linear-Regression.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/03-Census-and-Linear-Regression.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -30804,7 +30826,7 @@ FIGURE 1.4: Resdial Plot for the linear model stored as reg_line
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng &amp; Others. </p>
+    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

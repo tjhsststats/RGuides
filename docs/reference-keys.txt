@@ -12,6 +12,14 @@ fig:unnamed-chunk-40
 tab:unnamed-chunk-51
 tab:unnamed-chunk-53
 fig:unnamed-chunk-56
+interacting-with-r-studio
+using-rstudio
+packages
+installing-a-package
+loading-a-package
+using-a-package
+using-r
+basic-commands
 vectors
 concatenating-vectors
 creating-dataframes

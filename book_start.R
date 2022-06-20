@@ -13,6 +13,7 @@
 library(ggplot2)
 library(tidyverse)
 library(ggthemes)
+library(kableExtra)
 
 options(digits = 2)
 
@@ -20,8 +21,7 @@ options(digits = 2)
 # seems like you always want to set out.width to 100%.
 
 knitr::opts_chunk$set(out.width = "100%")
+knitr::opts_chunk$set(echo = TRUE)
 
-# I experimented with setting cache = TRUE for all code chunks by this is too
-# dangerous/confusing. Just cache the chunks which take a lot of time.
 
 

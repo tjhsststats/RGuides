@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 Intro to Two-Sample T-Tests | TJ RS1 with R</title>
-<meta name="author" content="Mr. Ng &amp; Others">
+<title>Chapter 4 Intro to Two-Sample T-Tests | TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 2 Intro to Two-Sample T-Tests | TJ RS1 with R">
+<meta property="og:title" content="Chapter 4 Intro to Two-Sample T-Tests | TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 2 Intro to Two-Sample T-Tests | TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 4 Intro to Two-Sample T-Tests | TJ RS1 with R">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -23,9 +23,31 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content="2.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
-<meta property="og:description" content="2.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
-<meta name="twitter:description" content="2.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<meta name="description" content="4.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta property="og:description" content="4.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta name="twitter:description" content="4.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -49,11 +71,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="r-studio-basics.html">R Studio Basics</a></li>
-<li><a class="" href="using-r.html">Using R</a></li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
-<li><a class="active" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li><a class="" href="using-r.html"><span class="header-section-number">2</span> Using R</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></li>
+<li><a class="active" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">5</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -62,13 +84,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-two-sample-t-tests" class="section level1" number="2">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-two-sample-t-tests" class="section level1" number="4">
 <h1>
-<span class="header-section-number">2</span> Intro to Two-Sample T-Tests<a class="anchor" aria-label="anchor" href="#intro-to-two-sample-t-tests"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> Intro to Two-Sample T-Tests<a class="anchor" aria-label="anchor" href="#intro-to-two-sample-t-tests"><i class="fas fa-link"></i></a>
 </h1>
-<div id="loading-data." class="section level2" number="2.1">
+<div id="loading-data." class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">2.1</span> Loading Data.<a class="anchor" aria-label="anchor" href="#loading-data."><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Loading Data.<a class="anchor" aria-label="anchor" href="#loading-data."><i class="fas fa-link"></i></a>
 </h2>
 <p>The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option.</p>
 <p>When it first gets loaded, I want certain columns to be treated as numeric vectors. The code is below.</p>
@@ -77,9 +99,9 @@
 <span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/anime.csv"</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>MAL_ID <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Score <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Episodes <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Popularity <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Members <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Favorites <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Watching <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Completed <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `On-Hold` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Dropped <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Plan to Watch` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-10` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-9` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-8` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-7` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-6` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-5` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-4` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-3` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-2` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Score-1` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
 </div>
-<div id="data-wrangling" class="section level2" number="2.2">
+<div id="data-wrangling" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">2.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Examine any problems with the dataset. Notice that there are a lot of randome problems where we treated a column as a numeric vector, but the actual data value was “Unknown” instead. R will convert the value to “NA,” which is fine with us.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -136,9 +158,9 @@
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="isolate-the-variables-of-interest." class="section level2" number="2.3">
+<div id="isolate-the-variables-of-interest." class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">2.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
 </h2>
 <p>This uses subsets all rows within the anime dataframe based on the condition in the brackets, and then saves it into a new dataframe called action_anime. The condition is satifised with the “grep” function, which will search for any character string and return “TRUE” if it contains “Action” within the column anime$Genres.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
@@ -172,9 +194,9 @@
 <code class="sourceCode R"><span class="va">anime_score</span><span class="op">&lt;-</span> <span class="va">anime</span><span class="op">$</span><span class="va">Score</span>
 <span class="va">action_anime_score</span> <span class="op">&lt;-</span> <span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span></code></pre></div>
 </div>
-<div id="graph-boxplots." class="section level2" number="2.4">
+<div id="graph-boxplots." class="section level2" number="4.4">
 <h2>
-<span class="header-section-number">2.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
 </h2>
 <p>It looks like the average rating for action animes is indeed higher than the average rating for all animes. But by how much? To answer this question, let’s first graph a boxplot.</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
@@ -187,9 +209,9 @@
         horizontal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/boxplot%20anime-1.png" width="100%"></div>
 </div>
-<div id="run-a-two-sample-t-test." class="section level2" number="2.5">
+<div id="run-a-two-sample-t-test." class="section level2" number="4.5">
 <h2>
-<span class="header-section-number">2.5</span> Run a Two Sample T-Test.<a class="anchor" aria-label="anchor" href="#run-a-two-sample-t-test."><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.5</span> Run a Two Sample T-Test.<a class="anchor" aria-label="anchor" href="#run-a-two-sample-t-test."><i class="fas fa-link"></i></a>
 </h2>
 <p>Based on the boxplots, it looks like there’s a difference. Action animes appear to be rated higher than the rest. That means:</p>
 <ul>
@@ -213,9 +235,9 @@
 ##       6.5       6.8</code></pre>
 <p>Wow! There’s a serious difference. Look at the p-value for that. Now we need to graph this.</p>
 </div>
-<div id="graph-the-t-distribution-and-test-statistic." class="section level2" number="2.6">
+<div id="graph-the-t-distribution-and-test-statistic." class="section level2" number="4.6">
 <h2>
-<span class="header-section-number">2.6</span> Graph the t-distribution and test statistic.<a class="anchor" aria-label="anchor" href="#graph-the-t-distribution-and-test-statistic."><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.6</span> Graph the t-distribution and test statistic.<a class="anchor" aria-label="anchor" href="#graph-the-t-distribution-and-test-statistic."><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s start by:</p>
 <ol style="list-style-type: decimal">
@@ -250,24 +272,24 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></div>
-<div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></div>
+<div class="prev"><a href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></div>
+<div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">5</span> Intro to ANOVA Analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="nav-link" href="#loading-data."><span class="header-section-number">2.1</span> Loading Data.</a></li>
-<li><a class="nav-link" href="#data-wrangling"><span class="header-section-number">2.2</span> Data Wrangling</a></li>
-<li><a class="nav-link" href="#isolate-the-variables-of-interest."><span class="header-section-number">2.3</span> Isolate the variables of interest.</a></li>
-<li><a class="nav-link" href="#graph-boxplots."><span class="header-section-number">2.4</span> Graph boxplots.</a></li>
-<li><a class="nav-link" href="#run-a-two-sample-t-test."><span class="header-section-number">2.5</span> Run a Two Sample T-Test.</a></li>
-<li><a class="nav-link" href="#graph-the-t-distribution-and-test-statistic."><span class="header-section-number">2.6</span> Graph the t-distribution and test statistic.</a></li>
+<li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="nav-link" href="#loading-data."><span class="header-section-number">4.1</span> Loading Data.</a></li>
+<li><a class="nav-link" href="#data-wrangling"><span class="header-section-number">4.2</span> Data Wrangling</a></li>
+<li><a class="nav-link" href="#isolate-the-variables-of-interest."><span class="header-section-number">4.3</span> Isolate the variables of interest.</a></li>
+<li><a class="nav-link" href="#graph-boxplots."><span class="header-section-number">4.4</span> Graph boxplots.</a></li>
+<li><a class="nav-link" href="#run-a-two-sample-t-test."><span class="header-section-number">4.5</span> Run a Two Sample T-Test.</a></li>
+<li><a class="nav-link" href="#graph-the-t-distribution-and-test-statistic."><span class="header-section-number">4.6</span> Graph the t-distribution and test statistic.</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/master/02-Two-Sample-T-Test.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/master/02-Two-Sample-T-Test.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/04-Two-Sample-T-Test.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/04-Two-Sample-T-Test.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -279,7 +301,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng &amp; Others. </p>
+    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

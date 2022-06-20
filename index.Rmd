@@ -1,8 +1,9 @@
 ---
 title: "TJ RS1 with R"
-author: "Mr. Ng & Others"
+author: "Mr. Ng"
 site: bookdown::bookdown_site
 documentclass: book
+bibliography: [bib/packages.bib, bib/references.bib]
 biblio-style: apalike
 link-citations: yes
 nocite: '@*'
@@ -21,9 +22,8 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(ggthemes)
-library(kableExtra)
+
+
 ```
 
 # Preface {.unnumbered}

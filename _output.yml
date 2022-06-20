@@ -1,7 +1,9 @@
 bookdown::bs4_book:
   theme:
     primary: "#07679f"
-  repo: https://github.com/kaisamng/RGuides
+  repo: 
+    base: https://github.com/kaisamng/RGuides
+    branch: main
   config:
     toc:
       collapse: yes

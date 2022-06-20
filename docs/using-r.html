@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Using R | TJ RS1 with R</title>
-<meta name="author" content="Mr. Ng &amp; Others">
+<title>Chapter 2 Using R | TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Using R | TJ RS1 with R">
+<meta property="og:title" content="Chapter 2 Using R | TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Using R | TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 2 Using R | TJ RS1 with R">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -23,9 +23,31 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<meta name="description" content="Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R. Functions: these perform tasks by taking an input called an...">
-<meta property="og:description" content="Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R. Functions: these perform tasks by taking an input called an...">
-<meta name="twitter:description" content="Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R. Functions: these perform tasks by taking an input called an...">
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<meta name="description" content="2.0.1 Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R. Functions: these perform tasks by taking an input called an...">
+<meta property="og:description" content="2.0.1 Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R. Functions: these perform tasks by taking an input called an...">
+<meta name="twitter:description" content="2.0.1 Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R. Functions: these perform tasks by taking an input called an...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -49,11 +71,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="r-studio-basics.html">R Studio Basics</a></li>
-<li><a class="active" href="using-r.html">Using R</a></li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">2</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">3</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li><a class="active" href="using-r.html"><span class="header-section-number">2</span> Using R</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">5</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -62,11 +84,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="using-r" class="section level1 unnumbered">
-<h1>Using R<a class="anchor" aria-label="anchor" href="#using-r"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="using-r" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Using R<a class="anchor" aria-label="anchor" href="#using-r"><i class="fas fa-link"></i></a>
 </h1>
-<div id="basic-commands" class="section level3 unnumbered">
-<h3>Basic Commands<a class="anchor" aria-label="anchor" href="#basic-commands"><i class="fas fa-link"></i></a>
+<div id="basic-commands" class="section level3" number="2.0.1">
+<h3>
+<span class="header-section-number">2.0.1</span> Basic Commands<a class="anchor" aria-label="anchor" href="#basic-commands"><i class="fas fa-link"></i></a>
 </h3>
 <p>Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R.</p>
 <ul>
@@ -91,47 +115,47 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 </li>
 </ul>
 </div>
-<div id="vectors" class="section level2" number="0.1">
+<div id="vectors" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">0.1</span> Vectors<a class="anchor" aria-label="anchor" href="#vectors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Vectors<a class="anchor" aria-label="anchor" href="#vectors"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="concatenating-vectors" class="section level2" number="0.2">
+<div id="concatenating-vectors" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">0.2</span> Concatenating Vectors<a class="anchor" aria-label="anchor" href="#concatenating-vectors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Concatenating Vectors<a class="anchor" aria-label="anchor" href="#concatenating-vectors"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="creating-dataframes" class="section level2" number="0.3">
+<div id="creating-dataframes" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">0.3</span> Creating Dataframes<a class="anchor" aria-label="anchor" href="#creating-dataframes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Creating Dataframes<a class="anchor" aria-label="anchor" href="#creating-dataframes"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="selecting-material-from-dataframes" class="section level2" number="0.4">
+<div id="selecting-material-from-dataframes" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">0.4</span> Selecting Material from Dataframes<a class="anchor" aria-label="anchor" href="#selecting-material-from-dataframes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Selecting Material from Dataframes<a class="anchor" aria-label="anchor" href="#selecting-material-from-dataframes"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="r-studio-basics.html">R Studio Basics</a></div>
-<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">1</span> Census Data and Linear Regression</a></div>
+<div class="prev"><a href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></div>
+<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li>
-<a class="nav-link" href="#using-r">Using R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#basic-commands">Basic Commands</a></li></ul>
+<a class="nav-link" href="#using-r"><span class="header-section-number">2</span> Using R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#basic-commands"><span class="header-section-number">2.0.1</span> Basic Commands</a></li></ul>
 </li>
-<li><a class="nav-link" href="#vectors"><span class="header-section-number">0.1</span> Vectors</a></li>
-<li><a class="nav-link" href="#concatenating-vectors"><span class="header-section-number">0.2</span> Concatenating Vectors</a></li>
-<li><a class="nav-link" href="#creating-dataframes"><span class="header-section-number">0.3</span> Creating Dataframes</a></li>
-<li><a class="nav-link" href="#selecting-material-from-dataframes"><span class="header-section-number">0.4</span> Selecting Material from Dataframes</a></li>
+<li><a class="nav-link" href="#vectors"><span class="header-section-number">2.1</span> Vectors</a></li>
+<li><a class="nav-link" href="#concatenating-vectors"><span class="header-section-number">2.2</span> Concatenating Vectors</a></li>
+<li><a class="nav-link" href="#creating-dataframes"><span class="header-section-number">2.3</span> Creating Dataframes</a></li>
+<li><a class="nav-link" href="#selecting-material-from-dataframes"><span class="header-section-number">2.4</span> Selecting Material from Dataframes</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/master/00C-Basic-R-Commands.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/master/00C-Basic-R-Commands.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/02-Basic-R-Commands.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/02-Basic-R-Commands.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -143,7 +167,7 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng &amp; Others. </p>
+    <p>"<strong>TJ RS1 with R</strong>" was written by Mr. Ng. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
