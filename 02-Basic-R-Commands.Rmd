@@ -1,10 +1,12 @@
 # Using R
 
+*taken from @usedtor2016 and @kane2022.*
+
 ### Basic Commands
 
 Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R.
 
-* *Functions*: these perform tasks by taking an input called an *argument* and returning an output. Take a look at the example below.
+-   *Functions*: these perform tasks by taking an input called an *argument* and returning an output. Take a look at the example below.
 
 ```{r}
 sqrt(64)
@@ -12,25 +14,129 @@ sqrt(64)
 
 `sqrt()` is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the console!
 
-* *Help files*: these provide documentation for functions and datasets. You can bring up help files by adding a `?` before the name of the object then run this in the console. The `ggplot2` package is where a lot of the functions we will use for graphing will be located. Run `?ggplot2` in the console and see what pops up.
+-   *Help files*: these provide documentation for functions and datasets. You can bring up help files by adding a `?` before the name of the object then run this in the console. The `boxplot` command, for example, creates a boxplot. Run `?boxplot` in the console and see what pops up.
 
-* *Code comments*: these are text placed after a `#` symbol. Nothing will be run after a `#` symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.
+-   *Code comments*: these are text placed after a `#` symbol. Nothing will be run after a `#` symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.
 
 ```{r, echo = FALSE}
 knitr::include_graphics("resources/images/00-Getting-Started/code-comment.png")
 ```
 
-* *Errors, warnings, and messages*: these generally reported in a red font. When there is an error, the code will not run. Read (and/or Google) the message and try fix it. Warnings don't prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning: 
-  ````
-  Warning message:
-  Removed 2 rows containing missing values (geom_point).  
-  ````
-  Messages are similar. In both cases, you should fix the underlying issue until the warning/message goes away.    
-  
+-   *Errors, warnings, and messages*: these generally reported in a red font. When there is an error, the code will not run. Read (and/or Google) the message and try fix it. Warnings don't prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning:
+
+        Warning message:
+        Removed 2 rows containing missing values (geom_point).  
+
+    Messages are similar. In both cases, you should fix the underlying issue until the warning/message goes away.
+
+::: rmdtip
+Remember: in the last chapter, we used the operator `<-` to store the number `9` into a variable called *x*. The operator `<-` is used in R to store literally any object as a variable, so it can be referenced later. We will be using `<-` in our programming.
+
+Remember, you don't store anything until you run the `<-` command. Check the top right pane in RStudio to verify that you stored the object.
+:::
+
 ## Vectors
 
-## Concatenating Vectors
+A vector is the most basic data object in R. It is essentially a list, and can take on different types. Even when you write a single value in R, it is considered a vector with a length of 1. So when you typed `x <- 9`, you have a vector called **x** with a length of 1, and that single element is `9`.
+
+In this class, we will only focus on ***character***, ***double***, and ***logical*** vectors.
+
+-   A **numeric** vector, also called a *double* vector, is a vector that is entirely made of numbers. A vector that is entirely decimals is an *integer* vector, and you can specify to R that a number is an integer by adding `L` at the end-- so `34L` specifies the integer 34. The reasons behind this have to do with [floating point arithmetic](https://0.30000000000000004.com/) in computers, and we won't get to the differences between these in this class.
+-   **Character** vectors, on the other hand, stores any combination of letters and symbols. As soon as you include a character in any double vector, it will become a character vector.
+-   **Logical** vectors store truth values `TRUE` and `FALSE`. They are useful when meeting a condition.
+
+```{r}
+# Atomic vector of type character.
+character<- "abc"
+
+# Atomic vector of type double.
+double <- 12.5
+
+# Atomic vector of type logical.
+logical<- TRUE
+
+```
+
+The `str` command allows us to see each vector type.
+
+```{r}
+str(character)
+str(double)
+str(logical)
+```
+
+### Concatenating Vectors
+
+If you would like to list out many entries and put them into a vector object, you can do so via the `c` function. If you enter `?c` in the R Console, you can gain information about it. The "c" stands for combine or concatenate.
+
+Suppose we wanted a way to store four names:
+
+```{r}
+friend_names <- c("Abram", "Jeremiah", "Colleen", "Paul")
+friend_names
+```
+
+You can see when `friend_names` is outputted that there are four entries to it. This is vector is known as a **strings** vector since it contains character strings. You can check to see what type an object is by using the `class` function:
+
+```{r}
+class(friend_names)
+```
+
+Next suppose we wanted to put the ages of our friends in another vector. We can again use the `c` function:
+
+```{r}
+friend_ages <- c(34, 30, 32, 30)
+class(friend_ages)
+```
+
+From a user's perspective, there is not a huge difference in how these values are stored, but it is still a good habit to specify what class your variables are whenever possible to help with collaboration and documentation.
+
+### Using the seq() function
+
+The most likely way you will enter character values into a vector is via the `c` function. Numeric values can be entered in a couple different ways. One is using the `c` function, as we saw above. Because numbers have a natural order, we can also specify a sequence of numbers with a starting value, an ending value, and the amount by which to increment each step in the sequence:
+
+```{r}
+sequence_by_2 <- seq(from = 0, to = 100, by = 2)
+sequence_by_2
+class(sequence_by_2)
+```
+
+You should now have a better sense of what the numbers in the `[ ]` before the output refer to. This helps you keep track of where you are in the printing of the output. So the first element denoted by `[1]` is 0, the 18^th^ entry (`[18]`) is 34, and the 35^th^ entry (`[35]`) is 68. This will serve as a nice introduction into indexing and subsetting in Section \@ref(bracket).
+
+We can also set the sequence to go by a negative number or a decimal value. We will do both in the next example.
+
+```{r}
+dec_frac_seq <- seq(from = 10, to = 3, by = -0.2)
+dec_frac_seq
+class(dec_frac_seq)
+```
+
+### Using the : operator
+
+A short-cut version of the `seq` version can be achieved using the `:` operator. If we are increasing values by 1 (or -1), we can use the `:` operator to build our vector:
+
+```{r}
+inc_seq <- 98:112
+inc_seq
+dec_seq <- 5:-5
+dec_seq
+```
 
 ## Creating Dataframes
 
+### Combining Vectors into Dataframes
+
+If you aren't reading in data from a file and you have some vectors of information you'd like combined into a single data frame, you can use the `data.frame` function:
+
+```{r friends}
+friends <- data.frame(names = friend_names,
+           ages = friend_ages,
+           stringsAsFactors = FALSE)
+friends
+```
+
+Here we have created a `names` variable in the `friends` data frame that corresponds to the values in the `friend_names` vector and similarly an `ages` variable in `friends` that corresponds to the values in `friend_ages`.
+
 ## Selecting Material from Dataframes
+
+### Using the [] operator {#bracket}

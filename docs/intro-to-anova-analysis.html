@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 Intro to ANOVA Analysis | TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Intro to ANOVA Analysis | TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
@@ -95,13 +95,13 @@
 <p>Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower <em>Heliconia</em> on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.</p>
 <p>The table below gives length measurements (in millimeters) for random samples of three varieties of <em>Heliconia</em>, each pollinated by a different species of hummingbird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?</p>
 <p>For the flower data, I made a CSV file from the textbook data, and then imported it into R.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/Flowers.csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers</span><span class="op">)</span> <span class="co">#View the Flowers Dataset</span></code></pre></div>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-51">TABLE 5.1: </span>The Flowers Dataset
+<span id="tab:unnamed-chunk-59">TABLE 5.1: </span>The Flowers Dataset
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -372,13 +372,13 @@ NA
 </table></div>
 </div>
 <p>In order for R to process the data, I need to convert the data from “wide” format to “long” format. I also need to let R know that each species should be treated as a “factor,” which means that it is a type of categorical variable (so I can sort out data based on Species) later on.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers_long</span><span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">Flowers</span>, <span class="st">"Species"</span>, <span class="st">"Length"</span>, factor_key<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></code></pre></div>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-53">TABLE 5.2: </span>Flowers Dataset, Long-Form Data
+<span id="tab:unnamed-chunk-61">TABLE 5.2: </span>Flowers Dataset, Long-Form Data
 </caption>
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -945,7 +945,7 @@ NA
 </table></div>
 </div>
 <p>Let’s follow the strategy we learned way back in Unit 1: use graphs and numerical summaries to compare the three distributions of flower length. Here are the summary statistics we will use in further analysis:</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mean_and_sd</span><span class="op">&lt;-</span> <span class="va">Flowers_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span>, 
@@ -1022,7 +1022,7 @@ H. caribea yellow
 <li><p>Random: Researchers took separate random samples of 16 bihaii, 23 red, and 15 Heliconia flowers.</p></li>
 <li><p>Normal: We entered the data into R and made side by side boxplots. Although the distributions for the bihai and red varieties show some right-skewness, we don’t see nay strong skewness or outliers that would prevent the use of one-way ANOVA.</p></li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Flowers_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Length</span>, y<span class="op">=</span><span class="va">Species</span>, fill<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span><span class="op">)</span><span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"Flower Lengths from Textbook"</span><span class="op">)</span><span class="op">+</span>
@@ -1090,12 +1090,12 @@ H. caribea yellow
 </h2>
 <p>The variances for <em>three</em> populations is naturally larger than the variance of two populations. Just like how two populations naturally have a larger variance, and thus requires the t-distribution (which has more “area” under the tails), we need to use a different distribution that takes into account this larger variance (which has even more “area” under the tails. This distribution is called the <strong>F-Distribution</strong>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<span style="display:block;" id="fig:unnamed-chunk-64"></span>
 <img src="resources/images/03-ANOVA-Analysis/F_Dist.png" alt="The F-Distribution" width="35%"><p class="caption">
 FIGURE 5.1: The F-Distribution
 </p>
 </div>
-<p>The <strong>F-distributions</strong> are a family of right-skewed distributions that take only values greater than 0. Above are some possible shapes. A specific F distribution is determined by the degrees of freedom of the numerator and denominator of the F statistic. When describing an F distribution, always give the numerator degrees of freedom first. Our notation will be F (df1, df2) for the F distribution with df1 degrees of freedom in the numerator and df2 degrees of freedom in the denominator. <em>Interchanging the degrees of freedom changes the distribution, so the order is important. </em></p>
+<p>The <strong><em>F</em>-distributions</strong> are a family of right-skewed distributions that take only values greater than 0. Above are some possible shapes. A specific F distribution is determined by the degrees of freedom of the numerator and denominator of the F statistic. When describing an F distribution, always give the numerator degrees of freedom first. Our notation will be F (df1, df2) for the F distribution with df1 degrees of freedom in the numerator and df2 degrees of freedom in the denominator. <em>Interchanging the degrees of freedom changes the distribution, so the order is important.</em></p>
 <div id="finding-the-degrees-of-freedom-for-f" class="section level3" number="5.4.1">
 <h3>
 <span class="header-section-number">5.4.1</span> Finding the Degrees of Freedom for F<a class="anchor" aria-label="anchor" href="#finding-the-degrees-of-freedom-for-f"><i class="fas fa-link"></i></a>
@@ -1127,7 +1127,7 @@ FIGURE 5.1: The F-Distribution
 </h2>
 <p>Of course, the previous pages gave you a <em>very</em> brief background of a one-way ANOVA test.</p>
 <p>It turns out that conducting the test itself in R is very easy– R even calculates the degrees of freedom for you.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span>
 <span class="va">anova.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Length</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova.test</span><span class="op">)</span></code></pre></div>
@@ -1150,7 +1150,7 @@ FIGURE 5.1: The F-Distribution
 <li><p>“Pairwise Comparision” means you compare two things with each other.</p></li>
 </ul>
 <p>To perform the pairwise comparison, run the <em>TukeyHSD()</em> command on your anova.test model.</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conf.level<span class="op">=</span><span class="fl">.95</span><span class="op">)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -1163,12 +1163,12 @@ FIGURE 5.1: The F-Distribution
 ## H. caribea yellow-H. bihai       -11.4 -12.7 -10.2     0
 ## H. caribea yellow-H. caribea red  -3.5  -4.7  -2.4     0</code></pre>
 <p>You can also plot these results, as shown below:</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Margins will spill over, so you need to adjust these</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">13</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conflevel<span class="op">=</span><span class="fl">.95</span><span class="op">)</span>, las<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-61-1.png" width="100%"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-69-1.png" width="100%"></div>
 <p>Notice that the x-axis doesn’t even include 0– our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).</p>
 
 </div>
