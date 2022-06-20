@@ -89,6 +89,14 @@ friend_ages <- c(34, 30, 32, 30)
 class(friend_ages)
 ```
 
+And finally, an example of a logical vector:
+
+```{r}
+lives_in_dc <- c(TRUE, TRUE, FALSE, FALSE)
+```
+
+Note that `TRUE` and `FALSE` must be in all caps for R to recognize that these are boolean ("truth") values. 
+
 From a user's perspective, there is not a huge difference in how these values are stored, but it is still a good habit to specify what class your variables are whenever possible to help with collaboration and documentation.
 
 ### Using the seq() function
@@ -131,6 +139,7 @@ If you aren't reading in data from a file and you have some vectors of informati
 ```{r friends}
 friends <- data.frame(names = friend_names,
            ages = friend_ages,
+           DC_Resident = lives_in_dc,
            stringsAsFactors = FALSE)
 friends
 ```

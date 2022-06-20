@@ -4,6 +4,7 @@ bookdown::bs4_book:
   repo: 
     base: https://github.com/kaisamng/RGuides
     branch: main
+    icon: "fas fa-chart-area"
   config:
     toc:
       collapse: yes
@@ -11,5 +12,6 @@ bookdown::bs4_book:
       facebook: no
       twitter: no
       github: no
+  edit: null
   includes:
     in_header: header.html

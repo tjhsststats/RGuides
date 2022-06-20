@@ -80,7 +80,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fas fa-chart-area"></i></a></p>
         </div>
       </nav>
 </div>
@@ -171,6 +171,10 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <code class="sourceCode R"><span class="va">friend_ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">30</span>, <span class="fl">32</span>, <span class="fl">30</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
+<p>And finally, an example of a logical vector:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lives_in_dc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<p>Note that <code>TRUE</code> and <code>FALSE</code> must be in all caps for R to recognize that these are boolean (“truth”) values.</p>
 <p>From a user’s perspective, there is not a huge difference in how these values are stored, but it is still a good habit to specify what class your variables are whenever possible to help with collaboration and documentation.</p>
 </div>
 <div id="using-the-seq-function" class="section level3" number="2.1.2">
@@ -178,22 +182,22 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <span class="header-section-number">2.1.2</span> Using the seq() function<a class="anchor" aria-label="anchor" href="#using-the-seq-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>The most likely way you will enter character values into a vector is via the <code>c</code> function. Numeric values can be entered in a couple different ways. One is using the <code>c</code> function, as we saw above. Because numbers have a natural order, we can also specify a sequence of numbers with a starting value, an ending value, and the amount by which to increment each step in the sequence:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sequence_by_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">sequence_by_2</span></code></pre></div>
 <pre><code>##  [1]   0   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64  66
 ## [35]  68  70  72  74  76  78  80  82  84  86  88  90  92  94  96  98 100</code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">sequence_by_2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
 <p>You should now have a better sense of what the numbers in the <code>[ ]</code> before the output refer to. This helps you keep track of where you are in the printing of the output. So the first element denoted by <code>[1]</code> is 0, the 18<sup>th</sup> entry (<code>[18]</code>) is 34, and the 35<sup>th</sup> entry (<code>[35]</code>) is 68. This will serve as a nice introduction into indexing and subsetting in Section <a href="using-r.html#bracket">2.3.1</a>.</p>
 <p>We can also set the sequence to go by a negative number or a decimal value. We will do both in the next example.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dec_frac_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">10</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span>
 <span class="va">dec_frac_seq</span></code></pre></div>
 <pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2  9.0  8.8  8.6  8.4  8.2  8.0  7.8  7.6  7.4  7.2  7.0  6.8  6.6  6.4  6.2  6.0  5.8  5.6  5.4  5.2  5.0  4.8
 ## [28]  4.6  4.4  4.2  4.0  3.8  3.6  3.4  3.2  3.0</code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dec_frac_seq</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
 </div>
@@ -202,11 +206,11 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <span class="header-section-number">2.1.3</span> Using the : operator<a class="anchor" aria-label="anchor" href="#using-the-operator"><i class="fas fa-link"></i></a>
 </h3>
 <p>A short-cut version of the <code>seq</code> version can be achieved using the <code>:</code> operator. If we are increasing values by 1 (or -1), we can use the <code>:</code> operator to build our vector:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">inc_seq</span> <span class="op">&lt;-</span> <span class="fl">98</span><span class="op">:</span><span class="fl">112</span>
 <span class="va">inc_seq</span></code></pre></div>
 <pre><code>##  [1]  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112</code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dec_seq</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="op">-</span><span class="fl">5</span>
 <span class="va">dec_seq</span></code></pre></div>
 <pre><code>##  [1]  5  4  3  2  1  0 -1 -2 -3 -4 -5</code></pre>
@@ -221,16 +225,17 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <span class="header-section-number">2.2.1</span> Combining Vectors into Dataframes<a class="anchor" aria-label="anchor" href="#combining-vectors-into-dataframes"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you aren’t reading in data from a file and you have some vectors of information you’d like combined into a single data frame, you can use the <code>data.frame</code> function:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,
            ages <span class="op">=</span> <span class="va">friend_ages</span>,
+           DC_Resident <span class="op">=</span> <span class="va">lives_in_dc</span>,
            stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">friends</span></code></pre></div>
-<pre><code>##      names ages
-## 1    Abram   34
-## 2 Jeremiah   30
-## 3  Colleen   32
-## 4     Paul   30</code></pre>
+<pre><code>##      names ages DC_Resident
+## 1    Abram   34        TRUE
+## 2 Jeremiah   30        TRUE
+## 3  Colleen   32       FALSE
+## 4     Paul   30       FALSE</code></pre>
 <p>Here we have created a <code>names</code> variable in the <code>friends</code> data frame that corresponds to the values in the <code>friend_names</code> vector and similarly an <code>ages</code> variable in <code>friends</code> that corresponds to the values in <code>friend_ages</code>.</p>
 </div>
 </div>
@@ -272,8 +277,8 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/02-Basic-R-Commands.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/02-Basic-R-Commands.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/02-Basic-R-Commands.Rmd">View source <i class="fas fa-chart-area"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/02-Basic-R-Commands.Rmd">Edit this page <i class="fas fa-chart-area"></i></a></li>
         </ul>
 </div>
     </nav>
