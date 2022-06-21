@@ -76,7 +76,11 @@ friends
 
 ### Importing an Excel or CVS File into R as a Data frame
 
-**XLSX** and **CSV** files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon: ![](https://gitcdn.link/cdn/kaisamng/RGuides/main/resources/images/00-Getting-Started/XLSX_File.png?display=inline-block)
+**XLSX** and **CSV** files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon: 
+
+```{r, echo = FALSE, fig.cap = "Analogy of difference between R and RStudio.", out.width="10%"}
+knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png")
+```
 
 You can open these files in Excel to preview the data and perform basic data analysis, but for more serious data analysis, and better control of charts and graphics, we can import them into R.
 
