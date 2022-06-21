@@ -78,7 +78,7 @@ friends
 
 **XLSX** and **CSV** files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon: 
 
-```{r, echo = FALSE, fig.cap = "Analogy of difference between R and RStudio.", out.width="10%"}
+```{r, echo = FALSE, fig.cap = "Excel File.", out.width="10%"}
 knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png")
 ```
 
@@ -168,7 +168,7 @@ As you can see:
 
 ### Using `[ ]` in a dataframe
 
-Recall in \@vector-selection section that we could use the `[ ]` operator, to select elements from a single vector. We can extend these operations into a dataframe. The `[ ]` operator allows you to select elements within a vector or a dataframe **based on its row and column position.** It starts by locating the row position, and then the column position.
+Recall in \@ref(vector-selection) section that we could use the `[ ]` operator, to select elements from a single vector. We can extend these operations into a dataframe. The `[ ]` operator allows you to select elements within a vector or a dataframe **based on its row and column position.** It starts by locating the row position, and then the column position.
 
 A single vector can be thought of as a dataframe with one row and $n$ columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.
 
@@ -192,13 +192,21 @@ periodic_table$name[10:20]
 
 #### Using `[ , ]` with a data frame
 
-You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables). We can use `[ , ]` where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let's select rows 40 to 50 and columns 1, 2, and 4 from `periodic_table`:
+You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).? 
+
+We can use `[ , ]` where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let's select rows 40 to 50 and columns 1, 2, and 4 from `periodic_table`:
+
 
 ```{r}
 periodic_table[41:50, c(1, 2, 4)]
 ```
 
+:::{.rmdwarning}
+
 **The comma is very important.** Let's look at some examples:
+
+:::
+
 
 ```{r}
 #Returns all of column 2:
@@ -214,9 +222,10 @@ periodic_table[ ,2]
 periodic_table[2,2]
 ```
 
+
 #### Using Logical Vectors to select from a dataframe
 
-Recall in \@vector-logical-selection that we could use a logical vector, and the `%in%` operator, to select elements from a single vector. We can extend these operations into a dataframe.
+Recall in \@ref(vector-logical-selection) that we could use a logical vector, and the `%in%` operator, to select elements from a single vector. We can extend these operations into a dataframe.
 
 Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):
 

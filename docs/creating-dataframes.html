@@ -186,9 +186,9 @@
 </h3>
 <p><strong>XLSX</strong> and <strong>CSV</strong> files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon:</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-52"></span>
-<img src="resources/images/00-Getting-Started/XLSX_File.png" alt="Analogy of difference between R and RStudio." width="10%"><p class="caption">
-FIGURE 3.1: Analogy of difference between R and RStudio.
+<span style="display:block;" id="fig:unnamed-chunk-51"></span>
+<img src="resources/images/00-Getting-Started/XLSX_File.png" alt="Excel File." width="10%"><p class="caption">
+FIGURE 3.1: Excel File.
 </p>
 </div>
 <p>You can open these files in Excel to preview the data and perform basic data analysis, but for more serious data analysis, and better control of charts and graphics, we can import them into R.</p>
@@ -240,7 +240,7 @@ FIGURE 3.1: Analogy of difference between R and RStudio.
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-57">TABLE 3.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-56">TABLE 3.1: </span>The Periodic Table
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -8373,7 +8373,7 @@ NA
 <h3>
 <span class="header-section-number">3.1.2</span> Using <code>[ ]</code> in a dataframe<a class="anchor" aria-label="anchor" href="#using-in-a-dataframe"><i class="fas fa-link"></i></a>
 </h3>
-<p>Recall in @vector-selection section that we could use the <code>[ ]</code> operator, to select elements from a single vector. We can extend these operations into a dataframe. The <code>[ ]</code> operator allows you to select elements within a vector or a dataframe <strong>based on its row and column position.</strong> It starts by locating the row position, and then the column position.</p>
+<p>Recall in <a href="vectors.html#vector-selection">2.3</a> section that we could use the <code>[ ]</code> operator, to select elements from a single vector. We can extend these operations into a dataframe. The <code>[ ]</code> operator allows you to select elements within a vector or a dataframe <strong>based on its row and column position.</strong> It starts by locating the row position, and then the column position.</p>
 <p>A single vector can be thought of as a dataframe with one row and <span class="math inline">\(n\)</span> columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.</p>
 <div id="selecting-a-single-element-from-a-dataframe" class="section level4" number="3.1.2.1">
 <h4>
@@ -8400,7 +8400,8 @@ NA
 <h4>
 <span class="header-section-number">3.1.2.2</span> Using <code>[ , ]</code> with a data frame<a class="anchor" aria-label="anchor" href="#using-with-a-data-frame"><i class="fas fa-link"></i></a>
 </h4>
-<p>You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables). We can use <code>[ , ]</code> where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let’s select rows 40 to 50 and columns 1, 2, and 4 from <code>periodic_table</code>:</p>
+<p>You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?</p>
+<p>We can use <code>[ , ]</code> where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let’s select rows 40 to 50 and columns 1, 2, and 4 from <code>periodic_table</code>:</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 3
@@ -8416,7 +8417,9 @@ NA
 ##  8            48 Cd     the New Latin cadmia, from King Kadmos                                       
 ##  9            49 In     indigo                                                                       
 ## 10            50 Sn     English word (stannum in Latin)</code></pre>
+<div class="rmdwarning">
 <p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
+</div>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Returns all of column 2:</span>
 <span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
@@ -8474,7 +8477,7 @@ NA
 <h4>
 <span class="header-section-number">3.1.2.3</span> Using Logical Vectors to select from a dataframe<a class="anchor" aria-label="anchor" href="#using-logical-vectors-to-select-from-a-dataframe"><i class="fas fa-link"></i></a>
 </h4>
-<p>Recall in @vector-logical-selection that we could use a logical vector, and the <code>%in%</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
+<p>Recall in <a href="vectors.html#vector-logical-selection">2.3.1</a> that we could use a logical vector, and the <code>%in%</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
 <p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span> <span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hydrogen"</span>, <span class="st">"Oxygen"</span><span class="op">)</span> <span class="op">)</span>,

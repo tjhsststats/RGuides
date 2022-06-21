@@ -132,7 +132,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-69">TABLE 4.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
+<span id="tab:unnamed-chunk-68">TABLE 4.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
 </caption>
 <tbody><tr>
 <td>
@@ -30662,8 +30662,8 @@ B19125_003
                      ylab<span class="op">=</span><span class="st">"With Children"</span>,
                      main<span class="op">=</span> <span class="st">"Median Household of Income in Virginia, by Zip Code"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-70"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-70-1.png" alt="Creating a Scatterplot" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-69-1.png" alt="Creating a Scatterplot" width="100%"><p class="caption">
 FIGURE 4.1: Creating a Scatterplot
 </p>
 </div>
@@ -30692,7 +30692,7 @@ FIGURE 4.1: Creating a Scatterplot
 ## F-statistic: 1.23e+03 on 1 and 636 DF,  p-value: &lt;2e-16</code></pre>
 <p>By using <code>summary</code>, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the <strong>standard deviation of the residuals</strong> and the <strong>R-Squared Value</strong>. In R, that is labeled as <em>Multiple R-Squared</em>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<span style="display:block;" id="fig:unnamed-chunk-71"></span>
 <img src="resources/images/01-Census-and-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="90%"><p class="caption">
 FIGURE 4.2: Interpreting a Regression Printout
 </p>
@@ -30705,8 +30705,8 @@ FIGURE 4.2: Interpreting a Regression Printout
      main<span class="op">=</span> <span class="st">"Median Household of Income in Virginia, by Zip Code"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">reg_line</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-73"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-73-1.png" alt="Scatterplot with Best Fit Line added" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-72-1.png" alt="Scatterplot with Best Fit Line added" width="100%"><p class="caption">
 FIGURE 4.3: Scatterplot with Best Fit Line added
 </p>
 </div>
@@ -30722,8 +30722,8 @@ FIGURE 4.3: Scatterplot with Best Fit Line added
      ylab<span class="op">=</span> <span class="st">"Residual"</span>,
      main<span class="op">=</span> <span class="st">"Residual Plot for Linear Model"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-74"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-74-1.png" alt="Resdial Plot for the linear model stored as reg_line" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-73-1.png" alt="Resdial Plot for the linear model stored as reg_line" width="100%"><p class="caption">
 FIGURE 4.4: Resdial Plot for the linear model stored as reg_line
 </p>
 </div>
@@ -30747,7 +30747,7 @@ FIGURE 4.4: Resdial Plot for the linear model stored as reg_line
                                main<span class="op">=</span> <span class="st">"Boxplot with 1.5*IQR Outliers"</span>
                                <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, y<span class="op">=</span><span class="fl">1.3</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-75-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-74-1.png" width="100%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="va">with_children_histo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span>,
@@ -30761,7 +30761,7 @@ FIGURE 4.4: Resdial Plot for the linear model stored as reg_line
                                main<span class="op">=</span> <span class="st">"Boxplot with 1.5*IQR Outliers"</span>
                                <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">income_with_children</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span>, y<span class="op">=</span><span class="fl">1.3</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-75-2.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-74-2.png" width="100%" style="display: block; margin: auto;"></div>
 <p>This looks nice, but notice the y-scales are not the same. To make them more comparable, stack the histograms on top of each other using the plot() function.</p>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">no_children_histo</span>, 
@@ -30776,7 +30776,7 @@ FIGURE 4.4: Resdial Plot for the linear model stored as reg_line
      add<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="fl">200000</span>, <span class="fl">150</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No Children"</span>, <span class="st">"With Children"</span><span class="op">)</span>, fill<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sky blue"</span>, <span class="st">"light green"</span><span class="op">)</span>, title<span class="op">=</span> <span class="st">"Zoomer Status"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-76-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-75-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div id="removing-nas" class="section level3" number="4.5.1">
 <h3>
 <span class="header-section-number">4.5.1</span> Removing NA’s<a class="anchor" aria-label="anchor" href="#removing-nas"><i class="fas fa-link"></i></a>

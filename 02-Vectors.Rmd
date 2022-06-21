@@ -61,7 +61,9 @@ The `str` command allows us to see each vector type.
 
 ```{r}
 str(character)
+
 str(double)
+
 str(logical)
 ```
 
@@ -109,7 +111,7 @@ sequence_by_2
 class(sequence_by_2)
 ```
 
-You should now have a better sense of what the numbers in the `[ ]` before the output refer to. This helps you keep track of where you are in the printing of the output. So the first element denoted by `[1]` is 0, the 18^th^ entry (`[18]`) is 34, and the 35^th^ entry (`[35]`) is 68. This will serve as a nice introduction into indexing and subsetting in Section \@ref(bracket).
+You should now have a better sense of what the numbers in the `[ ]` before the output refer to. This helps you keep track of where you are in the printing of the output. So the first element denoted by `[1]` is 0, the 18^th^ entry (`[18]`) is 34, and the 35^th^ entry (`[35]`) is 68. This will serve as a nice introduction into indexing and subsetting in Section \@ref(vector-selection).
 
 We can also set the sequence to go by a negative number or a decimal value. We will do both in the next example.
 
@@ -147,12 +149,10 @@ Just like that, every age is five more than where we started. This extends to ad
 
 If you have a vector and you want to select elements from it, use the `[ ]` operator. The `[ ]` operator selects vectors based off of its **index**, starting from the 1st element.
 
-:::{.rmdwarning}
+::: rmdwarning
+Unlike most programming languages, **R does not start off its index at 0-- it starts off its index at 1!!!**
 
-Unlike most programming languages, **R does not start off its index at 0-- it starts off its index at 1!!!** 
-
-Be very careful with this. 
-
+Be very careful with this.
 :::
 
 ```{r}
