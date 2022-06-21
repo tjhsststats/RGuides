@@ -46,21 +46,18 @@ If Software Center is taking longer than 10 minutes to install, follow these ste
 
 1. Sign into your laptop with your FCPS username and password.
 
-2. Once you have signed in and the taskbar has fully loaded, click on the Red Shield Icon in the taskbar seen here: ![](https://gitcdn.link/cdn/kaisamng/RGuides/main/resources/images/00-Getting-Started/Red_Icon.png)
+2. Once you have signed in and the taskbar has fully loaded, click on the Red Shield Icon in the taskbar seen here: ![](https://gitcdn.link/cdn/kaisamng/RGuides/main/resources/images/00-Getting-Started/Red_Icon.png?display=inline-block)
 
-```{r, echo = FALSE, out.width= "15%"}
-knitr::include_graphics("resources/images/00-Getting-Started/Red_Icon.png")
-```
 
   + Next, click **McAfee Agent Status Monitor.**
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/00-Getting-Started/McAfee_1.png")
 ```
 
 3. Once the McAfee Agent Status window has loaded, click on **Check New Policies** and then click on **Enforce Policies**.
 
-```{r, echo = FALSE, out.width= "25%"}
+```{r, echo = FALSE, out.width= "80%"}
 knitr::include_graphics("resources/images/00-Getting-Started/McAfee_2.png")
 ```
 
@@ -70,7 +67,7 @@ knitr::include_graphics("resources/images/00-Getting-Started/McAfee_2.png")
 
   + Click on the **"Update Now"** button on the upper right corner. 
 
-```{r, echo = FALSE, out.width= "25%"}
+```{r, echo = FALSE, out.width= "80%"}
 knitr::include_graphics("resources/images/00-Getting-Started/McAfee_3.png")
 ```
 
