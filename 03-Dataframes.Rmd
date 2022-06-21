@@ -1,0 +1,70 @@
+# Creating Dataframes
+
+### Combining Vectors into Dataframes
+
+If you aren't reading in data from a file and you have some vectors of information you'd like combined into a single data frame, you can use the `data.frame` function:
+
+```{r}
+friends <- data.frame(names = friend_names,
+           ages = friend_ages,
+           DC_Resident = lives_in_dc,
+           stringsAsFactors = FALSE)
+friends
+```
+
+Here we have created a `names` variable in the `friends` data frame that corresponds to the values in the `friend_names` vector and similarly an `ages` variable in `friends` that corresponds to the values in `friend_ages`.
+
+### Importing an Excel or CVS File into R as a Data frame
+
+**XLSX** and **CSV** files are how many places will store data, that open through the Excel app. You can tell that they are Excel from their icon:
+
+```{r, echo = FALSE, fig.align='center', out.width="40%"}
+knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png") 
+```
+
+You can open these files in Excel to preview the data, but for more serious data analysis, and better control of charts and graphics, we can import them into R.
+
+::: rmdtip
+Before you continue, run this command:
+
+```{r}
+getwd()
+```
+
+Whenever we manipulate a file in R, R assumes that the file is within your **working directory**. Think of the working directory as your desk. If you left your math homework at your desk at home, and you need your mom to take a picture of your work, you need to tell her where you left it.
+
+Unless you give the exact path to a file, R will always assume you are referencing a file in the working directory. For example, on FCPS computers, your default working directory is **Documents**. If you download a CSV file `data.csv`, it automatically goes to your **Downloads** folder instead. To import into Excel, you can only import it with `data.csv` if you move it into your **Documents** folder.
+
+To set your working directory, go to the R Studio Menu \> Session \> Set Working Directory \> Choose Directory.
+
+```{r, echo = FALSE, fig.align='center', out.width="70%"}
+knitr::include_graphics("resources/images/00-Getting-Started/setwd.png") 
+```
+:::
+
+We **strongly suggest** that, once you download your data file, you move it into a folder dedicated to that purpose-- call it "IBET Project" or "RS1 Unit 1 Project" or whatever-- inside your *Documents* folder.
+
+::: rmdwarning
+**Do not use OneDrive or Google Drive.** These services will mess up your data.
+:::
+
+Importing the dataset itself is easy.
+
+-   **XLSX**: Go to the menu > File > Import Dataset > From Excel.
+-   **CSV**: Go to menu > File > Import Dataset > From Text (readr).
+
+```{r, echo = FALSE, fig.align='center', out.width="50%"}
+knitr::include_graphics("resources/images/00-Getting-Started/Import_1.png") 
+```
+
+1.  In this case, I am using the anime dataset. Click on "browse" to find the file that you want to import into R.
+
+2.  If everything looks good, click **Import** at the bottom right of the window.
+
+    a.  If you want the name of the dataset when it's stored, do that on the bottom left of the window.
+
+3.  You should now have your dataset imported. Verify that it is correctly imported, on the top right.
+
+## Selecting Material from Dataframes
+
+### Using the \[\] operator {#bracket}

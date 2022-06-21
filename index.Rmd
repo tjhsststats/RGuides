@@ -13,11 +13,13 @@ lof: false
 always_allow_html: yes
 graphics: yes
 date: "`r format(Sys.time(), '%d %B, %Y')`"
+description: |
+  This website serves as a digital companion for TJ students taking the RS1 class.
 ---
 
 # Preface {.unnumbered}
 
-This is your 1-Stop-Shop for the RS1 with R course. Materials and format here are heavily inspired and borrowed from @kane2022 and @starnes_yates_moore_2012 .
+This website serves as a digital companion for TJ students taking the RS1 class. Materials and format here are heavily inspired and borrowed from @kane2022 and @starnes_yates_moore_2012 .
 
 Almost everything else was written by Mr. Ng and Mr. McFee.
 
@@ -31,6 +33,6 @@ knitr::include_graphics("resources/images/casper.jpeg")
 knitr::include_graphics("resources/images/casper_sleeping.jpeg") 
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="80%", fig.align='center'}
 knitr::include_app("https://youtube.com/embed/EAV6J6hE9rk?t=10")
 ```

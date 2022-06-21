@@ -1,4 +1,4 @@
-# Manipulating Data
+# Vectors
 
 *taken from @usedtor2016 and @kane2022.*
 
@@ -35,7 +35,7 @@ Remember: in the last chapter, we used the operator `<-` to store the number `9`
 Remember, you don't store anything until you run the `<-` command. Check the top right pane in RStudio to verify that you stored the object.
 :::
 
-## Vectors
+## Vector Overview
 
 A vector is the most basic data object in R. It is essentially a list, and can take on different types. Even when you write a single value in R, it is considered a vector with a length of 1. So when you typed `x <- 9`, you have a vector called **x** with a length of 1, and that single element is `9`.
 
@@ -142,23 +142,3 @@ five_years_older
 Just like that, every age is five more than where we started. This extends to adding two vectors together[^1].
 
 [^1]: Vectors of the same size, of course...well, actually R has a way of dealing with vectors of different sizes and not giving errors, but let's ignore that for now.
-
-## Creating Dataframes
-
-### Combining Vectors into Dataframes
-
-If you aren't reading in data from a file and you have some vectors of information you'd like combined into a single data frame, you can use the `data.frame` function:
-
-```{r friends}
-friends <- data.frame(names = friend_names,
-           ages = friend_ages,
-           DC_Resident = lives_in_dc,
-           stringsAsFactors = FALSE)
-friends
-```
-
-Here we have created a `names` variable in the `friends` data frame that corresponds to the values in the `friend_names` vector and similarly an `ages` variable in `friends` that corresponds to the values in `friend_ages`.
-
-## Selecting Material from Dataframes
-
-### Using the \[\] operator {#bracket}

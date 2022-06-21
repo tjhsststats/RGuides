@@ -17,10 +17,11 @@ rmd_files:
   [ "index.Rmd",
     "00-Installing-RStudio.Rmd",
     "01-Interacting-with-RStudio.Rmd",
-    "02-Basic-R.Rmd",
-    "03-Census-and-Linear-Regression.Rmd",
-    "04-Two-Sample-T-Test.Rmd",
-    "05-ANOVA-Analysis.Rmd",
+    "02-Vectors.Rmd",
+    "03-Dataframes.Rmd",
+    "04-Census-and-Linear-Regression.Rmd",
+    "05-Two-Sample-T-Test.Rmd",
+    "06-ANOVA-Analysis.Rmd",
     "references.Rmd", # Must have comma after last entry
   ]
 

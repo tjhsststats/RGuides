@@ -6,11 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Installing R and RStudio | TJ Research Stats 1 with R</title>
 <meta name="author" content="Mr. Ng">
+<meta name="description" content="You will never interact with R in this class. Yes, you heard that right. In a class called RS1 with R, you will not be using R.  FIGURE 0.1: Analogy of difference between R and RStudio.  Though...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Installing R and RStudio | TJ Research Stats 1 with R">
 <meta property="og:type" content="book">
+<meta property="og:description" content="You will never interact with R in this class. Yes, you heard that right. In a class called RS1 with R, you will not be using R.  FIGURE 0.1: Analogy of difference between R and RStudio.  Though...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Installing R and RStudio | TJ Research Stats 1 with R">
+<meta name="twitter:description" content="You will never interact with R in this class. Yes, you heard that right. In a class called RS1 with R, you will not be using R.  FIGURE 0.1: Analogy of difference between R and RStudio.  Though...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,9 +48,6 @@
       margin-left: 2em;
     }
   </style>
-<meta name="description" content="You will never interact with R in this class. Yes, you heard that right. In a class called RS1 with R, you will not be using R.  FIGURE 0.1: Analogy of difference between R and RStudio.  Though...">
-<meta property="og:description" content="You will never interact with R in this class. Yes, you heard that right. In a class called RS1 with R, you will not be using R.  FIGURE 0.1: Analogy of difference between R and RStudio.  Though...">
-<meta name="twitter:description" content="You will never interact with R in this class. Yes, you heard that right. In a class called RS1 with R, you will not be using R.  FIGURE 0.1: Analogy of difference between R and RStudio.  Though...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -72,15 +72,16 @@
 <li><a class="" href="index.html">Preface</a></li>
 <li><a class="active" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
-<li><a class="" href="manipulating-data.html"><span class="header-section-number">2</span> Manipulating Data</a></li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">3</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">4</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">5</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
+<li><a class="" href="creating-dataframes.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">4</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">5</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">6</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fas fa-chart-area"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -186,8 +187,8 @@ FIGURE 0.3: Analogy of difference between R and RStudio.
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/00-Installing-RStudio.Rmd">View source <i class="fas fa-chart-area"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/00-Installing-RStudio.Rmd">Edit this page <i class="fas fa-chart-area"></i></a></li>
+<li hidden><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/00-Installing-RStudio.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li hidden><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/00-Installing-RStudio.Rmd"><i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
