@@ -8,10 +8,7 @@ bookdown::bs4_book:
   config:
     toc:
       collapse: yes
-    sharing:
-      facebook: no
-      twitter: no
-      github: no
+    sharing: null
   edit: null
   includes:
     in_header: header.html

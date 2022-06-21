@@ -12,6 +12,7 @@ lot: false
 lof: false
 always_allow_html: yes
 graphics: yes
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 ---
 
 # Preface {.unnumbered}

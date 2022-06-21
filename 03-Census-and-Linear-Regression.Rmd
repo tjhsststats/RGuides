@@ -25,7 +25,7 @@ Pull variable data into dataframe.
 
 * state="VA" variable helps limit the scope of our data to just VA, otherwise it will download all US.
 
-```{r, results='hide'}
+```{r, eval=FALSE, results='hide'}
 income_with_children <- get_acs(geography="zcta",
                   state="VA",
                   variables=c("B19125_002"),
