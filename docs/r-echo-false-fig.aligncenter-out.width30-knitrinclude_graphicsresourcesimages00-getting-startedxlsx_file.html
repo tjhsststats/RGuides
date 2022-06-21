@@ -1,32 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 Creating Dataframes | 📊 TJ RS1 with R</title>
-<meta name="author" content="Mr. Ng">
-<meta name="description" content="3.0.1 Combining Vectors into Dataframes In the last chapter, you learned how to create vectors that included elements, either through c(), seq(), or :. Each vector can be considered a column...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 3 Creating Dataframes | 📊 TJ RS1 with R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="3.0.1 Combining Vectors into Dataframes In the last chapter, you learned how to create vectors that included elements, either through c(), seq(), or :. Each vector can be considered a column...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 Creating Dataframes | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="3.0.1 Combining Vectors into Dataframes In the last chapter, you learned how to create vectors that included elements, either through c(), seq(), or :. Each vector can be considered a column...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
-<link rel="manifest" href="resources/images/site.webmanifest">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 4 {r, echo = FALSE, fig.align='center', out.width="30%"} # knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png") # | 📊 TJ RS1 with R</title>
+
+    <meta name="author" content="Mr. Ng" />
+  
+   <meta name="description" content="This website serves as a digital companion for TJ students taking the RS1 class, using R." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 4 {r, echo = FALSE, fig.align='center', out.width="30%"} # knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png") # | 📊 TJ RS1 with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This website serves as a digital companion for TJ students taking the RS1 class, using R." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 {r, echo = FALSE, fig.align='center', out.width="30%"} # knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png") # | 📊 TJ RS1 with R" />
+  
+  <meta name="twitter:description" content="This website serves as a digital companion for TJ students taking the RS1 class, using R." />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.3.1/transition.js"></script>
+    <script src="libs/bs3compat-0.3.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.3.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+    <link rel="manifest" href="resources/images/site.webmanifest">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -48,12 +70,15 @@
       margin-left: 2em;
     }
   </style>
+    
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -65,136 +90,31 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Preface</a></li>
-<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
-<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
-<li><a class="active" href="creating-dataframes.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">4</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">5</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">6</span> Intro to ANOVA Analysis</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="creating-dataframes" class="section level1" number="3">
-<h1>
-<span class="header-section-number">3</span> Creating Dataframes<a class="anchor" aria-label="anchor" href="#creating-dataframes"><i class="fas fa-link"></i></a>
-</h1>
-<div id="combining-vectors-into-dataframes" class="section level3" number="3.0.1">
-<h3>
-<span class="header-section-number">3.0.1</span> Combining Vectors into Dataframes<a class="anchor" aria-label="anchor" href="#combining-vectors-into-dataframes"><i class="fas fa-link"></i></a>
-</h3>
-<p>In the last chapter, you learned how to create vectors that included elements, either through <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code>, or <code>:</code>.</p>
-<p>Each vector can be considered a column within a table. So if you want to create a table, you just have to combine the vectors together, right? Let’s combine the <code>friend_names</code> and <code>friend_ages</code> vectors from the previous chapter:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">friend_names</span>, <span class="va">friend_ages</span><span class="op">)</span>
-<span class="va">friends</span></code></pre></div>
-<pre><code>##  [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"   "Jeremiah" "34"       "35"       "32"      
-## [10] "29"       "30"       "30"</code></pre>
-<p>As you can see, all this does is combine two vectors together into a single, longer vector. <strong>It does not give us a table with multiple rows and columns, as expected.</strong></p>
-<p>In order to combine vectors of information into a single data frame, you can use the <code>data.frame</code> function:</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,
-           ages <span class="op">=</span> <span class="va">friend_ages</span>,
-           DC_Resident <span class="op">=</span> <span class="va">lives_in_dc</span>,
-           stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">friends</span></code></pre></div>
-<pre><code>##      names ages DC_Resident
-## 1    Abram   34        TRUE
-## 2   Bryant   35       FALSE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30        TRUE</code></pre>
-<p>Here we have created a <code>names</code> variable in the <code>friends</code> data frame that corresponds to the values in the <code>friend_names</code> vector and similarly an <code>ages</code> variable in <code>friends</code> that corresponds to the values in <code>friend_ages</code>.</p>
-<p>Note that all three vectors that we used <strong>were of the same length</strong>. You can check the length by using the <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lives_in_dc</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div id="troubleshooting-data.frame" class="section level4" number="3.0.1.1">
-<h4>
-<span class="header-section-number">3.0.1.1</span> Troubleshooting <code>data.frame</code><a class="anchor" aria-label="anchor" href="#troubleshooting-data.frame"><i class="fas fa-link"></i></a>
-</h4>
-<p>If your vectors are not all of equal length, R will return an error.</p>
-<p>In my previous example, I had six friends: <code>Abram, Bryant, Colleen, David, Esther, and Jeremiah</code>. Let’s say that I don’t know whether <code>Paul</code> lives in DC, so my <code>lives_in_dc</code> vector is only a length of 5. I’m overwriting my old lives_in_dc vector with the one below.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lives_in_dc</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>
+    </div>
+  </header>
 
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lives_in_dc</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Combine the dataframe just like I had before. </span>
-<span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,
-           ages <span class="op">=</span> <span class="va">friend_ages</span>,
-           DC_Resident <span class="op">=</span> <span class="va">lives_in_dc</span>,
-           stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<pre><code>## Error in data.frame(names = friend_names, ages = friend_ages, DC_Resident = lives_in_dc, : arguments imply differing number of rows: 6, 5</code></pre>
-<p>At this point, we have a decision to make. You can either fix the mistake and add the data, or you can leave it as <code>NA</code>. <code>NA</code> is a special value used within R, which we will talk about later.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Force your vector to be a length of 6</span>
-<span class="va">lives_in_dc</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lives_in_dc</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Combine the dataframe just like I had before. </span>
-<span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,
-           ages <span class="op">=</span> <span class="va">friend_ages</span>,
-           DC_Resident <span class="op">=</span> <span class="va">lives_in_dc</span>,
-           stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="va">friends</span></code></pre></div>
-<pre><code>##      names ages DC_Resident
-## 1    Abram   34        TRUE
-## 2   Bryant   35        TRUE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30          NA</code></pre>
-</div>
-</div>
-<div id="importing-an-excel-or-cvs-file-into-r-as-a-data-frame" class="section level3" number="3.0.2">
-<h3>
-<span class="header-section-number">3.0.2</span> Importing an Excel or CVS File into R as a Data frame<a class="anchor" aria-label="anchor" href="#importing-an-excel-or-cvs-file-into-r-as-a-data-frame"><i class="fas fa-link"></i></a>
-</h3>
-<p><strong>XLSX</strong> and <strong>CSV</strong> files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon: <img src="%22https://gitcdn.link/cdn/kaisamng/RGuides/main/resources/images/00-Getting-Started/XLSX_File.png%22"></p>
-<p>You can open these files in Excel to preview the data and perform basic data analysis, but for more serious data analysis, and better control of charts and graphics, we can import them into R.</p>
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.png" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> <code>{r, echo = FALSE, fig.align='center', out.width="30%"} # knitr::include_graphics("resources/images/00-Getting-Started/XLSX_File.png")  #</code></h1>
+<p>You can open these files in Excel to preview the data, but for more serious data analysis, and better control of charts and graphics, we can import them into R.</p>
 <div class="rmdtip">
 <p>Before you continue, run this command:</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "/Users/kaisamng/Github"</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/kaisamng/Github&quot;</code></pre>
 <p>Whenever we manipulate a file in R, R assumes that the file is within your <strong>working directory</strong>. Think of the working directory as your desk. If you left your math homework at your desk at home, and you need your mom to take a picture of your work, you need to tell her where you left it.</p>
 <p>Unless you give the exact path to a file, R will always assume you are referencing a file in the working directory. For example, on FCPS computers, your default working directory is <strong>Documents</strong>. If you download a CSV file <code>data.csv</code>, it automatically goes to your <strong>Downloads</strong> folder instead. To import into Excel, you can only import it with <code>data.csv</code> if you move it into your <strong>Documents</strong> folder.</p>
 <p>To set your working directory, go to the R Studio Menu &gt; Session &gt; Set Working Directory &gt; Choose Directory.</p>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/setwd.png" width="70%" style="display: block; margin: auto;"></div>
+<p><img src="resources/images/00-Getting-Started/setwd.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <p>We <strong>strongly suggest</strong> that, once you download your data file, you move it into a folder dedicated to that purpose– call it “IBET Project” or “RS1 Unit 1 Project” or whatever– inside your <em>Documents</em> folder.</p>
 <div class="rmdwarning">
@@ -202,41 +122,35 @@
 </div>
 <p>Importing the dataset itself is easy.</p>
 <ul>
-<li>
-<strong>XLSX</strong>: Go to the menu &gt; File &gt; Import Dataset &gt; From Excel.</li>
-<li>
-<strong>CSV</strong>: Go to menu &gt; File &gt; Import Dataset &gt; From Text (readr).</li>
+<li><strong>XLSX</strong>: Go to the menu &gt; File &gt; Import Dataset &gt; From Excel.</li>
+<li><strong>CSV</strong>: Go to menu &gt; File &gt; Import Dataset &gt; From Text (readr).</li>
 </ul>
-<div class="inline-figure"><img src="resources/images/00-Getting-Started/Import_1.png" width="50%" style="display: block; margin: auto;"></div>
+<p><img src="resources/images/00-Getting-Started/Import_1.png" width="50%" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
 <li><p>In this case, I am using the anime dataset. Click on “browse” to find the file that you want to import into R.</p></li>
-<li>
-<p>If everything looks good, click <strong>Import</strong> at the bottom right of the window.</p>
+<li><p>If everything looks good, click <strong>Import</strong> at the bottom right of the window.</p>
 <ol style="list-style-type: lower-alpha">
 <li>If you want the name of the dataset when it’s stored, do that on the bottom left of the window.</li>
-</ol>
-</li>
+</ol></li>
 <li><p>You should now have your dataset imported. Verify that it is correctly imported, on the top right.</p></li>
 </ol>
-</div>
-<div id="selecting-material-from-dataframes" class="section level2" number="3.1">
-<h2>
-<span class="header-section-number">3.1</span> Selecting Material from Dataframes<a class="anchor" aria-label="anchor" href="#selecting-material-from-dataframes"><i class="fas fa-link"></i></a>
-</h2>
+<div id="selecting-material-from-dataframes" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Selecting Material from Dataframes</h2>
 <div class="rmdtip">
 <p>Let’s practice importing data. Download the <a href="http://ismayc.github.io/periodic-table-data.csv">periodic table</a> data now, and import it into R as <code>periodic_table</code>.</p>
 <ul>
-<li><p>Remember to move this into your working directory: <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code></p></li>
+<li><p>Remember to move this into your working directory: <code>getwd()</code></p></li>
 <li><p>Since this is a CSV file, use the <strong>From Text (readr)</strong> function.</p></li>
 <li><p>Change the name of the data set to <strong>periodic_table</strong> before you import it. Remember that’s on the bottom left.</p></li>
 </ul>
 </div>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
-<div class="inline-table"><table class="table table-sm">
+<table>
 <caption>
-<span id="tab:unnamed-chunk-55">TABLE 3.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-55">TABLE 4.1: </span>The Periodic Table
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 atomic_number
 </th>
@@ -303,7 +217,8 @@ electronegativity
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 abundance
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:right;">
@@ -8330,30 +8245,26 @@ NA
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
 <p>So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?</p>
-<div id="selecting-a-column-using" class="section level3" number="3.1.1">
-<h3>
-<span class="header-section-number">3.1.1</span> Selecting a column using <code>$</code><a class="anchor" aria-label="anchor" href="#selecting-a-column-using"><i class="fas fa-link"></i></a>
-</h3>
+<div id="selecting-a-column-using" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Selecting a column using <code>$</code></h3>
 <p>By default, R will organize character strings in alphabetical order. To see this, we’ll introduce two new features: the <code>table</code> function and the <code>$</code> operator.</p>
 <p>Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></code></pre></div>
-<pre><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Gas"    "Gas"    "Solid" 
-##  [12] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [23] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [34] "Solid"  "Liquid" "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [45] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid" 
-##  [56] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [67] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [78] "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid" 
-##  [89] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-## [100] "Solid"  "Solid"  "Solid"  "Solid"  NA       NA       NA       NA       NA       NA       NA      
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb83-1" aria-hidden="true" tabindex="-1"></a>periodic_table<span class="sc">$</span>state_at_stp</span></code></pre></div>
+<pre><code>##   [1] &quot;Gas&quot;    &quot;Gas&quot;    &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Gas&quot;    &quot;Gas&quot;    &quot;Gas&quot;    &quot;Gas&quot;    &quot;Solid&quot; 
+##  [12] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Gas&quot;    &quot;Gas&quot;    &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot; 
+##  [23] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot; 
+##  [34] &quot;Solid&quot;  &quot;Liquid&quot; &quot;Gas&quot;    &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot; 
+##  [45] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Gas&quot;    &quot;Solid&quot; 
+##  [56] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot; 
+##  [67] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot; 
+##  [78] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Liquid&quot; &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Gas&quot;    &quot;Solid&quot;  &quot;Solid&quot; 
+##  [89] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot; 
+## [100] &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  &quot;Solid&quot;  NA       NA       NA       NA       NA       NA       NA      
 ## [111] NA       NA       NA       NA       NA       NA       NA       NA</code></pre>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(periodic_table<span class="sc">$</span>state_at_stp)</span></code></pre></div>
 <pre><code>## 
 ##    Gas Liquid  Solid 
 ##     11      2     90</code></pre>
@@ -8363,57 +8274,46 @@ NA
 <li>The table function provides a count of the number of elements that appear in each state. But as you can see, the ordering is off.</li>
 </ul>
 </div>
-<div id="using-in-a-dataframe" class="section level3" number="3.1.2">
-<h3>
-<span class="header-section-number">3.1.2</span> Using <code>[ ]</code> in a dataframe<a class="anchor" aria-label="anchor" href="#using-in-a-dataframe"><i class="fas fa-link"></i></a>
-</h3>
+<div id="using-in-a-dataframe" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Using <code>[ ]</code> in a dataframe</h3>
 <p>Recall in @vector-selection section that we could use the <code>[ ]</code> operator, to select elements from a single vector. We can extend these operations into a dataframe. The <code>[ ]</code> operator allows you to select elements within a vector or a dataframe <strong>based on its row and column position.</strong> It starts by locating the row position, and then the column position.</p>
 <p>A single vector can be thought of as a dataframe with one row and <span class="math inline">\(n\)</span> columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.</p>
-<div id="selecting-a-single-element-from-a-dataframe" class="section level4" number="3.1.2.1">
-<h4>
-<span class="header-section-number">3.1.2.1</span> Selecting a single element from a dataframe<a class="anchor" aria-label="anchor" href="#selecting-a-single-element-from-a-dataframe"><i class="fas fa-link"></i></a>
-</h4>
+<div id="selecting-a-single-element-from-a-dataframe" class="section level4" number="4.1.2.1">
+<h4><span class="header-section-number">4.1.2.1</span> Selecting a single element from a dataframe</h4>
 <p>Let’s say I wanted to select the <code>name</code> for <code>Sodium</code>, that is in row 11, column 3.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="fl">11</span>, <span class="fl">3</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb87-1" aria-hidden="true" tabindex="-1"></a>periodic_table[<span class="dv">11</span>, <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   name  
 ##   &lt;chr&gt; 
 ## 1 Sodium</code></pre>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">11</span><span class="op">]</span></code></pre></div>
-<pre><code>## [1] "Sodium"</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb89-1" aria-hidden="true" tabindex="-1"></a>periodic_table<span class="sc">$</span>name[<span class="dv">11</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Sodium&quot;</code></pre>
 <p>Notice that both commands above give me the desired value– Sodium– but the formats are different. + In the first command, R gives me back a table with 1 row and 1 column. This isn’t a coincidence, because you pulled directly from the table itself. It’s the difference between copying a “cell” in Excel versus double-clicking on the cell, and then copying the text inside. Here, you directly pulled from the table, so R returns back a value within a table. + The second gives me a single character vector. This makes sense– the <code>$</code> operator selects a single vector <code>name</code> from the table, and then selects the 11th element. Generally, this is the way you want to select a single table.</p>
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"    "Phosphorus" "Sulfur"    
-##  [8] "Chlorine"   "Argon"      "Potassium"  "Calcium"</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb91-1" aria-hidden="true" tabindex="-1"></a>periodic_table<span class="sc">$</span>name[<span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>]</span></code></pre></div>
+<pre><code>##  [1] &quot;Neon&quot;       &quot;Sodium&quot;     &quot;Magnesium&quot;  &quot;Aluminium&quot;  &quot;Silicon&quot;    &quot;Phosphorus&quot; &quot;Sulfur&quot;    
+##  [8] &quot;Chlorine&quot;   &quot;Argon&quot;      &quot;Potassium&quot;  &quot;Calcium&quot;</code></pre>
 </div>
-<div id="using-with-a-data-frame" class="section level4" number="3.1.2.2">
-<h4>
-<span class="header-section-number">3.1.2.2</span> Using <code>[ , ]</code> with a data frame<a class="anchor" aria-label="anchor" href="#using-with-a-data-frame"><i class="fas fa-link"></i></a>
-</h4>
+<div id="using-with-a-data-frame" class="section level4" number="4.1.2.2">
+<h4><span class="header-section-number">4.1.2.2</span> Using <code>[ , ]</code> with a data frame</h4>
 <p>You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables). We can use <code>[ , ]</code> where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let’s select rows 40 to 50 and columns 1, 2, and 4 from <code>periodic_table</code>:</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb93-1" aria-hidden="true" tabindex="-1"></a>periodic_table[<span class="dv">41</span><span class="sc">:</span><span class="dv">50</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)]</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 3
 ##    atomic_number symbol name_origin                                                                  
 ##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                                                        
 ##  1            41 Nb     Niobe, daughter of king Tantalus from Greek mythology                        
-##  2            42 Mo     the Greek molybdos meaning 'lead'                                            
-##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'                                    
+##  2            42 Mo     the Greek molybdos meaning &#39;lead&#39;                                            
+##  3            43 Tc     the Greek tekhn??tos meaning &#39;artificial&#39;                                    
 ##  4            44 Ru     Ruthenia, the New Latin name for Russia                                      
-##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'                                    
+##  5            45 Rh     the Greek rhodos, meaning &#39;rose coloured&#39;                                    
 ##  6            46 Pd     the then recently discovered asteroid Pallas, considered a planet at the time
 ##  7            47 Ag     English word (argentum in Latin)                                             
 ##  8            48 Cd     the New Latin cadmia, from King Kadmos                                       
 ##  9            49 In     indigo                                                                       
 ## 10            50 Sn     English word (stannum in Latin)</code></pre>
 <p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Returns all of column 2:</span>
-<span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Returns all of column 2:</span></span>
+<span id="cb95-2"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb95-2" aria-hidden="true" tabindex="-1"></a>periodic_table[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 118 × 1
 ##    symbol
 ##    &lt;chr&gt; 
@@ -8428,9 +8328,8 @@ NA
 ##  9 F     
 ## 10 Ne    
 ## # … with 108 more rows</code></pre>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Returns all of row 2:</span>
-<span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Returns all of row 2:</span></span>
+<span id="cb97-2"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb97-2" aria-hidden="true" tabindex="-1"></a>periodic_table[<span class="dv">2</span>, ]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 22
 ##   atomic_number symbol name   name_origin         group period block state_at_stp occurrence description
 ##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
@@ -8439,9 +8338,8 @@ NA
 ## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;,
 ## #   boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
 ## #   abundance &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Returns all of column 2:</span>
-<span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Returns all of column 2:</span></span>
+<span id="cb99-2"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb99-2" aria-hidden="true" tabindex="-1"></a>periodic_table[ ,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 118 × 1
 ##    symbol
 ##    &lt;chr&gt; 
@@ -8456,23 +8354,19 @@ NA
 ##  9 F     
 ## 10 Ne    
 ## # … with 108 more rows</code></pre>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Returns a single element in Row 2, Column 2:</span>
-<span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Returns a single element in Row 2, Column 2:</span></span>
+<span id="cb101-2"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb101-2" aria-hidden="true" tabindex="-1"></a>periodic_table[<span class="dv">2</span>,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   symbol
 ##   &lt;chr&gt; 
 ## 1 He</code></pre>
 </div>
-<div id="using-logical-vectors-to-select-from-a-dataframe" class="section level4" number="3.1.2.3">
-<h4>
-<span class="header-section-number">3.1.2.3</span> Using Logical Vectors to select from a dataframe<a class="anchor" aria-label="anchor" href="#using-logical-vectors-to-select-from-a-dataframe"><i class="fas fa-link"></i></a>
-</h4>
+<div id="using-logical-vectors-to-select-from-a-dataframe" class="section level4" number="4.1.2.3">
+<h4><span class="header-section-number">4.1.2.3</span> Using Logical Vectors to select from a dataframe</h4>
 <p>Recall in @vector-logical-selection that we could use a logical vector, and the <code>%in%</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
 <p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span> <span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hydrogen"</span>, <span class="st">"Oxygen"</span><span class="op">)</span> <span class="op">)</span>,
-        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"atomic_weight"</span>, <span class="st">"state_at_stp"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb103-1" aria-hidden="true" tabindex="-1"></a>periodic_table[ (periodic_table<span class="sc">$</span>name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Hydrogen&quot;</span>, <span class="st">&quot;Oxygen&quot;</span>) ),</span>
+<span id="cb103-2"><a href="r-echo-false-fig.aligncenter-out.width30-knitrinclude_graphicsresourcesimages00-getting-startedxlsx_file.html#cb103-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">&quot;atomic_weight&quot;</span>, <span class="st">&quot;state_at_stp&quot;</span>)]</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   atomic_weight state_at_stp
 ##           &lt;dbl&gt; &lt;chr&gt;       
@@ -8485,39 +8379,27 @@ NA
 </div>
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="vectors.html"><span class="header-section-number">2</span> Vectors</a></div>
-<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">4</span> Census Data and Linear Regression</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="Chapter contents"><h2>Chapter contents</h2>
-      <ul class="nav navbar-nav">
-<li>
-<a class="nav-link" href="#creating-dataframes"><span class="header-section-number">3</span> Creating Dataframes</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#combining-vectors-into-dataframes"><span class="header-section-number">3.0.1</span> Combining Vectors into Dataframes</a></li>
-<li><a class="nav-link" href="#importing-an-excel-or-cvs-file-into-r-as-a-data-frame"><span class="header-section-number">3.0.2</span> Importing an Excel or CVS File into R as a Data frame</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#selecting-material-from-dataframes"><span class="header-section-number">3.1</span> Selecting Material from Dataframes</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#selecting-a-column-using"><span class="header-section-number">3.1.1</span> Selecting a column using $</a></li>
-<li><a class="nav-link" href="#using-in-a-dataframe"><span class="header-section-number">3.1.2</span> Using [ ] in a dataframe</a></li>
-</ul>
-</li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="Chapter contents">
+      <h2>Chapter contents</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li hidden><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/03-Dataframes.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li hidden><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/03-Dataframes.Rmd"><i class="fab fa-github"></i></a></li>
+          <li hidden><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li hidden><a id="book-edit" href="#"><i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 21 June, 2022.</p>
@@ -8528,7 +8410,11 @@ NA
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -8540,7 +8426,8 @@ NA
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -8558,4 +8445,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

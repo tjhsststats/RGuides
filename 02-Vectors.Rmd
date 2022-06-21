@@ -72,7 +72,7 @@ If you would like to list out many entries and put them into a vector object, yo
 Suppose we wanted a way to store four names:
 
 ```{r}
-friend_names <- c("Abram", "Jeremiah", "Colleen", "Paul")
+friend_names <- c("Abram", "Bryant", "Colleen", "David", "Esther", "Jeremiah")
 friend_names
 ```
 
@@ -85,14 +85,14 @@ class(friend_names)
 Next suppose we wanted to put the ages of our friends in another vector. We can again use the `c` function:
 
 ```{r}
-friend_ages <- c(34, 30, 32, 30)
+friend_ages <- c(34, 35, 32, 29, 30, 30)
 class(friend_ages)
 ```
 
 And finally, an example of a logical vector:
 
 ```{r}
-lives_in_dc <- c(TRUE, TRUE, FALSE, FALSE)
+lives_in_dc <- c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
 ```
 
 Note that `TRUE` and `FALSE` must be in all caps for R to recognize that these are boolean ("truth") values.
@@ -119,7 +119,7 @@ dec_frac_seq
 class(dec_frac_seq)
 ```
 
-### Using the : operator
+### Using the `:` operator
 
 A short-cut version of the `seq` version can be achieved using the `:` operator. If we are increasing values by 1 (or -1), we can use the `:` operator to build our vector:
 
@@ -142,3 +142,57 @@ five_years_older
 Just like that, every age is five more than where we started. This extends to adding two vectors together[^1].
 
 [^1]: Vectors of the same size, of course...well, actually R has a way of dealing with vectors of different sizes and not giving errors, but let's ignore that for now.
+
+## Selecting elements from a vector {#vector-selection}
+
+If you have a vector and you want to select elements from it, use the `[ ]` operator. The `[ ]` operator selects vectors based off of its **index**, starting from the 1st element.
+
+:::{.rmdwarning}
+
+Unlike most programming languages, **R does not start off its index at 0-- it starts off its index at 1!!!** 
+
+Be very careful with this. 
+
+:::
+
+```{r}
+#We're using the friend_names list.
+friend_names
+#Selects the first element from the list.
+friend_names[1]
+
+#Selects the 2nd, 3rd, and 4th element from the list.
+friend_names[2:4]
+
+#Selects every other element from the list.
+friend_names[seq(1, 6, by=2)]
+
+#Selects every element except the 2nd to 4th element. Notice that 2:4 generates the sequence 2, 3, 4, which you then concatenate using c(). Then, you use the `-` operator to exclude those opsitions from friend_names. 
+friend_names[-c(2:4)]
+
+#Select the last element of the vector. Note the use of the `length()` function-- it will always select the last element of the list, because the length of the vector is always equal to the index of the last element. 
+friend_names[length(friend_names)]
+
+```
+
+### Using logicals (TRUE, FALSE) in a dataframe {#vector-logical-selection}
+
+As you've seen, we can specify directly which elements we'd like to select based on the integer values of the indices of the data frame. Another way to select elements is by using a logical vector:
+
+```{r}
+friend_names[c(TRUE, FALSE, FALSE, FALSE, FALSE, TRUE)]
+```
+
+This can be extended to choose specific elements from a data frame based on the values in the "cells" of the data frame. A logical vector like the one above (`c(TRUE, FALSE, FALSE, FALSE, FALSE, TRUE)`) can be generated based on our entries:
+
+```{r}
+friend_names == "Abram"
+```
+
+We see that only the first element in this new vector is set to `TRUE` because `"Abram"` is the first entry in the friend_names vector. We thus have another way of subsetting that will return only those names that are `"Abram"` or `"Esther"`:
+
+```{r}
+friend_names[friend_names %in% c("Abram", "Microsoft Bing")]
+```
+
+The `%in%` operator looks element-wise in the `friend_names` vector and then tries to match each entry with the entries in `c("Abram", "Microsoft Bing")`. Given that "Microsoft Bing" was not in the `friend_names` list, R does not return it, because the `%in%` operator returns it as `FALSE`.

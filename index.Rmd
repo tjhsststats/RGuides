@@ -1,5 +1,5 @@
 ---
-title: "TJ Research Stats 1 with R"
+title: "📊 TJ RS1 with R"
 author: "Mr. Ng"
 site: bookdown::bookdown_site
 documentclass: book
@@ -14,7 +14,7 @@ always_allow_html: yes
 graphics: yes
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 description: |
-  This website serves as a digital companion for TJ students taking the RS1 class.
+  This website serves as a digital companion for TJ students taking the RS1 class, using R.
 ---
 
 # Preface {.unnumbered}

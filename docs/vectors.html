@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 Vectors | TJ Research Stats 1 with R</title>
+<title>Chapter 2 Vectors | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="taken from Ismay and Kennedy (2016) and Kane (2022).  2.0.1 Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R....">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 2 Vectors | TJ Research Stats 1 with R">
+<meta property="og:title" content="Chapter 2 Vectors | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="taken from Ismay and Kennedy (2016) and Kane (2022).  2.0.1 Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R....">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 2 Vectors | TJ Research Stats 1 with R">
+<meta name="twitter:title" content="Chapter 2 Vectors | 📊 TJ RS1 with R">
 <meta name="twitter:description" content="taken from Ismay and Kennedy (2016) and Kane (2022).  2.0.1 Basic Commands Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">TJ Research Stats 1 with R</a>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -160,21 +160,21 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <p>If you would like to list out many entries and put them into a vector object, you can do so via the <code>c</code> function. If you enter <code><a href="https://rdrr.io/r/base/c.html">?c</a></code> in the R Console, you can gain information about it. The “c” stands for combine or concatenate.</p>
 <p>Suppose we wanted a way to store four names:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">friend_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Jeremiah"</span>, <span class="st">"Colleen"</span>, <span class="st">"Paul"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">friend_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Bryant"</span>, <span class="st">"Colleen"</span>, <span class="st">"David"</span>, <span class="st">"Esther"</span>, <span class="st">"Jeremiah"</span><span class="op">)</span>
 <span class="va">friend_names</span></code></pre></div>
-<pre><code>## [1] "Abram"    "Jeremiah" "Colleen"  "Paul"</code></pre>
+<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"   "Jeremiah"</code></pre>
 <p>You can see when <code>friend_names</code> is outputted that there are four entries to it. This is vector is known as a <strong>strings</strong> vector since it contains character strings. You can check to see what type an object is by using the <code>class</code> function:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "character"</code></pre>
 <p>Next suppose we wanted to put the ages of our friends in another vector. We can again use the <code>c</code> function:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">friend_ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">30</span>, <span class="fl">32</span>, <span class="fl">30</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">friend_ages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">34</span>, <span class="fl">35</span>, <span class="fl">32</span>, <span class="fl">29</span>, <span class="fl">30</span>, <span class="fl">30</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
 <p>And finally, an example of a logical vector:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lives_in_dc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">lives_in_dc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Note that <code>TRUE</code> and <code>FALSE</code> must be in all caps for R to recognize that these are boolean (“truth”) values.</p>
 <p>From a user’s perspective, there is not a huge difference in how these values are stored, but it is still a good habit to specify what class your variables are whenever possible to help with collaboration and documentation.</p>
 </div>
@@ -186,26 +186,26 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sequence_by_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">sequence_by_2</span></code></pre></div>
-<pre><code>##  [1]   0   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44
-## [24]  46  48  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82  84  86  88  90
-## [47]  92  94  96  98 100</code></pre>
+<pre><code>##  [1]   0   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44  46  48
+## [26]  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82  84  86  88  90  92  94  96  98
+## [51] 100</code></pre>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">sequence_by_2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
-<p>You should now have a better sense of what the numbers in the <code>[ ]</code> before the output refer to. This helps you keep track of where you are in the printing of the output. So the first element denoted by <code>[1]</code> is 0, the 18<sup>th</sup> entry (<code>[18]</code>) is 34, and the 35<sup>th</sup> entry (<code>[35]</code>) is 68. This will serve as a nice introduction into indexing and subsetting in Section <a href="creating-dataframes.html#bracket">3.1.1</a>.</p>
+<p>You should now have a better sense of what the numbers in the <code>[ ]</code> before the output refer to. This helps you keep track of where you are in the printing of the output. So the first element denoted by <code>[1]</code> is 0, the 18<sup>th</sup> entry (<code>[18]</code>) is 34, and the 35<sup>th</sup> entry (<code>[35]</code>) is 68. This will serve as a nice introduction into indexing and subsetting in Section <a href="#bracket"><strong>??</strong></a>.</p>
 <p>We can also set the sequence to go by a negative number or a decimal value. We will do both in the next example.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dec_frac_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">10</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span>
 <span class="va">dec_frac_seq</span></code></pre></div>
-<pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2  9.0  8.8  8.6  8.4  8.2  8.0  7.8  7.6  7.4  7.2  7.0  6.8  6.6  6.4
-## [20]  6.2  6.0  5.8  5.6  5.4  5.2  5.0  4.8  4.6  4.4  4.2  4.0  3.8  3.6  3.4  3.2  3.0</code></pre>
+<pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2  9.0  8.8  8.6  8.4  8.2  8.0  7.8  7.6  7.4  7.2  7.0  6.8  6.6  6.4  6.2
+## [21]  6.0  5.8  5.6  5.4  5.2  5.0  4.8  4.6  4.4  4.2  4.0  3.8  3.6  3.4  3.2  3.0</code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dec_frac_seq</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
 </div>
 <div id="using-the-operator" class="section level3" number="2.1.3">
 <h3>
-<span class="header-section-number">2.1.3</span> Using the : operator<a class="anchor" aria-label="anchor" href="#using-the-operator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.3</span> Using the <code>:</code> operator<a class="anchor" aria-label="anchor" href="#using-the-operator"><i class="fas fa-link"></i></a>
 </h3>
 <p>A short-cut version of the <code>seq</code> version can be achieved using the <code>:</code> operator. If we are increasing values by 1 (or -1), we can use the <code>:</code> operator to build our vector:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -226,9 +226,61 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">five_years_older</span> <span class="op">&lt;-</span> <span class="va">friend_ages</span> <span class="op">+</span> <span class="fl">5</span>
 <span class="va">five_years_older</span></code></pre></div>
-<pre><code>## [1] 39 35 37 35</code></pre>
+<pre><code>## [1] 39 40 37 34 35 35</code></pre>
 <p>Just like that, every age is five more than where we started. This extends to adding two vectors together<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Vectors of the same size, of course…well, actually R has a way of dealing with vectors of different sizes and not giving errors, but let’s ignore that for now.&lt;/p&gt;"><sup>1</sup></a>.</p>
+</div>
+<div id="vector-selection" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Selecting elements from a vector<a class="anchor" aria-label="anchor" href="#vector-selection"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you have a vector and you want to select elements from it, use the <code>[ ]</code> operator. The <code>[ ]</code> operator selects vectors based off of its <strong>index</strong>, starting from the 1st element.</p>
+<div class="rmdwarning">
+<p>Unlike most programming languages, <strong>R does not start off its index at 0– it starts off its index at 1!!!</strong></p>
+<p>Be very careful with this.</p>
+</div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#We're using the friend_names list.</span>
+<span class="va">friend_names</span></code></pre></div>
+<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"   "Jeremiah"</code></pre>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Selects the first element from the list.</span>
+<span class="va">friend_names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Abram"</code></pre>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Selects the 2nd, 3rd, and 4th element from the list.</span>
+<span class="va">friend_names</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Bryant"  "Colleen" "David"</code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Selects every other element from the list.</span>
+<span class="va">friend_names</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span>, by<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Abram"   "Colleen" "Esther"</code></pre>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Selects every element except the 2nd to 4th element. Notice that 2:4 generates the sequence 2, 3, 4, which you then concatenate using c(). Then, you use the `-` operator to exclude those opsitions from friend_names. </span>
+<span class="va">friend_names</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Abram"    "Esther"   "Jeremiah"</code></pre>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Select the last element of the vector. Note the use of the `length()` function-- it will always select the last element of the list, because the length of the vector is always equal to the index of the last element. </span>
+<span class="va">friend_names</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Jeremiah"</code></pre>
+<div id="vector-logical-selection" class="section level3" number="2.3.1">
+<h3>
+<span class="header-section-number">2.3.1</span> Using logicals (TRUE, FALSE) in a dataframe<a class="anchor" aria-label="anchor" href="#vector-logical-selection"><i class="fas fa-link"></i></a>
+</h3>
+<p>As you’ve seen, we can specify directly which elements we’d like to select based on the integer values of the indices of the data frame. Another way to select elements is by using a logical vector:</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">friend_names</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Abram"    "Jeremiah"</code></pre>
+<p>This can be extended to choose specific elements from a data frame based on the values in the “cells” of the data frame. A logical vector like the one above (<code>c(TRUE, FALSE, FALSE, FALSE, FALSE, TRUE)</code>) can be generated based on our entries:</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">friend_names</span> <span class="op">==</span> <span class="st">"Abram"</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>We see that only the first element in this new vector is set to <code>TRUE</code> because <code>"Abram"</code> is the first entry in the friend_names vector. We thus have another way of subsetting that will return only those names that are <code>"Abram"</code> or <code>"Esther"</code>:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">friend_names</span><span class="op">[</span><span class="va">friend_names</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Microsoft Bing"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Abram"</code></pre>
+<p>The <code>%in%</code> operator looks element-wise in the <code>friend_names</code> vector and then tries to match each entry with the entries in <code>c("Abram", "Microsoft Bing")</code>. Given that “Microsoft Bing” was not in the <code>friend_names</code> list, R does not return it, because the <code>%in%</code> operator returns it as <code>FALSE</code>.</p>
 
+</div>
 </div>
 </div>
 
@@ -249,6 +301,9 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 </ul>
 </li>
 <li><a class="nav-link" href="#operations-with-vectors"><span class="header-section-number">2.2</span> Operations with Vectors</a></li>
+<li>
+<a class="nav-link" href="#vector-selection"><span class="header-section-number">2.3</span> Selecting elements from a vector</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#vector-logical-selection"><span class="header-section-number">2.3.1</span> Using logicals (TRUE, FALSE) in a dataframe</a></li></ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -266,7 +321,7 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>TJ Research Stats 1 with R</strong>" was written by Mr. Ng. It was last built on 20 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 21 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

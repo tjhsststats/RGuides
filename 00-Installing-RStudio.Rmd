@@ -46,7 +46,7 @@ If Software Center is taking longer than 10 minutes to install, follow these ste
 
 1. Sign into your laptop with your FCPS username and password.
 
-2. Once you have signed in and the taskbar has fully loaded, click on the Red Shield Icon in the taskbar seen below. 
+2. Once you have signed in and the taskbar has fully loaded, click on the Red Shield Icon in the taskbar seen here: ![](https://gitcdn.link/cdn/kaisamng/RGuides/main/resources/images/00-Getting-Started/Red_Icon.png)
 
 ```{r, echo = FALSE, out.width= "15%"}
 knitr::include_graphics("resources/images/00-Getting-Started/Red_Icon.png")
