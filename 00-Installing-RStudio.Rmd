@@ -28,7 +28,7 @@ FCPS Policy only allows apps to be installed through their version of an App Sto
 
 1. **Do this first:** Open the Software Center app on your FCPS Laptop. Open the **Start Menu** and type in *Software Center.*
 
-```{r, echo = FALSE, fig.cap = "Analogy of difference between R and RStudio.", out.width="90%"}
+```{r, echo = FALSE, fig.cap = "The FCPS Software Center.", out.width="90%"}
 knitr::include_graphics("resources/images/00-Getting-Started/Software_Center.png")
 ```
 
@@ -36,7 +36,7 @@ knitr::include_graphics("resources/images/00-Getting-Started/Software_Center.png
 
 3. Select the app, and click **Install**. Be patient-- sometimes, the process can take up to 10 minutes.
 
-```{r, echo = FALSE, fig.cap = "Analogy of difference between R and RStudio.", out.width="90%"}
+```{r, echo = FALSE, fig.cap = "RStudio in the Software Center.", out.width="90%"}
 knitr::include_graphics("resources/images/00-Getting-Started/RStudio_and_Software_Center.png")
 ```
 

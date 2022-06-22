@@ -23,6 +23,7 @@ rmd_files:
     "05-Census-and-Linear-Regression.Rmd",
     "06-Two-Sample-T-Test.Rmd",
     "07-ANOVA-Analysis.Rmd",
+    "Errors.Rmd",
     "references.Rmd", # Must have comma after last entry
   ]
 
