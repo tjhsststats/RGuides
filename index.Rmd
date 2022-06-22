@@ -15,6 +15,7 @@ graphics: yes
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 description: |
   This website serves as a digital companion for TJ students taking the RS1 class, using R.
+code_folding: show
 ---
 
 # Preface {.unnumbered}

@@ -44,6 +44,7 @@ selecting-rows-and-columns-using
 lets-eat-grandma-vs.-lets-eat-grandma
 filtering-data-using-logical-vectors
 summarizing-data
+mean-median-and-fivenum
 the-table-function
 census-data-and-linear-regression
 install-packages-and-census-api-key

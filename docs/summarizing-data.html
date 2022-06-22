@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 Summarizing Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="5.1 The table function Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the periodic_table columns, I see that the column that...">
+<meta name="description" content="5.1 mean, median, and fivenum   5.2 The table function Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the periodic_table columns,...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Summarizing Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="5.1 The table function Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the periodic_table columns, I see that the column that...">
+<meta property="og:description" content="5.1 mean, median, and fivenum   5.2 The table function Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the periodic_table columns,...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 Summarizing Data | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="5.1 The table function Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the periodic_table columns, I see that the column that...">
+<meta name="twitter:description" content="5.1 mean, median, and fivenum   5.2 The table function Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the periodic_table columns,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -94,9 +94,14 @@
 <h1>
 <span class="header-section-number">5</span> Summarizing Data<a class="anchor" aria-label="anchor" href="#summarizing-data"><i class="fas fa-link"></i></a>
 </h1>
-<div id="the-table-function" class="section level2" number="5.1">
+<div id="mean-median-and-fivenum" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">5.1</span> The <code>table</code> function<a class="anchor" aria-label="anchor" href="#the-table-function"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> <code>mean</code>, <code>median</code>, and <code>fivenum</code><a class="anchor" aria-label="anchor" href="#mean-median-and-fivenum"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="the-table-function" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> The <code>table</code> function<a class="anchor" aria-label="anchor" href="#the-table-function"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
@@ -116,7 +121,8 @@
     <nav id="toc" data-toggle="toc" aria-label="Chapter contents"><h2>Chapter contents</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summarizing-data"><span class="header-section-number">5</span> Summarizing Data</a></li>
-<li><a class="nav-link" href="#the-table-function"><span class="header-section-number">5.1</span> The table function</a></li>
+<li><a class="nav-link" href="#mean-median-and-fivenum"><span class="header-section-number">5.1</span> mean, median, and fivenum</a></li>
+<li><a class="nav-link" href="#the-table-function"><span class="header-section-number">5.2</span> The table function</a></li>
 </ul>
 
       <div class="book-extra">

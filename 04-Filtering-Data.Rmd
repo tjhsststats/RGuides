@@ -31,7 +31,7 @@ By default, R will organize character strings in alphabetical order. To see this
 
 Let's say I'm interested in elements in a gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.
 
-```{r}
+```{r, attr.output='style="max-height: 100px;"'}
 periodic_table$state_at_stp
 
 ```
@@ -81,7 +81,7 @@ periodic_table[41:50, c(1, 2, 4)]
 **The comma is very important.** Let's look at some examples:
 :::
 
-```{r}
+```{r,attr.output='style="max-height: 140px;"'}
 #Returns all of column 2:
 periodic_table[2]
 
@@ -103,7 +103,7 @@ At its most basic level, you can use the `==` operator to test whether one eleme
 
 Let's say that I want to find any elements that are naturally gasses. 
 
-```{r}
+```{r, attr.output='style="max-height: 200px;"'}
 periodic_table[periodic_table$state_at_stp == "Liquid", ]
 ```
 
@@ -111,11 +111,14 @@ You'll notice that this returns back a massive table of `NAs`, rather than just 
 
 Let's examine the command `periodic_table$state_at_stp=="Liquid"` more carefully.
 
-```{r}
+```{r, attr.output='style="max-height: 100px;"'}
 periodic_table$state_at_stp=="Liquid"
 ```
 
-Every time the element's state is not `Liquid`, R returns False. Rather than ignore the row, it creates a placeholder saying that the row (which has a non-Liquid element) is not applicable to the query. Although this technically does the job you want, it is not a very elegant solution, which is why the `%in%` operator is better.
+  + Every time the element's state is not `Liquid`, R returns False, instead of ignoring the row, which means you get a logical vector of all 118 elements. 
+  + This gets passed onto the subset function, which, rather than ignore any row that says FALSE, returns each row as entirely NAs.
+  
+Although this technically does the job you want, it is not a very elegant solution, which is why the `%in%` operator is better.
 
 ```{r}
 periodic_table[periodic_table$state_at_stp %in% "Liquid", ]

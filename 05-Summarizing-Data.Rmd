@@ -1,5 +1,11 @@
 # Summarizing Data
 
+## `mean`, `median`, and `fivenum`
+
+
+
+
+
 ## The `table` function
 
 Let's say I'm interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.

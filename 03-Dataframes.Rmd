@@ -33,7 +33,7 @@ Note that all three vectors that we used **were of the same length**. You can ch
 c(length(friend_names), length(friend_ages), length(lives_in_dc))
 ```
 
-Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^1]
+Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^2]
 
 ```{r}
 #Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
@@ -50,7 +50,7 @@ friends
 ```
 
 
-[^1]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
+[^2]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
 
 #### Troubleshooting `data.frame`
 
@@ -134,7 +134,7 @@ knitr::include_graphics("resources/images/00-Getting-Started/Import_1.png")
 
 1.  In this case, I am using the anime dataset. Click on "browse" to find the file that you want to import into R.
 
-```{r, echo = FALSE, fig.align='center', out.width="50%", fig.cap="The Import Data Window."}
+```{r, echo = FALSE, fig.align='center', out.width="90%", fig.cap="The Import Data Window."}
 knitr::include_graphics("resources/images/00-Getting-Started/Import_2.png") 
 ```
 
