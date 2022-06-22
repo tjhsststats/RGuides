@@ -1,4 +1,4 @@
-# Working with Dataframes
+# Working with Dataframes {#dataframe}
 
 ## Creating Dataframes
 
@@ -33,11 +33,30 @@ Note that all three vectors that we used **were of the same length**. You can ch
 c(length(friend_names), length(friend_ages), length(lives_in_dc))
 ```
 
+Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^1]
+
+```{r}
+#Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
+
+friends$names[1]<- "Abe"
+
+#I want to see what everybody's age is in 50 years.
+friends$ages<- ages+50
+
+#I want to add their last names.
+friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
+
+friends
+```
+
+
+[^1]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
+
 #### Troubleshooting `data.frame`
 
 If your vectors are not all of equal length, R will return an error.
 
-In my previous example, I had six friends: `Abram, Bryant, Colleen, David, Esther, and Jeremiah`. Let's say that I don't know whether `Paul` lives in DC, so my `lives_in_dc` vector is only a length of 5. I'm overwriting my old lives_in_dc vector with the one below.
+In my previous example, I had six friends: `Abram, Bryant, Colleen, David, Esther, and Jeremiah`. Let's say that I don't know whether `Jeremiah` lives in DC, so my `lives_in_dc` vector is only a length of 5. I'm overwriting my old lives_in_dc vector with the one below.
 
 ```{r, error=TRUE}
 
@@ -125,115 +144,3 @@ knitr::include_graphics("resources/images/00-Getting-Started/Import_2.png")
 
 3.  You should now have your dataset imported. Verify that it is correctly imported, on the top right.
 
-
-## Selecting Elements from Dataframes
-
-::: rmdtip
-Let's practice importing data. Download the [periodic table](http://ismayc.github.io/periodic-table-data.csv) data now, and import it into R as `periodic_table`.
-
--   Remember to move this into your working directory: `getwd()`
-
--   Since this is a CSV file, use the **From Text (readr)** function.
-
--   Change the name of the data set to **periodic_table** before you import it. Remember that's on the bottom left.
-
-`periodic_table` is reproduced below.
-:::
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-library(readr)
-periodic_table <- read_csv("resources/data/periodic-table-data.csv")
-```
-
-```{r, echo=FALSE, fig.cap="The Periodic Table"}
-knitr::kable(periodic_table, caption="The Periodic Table", booktabs=TRUE) %>%
-  scroll_box(height="500px") %>%
-  kable_styling(position= "center", font_size = 10)
-```
-
-So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?
-
-## Selecting a column using `$`
-
-By default, R will organize character strings in alphabetical order. To see this, we'll introduce two new features: the `table` function and the `$` operator.
-
-Let's say I'm interested in elements in a gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.
-
-```{r}
-periodic_table$state_at_stp
-
-```
-
-As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by `$` and the name of the variable. (Note that spaces in variable names will not work. You'll likely learn that the hard way, as I have.)
-
-
-## Using `[ , ]` in a dataframe
-
-Recall in \@ref(vector-selection) section that we could use the `[ ]` operator, to select elements from a single vector. We can extend these operations into a dataframe.
-
-A single vector can be thought of as a dataframe with one row and $n$ columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.
-
-The `[ ]` operator allows you to select elements within a vector or a dataframe **based on its row and column position.** It starts by locating the row position, and then the column position.
-
-### Selecting a single element using `[ , ]`
-
-Let's say I wanted to select the `name` for `Sodium`, that is in row 11, column 3.
-
-```{r}
-periodic_table[11, 3]
-
-periodic_table$name[11]
-```
-
-Notice that both commands above give me the desired value-- Sodium-- but the formats are different. + In the first command, R gives me back a table with 1 row and 1 column. This isn't a coincidence, because you pulled directly from the table itself. It's the difference between copying a "cell" in Excel versus double-clicking on the cell, and then copying the text inside. Here, you directly pulled from the table, so R returns back a value within a table. + The second gives me a single character vector. This makes sense-- the `$` operator selects a single vector `name` from the table, and then selects the 11th element. Generally, this is the way you want to select a single table.
-
-Recall the use of `[ ]` when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the `periodic_table$name` variable:
-
-```{r}
-periodic_table$name[10:20]
-```
-
-### Selecting rows and columns using `[ , ]` 
-
-You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?
-
-We can use `[ , ]` where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let's select rows 40 to 50 and columns 1, 2, and 4 from `periodic_table`:
-
-```{r}
-periodic_table[41:50, c(1, 2, 4)]
-```
-
-### "Let's eat Grandma!" vs. "Let's eat, Grandma!"
-
-::: rmdwarning
-**The comma is very important.** Let's look at some examples:
-:::
-
-```{r}
-#Returns all of column 2:
-periodic_table[2]
-
-#Returns all of row 2:
-periodic_table[2, ]
-
-#Returns all of column 2:
-periodic_table[ ,2]
-
-#Returns a single element in Row 2, Column 2:
-periodic_table[2,2]
-```
-
-### Using Logical Vectors to select from dataframes
-
-Recall in \@ref(vector-logical-selection) that we could use a logical vector, and the `%in%` operator, to select elements from a single vector. We can extend these operations into a dataframe.
-
-Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):
-
-```{r}
-periodic_table[ (periodic_table$name %in% c("Hydrogen", "Oxygen") ),
-        c("atomic_weight", "state_at_stp")]
-```
-
-The extra parentheses around `periodic_table$name %in% c("Hydrogen", "Oxygen")` are a good habit to get into as they ensure everything before the comma is used to select specific rows matching that condition. For the columns, we can specify a vector of the column names to focus on only those variables. The resulting table here gives the `atomic_weight` and `state_at_stp` for `"Hydrogen"` and then for `"Oxygen"`.
-
-There are many more complicated ways to subset a data frame and one can use the `subset` function built into R, but in my experience, whenever you want to do anything more complicated than what we have done here, it is easier to use the `filter` and `select` functions in the `dplyr` package.

@@ -4,7 +4,7 @@
 
 For references on errors, check out the following two links by Noam Ross [here](https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md) and David Smith [here](http://blog.revolutionanalytics.com/2015/03/the-most-common-r-error-messages.html).
 
-## `Error: unexpected input in ______’`, or, `'` versus `’`
+## `Error: unexpected input in ______’`, or, `'` versus `’` {-}
 
 This error often comes when you copy code directly from Google Docs, Microsoft Word, or a webpage, and paste it directly into R. The symbols look the same to us, but computers interpret these very differently. 
 

@@ -132,7 +132,7 @@ dec_seq <- 5:-5
 dec_seq
 ```
 
-## Operations with Vectors
+## Operations with Vectors {#vector-operations}
 
 R can work extremely quickly when provided with a vector or a collection of vectors like a data frame. Instead of iterating through each element to perform an operation that we might need to do in other programming languages, we can do something like this:
 
