@@ -19,9 +19,10 @@ rmd_files:
     "01-Interacting-with-RStudio.Rmd",
     "02-Vectors.Rmd",
     "03-Dataframes.Rmd",
-    "04-Census-and-Linear-Regression.Rmd",
-    "05-Two-Sample-T-Test.Rmd",
-    "06-ANOVA-Analysis.Rmd",
+    "04-Summarizing-Data.Rmd",
+    "05-Census-and-Linear-Regression.Rmd",
+    "06-Two-Sample-T-Test.Rmd",
+    "07-ANOVA-Analysis.Rmd",
     "references.Rmd", # Must have comma after last entry
   ]
 

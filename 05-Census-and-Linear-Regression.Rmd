@@ -25,7 +25,7 @@ Pull variable data into dataframe.
 
 * state="VA" variable helps limit the scope of our data to just VA, otherwise it will download all US.
 
-```{r, results='hide'}
+```{r, eval=FALSE, results='hide'}
 income_with_children <- get_acs(geography="zcta",
                   state="VA",
                   variables=c("B19125_002"),
@@ -41,6 +41,7 @@ head(income_no_children)
 ```
 
 ```{r, echo=FALSE, fig.cap="Zip Code Data for Household Income for Households with Children, and Without Children"}
+load("~/Github/RGuides/resources/data/Census_Data.RData")
 knitr::kable(list(income_with_children, income_no_children), caption="Zip Code Data for Household Income for Households with Children, and Without Children", booktabs=TRUE) %>%
   scroll_box(height="500px") %>%
   kable_styling(position= "center", font_size = 10)

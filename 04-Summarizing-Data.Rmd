@@ -1,0 +1,11 @@
+# Summarizing Data
+
+## The `table` function
+
+Let's say I'm interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.
+
+```{r}
+table(periodic_table$state_at_stp)
+```
+
+-   The table function provides a count of the number of elements that appear in each state. But as you can see, the ordering is off.

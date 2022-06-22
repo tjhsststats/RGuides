@@ -5,8 +5,9 @@ bookdown::bs4_book:
     base: https://github.com/kaisamng/RGuides
     branch: main
   config:
+    toc_depth: 4
     toc:
-      collapse: yes
+      collapse: no
     sharing: null
   includes:
     in_header: header.html
