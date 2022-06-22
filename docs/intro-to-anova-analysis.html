@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 7 Intro to ANOVA Analysis | 📊 TJ RS1 with R</title>
+<title>Chapter 8 Intro to ANOVA Analysis | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="7.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
+<meta name="description" content="8.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 7 Intro to ANOVA Analysis | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 8 Intro to ANOVA Analysis | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="7.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
+<meta property="og:description" content="8.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 7 Intro to ANOVA Analysis | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="7.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
+<meta name="twitter:title" content="Chapter 8 Intro to ANOVA Analysis | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="8.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -75,11 +75,12 @@
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
-<li><a class="" href="working-with-dataframes.html"><span class="header-section-number">3</span> Working with Dataframes</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">4</span> Summarizing Data</a></li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">5</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">6</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="active" href="intro-to-anova-analysis.html"><span class="header-section-number">7</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Working with Dataframes</a></li>
+<li><a class="" href="filtering-data.html"><span class="header-section-number">4</span> Filtering Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">6</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">7</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="active" href="intro-to-anova-analysis.html"><span class="header-section-number">8</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -89,24 +90,24 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-anova-analysis" class="section level1" number="7">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-anova-analysis" class="section level1" number="8">
 <h1>
-<span class="header-section-number">7</span> Intro to ANOVA Analysis<a class="anchor" aria-label="anchor" href="#intro-to-anova-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Intro to ANOVA Analysis<a class="anchor" aria-label="anchor" href="#intro-to-anova-analysis"><i class="fas fa-link"></i></a>
 </h1>
-<div id="comparing-several-means-hummingbirds-and-tropical-flowers" class="section level2" number="7.1">
+<div id="comparing-several-means-hummingbirds-and-tropical-flowers" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">7.1</span> Comparing Several means: Hummingbirds and Tropical Flowers<a class="anchor" aria-label="anchor" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Comparing Several means: Hummingbirds and Tropical Flowers<a class="anchor" aria-label="anchor" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower <em>Heliconia</em> on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.</p>
 <p>The table below gives length measurements (in millimeters) for random samples of three varieties of <em>Heliconia</em>, each pollinated by a different species of hummingbird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?</p>
 <p>For the flower data, I made a CSV file from the textbook data, and then imported it into R.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/Flowers.csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers</span><span class="op">)</span> <span class="co">#View the Flowers Dataset</span></code></pre></div>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-87">TABLE 7.1: </span>The Flowers Dataset
+<span id="tab:unnamed-chunk-93">TABLE 8.1: </span>The Flowers Dataset
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -377,13 +378,13 @@ NA
 </table></div>
 </div>
 <p>In order for R to process the data, I need to convert the data from “wide” format to “long” format. I also need to let R know that each species should be treated as a “factor,” which means that it is a type of categorical variable (so I can sort out data based on Species) later on.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers_long</span><span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">Flowers</span>, <span class="st">"Species"</span>, <span class="st">"Length"</span>, factor_key<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></code></pre></div>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-89">TABLE 7.2: </span>Flowers Dataset, Long-Form Data
+<span id="tab:unnamed-chunk-95">TABLE 8.2: </span>Flowers Dataset, Long-Form Data
 </caption>
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -950,7 +951,7 @@ NA
 </table></div>
 </div>
 <p>Let’s follow the strategy we learned way back in Unit 1: use graphs and numerical summaries to compare the three distributions of flower length. Here are the summary statistics we will use in further analysis:</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mean_and_sd</span><span class="op">&lt;-</span> <span class="va">Flowers_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span>, 
@@ -1006,9 +1007,9 @@ H. caribea yellow
 </table></div>
 <p>What do we see? The three varieties differ so much in flower length that there is little overlap among them. In particular, the flowers of bihai are longer than either red or yellow. The mean lengths are 47.6 mm for H. bihai, 39.7 mm for H. caribaea red, and 36.2 mm for H. caribaea yellow. Are these observed differences in sample means statistically significant? We must develop a test for comparing more than two population means.</p>
 </div>
-<div id="the-f-test" class="section level2" number="7.2">
+<div id="the-f-test" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">7.2</span> The F Test<a class="anchor" aria-label="anchor" href="#the-f-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> The F Test<a class="anchor" aria-label="anchor" href="#the-f-test"><i class="fas fa-link"></i></a>
 </h2>
 <p>We want to test the null hypothesis that there are no differences among the mean lengths for the three populations of flowers:</p>
 <p><em>H0:μ1 =μ2 =μ3</em></p>
@@ -1018,16 +1019,16 @@ H. caribea yellow
 <p>For example, Ha includes the case in which m2 = m3 but m1 has a different value.</p>
 <p>When the conditions for inference are met, the appropriate significance test for comparing means is the analysis of variance F test. Analysis of variance is usually abbreviated as ANOVA.</p>
 </div>
-<div id="check-for-conditions" class="section level2" number="7.3">
+<div id="check-for-conditions" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">7.3</span> Check for Conditions<a class="anchor" aria-label="anchor" href="#check-for-conditions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Check for Conditions<a class="anchor" aria-label="anchor" href="#check-for-conditions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now that we have stated our Null and Alternative Hypotheses, we can check for conditions:</p>
 <ul>
 <li><p>Random: Researchers took separate random samples of 16 bihaii, 23 red, and 15 Heliconia flowers.</p></li>
 <li><p>Normal: We entered the data into R and made side by side boxplots. Although the distributions for the bihai and red varieties show some right-skewness, we don’t see nay strong skewness or outliers that would prevent the use of one-way ANOVA.</p></li>
 </ul>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Flowers_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Length</span>, y<span class="op">=</span><span class="va">Species</span>, fill<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span><span class="op">)</span><span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"Flower Lengths from Textbook"</span><span class="op">)</span><span class="op">+</span>
@@ -1089,28 +1090,28 @@ H. caribea yellow
 <p>These standard deviations satisfy our rule of thumb that (largest SD)/ (smallest SD) is less than 2, so we can proceed.</p>
 <p>Since we have satifised all 3 conditions, we can safely use ANOVA to compare the mean lengths of the three populations.</p>
 </div>
-<div id="the-f-distribution" class="section level2" number="7.4">
+<div id="the-f-distribution" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">7.4</span> The F Distribution<a class="anchor" aria-label="anchor" href="#the-f-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> The F Distribution<a class="anchor" aria-label="anchor" href="#the-f-distribution"><i class="fas fa-link"></i></a>
 </h2>
 <p>The variances for <em>three</em> populations is naturally larger than the variance of two populations. Just like how two populations naturally have a larger variance, and thus requires the t-distribution (which has more “area” under the tails), we need to use a different distribution that takes into account this larger variance (which has even more “area” under the tails. This distribution is called the <strong>F-Distribution</strong>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-92"></span>
+<span style="display:block;" id="fig:unnamed-chunk-98"></span>
 <img src="resources/images/03-ANOVA-Analysis/F_Dist.png" alt="The F-Distribution" width="35%"><p class="caption">
-FIGURE 7.1: The F-Distribution
+FIGURE 8.1: The F-Distribution
 </p>
 </div>
 <p>The <strong><em>F</em>-distributions</strong> are a family of right-skewed distributions that take only values greater than 0. Above are some possible shapes. A specific F distribution is determined by the degrees of freedom of the numerator and denominator of the F statistic. When describing an F distribution, always give the numerator degrees of freedom first. Our notation will be F (df1, df2) for the F distribution with df1 degrees of freedom in the numerator and df2 degrees of freedom in the denominator. <em>Interchanging the degrees of freedom changes the distribution, so the order is important.</em></p>
-<div id="finding-the-degrees-of-freedom-for-f" class="section level3" number="7.4.1">
+<div id="finding-the-degrees-of-freedom-for-f" class="section level3" number="8.4.1">
 <h3>
-<span class="header-section-number">7.4.1</span> Finding the Degrees of Freedom for F<a class="anchor" aria-label="anchor" href="#finding-the-degrees-of-freedom-for-f"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.1</span> Finding the Degrees of Freedom for F<a class="anchor" aria-label="anchor" href="#finding-the-degrees-of-freedom-for-f"><i class="fas fa-link"></i></a>
 </h3>
 <p>In the two earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom <span class="math display">\[k - 1 = 3 - 1 = 2\]</span> and denominator degrees of freedom <span class="math display">\[N - k = 54 - 3 = 51\]</span>.</p>
 <div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/F_Dist_Overview.png" width="55%" style="display: block; margin: auto;"></div>
 </div>
-<div id="understanding-the-f-statistic" class="section level3" number="7.4.2">
+<div id="understanding-the-f-statistic" class="section level3" number="8.4.2">
 <h3>
-<span class="header-section-number">7.4.2</span> Understanding the F Statistic<a class="anchor" aria-label="anchor" href="#understanding-the-f-statistic"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.2</span> Understanding the F Statistic<a class="anchor" aria-label="anchor" href="#understanding-the-f-statistic"><i class="fas fa-link"></i></a>
 </h3>
 <p>Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the distance the statistic is away from our Null Hypothesis. This distance is called the F Statistic.</p>
 <p>The F Statistic is calculated by doing:</p>
@@ -1118,21 +1119,21 @@ FIGURE 7.1: The F-Distribution
 <p>Specifically, the variation is calculated by dividing the <em>Mean Square for Groups</em> by the <em>Mean Square for Error</em>. The statistic is reproduced below, but you should know that you’d never have to do this by hand– R will do it all for you.</p>
 <div class="inline-figure"><img src="resources/images/03-ANOVA-Analysis/ANOVA_F_Test.png" width="65%" style="display: block; margin: auto;"></div>
 </div>
-<div id="calculate-the-f-statistic" class="section level3" number="7.4.3">
+<div id="calculate-the-f-statistic" class="section level3" number="8.4.3">
 <h3>
-<span class="header-section-number">7.4.3</span> Calculate the F Statistic<a class="anchor" aria-label="anchor" href="#calculate-the-f-statistic"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4.3</span> Calculate the F Statistic<a class="anchor" aria-label="anchor" href="#calculate-the-f-statistic"><i class="fas fa-link"></i></a>
 </h3>
 <p>Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the <em>distance</em> the statistic is away from our Null Hypothesis. This distance is called the F Statistic.</p>
 <p>The F Statistic is calculated by doing:</p>
 </div>
 </div>
-<div id="conducting-the-one-way-anova" class="section level2" number="7.5">
+<div id="conducting-the-one-way-anova" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">7.5</span> Conducting the one-way ANOVA<a class="anchor" aria-label="anchor" href="#conducting-the-one-way-anova"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> Conducting the one-way ANOVA<a class="anchor" aria-label="anchor" href="#conducting-the-one-way-anova"><i class="fas fa-link"></i></a>
 </h2>
 <p>Of course, the previous pages gave you a <em>very</em> brief background of a one-way ANOVA test.</p>
 <p>It turns out that conducting the test itself in R is very easy– R even calculates the degrees of freedom for you.</p>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">Flowers_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span>
 <span class="va">anova.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Length</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova.test</span><span class="op">)</span></code></pre></div>
@@ -1143,9 +1144,9 @@ FIGURE 7.1: The F-Distribution
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther <em>is</em> a significant difference between the three species.</p>
 </div>
-<div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="7.6">
+<div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="8.6">
 <h2>
-<span class="header-section-number">7.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons<a class="anchor" aria-label="anchor" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons<a class="anchor" aria-label="anchor" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><i class="fas fa-link"></i></a>
 </h2>
 <p>Knowing that there is a difference is often not enough– what if you want to know exactly <em>which</em> means were significantly different from each other? In this case, we’d have to conduct a two-sample t-test for every possible two means that we have, which could be irritating, especially if we are comparing many means with each other.</p>
 <p>This is where a Tukey Post-Hoc Pairwise Comparison comes into play. The name sounds scary, but the following is true:</p>
@@ -1155,7 +1156,7 @@ FIGURE 7.1: The F-Distribution
 <li><p>“Pairwise Comparision” means you compare two things with each other.</p></li>
 </ul>
 <p>To perform the pairwise comparison, run the <em>TukeyHSD()</em> command on your anova.test model.</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conf.level<span class="op">=</span><span class="fl">.95</span><span class="op">)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -1168,41 +1169,41 @@ FIGURE 7.1: The F-Distribution
 ## H. caribea yellow-H. bihai       -11.4 -12.7 -10.2     0
 ## H. caribea yellow-H. caribea red  -3.5  -4.7  -2.4     0</code></pre>
 <p>You can also plot these results, as shown below:</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Margins will spill over, so you need to adjust these</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">13</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conflevel<span class="op">=</span><span class="fl">.95</span><span class="op">)</span>, las<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-97-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-103-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Notice that the x-axis doesn’t even include 0– our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">6</span> Intro to Two-Sample T-Tests</a></div>
+<div class="prev"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">7</span> Intro to Two-Sample T-Tests</a></div>
 <div class="next"><a href="errors.html">Deciphering Common R Errors</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="Chapter contents"><h2>Chapter contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#intro-to-anova-analysis"><span class="header-section-number">7</span> Intro to ANOVA Analysis</a></li>
-<li><a class="nav-link" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><span class="header-section-number">7.1</span> Comparing Several means: Hummingbirds and Tropical Flowers</a></li>
-<li><a class="nav-link" href="#the-f-test"><span class="header-section-number">7.2</span> The F Test</a></li>
-<li><a class="nav-link" href="#check-for-conditions"><span class="header-section-number">7.3</span> Check for Conditions</a></li>
+<li><a class="nav-link" href="#intro-to-anova-analysis"><span class="header-section-number">8</span> Intro to ANOVA Analysis</a></li>
+<li><a class="nav-link" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><span class="header-section-number">8.1</span> Comparing Several means: Hummingbirds and Tropical Flowers</a></li>
+<li><a class="nav-link" href="#the-f-test"><span class="header-section-number">8.2</span> The F Test</a></li>
+<li><a class="nav-link" href="#check-for-conditions"><span class="header-section-number">8.3</span> Check for Conditions</a></li>
 <li>
-<a class="nav-link" href="#the-f-distribution"><span class="header-section-number">7.4</span> The F Distribution</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#finding-the-degrees-of-freedom-for-f"><span class="header-section-number">7.4.1</span> Finding the Degrees of Freedom for F</a></li>
-<li><a class="nav-link" href="#understanding-the-f-statistic"><span class="header-section-number">7.4.2</span> Understanding the F Statistic</a></li>
-<li><a class="nav-link" href="#calculate-the-f-statistic"><span class="header-section-number">7.4.3</span> Calculate the F Statistic</a></li>
+<a class="nav-link" href="#the-f-distribution"><span class="header-section-number">8.4</span> The F Distribution</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#finding-the-degrees-of-freedom-for-f"><span class="header-section-number">8.4.1</span> Finding the Degrees of Freedom for F</a></li>
+<li><a class="nav-link" href="#understanding-the-f-statistic"><span class="header-section-number">8.4.2</span> Understanding the F Statistic</a></li>
+<li><a class="nav-link" href="#calculate-the-f-statistic"><span class="header-section-number">8.4.3</span> Calculate the F Statistic</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#conducting-the-one-way-anova"><span class="header-section-number">7.5</span> Conducting the one-way ANOVA</a></li>
-<li><a class="nav-link" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><span class="header-section-number">7.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons</a></li>
+<li><a class="nav-link" href="#conducting-the-one-way-anova"><span class="header-section-number">8.5</span> Conducting the one-way ANOVA</a></li>
+<li><a class="nav-link" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><span class="header-section-number">8.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li hidden><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/07-ANOVA-Analysis.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li hidden><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/07-ANOVA-Analysis.Rmd"><i class="fab fa-github"></i></a></li>
+<li hidden><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/AC-ANOVA-Analysis.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li hidden><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/AC-ANOVA-Analysis.Rmd"><i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

@@ -1,0 +1,8479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Filtering Data | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="Let’s practice importing data, from 3. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Filtering Data | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Let’s practice importing data, from 3. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Filtering Data | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="Let’s practice importing data, from 3. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Working with Dataframes</a></li>
+<li><a class="active" href="filtering-data.html"><span class="header-section-number">4</span> Filtering Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">6</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">7</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">8</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="filtering-data" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Filtering Data<a class="anchor" aria-label="anchor" href="#filtering-data"><i class="fas fa-link"></i></a>
+</h1>
+<div class="rmdtip">
+<p>Let’s practice importing data, from <a href="dataframe.html#dataframe">3</a>. Download the <a href="http://ismayc.github.io/periodic-table-data.csv">periodic table</a> data now, and import it into R as <code>periodic_table</code>.</p>
+<ul>
+<li><p>Remember to move this into your working directory: <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code></p></li>
+<li><p>Since this is a CSV file, use the <strong>From Text (readr)</strong> function.</p></li>
+<li><p>Change the name of the data set to <strong>periodic_table</strong> before you import it. Remember that’s on the bottom left.</p></li>
+</ul>
+<p><code>periodic_table</code> is reproduced below.</p>
+</div>
+<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-59">TABLE 4.1: </span>The Periodic Table
+</caption>
+<thead><tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+atomic_number
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+symbol
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+name
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+name_origin
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+group
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+period
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+block
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+state_at_stp
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+occurrence
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+description
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+atomic_weight
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+aw_uncertainty
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+any_stable_nuclides
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+density
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+density_predicted
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+melting_point
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+mp_predicted
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+boiling_point
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+bp_predicted
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+heat_capacity
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+electronegativity
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+abundance
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+Hydrogen
+</td>
+<td style="text-align:left;">
+composed of the Greek elements hydro- and -gen meaning ‘water-forming’
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+14.01
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+20.3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+14.30
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+1.4e+03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+He
+</td>
+<td style="text-align:left;">
+Helium
+</td>
+<td style="text-align:left;">
+the Greek helios, ‘sun’
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Noble gas
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.96
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5.19
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Li
+</td>
+<td style="text-align:left;">
+Lithium
+</td>
+<td style="text-align:left;">
+the Greek lithos, ‘stone’
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkali metal
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+453.69
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1560.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3.58
+</td>
+<td style="text-align:right;">
+0.98
+</td>
+<td style="text-align:right;">
+2.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Be
+</td>
+<td style="text-align:left;">
+Beryllium
+</td>
+<td style="text-align:left;">
+beryl, a mineral
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkaline earth metal
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1.85
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1560.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2742.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1.82
+</td>
+<td style="text-align:right;">
+1.57
+</td>
+<td style="text-align:right;">
+2.8e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Boron
+</td>
+<td style="text-align:left;">
+borax, a mineral
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.34
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2349.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4200.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1.03
+</td>
+<td style="text-align:right;">
+2.04
+</td>
+<td style="text-align:right;">
+1.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Carbon
+</td>
+<td style="text-align:left;">
+the Latin carbo, ‘coal’
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.27
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3800.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4300.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:right;">
+2.55
+</td>
+<td style="text-align:right;">
+2.0e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+Nitrogen
+</td>
+<td style="text-align:left;">
+the Greek nitron and ‘-gen’ meaning ‘niter-forming’
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+63.15
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+77.4
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1.04
+</td>
+<td style="text-align:right;">
+3.04
+</td>
+<td style="text-align:right;">
+1.9e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+Oxygen
+</td>
+<td style="text-align:left;">
+from the Greek oxy-, both ‘sharp’ and ‘acid,’ and -gen, meaning ‘acid-forming’
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+16.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+54.36
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+90.2
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+<td style="text-align:right;">
+3.44
+</td>
+<td style="text-align:right;">
+4.6e+05
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+Fluorine
+</td>
+<td style="text-align:left;">
+the Latin fluere, ‘to flow’
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Halogen
+</td>
+<td style="text-align:right;">
+19.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+53.53
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+85.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+3.98
+</td>
+<td style="text-align:right;">
+5.8e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Ne
+</td>
+<td style="text-align:left;">
+Neon
+</td>
+<td style="text-align:left;">
+the Greek neos, meaning ‘new’
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Noble gas
+</td>
+<td style="text-align:right;">
+20.2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+24.56
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+27.1
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1.03
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Na
+</td>
+<td style="text-align:left;">
+Sodium
+</td>
+<td style="text-align:left;">
+the English word soda (natrium in Latin)
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkali metal
+</td>
+<td style="text-align:right;">
+23.0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.97
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+370.87
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1156.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1.23
+</td>
+<td style="text-align:right;">
+0.93
+</td>
+<td style="text-align:right;">
+2.4e+04
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Mg
+</td>
+<td style="text-align:left;">
+Magnesium
+</td>
+<td style="text-align:left;">
+Magnesia, a district of Eastern Thessaly in Greece
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkaline earth metal
+</td>
+<td style="text-align:right;">
+24.3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1.74
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+923.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1363.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1.02
+</td>
+<td style="text-align:right;">
+1.31
+</td>
+<td style="text-align:right;">
+2.3e+04
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Al
+</td>
+<td style="text-align:left;">
+Aluminium
+</td>
+<td style="text-align:left;">
+from alumina, a compound (originally aluminum)
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+27.0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.70
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+933.47
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2792.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+<td style="text-align:right;">
+1.61
+</td>
+<td style="text-align:right;">
+8.2e+04
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Silicon
+</td>
+<td style="text-align:left;">
+from the Latin silex, ‘flint’ (originally silicium)
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+28.1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.33
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1687.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3538.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+2.8e+05
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+Phosphorus
+</td>
+<td style="text-align:left;">
+the Greek phoosphoros, ‘carrying light’
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+31.0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1.82
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+317.30
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+550.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+<td style="text-align:right;">
+2.19
+</td>
+<td style="text-align:right;">
+1.0e+03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:left;">
+Sulfur
+</td>
+<td style="text-align:left;">
+the Latin sulphur, ‘fire and brimstone’
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+32.1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.07
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+388.36
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+717.9
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:right;">
+2.58
+</td>
+<td style="text-align:right;">
+3.5e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Cl
+</td>
+<td style="text-align:left;">
+Chlorine
+</td>
+<td style="text-align:left;">
+the Greek chloros, ‘greenish yellow’
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Halogen
+</td>
+<td style="text-align:right;">
+35.5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+171.60
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+239.1
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+<td style="text-align:right;">
+3.16
+</td>
+<td style="text-align:right;">
+1.4e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:left;">
+Argon
+</td>
+<td style="text-align:left;">
+the Greek argos, ‘idle’
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Noble gas
+</td>
+<td style="text-align:right;">
+40.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+83.80
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+87.3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3.5e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+Potassium
+</td>
+<td style="text-align:left;">
+New Latin potassa, ‘potash’ (kalium in Latin)
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkali metal
+</td>
+<td style="text-align:right;">
+39.1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+336.53
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1032.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+2.1e+04
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Ca
+</td>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+the Latin calx, ‘lime’
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkaline earth metal
+</td>
+<td style="text-align:right;">
+40.1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1.54
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1115.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1757.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+4.2e+04
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Sc
+</td>
+<td style="text-align:left;">
+Scandium
+</td>
+<td style="text-align:left;">
+Scandia, the Latin name for Scandinavia
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+45.0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.99
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1814.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3109.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+<td style="text-align:right;">
+1.36
+</td>
+<td style="text-align:right;">
+2.2e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Ti
+</td>
+<td style="text-align:left;">
+Titanium
+</td>
+<td style="text-align:left;">
+Titans, the sons of the Earth goddess of Greek mythology
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+47.9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+4.54
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1941.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3560.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+1.54
+</td>
+<td style="text-align:right;">
+5.6e+03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+Vanadium
+</td>
+<td style="text-align:left;">
+Vanadis, an Old Norse name for the Scandinavian goddess Freyja
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+50.9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.11
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2183.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3680.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+<td style="text-align:right;">
+1.63
+</td>
+<td style="text-align:right;">
+1.2e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Cr
+</td>
+<td style="text-align:left;">
+Chromium
+</td>
+<td style="text-align:left;">
+the Greek chroma, ‘color’
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+52.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.15
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2180.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2944.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+<td style="text-align:right;">
+1.66
+</td>
+<td style="text-align:right;">
+1.0e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Mn
+</td>
+<td style="text-align:left;">
+Manganese
+</td>
+<td style="text-align:left;">
+corrupted from magnesia negra, see Magnesium
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.44
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1519.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2334.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+<td style="text-align:right;">
+1.55
+</td>
+<td style="text-align:right;">
+9.5e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:left;">
+Iron
+</td>
+<td style="text-align:left;">
+English word (ferrum in Latin)
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+55.8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.87
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1811.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3134.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+<td style="text-align:right;">
+1.83
+</td>
+<td style="text-align:right;">
+5.6e+04
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Co
+</td>
+<td style="text-align:left;">
+Cobalt
+</td>
+<td style="text-align:left;">
+the German word Kobold, ‘goblin’
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+58.9
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.86
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1768.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3200.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+<td style="text-align:right;">
+1.88
+</td>
+<td style="text-align:right;">
+2.5e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Ni
+</td>
+<td style="text-align:left;">
+Nickel
+</td>
+<td style="text-align:left;">
+from Swedish kopparnickel, containing the German word Nickel, ‘goblin’
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+58.7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.91
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1728.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3186.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+<td style="text-align:right;">
+1.91
+</td>
+<td style="text-align:right;">
+8.4e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Cu
+</td>
+<td style="text-align:left;">
+Copper
+</td>
+<td style="text-align:left;">
+English word (Latin cuprum)
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+63.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.96
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1357.77
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2835.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+6.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Zn
+</td>
+<td style="text-align:left;">
+Zinc
+</td>
+<td style="text-align:left;">
+the German Zink
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+65.4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.13
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+692.88
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1180.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+<td style="text-align:right;">
+1.65
+</td>
+<td style="text-align:right;">
+7.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+Ga
+</td>
+<td style="text-align:left;">
+Gallium
+</td>
+<td style="text-align:left;">
+Gallia, the Latin name for France
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+69.7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+302.91
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2477.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+1.81
+</td>
+<td style="text-align:right;">
+1.9e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+Ge
+</td>
+<td style="text-align:left;">
+Germanium
+</td>
+<td style="text-align:left;">
+Germania, the Latin name for Germany
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+72.6
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+5.32
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1211.40
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3106.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+2.01
+</td>
+<td style="text-align:right;">
+1.5e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+As
+</td>
+<td style="text-align:left;">
+Arsenic
+</td>
+<td style="text-align:left;">
+English word (Latin arsenicum)
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+74.9
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+5.78
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1090.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+887.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+<td style="text-align:right;">
+2.18
+</td>
+<td style="text-align:right;">
+1.8e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:left;">
+Selenium
+</td>
+<td style="text-align:left;">
+the Greek selene, ‘moon’
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Non-metal
+</td>
+<td style="text-align:right;">
+79.0
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+4.81
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+453.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+958.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+2.55
+</td>
+<td style="text-align:right;">
+5.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+Br
+</td>
+<td style="text-align:left;">
+Bromine
+</td>
+<td style="text-align:left;">
+the Greek bromos, ‘stench’
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Liquid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Halogen
+</td>
+<td style="text-align:right;">
+79.9
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+3.12
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+265.80
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+332.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+<td style="text-align:right;">
+2.96
+</td>
+<td style="text-align:right;">
+2.4e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Kr
+</td>
+<td style="text-align:left;">
+Krypton
+</td>
+<td style="text-align:left;">
+the Greek kryptos, ‘hidden’
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Noble gas
+</td>
+<td style="text-align:right;">
+83.8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+115.79
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+119.9
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+Rb
+</td>
+<td style="text-align:left;">
+Rubidium
+</td>
+<td style="text-align:left;">
+the Latin rubidus, ‘deep red’
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkali metal
+</td>
+<td style="text-align:right;">
+85.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1.53
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+312.46
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+961.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+9.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+Sr
+</td>
+<td style="text-align:left;">
+Strontium
+</td>
+<td style="text-align:left;">
+Strontian, a small town in Scotland
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkaline earth metal
+</td>
+<td style="text-align:right;">
+87.6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2.64
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1050.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1655.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:right;">
+3.7e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:left;">
+Yttrium
+</td>
+<td style="text-align:left;">
+Ytterby, Sweden
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+88.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+4.47
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1799.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3609.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+1.22
+</td>
+<td style="text-align:right;">
+3.3e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+Zr
+</td>
+<td style="text-align:left;">
+Zirconium
+</td>
+<td style="text-align:left;">
+Persian Zargun, ‘gold-colored’; German Zirkoon, ‘jargoon’
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+91.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.51
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2128.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4682.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+1.33
+</td>
+<td style="text-align:right;">
+1.6e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+Nb
+</td>
+<td style="text-align:left;">
+Niobium
+</td>
+<td style="text-align:left;">
+Niobe, daughter of king Tantalus from Greek mythology
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+92.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.57
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2750.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5017.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+1.60
+</td>
+<td style="text-align:right;">
+2.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+Mo
+</td>
+<td style="text-align:left;">
+Molybdenum
+</td>
+<td style="text-align:left;">
+the Greek molybdos meaning ‘lead’
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+96.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+10.22
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2896.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4912.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+2.16
+</td>
+<td style="text-align:right;">
+1.2e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+Tc
+</td>
+<td style="text-align:left;">
+Technetium
+</td>
+<td style="text-align:left;">
+the Greek tekhn??tos meaning ‘artificial’
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+98.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+11.50
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2430.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4538.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+Ru
+</td>
+<td style="text-align:left;">
+Ruthenium
+</td>
+<td style="text-align:left;">
+Ruthenia, the New Latin name for Russia
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+101.1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12.37
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2607.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4423.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+Rh
+</td>
+<td style="text-align:left;">
+Rhodium
+</td>
+<td style="text-align:left;">
+the Greek rhodos, meaning ‘rose coloured’
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+102.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12.41
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2237.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3968.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+2.28
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+Pd
+</td>
+<td style="text-align:left;">
+Palladium
+</td>
+<td style="text-align:left;">
+the then recently discovered asteroid Pallas, considered a planet at the time
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+106.4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12.02
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1828.05
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3236.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+1.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+Ag
+</td>
+<td style="text-align:left;">
+Silver
+</td>
+<td style="text-align:left;">
+English word (argentum in Latin)
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+107.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+10.50
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1234.93
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2435.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+1.93
+</td>
+<td style="text-align:right;">
+7.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+Cd
+</td>
+<td style="text-align:left;">
+Cadmium
+</td>
+<td style="text-align:left;">
+the New Latin cadmia, from King Kadmos
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+112.4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.69
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+594.22
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1040.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+1.69
+</td>
+<td style="text-align:right;">
+1.6e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:left;">
+Indium
+</td>
+<td style="text-align:left;">
+indigo
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+114.8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+429.75
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2345.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+1.78
+</td>
+<td style="text-align:right;">
+2.5e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Sn
+</td>
+<td style="text-align:left;">
+Tin
+</td>
+<td style="text-align:left;">
+English word (stannum in Latin)
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+118.7
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.29
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+505.08
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2875.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+1.96
+</td>
+<td style="text-align:right;">
+2.3e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+Sb
+</td>
+<td style="text-align:left;">
+Antimony
+</td>
+<td style="text-align:left;">
+composed from the Greek anti, ‘against,’ and monos, ‘alone’ (stibium in Latin)
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+121.8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.68
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+903.78
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1860.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+2.05
+</td>
+<td style="text-align:right;">
+2.0e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+Te
+</td>
+<td style="text-align:left;">
+Tellurium
+</td>
+<td style="text-align:left;">
+Latin tellus, ‘earth’
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+127.6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.23
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+722.66
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1261.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+2.10
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+Iodine
+</td>
+<td style="text-align:left;">
+French iode (after the Greek ioeides, ‘violet’)
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Halogen
+</td>
+<td style="text-align:right;">
+126.9
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+4.93
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+386.85
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+457.4
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+2.66
+</td>
+<td style="text-align:right;">
+4.5e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:left;">
+Xe
+</td>
+<td style="text-align:left;">
+Xenon
+</td>
+<td style="text-align:left;">
+the Greek xenos, ‘strange’
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Noble gas
+</td>
+<td style="text-align:right;">
+131.3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+161.40
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+165.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+2.60
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+Cs
+</td>
+<td style="text-align:left;">
+Caesium
+</td>
+<td style="text-align:left;">
+the Latin caesius, ‘sky blue’
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkali metal
+</td>
+<td style="text-align:right;">
+132.9
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1.87
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+301.59
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+944.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+<td style="text-align:right;">
+3.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+Ba
+</td>
+<td style="text-align:left;">
+Barium
+</td>
+<td style="text-align:left;">
+the Greek barys, ‘heavy’
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Alkaline earth metal
+</td>
+<td style="text-align:right;">
+137.3
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+3.59
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1000.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2170.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:right;">
+4.2e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:left;">
+La
+</td>
+<td style="text-align:left;">
+Lanthanum
+</td>
+<td style="text-align:left;">
+the Greek lanthanein, ‘to lie hidden’
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+138.9
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.14
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1193.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3737.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+3.9e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:left;">
+Ce
+</td>
+<td style="text-align:left;">
+Cerium
+</td>
+<td style="text-align:left;">
+the then recently discovered asteroid Ceres, considered a planet at the time
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+140.1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.77
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1068.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3716.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+1.12
+</td>
+<td style="text-align:right;">
+6.6e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+Pr
+</td>
+<td style="text-align:left;">
+Praseodymium
+</td>
+<td style="text-align:left;">
+the Greek praseios didymos meaning ‘green twin’
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+140.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.77
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1208.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3793.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+1.13
+</td>
+<td style="text-align:right;">
+9.2e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Nd
+</td>
+<td style="text-align:left;">
+Neodymium
+</td>
+<td style="text-align:left;">
+the Greek neos didymos meaning ‘new twin’
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+144.2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.01
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1297.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3347.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+1.14
+</td>
+<td style="text-align:right;">
+4.2e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:left;">
+Pm
+</td>
+<td style="text-align:left;">
+Promethium
+</td>
+<td style="text-align:left;">
+Prometheus of Greek mythology who stole fire from the Gods and gave it to humans
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+145.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+7.26
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1315.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3273.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.13
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+Sm
+</td>
+<td style="text-align:left;">
+Samarium
+</td>
+<td style="text-align:left;">
+Samarskite, the name of the mineral from which it was first isolated
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+150.4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.52
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1345.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2067.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:right;">
+1.17
+</td>
+<td style="text-align:right;">
+7.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+Eu
+</td>
+<td style="text-align:left;">
+Europium
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+152.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+5.24
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1099.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1802.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+1.20
+</td>
+<td style="text-align:right;">
+2.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+Gd
+</td>
+<td style="text-align:left;">
+Gadolinium
+</td>
+<td style="text-align:left;">
+Johan Gadolin, chemist, physicist and mineralogist
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+157.2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7.89
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1585.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3546.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+1.20
+</td>
+<td style="text-align:right;">
+6.2e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:left;">
+Tb
+</td>
+<td style="text-align:left;">
+Terbium
+</td>
+<td style="text-align:left;">
+Ytterby, Sweden
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+158.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.23
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1629.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3503.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+1.20
+</td>
+<td style="text-align:right;">
+1.2e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Dy
+</td>
+<td style="text-align:left;">
+Dysprosium
+</td>
+<td style="text-align:left;">
+the Greek dysprositos, ‘hard to get’
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+162.5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.55
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1680.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2840.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+1.22
+</td>
+<td style="text-align:right;">
+5.2e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+Ho
+</td>
+<td style="text-align:left;">
+Holmium
+</td>
+<td style="text-align:left;">
+Holmia, the New Latin name for Stockholm
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+164.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8.80
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1734.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2993.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+1.23
+</td>
+<td style="text-align:right;">
+1.3e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+Er
+</td>
+<td style="text-align:left;">
+Erbium
+</td>
+<td style="text-align:left;">
+Ytterby, Sweden
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+167.3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+9.07
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1802.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3141.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:right;">
+3.5e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+Tm
+</td>
+<td style="text-align:left;">
+Thulium
+</td>
+<td style="text-align:left;">
+Thule, the ancient name for Scandinavia
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+168.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+9.32
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1818.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2223.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+1.25
+</td>
+<td style="text-align:right;">
+5.2e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+Yb
+</td>
+<td style="text-align:left;">
+Ytterbium
+</td>
+<td style="text-align:left;">
+Ytterby, Sweden
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+173.0
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6.96
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1097.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1469.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+3.2e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+Lu
+</td>
+<td style="text-align:left;">
+Lutetium
+</td>
+<td style="text-align:left;">
+Lutetia, the Latin name for Paris
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Lanthanide
+</td>
+<td style="text-align:right;">
+175.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+9.84
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1925.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3675.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+1.27
+</td>
+<td style="text-align:right;">
+8.0e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:left;">
+Hf
+</td>
+<td style="text-align:left;">
+Hafnium
+</td>
+<td style="text-align:left;">
+Hafnia, the New Latin name for Copenhagen
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+178.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+13.31
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2506.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4876.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+3.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:left;">
+Ta
+</td>
+<td style="text-align:left;">
+Tantalum
+</td>
+<td style="text-align:left;">
+King Tantalus, father of Niobe from Greek mythology
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+180.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+16.65
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3290.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5731.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:right;">
+2.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:left;">
+Tungsten
+</td>
+<td style="text-align:left;">
+the Swedish tung sten, ‘heavy stone’ (W is wolfram, the old name of the tungsten mineral wolframite)
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+183.8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+19.25
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3695.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5828.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+2.36
+</td>
+<td style="text-align:right;">
+1.3e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+Re
+</td>
+<td style="text-align:left;">
+Rhenium
+</td>
+<td style="text-align:left;">
+Rhenus, the Latin name for the river Rhine
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+186.2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+21.02
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3459.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5869.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+Os
+</td>
+<td style="text-align:left;">
+Osmium
+</td>
+<td style="text-align:left;">
+the Greek osm??, meaning ‘smell’
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+190.2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+22.61
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3306.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5285.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:left;">
+Iridium
+</td>
+<td style="text-align:left;">
+Iris, the Greek goddess of the rainbow
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+192.2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+22.56
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2719.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4701.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Pt
+</td>
+<td style="text-align:left;">
+Platinum
+</td>
+<td style="text-align:left;">
+the Spanish platina, meaning ‘little silver’
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+195.1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+21.46
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2041.40
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4098.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+2.28
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:left;">
+Gold
+</td>
+<td style="text-align:left;">
+English word (aurum in Latin)
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+197.0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+19.28
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1337.33
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3129.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+2.54
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+Hg
+</td>
+<td style="text-align:left;">
+Mercury
+</td>
+<td style="text-align:left;">
+the New Latin name mercurius, named after the Roman god (Hg from former name hydrargyrum, from Greek hydr-, ‘water,’ and argyros, ‘silver’)
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Liquid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+200.6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+13.53
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+234.43
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+629.9
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+9.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+Tl
+</td>
+<td style="text-align:left;">
+Thallium
+</td>
+<td style="text-align:left;">
+the Greek thallos, ‘green twig’
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+204.4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+11.85
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+577.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1746.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+1.62
+</td>
+<td style="text-align:right;">
+8.5e-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:left;">
+Pb
+</td>
+<td style="text-align:left;">
+Lead
+</td>
+<td style="text-align:left;">
+English word (plumbum in Latin)
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+207.2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+11.34
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+600.61
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2022.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+1.87
+</td>
+<td style="text-align:right;">
+1.4e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+Bi
+</td>
+<td style="text-align:left;">
+Bismuth
+</td>
+<td style="text-align:left;">
+German word, now obsolete
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Metal
+</td>
+<td style="text-align:right;">
+209.0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+9.81
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+544.70
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1837.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+2.02
+</td>
+<td style="text-align:right;">
+1.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+Po
+</td>
+<td style="text-align:left;">
+Polonium
+</td>
+<td style="text-align:left;">
+Polonia, the New Latin name for Poland
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Metalloid
+</td>
+<td style="text-align:right;">
+209.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+9.32
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+527.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1235.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+At
+</td>
+<td style="text-align:left;">
+Astatine
+</td>
+<td style="text-align:left;">
+the Greek astatos, ‘unstable’
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Halogen
+</td>
+<td style="text-align:right;">
+210.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+7.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+575.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+610.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:left;">
+Rn
+</td>
+<td style="text-align:left;">
+Radon
+</td>
+<td style="text-align:left;">
+From radium, as it was first detected as an emission from radium during radioactive decay
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+Gas
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Noble gas
+</td>
+<td style="text-align:right;">
+222.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+202.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+211.3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Fr
+</td>
+<td style="text-align:left;">
+Francium
+</td>
+<td style="text-align:left;">
+Francia, the New Latin name for France
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Alkali metal
+</td>
+<td style="text-align:right;">
+223.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+1.87
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+300.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+950.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:left;">
+Ra
+</td>
+<td style="text-align:left;">
+Radium
+</td>
+<td style="text-align:left;">
+the Latin radius, ‘ray’
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+s
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Alkaline earth metal
+</td>
+<td style="text-align:right;">
+226.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+5.50
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+973.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2010.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Ac
+</td>
+<td style="text-align:left;">
+Actinium
+</td>
+<td style="text-align:left;">
+the Greek aktis, ‘ray’
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+227.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10.07
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1323.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3471.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Th
+</td>
+<td style="text-align:left;">
+Thorium
+</td>
+<td style="text-align:left;">
+Thor, the Scandinavian god of thunder
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+232.0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+11.72
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2115.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+5061.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+9.6e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:left;">
+Pa
+</td>
+<td style="text-align:left;">
+Protactinium
+</td>
+<td style="text-align:left;">
+the Greek protos, ‘first,’ and actinium, which is produced through the radioactive decay of protactinium
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+231.0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+15.37
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1841.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4300.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+Uranium
+</td>
+<td style="text-align:left;">
+Uranus, the seventh planet in the Solar System
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+238.0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+18.95
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1405.30
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4404.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+1.38
+</td>
+<td style="text-align:right;">
+2.7e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+Np
+</td>
+<td style="text-align:left;">
+Neptunium
+</td>
+<td style="text-align:left;">
+Neptune, the eighth planet in the Solar System
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+237.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+20.45
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+917.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4273.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.36
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+Pu
+</td>
+<td style="text-align:left;">
+Plutonium
+</td>
+<td style="text-align:left;">
+Pluto, a dwarf planet in the Solar System
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Primordial
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+244.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+19.84
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+912.50
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3501.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.28
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+Am
+</td>
+<td style="text-align:left;">
+Americium
+</td>
+<td style="text-align:left;">
+The Americas, as the element was first synthesized on the continent, by analogy with europium
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+243.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+13.69
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1449.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2880.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.13
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Cm
+</td>
+<td style="text-align:left;">
+Curium
+</td>
+<td style="text-align:left;">
+Pierre Curie, a physicist, and Marie Curie, a physicist and chemist, named after great scientists by analogy with gadolinium
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+247.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+13.51
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1613.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3383.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.28
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+Bk
+</td>
+<td style="text-align:left;">
+Berkelium
+</td>
+<td style="text-align:left;">
+Berkeley, California, where the element was first synthesized, by analogy with terbium
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+247.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+14.79
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1259.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2900.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+Cf
+</td>
+<td style="text-align:left;">
+Californium
+</td>
+<td style="text-align:left;">
+California, where the element was first synthesized
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+251.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+15.10
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1173.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1743.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+Es
+</td>
+<td style="text-align:left;">
+Einsteinium
+</td>
+<td style="text-align:left;">
+Albert Einstein, physicist
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+252.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8.84
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1133.00
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1269.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+Fm
+</td>
+<td style="text-align:left;">
+Fermium
+</td>
+<td style="text-align:left;">
+Enrico Fermi, physicist
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+257.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+9.70
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1125.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+Md
+</td>
+<td style="text-align:left;">
+Mendelevium
+</td>
+<td style="text-align:left;">
+Dmitri Mendeleev, chemist and inventor
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+258.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10.30
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1100.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Nobelium
+</td>
+<td style="text-align:left;">
+Alfred Nobel, chemist, engineer, innovator, and armaments manufacturer
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+259.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+9.90
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1100.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+Lr
+</td>
+<td style="text-align:left;">
+Lawrencium
+</td>
+<td style="text-align:left;">
+Ernest O. Lawrence, physicist
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Solid
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Actinide
+</td>
+<td style="text-align:right;">
+266.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+15.60
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1900.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+Rf
+</td>
+<td style="text-align:left;">
+Rutherfordium
+</td>
+<td style="text-align:left;">
+Ernest Rutherford, chemist and physicist
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+267.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+23.20
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+2400.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+5800.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+Db
+</td>
+<td style="text-align:left;">
+Dubnium
+</td>
+<td style="text-align:left;">
+Dubna, Russia
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+268.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+29.30
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:left;">
+Sg
+</td>
+<td style="text-align:left;">
+Seaborgium
+</td>
+<td style="text-align:left;">
+Glenn T. Seaborg, scientist
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+269.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+35.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+Bh
+</td>
+<td style="text-align:left;">
+Bohrium
+</td>
+<td style="text-align:left;">
+Niels Bohr, physicist
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+270.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+37.10
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+Hs
+</td>
+<td style="text-align:left;">
+Hassium
+</td>
+<td style="text-align:left;">
+Hesse, Germany, where the element was first synthesized
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+269.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+40.70
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+Mt
+</td>
+<td style="text-align:left;">
+Meitnerium
+</td>
+<td style="text-align:left;">
+Lise Meitner, physicist
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+278.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+37.40
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+Ds
+</td>
+<td style="text-align:left;">
+Darmstadtium
+</td>
+<td style="text-align:left;">
+Darmstadt, Germany, where the element was first synthesized
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+281.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+34.80
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:left;">
+Rg
+</td>
+<td style="text-align:left;">
+Roentgenium
+</td>
+<td style="text-align:left;">
+Wilhelm Conrad R?_ntgen, physicist
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+282.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+28.70
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:left;">
+Cn
+</td>
+<td style="text-align:left;">
+Copernicium
+</td>
+<td style="text-align:left;">
+Nicolaus Copernicus, astronomer
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+Transition metal
+</td>
+<td style="text-align:right;">
+285.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+23.70
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+357.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+Nh
+</td>
+<td style="text-align:left;">
+Nihonium
+</td>
+<td style="text-align:left;">
+IUPAC systematic element name
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+286.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+700.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1400.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:left;">
+Fl
+</td>
+<td style="text-align:left;">
+Flerovium
+</td>
+<td style="text-align:left;">
+Georgy Flyorov, physicist
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+289.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+14.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+340.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+420.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+Mc
+</td>
+<td style="text-align:left;">
+Moscovium
+</td>
+<td style="text-align:left;">
+IUPAC systematic element name
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+289.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+13.50
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+700.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1400.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+Lv
+</td>
+<td style="text-align:left;">
+Livermorium
+</td>
+<td style="text-align:left;">
+Lawrence Livermore National Laboratory (in Livermore, California) which collaborated with JINR on its synthesis
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+293.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+12.90
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+709.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+1085.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+Ts
+</td>
+<td style="text-align:left;">
+Tennessine
+</td>
+<td style="text-align:left;">
+IUPAC systematic element name
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+294.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+723.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+883.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:left;">
+Og
+</td>
+<td style="text-align:left;">
+Ogannessine
+</td>
+<td style="text-align:left;">
+IUPAC systematic element name
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Synthetic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+294.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+258.00
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+263.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.0e+00
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?</p>
+<div id="selecting-a-column-using" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Selecting a column using <code>$</code><a class="anchor" aria-label="anchor" href="#selecting-a-column-using"><i class="fas fa-link"></i></a>
+</h2>
+<p>By default, R will organize character strings in alphabetical order. To see this, we’ll introduce two new features: the <code>table</code> function and the <code>$</code> operator.</p>
+<p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></code></pre></div>
+<pre><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Gas"    "Gas"    "Solid" 
+##  [12] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
+##  [23] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [34] "Solid"  "Liquid" "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [45] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid" 
+##  [56] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [67] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [78] "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid" 
+##  [89] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+## [100] "Solid"  "Solid"  "Solid"  "Solid"  NA       NA       NA       NA       NA       NA       NA      
+## [111] NA       NA       NA       NA       NA       NA       NA       NA</code></pre>
+<p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
+</div>
+<div id="using-in-a-dataframe" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Using <code>[ , ]</code> in a dataframe<a class="anchor" aria-label="anchor" href="#using-in-a-dataframe"><i class="fas fa-link"></i></a>
+</h2>
+<p>Recall in <a href="vectors.html#vector-selection">2.3</a> section that we could use the <code>[ ]</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
+<p>A single vector can be thought of as a dataframe with one row and <span class="math inline">\(n\)</span> columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.</p>
+<p>The <code>[ ]</code> operator allows you to select elements within a vector or a dataframe <strong>based on its row and column position.</strong> It starts by locating the row position, and then the column position.</p>
+<div id="selecting-a-single-element-using" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Selecting a single element using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-a-single-element-using"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s say I wanted to select the <code>name</code> for <code>Sodium</code>, that is in row 11, column 3.</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="fl">11</span>, <span class="fl">3</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   name  
+##   &lt;chr&gt; 
+## 1 Sodium</code></pre>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">11</span><span class="op">]</span></code></pre></div>
+<pre><code>## [1] "Sodium"</code></pre>
+<p>Notice that both commands above give me the desired value– Sodium– but the formats are different. + In the first command, R gives me back a table with 1 row and 1 column. This isn’t a coincidence, because you pulled directly from the table itself. It’s the difference between copying a “cell” in Excel versus double-clicking on the cell, and then copying the text inside. Here, you directly pulled from the table, so R returns back a value within a table. + The second gives me a single character vector. This makes sense– the <code>$</code> operator selects a single vector <code>name</code> from the table, and then selects the 11th element. Generally, this is the way you want to select a single table.</p>
+<p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></code></pre></div>
+<pre><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"    "Phosphorus" "Sulfur"    
+##  [8] "Chlorine"   "Argon"      "Potassium"  "Calcium"</code></pre>
+</div>
+<div id="selecting-rows-and-columns-using" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> Selecting rows and columns using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-rows-and-columns-using"><i class="fas fa-link"></i></a>
+</h3>
+<p>You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?</p>
+<p>We can use <code>[ , ]</code> where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let’s select rows 40 to 50 and columns 1, 2, and 4 from <code>periodic_table</code>:</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 3
+##    atomic_number symbol name_origin                                                                  
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                                                        
+##  1            41 Nb     Niobe, daughter of king Tantalus from Greek mythology                        
+##  2            42 Mo     the Greek molybdos meaning 'lead'                                            
+##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'                                    
+##  4            44 Ru     Ruthenia, the New Latin name for Russia                                      
+##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'                                    
+##  6            46 Pd     the then recently discovered asteroid Pallas, considered a planet at the time
+##  7            47 Ag     English word (argentum in Latin)                                             
+##  8            48 Cd     the New Latin cadmia, from King Kadmos                                       
+##  9            49 In     indigo                                                                       
+## 10            50 Sn     English word (stannum in Latin)</code></pre>
+</div>
+<div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3" number="4.2.3">
+<h3>
+<span class="header-section-number">4.2.3</span> “Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
+</h3>
+<div class="rmdwarning">
+<p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
+</div>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Returns all of column 2:</span>
+<span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 118 × 1
+##    symbol
+##    &lt;chr&gt; 
+##  1 H     
+##  2 He    
+##  3 Li    
+##  4 Be    
+##  5 B     
+##  6 C     
+##  7 N     
+##  8 O     
+##  9 F     
+## 10 Ne    
+## # … with 108 more rows</code></pre>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Returns all of row 2:</span>
+<span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 22
+##   atomic_number symbol name   name_origin            group period block state_at_stp occurrence description
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
+## 1             2 He     Helium the Greek helios, 'su…    18      1 s     Gas          Primordial Noble gas  
+## # … with 12 more variables: atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
+## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Returns all of column 2:</span>
+<span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 118 × 1
+##    symbol
+##    &lt;chr&gt; 
+##  1 H     
+##  2 He    
+##  3 Li    
+##  4 Be    
+##  5 B     
+##  6 C     
+##  7 N     
+##  8 O     
+##  9 F     
+## 10 Ne    
+## # … with 108 more rows</code></pre>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Returns a single element in Row 2, Column 2:</span>
+<span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   symbol
+##   &lt;chr&gt; 
+## 1 He</code></pre>
+</div>
+<div id="filtering-data-using-logical-vectors" class="section level3" number="4.2.4">
+<h3>
+<span class="header-section-number">4.2.4</span> Filtering data using Logical Vectors<a class="anchor" aria-label="anchor" href="#filtering-data-using-logical-vectors"><i class="fas fa-link"></i></a>
+</h3>
+<p>Recall in <a href="vectors.html#vector-logical-selection">2.3.1</a> that we could use a logical vector, and the <code>%in%</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
+<p>At its most basic level, you can use the <code>==</code> operator to test whether one element <strong>exactly</strong> matches another. For example, <code>"gas"=="gas"</code> returns TRUE, but <code>"gas"=="Gas"</code> will return false.</p>
+<p>Let’s say that I want to find any elements that are naturally gasses.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">==</span> <span class="st">"Liquid"</span>, <span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 17 × 22
+##    atomic_number symbol name    name_origin          group period block state_at_stp occurrence description
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
+##  1            35 Br     Bromine the Greek bromos, '…    17      4 p     Liquid       Primordial Halogen    
+##  2            80 Hg     Mercury the New Latin name …    12      6 d     Liquid       Primordial Transition…
+##  3            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+##  4            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+##  5            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+##  6            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+##  7            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+##  8            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+##  9            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 10            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 11            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 12            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 13            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 14            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 15            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 16            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## 17            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;                    NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;       
+## # … with 12 more variables: atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
+## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+<p>You’ll notice that this returns back a massive table of <code>NAs</code>, rather than just the two elements that exist in liquid state! Why?</p>
+<p>Let’s examine the command <code>periodic_table$state_at_stp=="Liquid"</code> more carefully.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">==</span><span class="st">"Liquid"</span></code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [18] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [35]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [52] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [69] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+##  [86] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [103] FALSE    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA</code></pre>
+<p>Every time the element’s state is not <code>Liquid</code>, R returns False. Rather than ignore the row, it creates a placeholder saying that the row (which has a non-Liquid element) is not applicable to the query. Although this technically does the job you want, it is not a very elegant solution, which is why the <code>%in%</code> operator is better.</p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Liquid"</span>, <span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 22
+##   atomic_number symbol name    name_origin           group period block state_at_stp occurrence description
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;                 &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      
+## 1            35 Br     Bromine the Greek bromos, 's…    17      4 p     Liquid       Primordial Halogen    
+## 2            80 Hg     Mercury the New Latin name m…    12      6 d     Liquid       Primordial Transition…
+## # … with 12 more variables: atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
+## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+<p>Much better. Notice that, with this call, we didn’t specify any columns for R to filter out, so it left those blank.</p>
+<p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span> <span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hydrogen"</span>, <span class="st">"Oxygen"</span><span class="op">)</span> <span class="op">)</span>,
+        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"atomic_weight"</span>, <span class="st">"state_at_stp"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   atomic_weight state_at_stp
+##           &lt;dbl&gt; &lt;chr&gt;       
+## 1          1.01 Gas         
+## 2         16.0  Gas</code></pre>
+<p>The extra parentheses around <code>periodic_table$name %in% c("Hydrogen", "Oxygen")</code> are a good habit to get into as they ensure everything before the comma is used to select specific rows matching that condition. For the columns, we can specify a vector of the column names to focus on only those variables. The resulting table here gives the <code>atomic_weight</code> and <code>state_at_stp</code> for <code>"Hydrogen"</code> and then for <code>"Oxygen"</code>.</p>
+<p>There are many more complicated ways to subset a data frame and one can use the <code>subset</code> function built into R, but in my experience, whenever you want to do anything more complicated than what we have done here, it is easier to use the <code>filter</code> and <code>select</code> functions in the <code>dplyr</code> package.</p>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="dataframe.html"><span class="header-section-number">3</span> Working with Dataframes</a></div>
+<div class="next"><a href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="Chapter contents"><h2>Chapter contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#filtering-data"><span class="header-section-number">4</span> Filtering Data</a></li>
+<li><a class="nav-link" href="#selecting-a-column-using"><span class="header-section-number">4.1</span> Selecting a column using $</a></li>
+<li>
+<a class="nav-link" href="#using-in-a-dataframe"><span class="header-section-number">4.2</span> Using [ , ] in a dataframe</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#selecting-a-single-element-using"><span class="header-section-number">4.2.1</span> Selecting a single element using [ , ]</a></li>
+<li><a class="nav-link" href="#selecting-rows-and-columns-using"><span class="header-section-number">4.2.2</span> Selecting rows and columns using [ , ]</a></li>
+<li><a class="nav-link" href="#lets-eat-grandma-vs.-lets-eat-grandma"><span class="header-section-number">4.2.3</span> “Let’s eat Grandma!” vs. “Let’s eat, Grandma!”</a></li>
+<li><a class="nav-link" href="#filtering-data-using-logical-vectors"><span class="header-section-number">4.2.4</span> Filtering data using Logical Vectors</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li hidden><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/04-Filtering-Data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li hidden><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/04-Filtering-Data.Rmd"><i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 22 June, 2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

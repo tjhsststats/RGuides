@@ -41,7 +41,7 @@ Finally, as in \@ref(vector-operations), you can alter your dataframe by using t
 friends$names[1]<- "Abe"
 
 #I want to see what everybody's age is in 50 years.
-friends$ages<- ages+50
+friends$ages<- friends$ages+50
 
 #I want to add their last names.
 friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")

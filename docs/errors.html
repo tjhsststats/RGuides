@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Deciphering Common R Errors | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="Adapted from Ismay and Kennedy (2016) For references on errors, check out the following two links by Noam Ross here and David Smith here.  7.7 Error: unexpected input in ______’, or, ' versus ’...">
+<meta name="description" content="Adapted from Ismay and Kennedy (2016) For references on errors, check out the following two links by Noam Ross here and David Smith here.  Error: unexpected input in ______’, or, ' versus ’ This...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Deciphering Common R Errors | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Adapted from Ismay and Kennedy (2016) For references on errors, check out the following two links by Noam Ross here and David Smith here.  7.7 Error: unexpected input in ______’, or, ' versus ’...">
+<meta property="og:description" content="Adapted from Ismay and Kennedy (2016) For references on errors, check out the following two links by Noam Ross here and David Smith here.  Error: unexpected input in ______’, or, ' versus ’ This...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deciphering Common R Errors | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="Adapted from Ismay and Kennedy (2016) For references on errors, check out the following two links by Noam Ross here and David Smith here.  7.7 Error: unexpected input in ______’, or, ' versus ’...">
+<meta name="twitter:description" content="Adapted from Ismay and Kennedy (2016) For references on errors, check out the following two links by Noam Ross here and David Smith here.  Error: unexpected input in ______’, or, ' versus ’ This...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -75,11 +75,12 @@
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
-<li><a class="" href="working-with-dataframes.html"><span class="header-section-number">3</span> Working with Dataframes</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">4</span> Summarizing Data</a></li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">5</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">6</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">7</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Working with Dataframes</a></li>
+<li><a class="" href="filtering-data.html"><span class="header-section-number">4</span> Filtering Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">6</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">7</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">8</span> Intro to ANOVA Analysis</a></li>
 <li><a class="active" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -94,9 +95,9 @@
 </h1>
 <p><em>Adapted from <span class="citation"><a href="references.html#ref-usedtor2016" role="doc-biblioref">Ismay and Kennedy</a> (<a href="references.html#ref-usedtor2016" role="doc-biblioref">2016</a>)</span> </em></p>
 <p>For references on errors, check out the following two links by Noam Ross <a href="https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md">here</a> and David Smith <a href="http://blog.revolutionanalytics.com/2015/03/the-most-common-r-error-messages.html">here</a>.</p>
-<div id="error-unexpected-input-in-______-or-versus" class="section level2" number="7.7">
+<div id="error-unexpected-input-in-______-or-versus" class="section level2 unnumbered">
 <h2>
-<span class="header-section-number">7.7</span> <code>Error: unexpected input in ______’</code>, or, <code>'</code> versus <code>’</code><a class="anchor" aria-label="anchor" href="#error-unexpected-input-in-______-or-versus"><i class="fas fa-link"></i></a>
+<code>Error: unexpected input in ______’</code>, or, <code>'</code> versus <code>’</code><a class="anchor" aria-label="anchor" href="#error-unexpected-input-in-______-or-versus"><i class="fas fa-link"></i></a>
 </h2>
 <p>This error often comes when you copy code directly from Google Docs, Microsoft Word, or a webpage, and paste it directly into R. The symbols look the same to us, but computers interpret these very differently.</p>
 <p>When you type words, web pages, like Google Docs and Microsoft Word, will give you the typographical apostrophe, <code>’</code>. It looks more aesthetically pleasing than the coding apostrophe <code>'</code>.</p>
@@ -125,7 +126,7 @@
 <h2>Unmatched parenthesis<a class="anchor" aria-label="anchor" href="#unmatched-parenthesis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Another common error is forgetting or neglecting to finish a call to a function with a closing <code>)</code>. An example of this follows:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="errors.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="errors.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
 <pre><code>Error in parse(text = x, srcfile = src) :
  &lt;text&gt;:2:0: unexpected end of input
 1: mean(x = c(1, 5, 10, 52)
@@ -134,7 +135,7 @@ Calls: &lt;Anonymous&gt; ... evaluate -&gt; parse_all -&gt; parse_all.character 
 Execution halted
 Exited with status 1.</code></pre>
 <p>In this case, there needs to be one more parenthesis added at the end of your call to <code>mean</code>:</p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">52</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="general-guidelines" class="section level2 unnumbered">
@@ -146,13 +147,13 @@ Exited with status 1.</code></pre>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="intro-to-anova-analysis.html"><span class="header-section-number">7</span> Intro to ANOVA Analysis</a></div>
+<div class="prev"><a href="intro-to-anova-analysis.html"><span class="header-section-number">8</span> Intro to ANOVA Analysis</a></div>
 <div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="Chapter contents"><h2>Chapter contents</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#errors">Deciphering Common R Errors</a></li>
-<li><a class="nav-link" href="#error-unexpected-input-in-______-or-versus"><span class="header-section-number">7.7</span> Error: unexpected input in ______’, or, ' versus ’</a></li>
+<li><a class="nav-link" href="#error-unexpected-input-in-______-or-versus">Error: unexpected input in ______’, or, ' versus ’</a></li>
 <li><a class="nav-link" href="#error-could-not-find-function">Error: could not find function</a></li>
 <li><a class="nav-link" href="#error-object-not-found">Error: object not found</a></li>
 <li><a class="nav-link" href="#misspellings">Misspellings</a></li>
