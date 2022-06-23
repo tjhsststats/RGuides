@@ -232,7 +232,7 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <code class="sourceCode R"><span class="va">five_years_older</span> <span class="op">&lt;-</span> <span class="va">friend_ages</span> <span class="op">+</span> <span class="fl">5</span>
 <span class="va">five_years_older</span></code></pre></div>
 <pre><code>## [1] 39 40 37 34 35 35</code></pre>
-<p>Just like that, every age is five more than where we started. This extends to adding two vectors together<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note in the last example, I had to manually override the vector. That’s because these are characters, and if you use the &lt;code&gt;+&lt;/code&gt; operator, R will return an error saying that you can’t add “a” with “b”. There are ways to deal with this in a more efficient manner using the &lt;code&gt;stringr&lt;/code&gt; package, but learning it is not required to understand the basics of R. We will assume that you’re entering your data into Excel first, before feeding it into R for processing.&lt;/p&gt;"><sup>1</sup></a>.</p>
+<p>Just like that, every age is five more than where we started. This extends to adding two vectors together<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Vectors of the same size, of course…well, actually R has a way of dealing with vectors of different sizes and not giving errors, but let’s ignore that for now.&lt;/p&gt;"><sup>1</sup></a>.</p>
 </div>
 <div id="vector-selection" class="section level2" number="2.3">
 <h2>

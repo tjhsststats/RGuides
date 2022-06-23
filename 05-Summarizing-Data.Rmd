@@ -1,6 +1,6 @@
 # Summarizing Data
 
-Let's do some more practice. Download the [`dca_weather` dataset](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv), which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day.  This data is taken from [NOAA's Website](https://www.ncdc.noaa.gov/cdo-web/).
+Let's do some more practice. Download the [`dca_weather` dataset](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv){target="_blank"}, which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day. This data is taken from [NOAA's Website](https://www.ncdc.noaa.gov/cdo-web/){target="_blank"}.
 
 ```{r, echo=FALSE, fig.cap="Weather Data for DCA Airport from 1/1/2022 to 6/19/2022"}
 load("~/Github/RGuides/resources/data/dca_weather.RData")
@@ -9,9 +9,9 @@ knitr::kable(dca_weather, caption="Weather Data for DCA Airport from 1/1/2022 to
   kable_styling(position= "center", font_size = 10)
 ```
 
-## `mean`, `median`, and `fivenum`
+## `mean`, `median`, `fivenum`, and `sd()`
 
-These functions do exactly as they sound, however, you must pass a **numeric vector** through each of them. 
+These functions do exactly as they sound, however, you must pass a **numeric vector** through each of them.
 
 ```{r, error=TRUE}
 #This will return an error-- since dca_weather has multiple columns, R doesn't know which column you want.
@@ -27,25 +27,46 @@ Knowing the average temperature from January to June is pretty useless though-- 
 ```{r}
 mean(dca_weather$TAVG[dca_weather$month %in% 6] )
 ```
+
 If the command looks intimidating, consider the command from inside out.
 
-  1. In the square brackets, you consider only the rows where `dca_weather$months` is equal to 6. Those pass on a set of rows to `dca_weather$TAVG`. 
-  2. Then, you pass only those rows, and select the `dca_weather$TAVG` data from those rows. That passes on a vector to `mean()`.
-  3. Finally, you calculate the mean of all those numbers. 
+1.  In the square brackets, you consider only the rows where `dca_weather$months` is equal to 6. Those pass on a set of rows to `dca_weather$TAVG`.
+2.  Then, you pass only those rows, and select the `dca_weather$TAVG` data from those rows. That passes on a vector to `mean()`.
+3.  Finally, you calculate the mean of all those numbers.
 
-The `median()` and `fivenum()` commands work the same. 
+The `median()` and `fivenum()` commands work the same.
 
 ```{r}
 fivenum(dca_weather$TMIN[dca_weather$month %in% 2])
 
 median(dca_weather$TMAX[dca_weather$month %in% 5])
+
+sd(dca_weather$TMAX[dca_weather$month %in% 3])
 ```
 
+### The dreaded `NA` response
 
-## `sd`
+Consider the following code:
 
+```{r}
+sd(dca_weather$TMAX[dca_weather$month %in% 6])
 
+```
 
+Why does it return back `NA`? Well it turns out that if you look examine the data for June... it turns out that there are some NAs within the vector we are trying to process. Any time you perform a mathematical operation with NA in R, R will always return back NA-- it's like a special value that obliterates everything else in its path.
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"', fig.cap="The last three rows of `dca_weather`"}
+dca_weather[169:171,]
+```
+
+At this point, we have a choice to make. Obviously, the data for June 20th wasn't available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn't make sense to treat `NA` as 0, because clearly the temperature wasn't 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any `NAs` in the data.
+
+```{r}
+sd(dca_weather$TMAX[dca_weather$month %in% 6], na.rm=TRUE)
+
+```
+
+Notice that the argument `na.rm=` is passed into the `sd()` argument. Try typing `?sd()` to read the documentation on this function.
 
 ## The `table` function
 
@@ -56,3 +77,38 @@ table(periodic_table$state_at_stp)
 ```
 
 -   The table function provides a count of the number of elements that appear in each state. But as you can see, the ordering is off.
+
+### Optional: Making code efficient with piping and dplyr
+
+The following code does the same exact thing as the previous command, using the `dyplr` package and the piping operator.[^3]
+```{r}
+library(dplyr)
+dca_weather %>%
+  dplyr::filter(month==6) %>%
+  dplyr::select(TMAX) %>%
+  summarize(average=mean(TMAX, na.rm=TRUE), std_dev=sd(TMAX, na.rm=TRUE))
+
+```
+
+[^3]: You notice that I'm not just using the `filter` command, but `dyplr::filter`. This is because the `filter()` name is also used by R for a entirely separate command, that is unrelated to the `dplyr::filter()` command in `dplyr`. The `::` operator tells R to use the `filter` function inside `dplyr`.
+
+Although it is one more thing to learn, it is more powerful and sustainable in the long run. In fact, most help guides you'll see on the internet will use the `pipe` operator and the dplyr functions `filter` and `select. Some advantages:
+
++ Unlike in base R, where the first command is on the inside, and you work your way out, piping allows you to see the first command on the top. 
++ Piping also passes the dataframe name to the next command, so you don't need to retype the dataset name each time.
++ The `dplyr::filter()` function also makes quick work of selecting only the rows that you need, rather than using a combination of `[]`, `%in`, and `$`. 
++ And finally, the summarize command allows you to not just calculate one statistic, but many statistics at once. 
+
+
+```{r, echo = FALSE, fig.align='center', fig.cap="A comparison between Base R commands and dplyr commands."}
+knitr::include_graphics("resources/images/05-Summarizing-Data/Base_vs_dplyr.png") 
+```
+
+Finally, dplyr allows us to do more powerful things like the `group_by` function. Now, we can find the mean, median, and standard deviation of all 6 months with just one command.
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+dca_weather %>%
+  dplyr::group_by(month) %>%
+  dplyr::select(TMAX) %>%
+  summarize(average=mean(TMAX, na.rm=TRUE), median=median(TMAX, na.rm=TRUE), std_dev=sd(TMAX, na.rm=TRUE))
+```

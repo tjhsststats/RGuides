@@ -35,9 +35,9 @@ c(length(friend_names), length(friend_ages), length(lives_in_dc))
 
 ### Operations with Dataframes
 
-Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^1]
+Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^2]
 
-[^1]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
+[^2]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
 
 Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
 
