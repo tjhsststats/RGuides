@@ -1,7 +1,7 @@
 # Filtering Data
 
 ::: rmdtip
-Let's practice importing data, from \@ref(dataframe). Download the [periodic table](http://ismayc.github.io/periodic-table-data.csv) data now, and import it into R as `periodic_table`.
+Let's practice importing data, from \@ref(dataframe). Download the [periodic table](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv) data now, and import it into R as `periodic_table`.
 
 -   Remember to move this into your working directory: `getwd()`
 

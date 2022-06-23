@@ -1,6 +1,6 @@
 # Summarizing Data
 
-Let's do some more practice. Download the [`dca_weather` dataset](https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv), which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day.  This data is taken from [NOAA's Website](https://www.ncdc.noaa.gov/cdo-web/).
+Let's do some more practice. Download the [`dca_weather` dataset](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv), which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day.  This data is taken from [NOAA's Website](https://www.ncdc.noaa.gov/cdo-web/).
 
 ```{r, echo=FALSE, fig.cap="Weather Data for DCA Airport from 1/1/2022 to 6/19/2022"}
 load("~/Github/RGuides/resources/data/dca_weather.RData")
