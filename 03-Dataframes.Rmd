@@ -1,4 +1,4 @@
-# Working with Dataframes {#dataframe}
+# Creating Dataframes {#dataframe}
 
 ## Creating Dataframes
 
@@ -9,7 +9,7 @@ In the last chapter, you learned how to create vectors that included elements, e
 Each vector can be considered a column within a table. So if you want to create a table, you just have to combine the vectors together, right? Let's combine the `friend_names` and `friend_ages` vectors from the previous chapter:
 
 ```{r}
-friends <- c(friend_names, friend_ages)
+friends <- c(friend_names, friend_ages, lives_in_dc)
 friends
 ```
 
@@ -33,30 +33,50 @@ Note that all three vectors that we used **were of the same length**. You can ch
 c(length(friend_names), length(friend_ages), length(lives_in_dc))
 ```
 
-Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^2]
+### Operations with Dataframes
+
+Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^1]
+
+[^1]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
+
+Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
 
 ```{r}
-#Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
-
 friends$names[1]<- "Abe"
-
-#I want to see what everybody's age is in 50 years.
-friends$ages<- friends$ages+50
-
-#I want to add their last names.
-friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
-
 friends
 ```
 
+I want to see what everybody's age is in 50 years.
 
-[^2]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
+```{r}
+friends$ages<- friends$ages+50
+friends
+```
+
+I want to add their last names.
+
+```{r}
+friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
+friends
+```
+
+Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents "Abram A":
+
+```{r}
+friends<- friends[-1, ]
+
+friends
+```
 
 #### Troubleshooting `data.frame`
 
 If your vectors are not all of equal length, R will return an error.
 
 In my previous example, I had six friends: `Abram, Bryant, Colleen, David, Esther, and Jeremiah`. Let's say that I don't know whether `Jeremiah` lives in DC, so my `lives_in_dc` vector is only a length of 5. I'm overwriting my old lives_in_dc vector with the one below.
+
+```{r, echo=FALSE, results='hide'}
+load("~/Github/RGuides/resources/data/friends.Rdata")
+```
 
 ```{r, error=TRUE}
 
@@ -125,8 +145,8 @@ We **strongly suggest** that, once you download your data file, you move it into
 
 Importing the dataset itself is easy.
 
--   **XLSX**: Go to the menu > File > Import Dataset > From Excel.
--   **CSV**: Go to menu > File > Import Dataset > From Text (readr).
+-   **XLSX**: Go to the menu \> File \> Import Dataset \> From Excel.
+-   **CSV**: Go to menu \> File \> Import Dataset \> From Text (readr).
 
 ```{r, echo = FALSE, fig.align='center', out.width="50%", fig.cap="Navigating to the Import Menu."}
 knitr::include_graphics("resources/images/00-Getting-Started/Import_1.png") 
@@ -143,4 +163,3 @@ knitr::include_graphics("resources/images/00-Getting-Started/Import_2.png")
     a.  If you want to change the name of the dataset, do that on the bottom left of the window under "name."
 
 3.  You should now have your dataset imported. Verify that it is correctly imported, on the top right.
-

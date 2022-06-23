@@ -1,7 +1,48 @@
 # Summarizing Data
 
+Let's do some more practice. Download the [`dca_weather` dataset](https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv), which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day.  This data is taken from [NOAA's Website](https://www.ncdc.noaa.gov/cdo-web/).
+
+```{r, echo=FALSE, fig.cap="Weather Data for DCA Airport from 1/1/2022 to 6/19/2022"}
+load("~/Github/RGuides/resources/data/dca_weather.RData")
+knitr::kable(dca_weather, caption="Weather Data for DCA Airport from 1/1/2022 to 6/19/2022", booktabs=TRUE) %>%
+  scroll_box(height="400px") %>%
+  kable_styling(position= "center", font_size = 10)
+```
+
 ## `mean`, `median`, and `fivenum`
 
+These functions do exactly as they sound, however, you must pass a **numeric vector** through each of them. 
+
+```{r, error=TRUE}
+#This will return an error-- since dca_weather has multiple columns, R doesn't know which column you want.
+mean(dca_weather) 
+```
+
+```{r}
+mean(dca_weather$TAVG)
+```
+
+Knowing the average temperature from January to June is pretty useless though-- sometimes, you want to filter it by month.
+
+```{r}
+mean(dca_weather$TAVG[dca_weather$month %in% 6] )
+```
+If the command looks intimidating, consider the command from inside out.
+
+  1. In the square brackets, you consider only the rows where `dca_weather$months` is equal to 6. Those pass on a set of rows to `dca_weather$TAVG`. 
+  2. Then, you pass only those rows, and select the `dca_weather$TAVG` data from those rows. That passes on a vector to `mean()`.
+  3. Finally, you calculate the mean of all those numbers. 
+
+The `median()` and `fivenum()` commands work the same. 
+
+```{r}
+fivenum(dca_weather$TMIN[dca_weather$month %in% 2])
+
+median(dca_weather$TMAX[dca_weather$month %in% 5])
+```
+
+
+## `sd`
 
 
 

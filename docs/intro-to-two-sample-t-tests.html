@@ -75,7 +75,7 @@
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
-<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Working with Dataframes</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
 <li><a class="" href="filtering-data.html"><span class="header-section-number">4</span> Filtering Data</a></li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">6</span> Census Data and Linear Regression</a></li>
@@ -100,7 +100,7 @@
 </h2>
 <p>The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option.</p>
 <p>When it first gets loaded, I want certain columns to be treated as numeric vectors. The code is below.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
 <span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/anime.csv"</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>MAL_ID <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Score <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Episodes <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Popularity <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Members <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Favorites <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Watching <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Completed <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `On-Hold` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Dropped <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Plan to Watch` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-10` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-9` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-8` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-7` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-6` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-5` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-4` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-3` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-2` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Score-1` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
@@ -110,7 +110,7 @@
 <span class="header-section-number">7.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Examine any problems with the dataset. Notice that there are a lot of randome problems where we treated a column as a numeric vector, but the actual data value was “Unknown” instead. R will convert the value to “NA,” which is fine with us.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 16,570 × 5
 ##      row   col expected actual  file                                                   
@@ -126,42 +126,38 @@
 ##  9  1580    34 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
 ## 10  1701     3 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
 ## # … with 16,560 more rows</code></pre>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name         Score Genders `English name` `Japanese name` Type  Episodes Aired Premiered Producers
-##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    
-## 1      1 Cowboy Bebop  8.78 Action… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V…
-## 2      5 Cowboy Bebo…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,…
-## 3      6 Trigun        8.24 Action… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E…
-## 4      7 Witch Hunte…  7.27 Action… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo…
-## 5      8 Bouken Ou B…  6.98 Advent… Beet the Vand… 冒険王ビィト    TV          52 Sep … Fall 2004 TV Tokyo…
-## 6     15 Eyeshield 21  7.95 Action… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo…
-## # … with 24 more variables: Licensors &lt;chr&gt;, Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;,
-## #   Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;,
-## #   `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;,
-## #   `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;, `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;,
-## #   `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+##   MAL_ID Name   Score Genders `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors Studios Source Duration Rating
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; 
+## 1      1 Cowbo…  8.78 Action… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati… Sunrise Origi… 24 min.… R - 1…
+## 2      5 Cowbo…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic… Bones   Origi… 1 hr. 5… R - 1…
+## 3      6 Trigun  8.24 Action… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati… Madhou… Manga  24 min.… PG-13…
+## 4      7 Witch…  7.27 Action… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati… Sunrise Origi… 25 min.… PG-13…
+## 5      8 Bouke…  6.98 Advent… Beet the Vand… 冒険王ビィト    TV          52 Sep … Fall 2004 TV Tokyo… Unknown   Toei A… Manga  23 min.… PG - …
+## 6     15 Eyesh…  7.95 Action… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi… Gallop  Manga  23 min.… PG-13…
+## # … with 19 more variables: Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
+## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;,
+## #   `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;, `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"       "English name"  "Japanese name"
-##  [7] "Type"          "Episodes"      "Aired"         "Premiered"     "Producers"     "Licensors"    
-## [13] "Studios"       "Source"        "Duration"      "Rating"        "Ranked"        "Popularity"   
-## [19] "Members"       "Favorites"     "Watching"      "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"      
-## [31] "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"       "English name"  "Japanese name" "Type"          "Episodes"     
+##  [9] "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"        "Duration"      "Rating"       
+## [17] "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"      "Completed"     "On-Hold"       "Dropped"      
+## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"       "Score-5"       "Score-4"      
+## [33] "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>If you look, for some reason the “Genres” column is named “Genders.” Let’s rename to “Genres.”</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">==</span><span class="st">"Genders"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Genres"</span></code></pre></div>
 <p>Verify that the column names are now correct.</p>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"        "English name"  "Japanese name"
-##  [7] "Type"          "Episodes"      "Aired"         "Premiered"     "Producers"     "Licensors"    
-## [13] "Studios"       "Source"        "Duration"      "Rating"        "Ranked"        "Popularity"   
-## [19] "Members"       "Favorites"     "Watching"      "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"      
-## [31] "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"        "English name"  "Japanese name" "Type"          "Episodes"     
+##  [9] "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"        "Duration"      "Rating"       
+## [17] "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"      "Completed"     "On-Hold"       "Dropped"      
+## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"       "Score-5"       "Score-4"      
+## [33] "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>Save the new file as a R dataframe.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="isolate-the-variables-of-interest." class="section level2" number="7.3">
@@ -169,34 +165,32 @@
 <span class="header-section-number">7.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
 </h2>
 <p>This uses subsets all rows within the anime dataframe based on the condition in the brackets, and then saves it into a new dataframe called action_anime. The condition is satifised with the “grep” function, which will search for any character string and return “TRUE” if it contains “Action” within the column anime$Genres.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">action_anime</span><span class="op">&lt;-</span> <span class="va">anime</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"Action"</span>, <span class="va">anime</span><span class="op">$</span><span class="va">Genres</span><span class="op">)</span>, <span class="op">]</span></code></pre></div>
 <p>View the dataframe. How many animes do you recognize?</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name          Score Genres `English name` `Japanese name` Type  Episodes Aired Premiered Producers
-##    &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    
-## 1      1 Cowboy Bebop   8.78 Actio… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V…
-## 2      5 Cowboy Bebop…  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,…
-## 3      6 Trigun         8.24 Actio… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E…
-## 4      7 Witch Hunter…  7.27 Actio… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo…
-## 5     15 Eyeshield 21   7.95 Actio… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo…
-## 6     18 Initial D Fo…  8.15 Actio… Unknown        頭文字〈イニシ… TV          24 Apr … Spring 2… OB Plann…
-## # … with 24 more variables: Licensors &lt;chr&gt;, Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;,
-## #   Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;,
-## #   `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;,
-## #   `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;, `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;,
-## #   `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
+##   MAL_ID Name    Score Genres `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors Studios Source Duration Rating
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; 
+## 1      1 Cowboy…  8.78 Actio… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati… Sunrise Origi… 24 min.… R - 1…
+## 2      5 Cowboy…  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic… Bones   Origi… 1 hr. 5… R - 1…
+## 3      6 Trigun   8.24 Actio… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati… Madhou… Manga  24 min.… PG-13…
+## 4      7 Witch …  7.27 Actio… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati… Sunrise Origi… 25 min.… PG-13…
+## 5     15 Eyeshi…  7.95 Actio… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi… Gallop  Manga  23 min.… PG-13…
+## 6     18 Initia…  8.15 Actio… Unknown        頭文字〈イニシ… TV          24 Apr … Spring 2… OB Plann… Funimati… A.C.G.… Manga  27 min.… PG-13…
+## # … with 19 more variables: Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
+## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;,
+## #   `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;, `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <p>We’re interested in how people rated these animes. Let’s calculate the score column for each.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 6.8</code></pre>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 6.5</code></pre>
 <p>Interesting! Let’s isolate the score columns from both dataframes and store them as separate vectors.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">anime_score</span><span class="op">&lt;-</span> <span class="va">anime</span><span class="op">$</span><span class="va">Score</span>
 <span class="va">action_anime_score</span> <span class="op">&lt;-</span> <span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span></code></pre></div>
 </div>
@@ -205,7 +199,7 @@
 <span class="header-section-number">7.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
 </h2>
 <p>It looks like the average rating for action animes is indeed higher than the average rating for all animes. But by how much? To answer this question, let’s first graph a boxplot.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">anime_score</span>, <span class="va">action_anime_score</span>, 
         ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">10</span><span class="op">)</span>,
         main<span class="op">=</span> <span class="st">"Boxplot comparison of All Anime vs. Action Anime"</span>,
@@ -225,7 +219,7 @@
 <li><p>Our alternative hypothesis is that there <strong>is</strong> a difference between two averages, specifically that the average rating for all animes is lower than the average rating for action animes.</p></li>
 </ul>
 <p>Set the alternative hypothesis to be that the true average score of all animes is LOWER than the true average score for action animes.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">action_t_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">anime_score</span>, <span class="va">action_anime_score</span>, alternative<span class="op">=</span> <span class="st">"less"</span>, var.equal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>View the results.</p>
 <pre><code>## 
@@ -250,7 +244,7 @@
 <li><p>storing the degrees of freedom in a variable called action_t_test.</p></li>
 <li><p>creating an x-axis and store it as a variable called <strong>t_d_st_x_axis</strong>. This is the equivalent of drawing tick marks everywhere on a graph, but a ton of tick marks. We’re making a huge sequence 10^4 numbers long (so 10000 numbers) between -15.5 and 15.5. This helps fit in my massive test statistic of -14.34</p></li>
 </ol>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">action_t_test_df</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">anime_score</span><span class="op">)</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">action_anime_score</span><span class="op">)</span> <span class="op">-</span><span class="fl">2</span> <span class="co">#Recall how to calculate degrees of freedom.</span>
 <span class="va">t_dist_x_axis</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">15.5</span>, <span class="fl">15.5</span>, length<span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">4</span><span class="op">)</span></code></pre></div>
 <p>Finally, plot. Notice here that for plot():</p>
@@ -258,7 +252,7 @@
 <li><p>the x-value is <strong>t_dist_x_axis</strong></p></li>
 <li><p>the y-value is <strong>dt(t_dist_x_axis, df=action_t_test_df)</strong>. This generates a t-value for every value in <strong>t_dist_x_axis</strong>, so basically <em>f(x)</em>, with the degrees of greedom we set earlier.</p></li>
 </ul>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">t_dist_x_axis</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">t_dist_x_axis</span>, df<span class="op">=</span><span class="va">action_t_test_df</span><span class="op">)</span>, 
      type<span class="op">=</span><span class="st">'l'</span>, 
      xlab<span class="op">=</span><span class="st">'t'</span>, 
@@ -266,12 +260,12 @@
      main<span class="op">=</span><span class="st">"The most ridiculous t-test graph ever"</span>,
      sub<span class="op">=</span><span class="st">"Look at that test statistic in the dotted line. Just look."</span><span class="op">)</span></code></pre></div>
 <p>I want to show how ridiculous this is. We’re going to store the critical t* value of 0.01 in it’s own variable, and plot that with red lines.</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">crit_t_value_0.01</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.01</span>, df<span class="op">=</span><span class="va">action_t_test_df</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">crit_t_value_0.01</span>, col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="op">-</span><span class="va">crit_t_value_0.01</span>, col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span></code></pre></div>
 <p>Finally, plot the test statistic, using a dotted line.</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">action_t_test</span><span class="op">$</span><span class="va">statistic</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/t-test%20plot2-1.png" width="100%" style="display: block; margin: auto;"></div>
 
@@ -281,7 +275,7 @@
 <div class="prev"><a href="census-data-and-linear-regression.html"><span class="header-section-number">6</span> Census Data and Linear Regression</a></div>
 <div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">8</span> Intro to ANOVA Analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="Chapter contents"><h2>Chapter contents</h2>
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">7</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="nav-link" href="#loading-data."><span class="header-section-number">7.1</span> Loading Data.</a></li>
@@ -294,8 +288,8 @@
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li hidden><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/AB-Two-Sample-T-Test.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li hidden><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/AB-Two-Sample-T-Test.Rmd"><i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/AB-Two-Sample-T-Test.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/AB-Two-Sample-T-Test.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -307,7 +301,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 22 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 23 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
