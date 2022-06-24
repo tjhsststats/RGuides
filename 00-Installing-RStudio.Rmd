@@ -51,7 +51,7 @@ If Software Center is taking longer than 10 minutes to install, follow these ste
 
   + Next, click **McAfee Agent Status Monitor.**
 
-```{r, echo = FALSE, out.width="70%"}
+```{r, echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/00-Getting-Started/McAfee_1.png")
 ```
 
@@ -67,7 +67,7 @@ knitr::include_graphics("resources/images/00-Getting-Started/McAfee_2.png")
 
   + Click on the **"Update Now"** button on the upper right corner. 
 
-```{r, echo = FALSE, out.width= "80%"}
+```{r, echo = FALSE, out.width= "70%"}
 knitr::include_graphics("resources/images/00-Getting-Started/McAfee_3.png")
 ```
 

@@ -9,4 +9,4 @@ bookdown::bs4_book:
       collapse: no
     sharing: null
   includes:
-    in_header: header.html
+    in_header: resources/bookdown/header.html

@@ -10,14 +10,14 @@ fig:unnamed-chunk-59
 tab:unnamed-chunk-63
 tab:unnamed-chunk-75
 fig:unnamed-chunk-85
-tab:unnamed-chunk-92
-fig:unnamed-chunk-93
+tab:unnamed-chunk-94
 fig:unnamed-chunk-95
-fig:unnamed-chunk-96
 fig:unnamed-chunk-97
-tab:unnamed-chunk-108
+fig:unnamed-chunk-98
+fig:unnamed-chunk-99
 tab:unnamed-chunk-110
-fig:unnamed-chunk-113
+tab:unnamed-chunk-112
+fig:unnamed-chunk-115
 interacting-with-r-studio
 using-rstudio
 packages
@@ -51,6 +51,7 @@ mean-median-fivenum-and-sd
 the-dreaded-na-response
 the-table-function
 optional-making-code-efficient-with-piping-and-dplyr
+visualizing-univariate-one-variable-data
 census-data-and-linear-regression
 install-packages-and-census-api-key
 pull-data-from-the-census

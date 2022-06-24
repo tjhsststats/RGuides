@@ -14,7 +14,8 @@ knitr::kable(dca_weather, caption="Weather Data for DCA Airport from 1/1/2022 to
 These functions do exactly as they sound, however, you must pass a **numeric vector** through each of them.
 
 ```{r, error=TRUE}
-#This will return an error-- since dca_weather has multiple columns, R doesn't know which column you want.
+#This will return an error-- since dca_weather 
+#has multiple columns, R doesn't know which column you want.
 mean(dca_weather) 
 ```
 

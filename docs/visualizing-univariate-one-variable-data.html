@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Preface | 📊 TJ RS1 with R</title>
+<title>Chapter 6 Visualizing Univariate (One-Variable) Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="This website serves as a digital companion for TJ students taking the RS1 class, using R.">
+<meta name="description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.">
 <meta name="generator" content="bookdown 0.27.1 with bs4_book()">
-<meta property="og:title" content="Preface | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 6 Visualizing Univariate (One-Variable) Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="This website serves as a digital companion for TJ students taking the RS1 class, using R.">
+<meta property="og:description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Preface | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="This website serves as a digital companion for TJ students taking the RS1 class, using R.">
+<meta name="twitter:title" content="Chapter 6 Visualizing Univariate (One-Variable) Data | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -76,14 +76,14 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">Preface</a></li>
+<li><a class="" href="index.html">Preface</a></li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
 <li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
 <li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
 <li><a class="" href="filtering-data.html"><span class="header-section-number">4</span> Filtering Data</a></li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
-<li><a class="" href="visualizing-univariate-one-variable-data.html"><span class="header-section-number">6</span> Visualizing Univariate (One-Variable) Data</a></li>
+<li><a class="active" href="visualizing-univariate-one-variable-data.html"><span class="header-section-number">6</span> Visualizing Univariate (One-Variable) Data</a></li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">8</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">9</span> Intro to ANOVA Analysis</a></li>
@@ -96,34 +96,23 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="preface" class="section level1 unnumbered">
-<h1>Preface<a class="anchor" aria-label="anchor" href="#preface"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualizing-univariate-one-variable-data" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Visualizing Univariate (One-Variable) Data<a class="anchor" aria-label="anchor" href="#visualizing-univariate-one-variable-data"><i class="fas fa-link"></i></a>
 </h1>
-<p>This website serves as a digital companion for TJ students taking the RS1 class. Materials and format here are heavily inspired and borrowed from <span class="citation">Kane (<a href="references.html#ref-kane2022" role="doc-biblioref">2022</a>)</span> and <span class="citation">Starnes, Yates, and Moore (<a href="references.html#ref-starnes_yates_moore_2012" role="doc-biblioref">2012</a>)</span> .</p>
-<p>Almost everything else was written by Mr. Ng and Mr. McFee.</p>
-<div class="inline-figure"><img src="resources/images/casper.jpeg" width="100%" style="display: block; margin: auto;"></div>
-<div id="casper-sleeping" class="section level2 unnumbered">
-<h2>Casper Sleeping<a class="anchor" aria-label="anchor" href="#casper-sleeping"><i class="fas fa-link"></i></a>
-</h2>
-<div class="inline-figure"><img src="resources/images/casper_sleeping.jpeg" width="100%" style="display: block; margin: auto;"></div>
-<iframe src="https://youtube.com/embed/EAV6J6hE9rk?t=10" width="80%" height="400px" data-external="1">
-</iframe>
+<p>Now that we have talked about summarizing data, let’s talk about visualizing it.</p>
 
 </div>
-</div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="next"><a href="installing-r-and-rstudio.html">Installing R and RStudio</a></div>
+<div class="prev"><a href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></div>
+<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#preface">Preface</a></li>
-<li><a class="nav-link" href="#casper-sleeping">Casper Sleeping</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#visualizing-univariate-one-variable-data"><span class="header-section-number">6</span> Visualizing Univariate (One-Variable) Data</a></li></ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/index.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/06-Visualizing-Data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/06-Visualizing-Data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

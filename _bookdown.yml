@@ -21,6 +21,7 @@ rmd_files:
     "03-Dataframes.Rmd",
     "04-Filtering-Data.Rmd",
     "05-Summarizing-Data.Rmd",
+    "06-Visualizing-Data.Rmd",
     "A-Census-and-Linear-Regression.Rmd",
     "AB-Two-Sample-T-Test.Rmd",
     "AC-ANOVA-Analysis.Rmd",
@@ -80,8 +81,8 @@ delete_merged_file: true
 # that book_start.R and book_end.R are only run once each.
 
 
-before_chapter_script: "book_start.R"
-after_chapter_script: "book_end.R"
+before_chapter_script: "resources/bookdown/book_start.R"
+after_chapter_script: "resources/bookdown/book_end.R"
 
 # More comments:
 

@@ -1,0 +1,3 @@
+# Visualizing Univariate (One-Variable) Data
+
+Now that we have talked about summarizing data, let's talk about visualizing it. 

@@ -9,7 +9,7 @@ link-citations: yes
 nocite: '@*'
 colorlinks: yes
 lot: false
-lof: false
+lof: true
 always_allow_html: yes
 graphics: yes
 date: "`r format(Sys.time(), '%d %B, %Y')`"
