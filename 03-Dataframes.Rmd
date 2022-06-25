@@ -1,8 +1,7 @@
 # Creating Dataframes {#dataframe}
 
-## Creating Dataframes
 
-### Combining Vectors into Dataframes
+## Combining Vectors into Dataframes
 
 In the last chapter, you learned how to create vectors that included elements, either through `c()`, `seq()`, or `:`.
 
@@ -33,42 +32,7 @@ Note that all three vectors that we used **were of the same length**. You can ch
 c(length(friend_names), length(friend_ages), length(lives_in_dc))
 ```
 
-### Operations with Dataframes
-
-Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^2]
-
-[^2]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
-
-Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
-
-```{r}
-friends$names[1]<- "Abe"
-friends
-```
-
-I want to see what everybody's age is in 50 years.
-
-```{r}
-friends$ages<- friends$ages+50
-friends
-```
-
-I want to add their last names.
-
-```{r}
-friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
-friends
-```
-
-Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents "Abram A":
-
-```{r}
-friends<- friends[-1, ]
-
-friends
-```
-
-#### Troubleshooting `data.frame`
+### Troubleshooting `data.frame`
 
 If your vectors are not all of equal length, R will return an error.
 
@@ -109,7 +73,7 @@ friends <- data.frame(names = friend_names,
 friends
 ```
 
-### Importing an Excel or CVS File into R as a Data frame
+## Importing an Excel or CVS File into R as a Data frame
 
 **XLSX** and **CSV** files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon:
 

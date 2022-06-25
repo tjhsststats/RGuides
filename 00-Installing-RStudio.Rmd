@@ -1,3 +1,5 @@
+# (PART\*) Getting Started {.unnumbered}
+
 # Installing R and RStudio {-}
 
 You will never interact with R in this class.

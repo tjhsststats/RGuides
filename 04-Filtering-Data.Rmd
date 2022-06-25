@@ -1,4 +1,40 @@
-# Filtering Data
+# Working with Dataframes
+
+## Operations with Dataframes
+
+Finally, as in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.[^2]
+
+[^2]: Note in the last example, I had to manually override the vector. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". There are ways to deal with this in a more efficient manner using the `stringr` package, but learning it is not required to understand the basics of R. We will assume that you're entering your data into Excel first, before feeding it into R for processing.
+
+Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
+
+```{r}
+friends$names[1]<- "Abe"
+friends
+```
+
+I want to see what everybody's age is in 50 years.
+
+```{r}
+friends$ages<- friends$ages+50
+friends
+```
+
+I want to add their last names.
+
+```{r}
+friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
+friends
+```
+
+Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents "Abram A":
+
+```{r}
+friends<- friends[-1, ]
+
+friends
+```
+
 
 ::: rmdtip
 Let's practice importing data, from \@ref(dataframe). Download the [periodic table](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv){target="_blank"} data now, and import it into R as `periodic_table`.
@@ -25,7 +61,9 @@ knitr::kable(periodic_table, caption="The Periodic Table", booktabs=TRUE) %>%
 
 So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?
 
-## Selecting a column using `$`
+## Filtering Data
+
+### Selecting a column using `$`
 
 By default, R will organize character strings in alphabetical order. To see this, we'll introduce two new features: the `table` function and the `$` operator.
 
@@ -38,8 +76,7 @@ periodic_table$state_at_stp
 
 As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by `$` and the name of the variable. (Note that spaces in variable names will not work. You'll likely learn that the hard way, as I have.)
 
-
-## Using `[ , ]` in a dataframe
+### Using `[ , ]` for a dataframe
 
 Recall in \@ref(vector-selection) section that we could use the `[ ]` operator, to select elements from a single vector. We can extend these operations into a dataframe.
 
@@ -47,7 +84,7 @@ A single vector can be thought of as a dataframe with one row and $n$ columns, w
 
 The `[ ]` operator allows you to select elements within a vector or a dataframe **based on its row and column position.** It starts by locating the row position, and then the column position.
 
-### Selecting a single element using `[ , ]`
+#### Selecting a single element using `[ , ]`
 
 Let's say I wanted to select the `name` for `Sodium`, that is in row 11, column 3.
 
@@ -65,7 +102,7 @@ Recall the use of `[ ]` when a vector was printed, to help us better understand 
 periodic_table$name[10:20]
 ```
 
-### Selecting rows and columns using `[ , ]` 
+#### Selecting rows and columns using `[ , ]` 
 
 You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?
 
@@ -75,7 +112,7 @@ We can use `[ , ]` where the spot before the comma corresponds to rows and the s
 periodic_table[41:50, c(1, 2, 4)]
 ```
 
-### "Let's eat Grandma!" vs. "Let's eat, Grandma!"
+##### "Let's eat Grandma!" vs. "Let's eat, Grandma!" {-}
 
 ::: rmdwarning
 **The comma is very important.** Let's look at some examples:
@@ -95,7 +132,7 @@ periodic_table[ ,2]
 periodic_table[2,2]
 ```
 
-### Filtering data using Logical Vectors
+### Using `%in%`, `==`, and Logical Vectors
 
 Recall in \@ref(vector-logical-selection) that we could use a logical vector, and the `%in%` operator, to select elements from a single vector. We can extend these operations into a dataframe.
 

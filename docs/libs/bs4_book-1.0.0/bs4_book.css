@@ -214,10 +214,16 @@ nav[data-toggle="toc"] .nav .nav > li > a {
   margin-left: 10px;
 }
 
-/* This is added to add fourth tier headings in the toc. */
+/* This adds fourth tier headings in the toc. */
 
 nav[data-toggle="toc"] .nav .nav .nav > li > a {
   margin-left: 20px;
+}
+
+/* This adds fifth tier headings in the toc. */
+
+nav[data-toggle="toc"] .nav .nav .nav .nav > li > a {
+  margin-left: 30px;
 }
 
 /* Figures -------------------------------------------- */
