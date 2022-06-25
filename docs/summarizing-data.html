@@ -6692,11 +6692,11 @@ NA
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 3 × 12
-##   STATION     NAME                                       year month   day  TAVG  TMAX  TMIN  AWND  PRCP  SNOW  SNWD
-##   &lt;chr&gt;       &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 USW00013743 WASHINGTON REAGAN NATIONAL AIRPORT, VA US  2022     6    18    77    79    67  16.1     0     0     0
-## 2 USW00013743 WASHINGTON REAGAN NATIONAL AIRPORT, VA US  2022     6    19    70    80    60  14.3     0     0     0
-## 3 USW00013743 WASHINGTON REAGAN NATIONAL AIRPORT, VA US  2022     6    20    72    NA    NA  NA      NA    NA    NA</code></pre>
+##   STATION     NAME            year month   day  TAVG  TMAX  TMIN  AWND  PRCP  SNOW  SNWD
+##   &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 USW00013743 WASHINGTON RE…  2022     6    18    77    79    67  16.1     0     0     0
+## 2 USW00013743 WASHINGTON RE…  2022     6    19    70    80    60  14.3     0     0     0
+## 3 USW00013743 WASHINGTON RE…  2022     6    20    72    NA    NA  NA      NA    NA    NA</code></pre>
 <p>At this point, we have a choice to make. Obviously, the data for June 20th wasn’t available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn’t make sense to treat <code>NA</code> as 0, because clearly the temperature wasn’t 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any <code>NAs</code> in the data.</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>

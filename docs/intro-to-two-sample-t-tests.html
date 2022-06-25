@@ -135,33 +135,40 @@
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name    Score Genders `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors Studios Source Duration Rating
-##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; 
-## 1      1 Cowboy…  8.78 Action… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati… Sunrise Origi… 24 min.… R - 1…
-## 2      5 Cowboy…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic… Bones   Origi… 1 hr. 5… R - 1…
-## 3      6 Trigun   8.24 Action… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati… Madhou… Manga  24 min.… PG-13…
-## 4      7 Witch …  7.27 Action… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati… Sunrise Origi… 25 min.… PG-13…
-## 5      8 Bouken…  6.98 Advent… Beet the Vand… 冒険王ビィト    TV          52 Sep … Fall 2004 TV Tokyo… Unknown   Toei A… Manga  23 min.… PG - …
-## 6     15 Eyeshi…  7.95 Action… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi… Gallop  Manga  23 min.… PG-13…
-## # … with 19 more variables: Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
-## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;,
+##   MAL_ID Name          Score Genders `English name` `Japanese name` Type  Episodes Aired
+##    &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;
+## 1      1 Cowboy Bebop   8.78 Action… Cowboy Bebop   カウボーイビバ… TV          26 Apr …
+## 2      5 Cowboy Bebop…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep …
+## 3      6 Trigun         8.24 Action… Trigun         トライガン      TV          26 Apr …
+## 4      7 Witch Hunter…  7.27 Action… Witch Hunter … Witch Hunter R… TV          26 Jul …
+## 5      8 Bouken Ou Be…  6.98 Advent… Beet the Vand… 冒険王ビィト    TV          52 Sep …
+## 6     15 Eyeshield 21   7.95 Action… Unknown        アイシールド21  TV         145 Apr …
+## # … with 26 more variables: Premiered &lt;chr&gt;, Producers &lt;chr&gt;, Licensors &lt;chr&gt;,
+## #   Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;,
+## #   Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;,
+## #   `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;,
+## #   `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;,
 ## #   `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;, `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"       "English name"  "Japanese name" "Type"          "Episodes"     
-##  [9] "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"        "Duration"      "Rating"       
-## [17] "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"      "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"       "Score-5"       "Score-4"      
-## [33] "Score-3"       "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"       "English name" 
+##  [6] "Japanese name" "Type"          "Episodes"      "Aired"         "Premiered"    
+## [11] "Producers"     "Licensors"     "Studios"       "Source"        "Duration"     
+## [16] "Rating"        "Ranked"        "Popularity"    "Members"       "Favorites"    
+## [21] "Watching"      "Completed"     "On-Hold"       "Dropped"       "Plan to Watch"
+## [26] "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"      
+## [31] "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>If you look, for some reason the “Genres” column is named “Genders.” Let’s rename to “Genres.”</p>
 <div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">==</span><span class="st">"Genders"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Genres"</span></code></pre></div>
 <p>Verify that the column names are now correct.</p>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"        "English name"  "Japanese name" "Type"          "Episodes"     
-##  [9] "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"        "Duration"      "Rating"       
-## [17] "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"      "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"       "Score-5"       "Score-4"      
-## [33] "Score-3"       "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"        "English name" 
+##  [6] "Japanese name" "Type"          "Episodes"      "Aired"         "Premiered"    
+## [11] "Producers"     "Licensors"     "Studios"       "Source"        "Duration"     
+## [16] "Rating"        "Ranked"        "Popularity"    "Members"       "Favorites"    
+## [21] "Watching"      "Completed"     "On-Hold"       "Dropped"       "Plan to Watch"
+## [26] "Score-10"      "Score-9"       "Score-8"       "Score-7"       "Score-6"      
+## [31] "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>Save the new file as a R dataframe.</p>
 <div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></code></pre></div>
@@ -177,16 +184,19 @@
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name     Score Genres `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors Studios Source Duration Rating
-##    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; 
-## 1      1 Cowboy …  8.78 Actio… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati… Sunrise Origi… 24 min.… R - 1…
-## 2      5 Cowboy …  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic… Bones   Origi… 1 hr. 5… R - 1…
-## 3      6 Trigun    8.24 Actio… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati… Madhou… Manga  24 min.… PG-13…
-## 4      7 Witch H…  7.27 Actio… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati… Sunrise Origi… 25 min.… PG-13…
-## 5     15 Eyeshie…  7.95 Actio… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi… Gallop  Manga  23 min.… PG-13…
-## 6     18 Initial…  8.15 Actio… Unknown        頭文字〈イニシ… TV          24 Apr … Spring 2… OB Plann… Funimati… A.C.G.… Manga  27 min.… PG-13…
-## # … with 19 more variables: Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
-## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;,
+##   MAL_ID Name           Score Genres `English name` `Japanese name` Type  Episodes Aired
+##    &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;
+## 1      1 Cowboy Bebop    8.78 Actio… Cowboy Bebop   カウボーイビバ… TV          26 Apr …
+## 2      5 Cowboy Bebop:…  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep …
+## 3      6 Trigun          8.24 Actio… Trigun         トライガン      TV          26 Apr …
+## 4      7 Witch Hunter …  7.27 Actio… Witch Hunter … Witch Hunter R… TV          26 Jul …
+## 5     15 Eyeshield 21    7.95 Actio… Unknown        アイシールド21  TV         145 Apr …
+## 6     18 Initial D Fou…  8.15 Actio… Unknown        頭文字〈イニシ… TV          24 Apr …
+## # … with 26 more variables: Premiered &lt;chr&gt;, Producers &lt;chr&gt;, Licensors &lt;chr&gt;,
+## #   Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;,
+## #   Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;,
+## #   `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;,
+## #   `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;,
 ## #   `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;, `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <p>We’re interested in how people rated these animes. Let’s calculate the score column for each.</p>
 <div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">

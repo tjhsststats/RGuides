@@ -8219,14 +8219,20 @@ NA
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></code></pre></div>
-<pre style="max-height: 100px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [16] "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [31] "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [46] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [61] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [76] "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [91] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  NA       NA      
-## [106] NA       NA       NA       NA       NA       NA       NA       NA       NA       NA       NA       NA       NA</code></pre>
+<pre style="max-height: 100px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Gas"   
+##  [10] "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"   
+##  [19] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [28] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Gas"   
+##  [37] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [46] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"   
+##  [55] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [64] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [73] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Solid" 
+##  [82] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
+##  [91] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+## [100] "Solid"  "Solid"  "Solid"  "Solid"  NA       NA       NA       NA       NA      
+## [109] NA       NA       NA       NA       NA       NA       NA       NA       NA      
+## [118] NA</code></pre>
 <p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
 </div>
 <div id="using-in-a-dataframe" class="section level2" number="4.2">
@@ -8254,8 +8260,8 @@ NA
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></code></pre></div>
-<pre><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"    "Phosphorus" "Sulfur"     "Chlorine"   "Argon"      "Potassium" 
-## [11] "Calcium"</code></pre>
+<pre><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"    "Phosphorus"
+##  [7] "Sulfur"     "Chlorine"   "Argon"      "Potassium"  "Calcium"</code></pre>
 </div>
 <div id="selecting-rows-and-columns-using" class="section level3" number="4.2.2">
 <h3>
@@ -8266,17 +8272,17 @@ NA
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 3
-##    atomic_number symbol name_origin                                                                  
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                                                        
-##  1            41 Nb     Niobe, daughter of king Tantalus from Greek mythology                        
-##  2            42 Mo     the Greek molybdos meaning 'lead'                                            
-##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'                                    
-##  4            44 Ru     Ruthenia, the New Latin name for Russia                                      
-##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'                                    
-##  6            46 Pd     the then recently discovered asteroid Pallas, considered a planet at the time
-##  7            47 Ag     English word (argentum in Latin)                                             
-##  8            48 Cd     the New Latin cadmia, from King Kadmos                                       
-##  9            49 In     indigo                                                                       
+##    atomic_number symbol name_origin                                                     
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                                           
+##  1            41 Nb     Niobe, daughter of king Tantalus from Greek mythology           
+##  2            42 Mo     the Greek molybdos meaning 'lead'                               
+##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'                       
+##  4            44 Ru     Ruthenia, the New Latin name for Russia                         
+##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'                       
+##  6            46 Pd     the then recently discovered asteroid Pallas, considered a plan…
+##  7            47 Ag     English word (argentum in Latin)                                
+##  8            48 Cd     the New Latin cadmia, from King Kadmos                          
+##  9            49 In     indigo                                                          
 ## 10            50 Sn     English word (stannum in Latin)</code></pre>
 </div>
 <div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3" number="4.2.3">
@@ -8307,11 +8313,14 @@ NA
 <code class="sourceCode R"><span class="co">#Returns all of row 2:</span>
 <span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></code></pre></div>
 <pre style="max-height: 140px;"><code>## # A tibble: 1 × 22
-##   atomic_number symbol name   name_origin  group period block state_at_stp occurrence description atomic_weight aw_uncertainty any_stable_nucl…
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;           
-## 1             2 He     Helium the Greek h…    18      1 s     Gas          Primordial Noble gas            4.00              2 Yes             
-## # … with 9 more variables: density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
-## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+##   atomic_number symbol name   name_origin     group period block state_at_stp occurrence
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     
+## 1             2 He     Helium the Greek heli…    18      1 s     Gas          Primordial
+## # … with 13 more variables: description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
+## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;,
+## #   boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;,
+## #   electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Returns all of column 2:</span>
 <span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></code></pre></div>
@@ -8347,37 +8356,44 @@ NA
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">==</span> <span class="st">"Liquid"</span>, <span class="op">]</span></code></pre></div>
 <pre style="max-height: 200px;"><code>## # A tibble: 17 × 22
-##    atomic_number symbol name   name_origin group period block state_at_stp occurrence description atomic_weight aw_uncertainty any_stable_nucl…
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;           
-##  1            35 Br     Bromi… the Greek …    17      4 p     Liquid       Primordial Halogen              79.9             NA Yes             
-##  2            80 Hg     Mercu… the New La…    12      6 d     Liquid       Primordial Transition…         201.               3 Yes             
-##  3            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-##  4            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-##  5            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-##  6            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-##  7            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-##  8            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-##  9            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 10            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 11            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 12            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 13            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 14            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 15            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 16            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## 17            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                 NA               NA &lt;NA&gt;            
-## # … with 9 more variables: density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
-## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+##    atomic_number symbol name    name_origin   group period block state_at_stp occurrence
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     
+##  1            35 Br     Bromine the Greek br…    17      4 p     Liquid       Primordial
+##  2            80 Hg     Mercury the New Lati…    12      6 d     Liquid       Primordial
+##  3            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+##  4            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+##  5            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+##  6            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+##  7            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+##  8            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+##  9            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 10            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 11            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 12            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 13            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 14            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 15            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 16            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## 17            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;             NA     NA &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;      
+## # … with 13 more variables: description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
+## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;,
+## #   boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;,
+## #   electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
 <p>You’ll notice that this returns back a massive table of <code>NAs</code>, rather than just the two elements that exist in liquid state! Why?</p>
 <p>Let’s examine the command <code>periodic_table$state_at_stp=="Liquid"</code> more carefully.</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">==</span><span class="st">"Liquid"</span></code></pre></div>
-<pre style="max-height: 100px;"><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [24] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [47] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [70] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [93] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
-## [116]    NA    NA    NA</code></pre>
+<pre style="max-height: 100px;"><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [14] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [27] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+##  [40] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [53] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [66] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [79] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [92] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE    NA
+## [105]    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+## [118]    NA</code></pre>
 <ul>
 <li>Every time the element’s state is not <code>Liquid</code>, R returns False, instead of ignoring the row, which means you get a logical vector of all 118 elements.</li>
 <li>This gets passed onto the subset function, which, rather than ignore any row that says FALSE, returns each row as entirely NAs.</li>
@@ -8386,12 +8402,15 @@ NA
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Liquid"</span>, <span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 22
-##   atomic_number symbol name    name_origin group period block state_at_stp occurrence description atomic_weight aw_uncertainty any_stable_nucl…
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;           
-## 1            35 Br     Bromine the Greek …    17      4 p     Liquid       Primordial Halogen              79.9             NA Yes             
-## 2            80 Hg     Mercury the New La…    12      6 d     Liquid       Primordial Transition…         201.               3 Yes             
-## # … with 9 more variables: density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
-## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+##   atomic_number symbol name    name_origin    group period block state_at_stp occurrence
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     
+## 1            35 Br     Bromine the Greek bro…    17      4 p     Liquid       Primordial
+## 2            80 Hg     Mercury the New Latin…    12      6 d     Liquid       Primordial
+## # … with 13 more variables: description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
+## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;,
+## #   boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;,
+## #   electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
 <p>Much better. Notice that, with this call, we didn’t specify any columns for R to filter out, so it left those blank.</p>
 <p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
