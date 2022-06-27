@@ -1,3 +1,145 @@
-# Visualizing Univariate (One-Variable) Data
+# Visualizing One-Variable Data
 
 Now that we have talked about summarizing data, let's talk about visualizing it. 
+
+## Histograms
+
+You can use the built-in `hist()` function in order to create histograms, very easily. Below, I will graph the `TAVG`, average temperature, from the `dca_weather` dataset in February, when `month` equals 2.
+
+```{r}
+feb_temps<- dca_weather$TAVG[dca_weather$month %in% 2]
+hist(feb_temps, 
+     col= "skyblue", 
+     main= "Average Daily Temperature at DCA in February 2022", 
+     xlab= "Temperature (Fahrenheit)", 
+     ylab="Number of Days")
+```
+
+When we use any plotting function in R, we always pass some extra commands to customize the chart called a **parameter**. 
+
+You can type all the parameters in a single line, but it is usually cleaner to make a new line for each parameter. As long as you follow each parameter with a comma `,` and the parameters are all inside the parentheses `()` of your plot command, you will be OK.
+
+### Graphical Parameters
+Here's a breakdown of the parameters in the histogram above:
+
+  + `col`: Sets the color of the graphic elements. [Here's a list of colors that you can pick from in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+  + `main`: Sets the main title of the graph.
+  + `xlab`: Sets the x-axis label. Always include units!
+  + `ylab`: Sets the y-axis label. Always include context!
+
+## Histogram Exercise
+**Your turn!** In the box below is a histogram of march_temps at DCA. Label the graph appropriately, and change the color to `darkseagreen4`.
+
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Hist_Example/" scrolling="no" frameborder="no">
+
+</iframe>
+
+
+## Dotplots
+
+Unfortunately, there's no built in function to create dotplots in R. We have to repurpose the `stripchart` command in order to make something closest to a dotplot.
+
+Below, I will graph the `TAVG`, average temperature, from the `dca_weather` dataset in June, when `month` equals 6.
+
+```{r}
+june_temps<- dca_weather$TAVG[dca_weather$month %in% 6]
+stripchart(june_temps, method = "stack", offset = .5, at = 0, pch = 19,
+           col = "steelblue", main = "Average June Temperatures at DCA", xlab = "Temperature (Fahrenheit)")
+```
+
+## Boxplots
+
+### Single Boxplots
+
+Let's start off with the most simple case: making one boxplot with one variable. I'll make a boxplot of June Temperatures in DCA:
+
+```{r}
+boxplot(june_temps,
+        col="pink",
+        main= "Boxplot of June Temperatures at DCA Airport",
+        xlab= "Temperature (Fahrenheit)",
+        horizontal= TRUE)
+```
+
+By default, the `boxplot()` command will create boxplots in the vertical orientation (more on this later). If you want to have the boxplots become horizontal, set the `horizontal=` parameter to `TRUE`.
+
+### Grouped Boxplots
+
+Normally, you don't just make one boxplot, but several boxplots to compare variance *within groups*. To do this, we have to give the `boxplot()` command a second **grouping variable**, which we indicate with the `~` operator.
+
+Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the `data= ` parameter. Below are the bosplots for `TAVG` with the `dca_weather` dataset, grouped by `month`. 
+
+```{r}
+boxplot(TAVG~month, data=dca_weather,
+        col="skyblue",
+        main= "Daily Average Temperatures at DCA Airport, by Month",
+        xlab= "Month",
+        ylab="Temperature (Fahrenheit)")
+```
+
+The `~` variable effectively tells R which axis to to place each variable in, based on `y~x`. In other words, since the first variable is `TAVG`, that goes on the y-axis, and `month` goes on the x-axis. We have effectively set `month` as our grouping variable. 
+
+Look at what happens when you switch the axes around:
+
+```{r}
+boxplot(month~TAVG, data=dca_weather)
+```
+
+Yep. It's not pretty. Be careful of which variable goes where.
+
+### Customizing `boxplot()`
+Here's an idea of the things you can do with boxplots:
+
+```{r}
+boxplot(TAVG~month, data=dca_weather,
+        col=c("skyblue", "darkcyan", "cadetblue1", "chartreuse", "forestgreen", "darkorange"),
+        main= "Daily Average Temperatures at DCA Airport, by Month",
+        xlab= "Month",
+        ylab="Temperature (Fahrenheit)",
+        names=c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))
+```
+
+
+  + In our original graph,  `Months` were labeled as their numbers. If you want to give custom names for each group, use the `names=` parameter. Remember to set the `names=` parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.
+  + If you want to give your boxplots different colors, set `col=` to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots. 
+
+
+## Exporting your graphs
+You can find your plots under the **Plots** tab in the lower right.
+
+```{r, echo = FALSE, fig.align='center', out.width="30%"}
+knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab.png") 
+```
+
+There are a couple of ways to export your graphs in RStudio. 
+
+1. Right click on the plot, and select *"Save Image As"*, or *"Copy to Clipboard"*.
+```{r, echo = FALSE, fig.align='center', out.width="30%"}
+knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_right_click.png") 
+```
+
+
+2. Click on Export on the top, and then click *"Save  As Image"*, or *"Copy to Clipboard"*.
+```{r, echo = FALSE, fig.align='center', out.width="30%"}
+knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_export.png") 
+```
+
+### Blurry Graphs?
+
+Blurry graphs happen because your plot window is too small. For some reason, it hapens more on the FCPS provided computers than on personal laptops. To fix:
+
+1. Under the plots tab, click **"Zoom"**. A new window will pop open.
+2. This window will have a larger version of your graph. Use the right click method to save your graph. 
+
+## More advanced graphical parameters, like par()
+
+
+
+
+## Summarizing and Visualizing Data Exercises {-}
+
+
+
+<script>
+  iFrameResize({}, ".interactive");
+</script>

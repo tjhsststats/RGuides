@@ -52,6 +52,9 @@ In this case, there needs to be one more parenthesis added at the end of your ca
 mean(x = c(1, 5, 10, 52))
 ```
 
+## Graphs are blurry
+(See here.)[https://kaisamng.github.io/RGuides/visualizing-one-variable-data.html#blurry-graphs]
+
 ## General guidelines {-}
 
 Try your best to not be intimidated by R errors. Oftentimes, you will find that you are able to understand what they mean by carefully reading over them. When you can't, carefully look over your R Markdown file again. You might also want to clear out all of your R environment and start at the top by running the chunks. Remember to only include what you deem your reader will need to follow your analysis.

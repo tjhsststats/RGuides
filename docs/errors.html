@@ -87,7 +87,7 @@
 <li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
-<li><a class="" href="visualizing-univariate-one-variable-data.html"><span class="header-section-number">6</span> Visualizing Univariate (One-Variable) Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">8</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">9</span> Intro to ANOVA Analysis</a></li>
@@ -136,7 +136,7 @@
 <h2>Unmatched parenthesis<a class="anchor" aria-label="anchor" href="#unmatched-parenthesis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Another common error is forgetting or neglecting to finish a call to a function with a closing <code>)</code>. An example of this follows:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="errors.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="errors.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
 <pre><code>Error in parse(text = x, srcfile = src) :
  &lt;text&gt;:2:0: unexpected end of input
 1: mean(x = c(1, 5, 10, 52)
@@ -145,8 +145,14 @@ Calls: &lt;Anonymous&gt; ... evaluate -&gt; parse_all -&gt; parse_all.character 
 Execution halted
 Exited with status 1.</code></pre>
 <p>In this case, there needs to be one more parenthesis added at the end of your call to <code>mean</code>:</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">52</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="graphs-are-blurry" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Graphs are blurry<a class="anchor" aria-label="anchor" href="#graphs-are-blurry"><i class="fas fa-link"></i></a>
+</h2>
+<p>(See here.)[<a href="https://kaisamng.github.io/RGuides/visualizing-one-variable-data.html#blurry-graphs" class="uri">https://kaisamng.github.io/RGuides/visualizing-one-variable-data.html#blurry-graphs</a>]</p>
 </div>
 <div id="general-guidelines" class="section level2 unnumbered">
 <h2>General guidelines<a class="anchor" aria-label="anchor" href="#general-guidelines"><i class="fas fa-link"></i></a>
@@ -168,6 +174,7 @@ Exited with status 1.</code></pre>
 <li><a class="nav-link" href="#error-object-not-found">Error: object not found</a></li>
 <li><a class="nav-link" href="#misspellings">Misspellings</a></li>
 <li><a class="nav-link" href="#unmatched-parenthesis">Unmatched parenthesis</a></li>
+<li><a class="nav-link" href="#graphs-are-blurry"><span class="header-section-number">9.7</span> Graphs are blurry</a></li>
 <li><a class="nav-link" href="#general-guidelines">General guidelines</a></li>
 </ul>
       <div class="book-extra" hidden>

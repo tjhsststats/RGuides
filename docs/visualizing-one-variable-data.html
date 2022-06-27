@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Visualizing One-Variable Data | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist() function in order to create histograms, very easily. Below, I will...">
+<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Visualizing One-Variable Data | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist() function in order to create histograms, very easily. Below, I will...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Visualizing One-Variable Data | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist() function in order to create histograms, very easily. Below, I will...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
+<li><a class="" href="working-with-dataframes.html"><span class="header-section-number">4</span> Working with Dataframes</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
+<li><a class="active" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">8</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">9</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualizing-one-variable-data" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Visualizing One-Variable Data<a class="anchor" aria-label="anchor" href="#visualizing-one-variable-data"><i class="fas fa-link"></i></a>
+</h1>
+<p>Now that we have talked about summarizing data, let’s talk about visualizing it.</p>
+<div id="histograms" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Histograms<a class="anchor" aria-label="anchor" href="#histograms"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can use the built-in <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function in order to create histograms, very easily. Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in February, when <code>month</code> equals 2.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">feb_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">feb_temps</span>, 
+     col<span class="op">=</span> <span class="st">"skyblue"</span>, 
+     main<span class="op">=</span> <span class="st">"Average Daily Temperature at DCA in February 2022"</span>, 
+     xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>, 
+     ylab<span class="op">=</span><span class="st">"Number of Days"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-91-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>When we use any plotting function in R, we always pass some extra commands to customize the chart called a <strong>parameter</strong>.</p>
+<p>You can type all the parameters in a single line, but it is usually cleaner to make a new line for each parameter. As long as you follow each parameter with a comma <code>,</code> and the parameters are all inside the parentheses <code>()</code> of your plot command, you will be OK.</p>
+<div id="graphical-parameters" class="section level3" number="6.1.1">
+<h3>
+<span class="header-section-number">6.1.1</span> Graphical Parameters<a class="anchor" aria-label="anchor" href="#graphical-parameters"><i class="fas fa-link"></i></a>
+</h3>
+<p>Here’s a breakdown of the parameters in the histogram above:</p>
+<ul>
+<li>
+<code>col</code>: Sets the color of the graphic elements. <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">Here’s a list of colors that you can pick from in R</a>
+</li>
+<li>
+<code>main</code>: Sets the main title of the graph.</li>
+<li>
+<code>xlab</code>: Sets the x-axis label. Always include units!</li>
+<li>
+<code>ylab</code>: Sets the y-axis label. Always include context!</li>
+</ul>
+</div>
+</div>
+<div id="histogram-exercise" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Histogram Exercise<a class="anchor" aria-label="anchor" href="#histogram-exercise"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Your turn!</strong> In the box below is a histogram of march_temps at DCA. Label the graph appropriately, and change the color to <code>darkseagreen4</code>.</p>
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Hist_Example/" scrolling="no" frameborder="no">
+</iframe>
+</div>
+<div id="dotplots" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Dotplots<a class="anchor" aria-label="anchor" href="#dotplots"><i class="fas fa-link"></i></a>
+</h2>
+<p>Unfortunately, there’s no built in function to create dotplots in R. We have to repurpose the <code>stripchart</code> command in order to make something closest to a dotplot.</p>
+<p>Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in June, when <code>month</code> equals 6.</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, offset <span class="op">=</span> <span class="fl">.5</span>, at <span class="op">=</span> <span class="fl">0</span>, pch <span class="op">=</span> <span class="fl">19</span>,
+           col <span class="op">=</span> <span class="st">"steelblue"</span>, main <span class="op">=</span> <span class="st">"Average June Temperatures at DCA"</span>, xlab <span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+<div id="boxplots" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"><i class="fas fa-link"></i></a>
+</h2>
+<div id="single-boxplots" class="section level3" number="6.4.1">
+<h3>
+<span class="header-section-number">6.4.1</span> Single Boxplots<a class="anchor" aria-label="anchor" href="#single-boxplots"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s start off with the most simple case: making one boxplot with one variable. I’ll make a boxplot of June Temperatures in DCA:</p>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">june_temps</span>,
+        col<span class="op">=</span><span class="st">"pink"</span>,
+        main<span class="op">=</span> <span class="st">"Boxplot of June Temperatures at DCA Airport"</span>,
+        xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>,
+        horizontal<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-93-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>By default, the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command will create boxplots in the vertical orientation (more on this later). If you want to have the boxplots become horizontal, set the <code>horizontal=</code> parameter to <code>TRUE</code>.</p>
+</div>
+<div id="grouped-boxplots" class="section level3" number="6.4.2">
+<h3>
+<span class="header-section-number">6.4.2</span> Grouped Boxplots<a class="anchor" aria-label="anchor" href="#grouped-boxplots"><i class="fas fa-link"></i></a>
+</h3>
+<p>Normally, you don’t just make one boxplot, but several boxplots to compare variance <em>within groups</em>. To do this, we have to give the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command a second <strong>grouping variable</strong>, which we indicate with the <code>~</code> operator.</p>
+<p>Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the <code>data=</code> parameter. Below are the bosplots for <code>TAVG</code> with the <code>dca_weather</code> dataset, grouped by <code>month</code>.</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,
+        col<span class="op">=</span><span class="st">"skyblue"</span>,
+        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,
+        xlab<span class="op">=</span> <span class="st">"Month"</span>,
+        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-94-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>The <code>~</code> variable effectively tells R which axis to to place each variable in, based on <code>y~x</code>. In other words, since the first variable is <code>TAVG</code>, that goes on the y-axis, and <code>month</code> goes on the x-axis. We have effectively set <code>month</code> as our grouping variable.</p>
+<p>Look at what happens when you switch the axes around:</p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">month</span><span class="op">~</span><span class="va">TAVG</span>, data<span class="op">=</span><span class="va">dca_weather</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-95-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>Yep. It’s not pretty. Be careful of which variable goes where.</p>
+</div>
+<div id="customizing-boxplot" class="section level3" number="6.4.3">
+<h3>
+<span class="header-section-number">6.4.3</span> Customizing <code>boxplot()</code><a class="anchor" aria-label="anchor" href="#customizing-boxplot"><i class="fas fa-link"></i></a>
+</h3>
+<p>Here’s an idea of the things you can do with boxplots:</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,
+        col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"skyblue"</span>, <span class="st">"darkcyan"</span>, <span class="st">"cadetblue1"</span>, <span class="st">"chartreuse"</span>, <span class="st">"forestgreen"</span>, <span class="st">"darkorange"</span><span class="op">)</span>,
+        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,
+        xlab<span class="op">=</span> <span class="st">"Month"</span>,
+        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span>,
+        names<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-96-1.png" width="100%" style="display: block; margin: auto;"></div>
+<ul>
+<li>In our original graph, <code>Months</code> were labeled as their numbers. If you want to give custom names for each group, use the <code>names=</code> parameter. Remember to set the <code>names=</code> parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.</li>
+<li>If you want to give your boxplots different colors, set <code>col=</code> to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots.</li>
+</ul>
+</div>
+</div>
+<div id="exporting-your-graphs" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Exporting your graphs<a class="anchor" aria-label="anchor" href="#exporting-your-graphs"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can find your plots under the <strong>Plots</strong> tab in the lower right.</p>
+<div class="inline-figure"><img src="resources/images/06-Visualizing-Data/plots_tab.png" width="30%" style="display: block; margin: auto;"></div>
+<p>There are a couple of ways to export your graphs in RStudio.</p>
+<ol style="list-style-type: decimal">
+<li><p>Right click on the plot, and select <em>“Save Image As”</em>, or <em>“Copy to Clipboard”</em>.
+<img src="resources/images/06-Visualizing-Data/plots_tab_right_click.png" width="30%" style="display: block; margin: auto;"></p></li>
+<li><p>Click on Export on the top, and then click <em>“Save As Image”</em>, or <em>“Copy to Clipboard”</em>.
+<img src="resources/images/06-Visualizing-Data/plots_tab_export.png" width="30%" style="display: block; margin: auto;"></p></li>
+</ol>
+<div id="blurry-graphs" class="section level3" number="6.5.1">
+<h3>
+<span class="header-section-number">6.5.1</span> Blurry Graphs?<a class="anchor" aria-label="anchor" href="#blurry-graphs"><i class="fas fa-link"></i></a>
+</h3>
+<p>Blurry graphs happen because your plot window is too small. For some reason, it hapens more on the FCPS provided computers than on personal laptops. To fix:</p>
+<ol style="list-style-type: decimal">
+<li>Under the plots tab, click <strong>“Zoom”</strong>. A new window will pop open.</li>
+<li>This window will have a larger version of your graph. Use the right click method to save your graph.</li>
+</ol>
+</div>
+</div>
+<div id="more-advanced-graphical-parameters-like-par" class="section level2" number="6.6">
+<h2>
+<span class="header-section-number">6.6</span> More advanced graphical parameters, like par()<a class="anchor" aria-label="anchor" href="#more-advanced-graphical-parameters-like-par"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="summarizing-and-visualizing-data-exercises" class="section level2 unnumbered">
+<h2>Summarizing and Visualizing Data Exercises<a class="anchor" aria-label="anchor" href="#summarizing-and-visualizing-data-exercises"><i class="fas fa-link"></i></a>
+</h2>
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></div>
+<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#visualizing-one-variable-data"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
+<li>
+<a class="nav-link" href="#histograms"><span class="header-section-number">6.1</span> Histograms</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#graphical-parameters"><span class="header-section-number">6.1.1</span> Graphical Parameters</a></li></ul>
+</li>
+<li><a class="nav-link" href="#histogram-exercise"><span class="header-section-number">6.2</span> Histogram Exercise</a></li>
+<li><a class="nav-link" href="#dotplots"><span class="header-section-number">6.3</span> Dotplots</a></li>
+<li>
+<a class="nav-link" href="#boxplots"><span class="header-section-number">6.4</span> Boxplots</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#single-boxplots"><span class="header-section-number">6.4.1</span> Single Boxplots</a></li>
+<li><a class="nav-link" href="#grouped-boxplots"><span class="header-section-number">6.4.2</span> Grouped Boxplots</a></li>
+<li><a class="nav-link" href="#customizing-boxplot"><span class="header-section-number">6.4.3</span> Customizing boxplot()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#exporting-your-graphs"><span class="header-section-number">6.5</span> Exporting your graphs</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#blurry-graphs"><span class="header-section-number">6.5.1</span> Blurry Graphs?</a></li></ul>
+</li>
+<li><a class="nav-link" href="#more-advanced-graphical-parameters-like-par"><span class="header-section-number">6.6</span> More advanced graphical parameters, like par()</a></li>
+<li><a class="nav-link" href="#summarizing-and-visualizing-data-exercises">Summarizing and Visualizing Data Exercises</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/06-Visualizing-Data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/06-Visualizing-Data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 27 June, 2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
