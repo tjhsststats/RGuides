@@ -34,7 +34,7 @@ Here's a breakdown of the parameters in the histogram above:
 ## Histogram Exercise
 **Your turn!** In the box below is a histogram of march_temps at DCA. Label the graph appropriately, and change the color to `darkseagreen4`.
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Hist_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Hist_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
@@ -124,7 +124,7 @@ boxplot(TAVG~month, data=dca_weather,
   + The "Months" are labeled as "Jan", "Feb", "Mar", etc. etc.
   + You add some pretty colors to your boxplots.
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-box-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
@@ -159,7 +159,7 @@ Blurry graphs happen because your plot window is too small. For some reason, it 
 ## More advanced graphical parameters, like par()
 If you run par() before the command for any graph, you can stack multiple graphs into the same window. Here's an example:
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-par-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
@@ -172,7 +172,7 @@ As you can see, passing the `mfrow=` parameter allows you to stack multiple grap
 </script>
 
 # Summarizing and Visualizing Data Exercises {-}
-<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch5_to_6_Exercises/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch5-6-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch5_to_6_Exercises/" scrolling="no" frameborder="no">
 
 </iframe>
 
