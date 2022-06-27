@@ -20,7 +20,7 @@ code_folding: show
 
 # Preface {.unnumbered}
 
-This website serves as a digital companion for TJ students taking the RS1 class. Materials and format here are heavily inspired and borrowed from @kane2022 and @starnes_yates_moore_2012 .
+This website serves as a digital companion for TJ students taking the RS1 class. Materials and format here are heavily inspired and borrowed from @kane2022, heiss_2022, and @starnes_yates_moore_2012. LearnR and related javascript magic was inspired by @de_leon_2022.
 
 Almost everything else was written by Mr. Ng and Mr. McFee.
 

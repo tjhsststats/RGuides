@@ -1,10 +1,10 @@
 # Visualizing One-Variable Data
 
-:::{.rmdtip}
+::: rmdtip
 You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/)
 :::
 
-Now that we have talked about summarizing data, let's talk about visualizing it. 
+Now that we have talked about summarizing data, let's talk about visualizing it.
 
 ## Histograms
 
@@ -19,25 +19,26 @@ hist(feb_temps,
      ylab="Number of Days")
 ```
 
-When we use any plotting function in R, we always pass some extra commands to customize the chart called a **parameter**. 
+When we use any plotting function in R, we always pass some extra commands to customize the chart called a **parameter**.
 
 You can type all the parameters in a single line, but it is usually cleaner to make a new line for each parameter. As long as you follow each parameter with a comma `,` and the parameters are all inside the parentheses `()` of your plot command, you will be OK.
 
 ### Graphical Parameters
+
 Here's a breakdown of the parameters in the histogram above:
 
-  + `col`: Sets the color of the graphic elements. [Here's a list of colors that you can pick from in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
-  + `main`: Sets the main title of the graph.
-  + `xlab`: Sets the x-axis label. Always include units!
-  + `ylab`: Sets the y-axis label. Always include context!
+-   `col`: Sets the color of the graphic elements. [Here's a list of colors that you can pick from in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+-   `main`: Sets the main title of the graph.
+-   `xlab`: Sets the x-axis label. Always include units!
+-   `ylab`: Sets the y-axis label. Always include context!
 
 ## Histogram Exercise
+
 **Your turn!** In the box below is a histogram of march_temps at DCA. Label the graph appropriately, and change the color to `darkseagreen4`.
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Hist_Example/" scrolling="no" frameborder="no">
 
 </iframe>
-
 
 ## Dotplots
 
@@ -56,7 +57,7 @@ stripchart(june_temps, method = "stack",
            xlab = "Temperature (Fahrenheit)")
 ```
 
-As before, you pass several parameters into `stripchart()`. You can safely ignore `stack=`, `offset=`, and `at=`. Just include them, any time you need a dotplot. 
+As before, you pass several parameters into `stripchart()`. You can safely ignore `stack=`, `offset=`, and `at=`. Just include them, any time you need a dotplot.
 
 `pch=` is a parameter that you can feel free to modify. It specifies the style of each dot. For a list of different dot styles you can use, [click here.](http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r)
 
@@ -80,7 +81,7 @@ By default, the `boxplot()` command will create boxplots in the vertical orienta
 
 Normally, you don't just make one boxplot, but several boxplots to compare variance *within groups*. To do this, we have to give the `boxplot()` command a second **grouping variable**, which we indicate with the `~` operator.
 
-Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the `data= ` parameter. Below are the bosplots for `TAVG` with the `dca_weather` dataset, grouped by `month`. 
+Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the `data=` parameter. Below are the bosplots for `TAVG` with the `dca_weather` dataset, grouped by `month`.
 
 ```{r}
 boxplot(TAVG~month, data=dca_weather,
@@ -90,7 +91,7 @@ boxplot(TAVG~month, data=dca_weather,
         ylab="Temperature (Fahrenheit)")
 ```
 
-The `~` variable effectively tells R which axis to to place each variable in, based on `y~x`. In other words, since the first variable is `TAVG`, that goes on the y-axis, and `month` goes on the x-axis. We have effectively set `month` as our grouping variable. 
+The `~` variable effectively tells R which axis to to place each variable in, based on `y~x`. In other words, since the first variable is `TAVG`, that goes on the y-axis, and `month` goes on the x-axis. We have effectively set `month` as our grouping variable.
 
 Look at what happens when you switch the axes around:
 
@@ -101,6 +102,7 @@ boxplot(month~TAVG, data=dca_weather)
 Yep. It's not pretty. Be careful of which variable goes where.
 
 ### Customizing `boxplot()`
+
 Here's an idea of the things you can do with boxplots:
 
 ```{r}
@@ -112,39 +114,40 @@ boxplot(TAVG~month, data=dca_weather,
         names=c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))
 ```
 
-
-  + In our original graph,  `Months` were labeled as their numbers. If you want to give custom names for each group, use the `names=` parameter. Remember to set the `names=` parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.
-  + If you want to give your boxplots different colors, set `col=` to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots. 
+-   In our original graph, `Months` were labeled as their numbers. If you want to give custom names for each group, use the `names=` parameter. Remember to set the `names=` parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.
+-   If you want to give your boxplots different colors, set `col=` to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots.
 
 ## Boxplot Exercise
 
 **Your turn!** The following boxplot was supposed to graph the `PRCP` variable (representing amount of snow/rainfall in inches), grouped by `month`, but is completely messed up. Fix it so that:
-  + your graph `PRCP`, grouped by `month`
-  + You have an appropriate main title, x-axis, and y-axis labels
-  + The "Months" are labeled as "Jan", "Feb", "Mar", etc. etc.
-  + You add some pretty colors to your boxplots.
+
+-   You graph `PRCP`, grouped by `month`
+-   You have an appropriate main title, x-axis, and y-axis labels
+-   The "Months" are labeled as "Jan", "Feb", "Mar", etc. etc.
+-   You add some pretty colors to your boxplots.
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-box-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
-
 ## Exporting your graphs
+
 You can find your plots under the **Plots** tab in the lower right.
 
 ```{r, echo = FALSE, fig.align='center', out.width="40%"}
 knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab.png") 
 ```
 
-There are a couple of ways to export your graphs in RStudio. 
+There are a couple of ways to export your graphs in RStudio.
 
-1. Right click on the plot, and select *"Save Image As"*, or *"Copy to Clipboard"*.
+1.  Right click on the plot, and select *"Save Image As"*, or *"Copy to Clipboard"*.
+
 ```{r, echo = FALSE, fig.align='center', out.width="30%"}
 knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_right_click.png") 
 ```
 
+2.  Click on Export on the top, and then click *"Save As Image"*, or *"Copy to Clipboard"*.
 
-2. Click on Export on the top, and then click *"Save  As Image"*, or *"Copy to Clipboard"*.
 ```{r, echo = FALSE, fig.align='center', out.width="45%"}
 knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_export.png") 
 ```
@@ -153,10 +156,11 @@ knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_export.p
 
 Blurry graphs happen because your plot window is too small. For some reason, it hapens more on the FCPS provided computers than on personal laptops. To fix:
 
-1. Under the plots tab, click **"Zoom"**. A new window will pop open.
-2. This window will have a larger version of your graph. Use the right click method to save your graph. 
+1.  Under the plots tab, click **"Zoom"**. A new window will pop open.
+2.  This window will have a larger version of your graph. Use the right click method to save your graph.
 
 ## More advanced graphical parameters, like par()
+
 If you run par() before the command for any graph, you can stack multiple graphs into the same window. Here's an example:
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-par-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
@@ -167,16 +171,19 @@ Switch the `1` and `2` around in the `mfrow=` parameter so it says `par(mfrow=c(
 
 As you can see, passing the `mfrow=` parameter allows you to stack multiple graphs based on the a certain number of rows and columns. This will be helpful, especially when you have multiple graphs of the same variable.
 
+```{=html}
 <script>
   iFrameResize({}, ".interactive");
 </script>
+```
+# Summarizing and Visualizing Data Exercises {.unnumbered}
 
-# Summarizing and Visualizing Data Exercises {-}
 <iframe style="margin:0 auto; min-width: 100%;" id="ch5-6-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch5_to_6_Exercises/" scrolling="no" frameborder="no">
 
 </iframe>
 
-
+```{=html}
 <script>
   iFrameResize({}, ".interactive");
 </script>
+```
