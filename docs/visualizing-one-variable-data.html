@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Visualizing One-Variable Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist() function in order to create histograms, very easily. Below, I will...">
+<meta name="description" content="You can find more examples of charts and graphics at R Charts Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist()...">
 <meta name="generator" content="bookdown 0.27.1 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Visualizing One-Variable Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist() function in order to create histograms, very easily. Below, I will...">
+<meta property="og:description" content="You can find more examples of charts and graphics at R Charts Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist()...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Visualizing One-Variable Data | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist() function in order to create histograms, very easily. Below, I will...">
+<meta name="twitter:description" content="You can find more examples of charts and graphics at R Charts Now that we have talked about summarizing data, let’s talk about visualizing it.  6.1 Histograms You can use the built-in hist()...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -88,6 +88,8 @@
 <li class="book-part">Presenting Data</li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
 <li><a class="active" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Miscellaneous</li>
 <li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">8</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">9</span> Intro to ANOVA Analysis</a></li>
@@ -104,6 +106,9 @@
 <h1>
 <span class="header-section-number">6</span> Visualizing One-Variable Data<a class="anchor" aria-label="anchor" href="#visualizing-one-variable-data"><i class="fas fa-link"></i></a>
 </h1>
+<div class="rmdtip">
+<p>You can find more examples of charts and graphics at <a href="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/">R Charts</a></p>
+</div>
 <p>Now that we have talked about summarizing data, let’s talk about visualizing it.</p>
 <div id="histograms" class="section level2" number="6.1">
 <h2>
@@ -154,9 +159,16 @@
 <p>Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in June, when <code>month</code> equals 6.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, offset <span class="op">=</span> <span class="fl">.5</span>, at <span class="op">=</span> <span class="fl">0</span>, pch <span class="op">=</span> <span class="fl">19</span>,
-           col <span class="op">=</span> <span class="st">"steelblue"</span>, main <span class="op">=</span> <span class="st">"Average June Temperatures at DCA"</span>, xlab <span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, 
+           offset <span class="op">=</span> <span class="fl">.5</span>, 
+           at <span class="op">=</span> <span class="fl">0</span>, 
+           pch <span class="op">=</span> <span class="fl">19</span>,
+           col <span class="op">=</span> <span class="st">"steelblue"</span>, 
+           main <span class="op">=</span> <span class="st">"Average June Temperatures at DCA"</span>, 
+           xlab <span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>As before, you pass several parameters into <code><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart()</a></code>. You can safely ignore <code>stack=</code>, <code>offset=</code>, and <code>at=</code>. Just include them, any time you need a dotplot.</p>
+<p><code>pch=</code> is a parameter that you can feel free to modify. It specifies the style of each dot. For a list of different dot styles you can use, <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">click here.</a></p>
 </div>
 <div id="boxplots" class="section level2" number="6.4">
 <h2>
@@ -215,22 +227,34 @@
 </ul>
 </div>
 </div>
-<div id="exporting-your-graphs" class="section level2" number="6.5">
+<div id="boxplot-exercise" class="section level2" number="6.5">
 <h2>
-<span class="header-section-number">6.5</span> Exporting your graphs<a class="anchor" aria-label="anchor" href="#exporting-your-graphs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5</span> Boxplot Exercise<a class="anchor" aria-label="anchor" href="#boxplot-exercise"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Your turn!</strong> The following boxplot was supposed to graph the <code>PRCP</code> variable (representing amount of snow/rainfall in inches), grouped by <code>month</code>, but is completely messed up. Fix it so that:
++ your graph <code>PRCP</code>, grouped by <code>month</code>
++ You have an appropriate main title, x-axis, and y-axis labels
++ The “Months” are labeled as “Jan”, “Feb”, “Mar”, etc. etc.
++ You add some pretty colors to your boxplots.</p>
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
+</iframe>
+</div>
+<div id="exporting-your-graphs" class="section level2" number="6.6">
+<h2>
+<span class="header-section-number">6.6</span> Exporting your graphs<a class="anchor" aria-label="anchor" href="#exporting-your-graphs"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can find your plots under the <strong>Plots</strong> tab in the lower right.</p>
-<div class="inline-figure"><img src="resources/images/06-Visualizing-Data/plots_tab.png" width="30%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="resources/images/06-Visualizing-Data/plots_tab.png" width="40%" style="display: block; margin: auto;"></div>
 <p>There are a couple of ways to export your graphs in RStudio.</p>
 <ol style="list-style-type: decimal">
 <li><p>Right click on the plot, and select <em>“Save Image As”</em>, or <em>“Copy to Clipboard”</em>.
 <img src="resources/images/06-Visualizing-Data/plots_tab_right_click.png" width="30%" style="display: block; margin: auto;"></p></li>
 <li><p>Click on Export on the top, and then click <em>“Save As Image”</em>, or <em>“Copy to Clipboard”</em>.
-<img src="resources/images/06-Visualizing-Data/plots_tab_export.png" width="30%" style="display: block; margin: auto;"></p></li>
+<img src="resources/images/06-Visualizing-Data/plots_tab_export.png" width="45%" style="display: block; margin: auto;"></p></li>
 </ol>
-<div id="blurry-graphs" class="section level3" number="6.5.1">
+<div id="blurry-graphs" class="section level3" number="6.6.1">
 <h3>
-<span class="header-section-number">6.5.1</span> Blurry Graphs?<a class="anchor" aria-label="anchor" href="#blurry-graphs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.6.1</span> Blurry Graphs?<a class="anchor" aria-label="anchor" href="#blurry-graphs"><i class="fas fa-link"></i></a>
 </h3>
 <p>Blurry graphs happen because your plot window is too small. For some reason, it hapens more on the FCPS provided computers than on personal laptops. To fix:</p>
 <ol style="list-style-type: decimal">
@@ -239,14 +263,15 @@
 </ol>
 </div>
 </div>
-<div id="more-advanced-graphical-parameters-like-par" class="section level2" number="6.6">
+<div id="more-advanced-graphical-parameters-like-par" class="section level2" number="6.7">
 <h2>
-<span class="header-section-number">6.6</span> More advanced graphical parameters, like par()<a class="anchor" aria-label="anchor" href="#more-advanced-graphical-parameters-like-par"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7</span> More advanced graphical parameters, like par()<a class="anchor" aria-label="anchor" href="#more-advanced-graphical-parameters-like-par"><i class="fas fa-link"></i></a>
 </h2>
-</div>
-<div id="summarizing-and-visualizing-data-exercises" class="section level2 unnumbered">
-<h2>Summarizing and Visualizing Data Exercises<a class="anchor" aria-label="anchor" href="#summarizing-and-visualizing-data-exercises"><i class="fas fa-link"></i></a>
-</h2>
+<p>If you run par() before the command for any graph, you can stack multiple graphs into the same window. Here’s an example:</p>
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
+</iframe>
+<p>Switch the <code>1</code> and <code>2</code> around in the <code>mfrow=</code> parameter so it says <code>par(mfrow=c(2,1))</code>. Then, rerun the code. What happens?</p>
+<p>As you can see, passing the <code>mfrow=</code> parameter allows you to stack multiple graphs based on the a certain number of rows and columns. This will be helpful, especially when you have multiple graphs of the same variable.</p>
 <script>
   iFrameResize({}, ".interactive");
 </script>
@@ -254,7 +279,7 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></div>
-<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></div>
+<div class="next"><a href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
@@ -271,11 +296,11 @@
 <li><a class="nav-link" href="#customizing-boxplot"><span class="header-section-number">6.4.3</span> Customizing boxplot()</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#boxplot-exercise"><span class="header-section-number">6.5</span> Boxplot Exercise</a></li>
 <li>
-<a class="nav-link" href="#exporting-your-graphs"><span class="header-section-number">6.5</span> Exporting your graphs</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#blurry-graphs"><span class="header-section-number">6.5.1</span> Blurry Graphs?</a></li></ul>
+<a class="nav-link" href="#exporting-your-graphs"><span class="header-section-number">6.6</span> Exporting your graphs</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#blurry-graphs"><span class="header-section-number">6.6.1</span> Blurry Graphs?</a></li></ul>
 </li>
-<li><a class="nav-link" href="#more-advanced-graphical-parameters-like-par"><span class="header-section-number">6.6</span> More advanced graphical parameters, like par()</a></li>
-<li><a class="nav-link" href="#summarizing-and-visualizing-data-exercises">Summarizing and Visualizing Data Exercises</a></li>
+<li><a class="nav-link" href="#more-advanced-graphical-parameters-like-par"><span class="header-section-number">6.7</span> More advanced graphical parameters, like par()</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">

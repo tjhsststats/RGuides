@@ -1,3 +1,5 @@
+# (PART\*) Miscellaneous {.unnumbered}
+
 # Census Data and Linear Regression 
 
 ## Install packages and Census API Key

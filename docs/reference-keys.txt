@@ -62,6 +62,7 @@ boxplots
 single-boxplots
 grouped-boxplots
 customizing-boxplot
+boxplot-exercise
 exporting-your-graphs
 blurry-graphs
 more-advanced-graphical-parameters-like-par

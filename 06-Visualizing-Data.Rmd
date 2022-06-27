@@ -1,5 +1,9 @@
 # Visualizing One-Variable Data
 
+:::{.rmdtip}
+You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/)
+:::
+
 Now that we have talked about summarizing data, let's talk about visualizing it. 
 
 ## Histograms
@@ -43,9 +47,18 @@ Below, I will graph the `TAVG`, average temperature, from the `dca_weather` data
 
 ```{r}
 june_temps<- dca_weather$TAVG[dca_weather$month %in% 6]
-stripchart(june_temps, method = "stack", offset = .5, at = 0, pch = 19,
-           col = "steelblue", main = "Average June Temperatures at DCA", xlab = "Temperature (Fahrenheit)")
+stripchart(june_temps, method = "stack", 
+           offset = .5, 
+           at = 0, 
+           pch = 19,
+           col = "steelblue", 
+           main = "Average June Temperatures at DCA", 
+           xlab = "Temperature (Fahrenheit)")
 ```
+
+As before, you pass several parameters into `stripchart()`. You can safely ignore `stack=`, `offset=`, and `at=`. Just include them, any time you need a dotplot. 
+
+`pch=` is a parameter that you can feel free to modify. It specifies the style of each dot. For a list of different dot styles you can use, [click here.](http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r)
 
 ## Boxplots
 
@@ -103,11 +116,23 @@ boxplot(TAVG~month, data=dca_weather,
   + In our original graph,  `Months` were labeled as their numbers. If you want to give custom names for each group, use the `names=` parameter. Remember to set the `names=` parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.
   + If you want to give your boxplots different colors, set `col=` to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots. 
 
+## Boxplot Exercise
+
+**Your turn!** The following boxplot was supposed to graph the `PRCP` variable (representing amount of snow/rainfall in inches), grouped by `month`, but is completely messed up. Fix it so that:
+  + your graph `PRCP`, grouped by `month`
+  + You have an appropriate main title, x-axis, and y-axis labels
+  + The "Months" are labeled as "Jan", "Feb", "Mar", etc. etc.
+  + You add some pretty colors to your boxplots.
+
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
+
+</iframe>
+
 
 ## Exporting your graphs
 You can find your plots under the **Plots** tab in the lower right.
 
-```{r, echo = FALSE, fig.align='center', out.width="30%"}
+```{r, echo = FALSE, fig.align='center', out.width="40%"}
 knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab.png") 
 ```
 
@@ -120,7 +145,7 @@ knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_right_cl
 
 
 2. Click on Export on the top, and then click *"Save  As Image"*, or *"Copy to Clipboard"*.
-```{r, echo = FALSE, fig.align='center', out.width="30%"}
+```{r, echo = FALSE, fig.align='center', out.width="45%"}
 knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_export.png") 
 ```
 
@@ -132,12 +157,24 @@ Blurry graphs happen because your plot window is too small. For some reason, it 
 2. This window will have a larger version of your graph. Use the right click method to save your graph. 
 
 ## More advanced graphical parameters, like par()
+If you run par() before the command for any graph, you can stack multiple graphs into the same window. Here's an example:
 
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
 
+</iframe>
 
+Switch the `1` and `2` around in the `mfrow=` parameter so it says `par(mfrow=c(2,1))`. Then, rerun the code. What happens?
 
-## Summarizing and Visualizing Data Exercises {-}
+As you can see, passing the `mfrow=` parameter allows you to stack multiple graphs based on the a certain number of rows and columns. This will be helpful, especially when you have multiple graphs of the same variable.
 
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+
+# Summarizing and Visualizing Data Exercises {-}
+<iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch5_to_6_Exercises/" scrolling="no" frameborder="no">
+
+</iframe>
 
 
 <script>
