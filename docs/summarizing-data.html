@@ -101,10 +101,12 @@
 <li><a class="active" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
 <li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Prbability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">7</span> Sampling and Probability</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">8</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">9</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">8</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">9</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">10</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -122,7 +124,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-77">TABLE 5.1: </span>Weather Data for DCA Airport from 1/1/2022 to 6/19/2022
+<span id="tab:unnamed-chunk-82">TABLE 5.1: </span>Weather Data for DCA Airport from 1/1/2022 to 6/19/2022
 </caption>
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -6670,17 +6672,18 @@ NA
 </h2>
 <p>These functions do exactly as they sound, however, you must pass a <strong>numeric vector</strong> through each of them.</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#This will return an error-- since dca_weather </span>
-<span class="co">#has multiple columns, R doesn't know which column you want.</span>
-<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">)</span> </code></pre></div>
-<pre><code>## Warning in mean.default(dca_weather): argument is not numeric or logical: returning NA</code></pre>
+<code class="sourceCode R"><span><span class="co">#This will return an error-- since dca_weather </span></span>
+<span><span class="co">#has multiple columns, R doesn't know which column you want.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">)</span> </span></code></pre></div>
+<pre><code>## Warning in mean.default(dca_weather): argument is not numeric or logical:
+## returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 53</code></pre>
 <p>Knowing the average temperature from January to June is pretty useless though– sometimes, you want to filter it by month.</p>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span> <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span> <span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 76</code></pre>
 <p>If the command looks intimidating, consider the command from inside out.</p>
 <ol style="list-style-type: decimal">
@@ -6690,13 +6693,13 @@ NA
 </ol>
 <p>The <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> and <code><a href="https://rdrr.io/r/stats/fivenum.html">fivenum()</a></code> commands work the same.</p>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMIN</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMIN</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 21 27 32 36 47</code></pre>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">5</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 75</code></pre>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">3</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">3</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
 <div id="the-dreaded-na-response" class="section level3" number="5.1.1">
 <h3>
@@ -6704,20 +6707,21 @@ NA
 </h3>
 <p>Consider the following code:</p>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>Why does it return back <code>NA</code>? Well it turns out that if you look examine the data for June… it turns out that there are some NAs within the vector we are trying to process. Any time you perform a mathematical operation with NA in R, R will always return back NA– it’s like a special value that obliterates everything else in its path.</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 3 × 12
-##   STATION     NAME                                       year month   day  TAVG  TMAX  TMIN  AWND  PRCP  SNOW  SNWD
-##   &lt;chr&gt;       &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 USW00013743 WASHINGTON REAGAN NATIONAL AIRPORT, VA US  2022     6    18    77    79    67  16.1     0     0     0
-## 2 USW00013743 WASHINGTON REAGAN NATIONAL AIRPORT, VA US  2022     6    19    70    80    60  14.3     0     0     0
-## 3 USW00013743 WASHINGTON REAGAN NATIONAL AIRPORT, VA US  2022     6    20    72    NA    NA  NA      NA    NA    NA</code></pre>
+##   STATION     NAME    year month   day  TAVG  TMAX  TMIN  AWND  PRCP  SNOW
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 USW00013743 WASHI…  2022     6    18    77    79    67  16.1     0     0
+## 2 USW00013743 WASHI…  2022     6    19    70    80    60  14.3     0     0
+## 3 USW00013743 WASHI…  2022     6    20    72    NA    NA  NA      NA    NA
+## # … with 1 more variable: SNWD &lt;dbl&gt;</code></pre>
 <p>At this point, we have a choice to make. Obviously, the data for June 20th wasn’t available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn’t make sense to treat <code>NA</code> as 0, because clearly the temperature wasn’t 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any <code>NAs</code> in the data.</p>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6.3</code></pre>
 <p>Notice that the argument <code>na.rm=</code> is passed into the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> argument. Try typing <code>?sd()</code> to read the documentation on this function.</p>
 </div>
@@ -6728,7 +6732,7 @@ NA
 </h2>
 <p>Let’s say I’m interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##    Gas Liquid  Solid 
 ##     11      2     90</code></pre>
@@ -6741,11 +6745,11 @@ NA
 </h3>
 <p>The following code does the same exact thing as the previous command, using the <code>dyplr</code> package and the piping operator.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;You notice that I’m not just using the &lt;code&gt;filter&lt;/code&gt; command, but &lt;code&gt;dyplr::filter&lt;/code&gt;. This is because the &lt;code&gt;filter()&lt;/code&gt; name is also used by R for a entirely separate command, that is unrelated to the &lt;code&gt;dplyr::filter()&lt;/code&gt; command in &lt;code&gt;dplyr&lt;/code&gt;. The &lt;code&gt;::&lt;/code&gt; operator tells R to use the &lt;code&gt;filter&lt;/code&gt; function inside &lt;code&gt;dplyr&lt;/code&gt;.&lt;/p&gt;"><sup>3</sup></a></p>
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">dca_weather</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span><span class="op">==</span><span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TMAX</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>average<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, std_dev<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">dca_weather</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span><span class="op">==</span><span class="fl">6</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TMAX</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>average<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, std_dev<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
 ##   average std_dev
 ##     &lt;dbl&gt;   &lt;dbl&gt;
@@ -6758,18 +6762,18 @@ NA
 <li>And finally, the summarize command allows you to not just calculate one statistic, but many statistics at once.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-87"></span>
+<span style="display:block;" id="fig:unnamed-chunk-92"></span>
 <img src="resources/images/05-Summarizing-Data/Base_vs_dplyr.png" alt="A comparison between Base R commands and dplyr commands." width="100%"><p class="caption">
 FIGURE 5.1: A comparison between Base R commands and dplyr commands.
 </p>
 </div>
 <p>Finally, dplyr allows us to do more powerful things like the <code>group_by</code> function. Now, we can find the mean, median, and standard deviation of all 6 months with just one command.</p>
 <div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">dca_weather</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TMAX</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>average<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, median<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, std_dev<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">dca_weather</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">TMAX</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>average<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, median<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>, std_dev<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">TMAX</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##   month average median std_dev
 ##   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
@@ -6813,7 +6817,7 @@ FIGURE 5.1: A comparison between Base R commands and dplyr commands.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 27 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 28 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

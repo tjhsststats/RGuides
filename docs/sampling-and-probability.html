@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Sampling and Probability | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="7.1 An overview on probability While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any chance process, the proportion of times that a...">
+<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Sampling and Probability | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 An overview on probability While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any chance process, the proportion of times that a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Sampling and Probability | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="7.1 An overview on probability While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any chance process, the proportion of times that a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><style>
+    .interactive {
+      position: relative;
+    }  
+    .interactive iframe {
+      position: relative;
+      z-index: 100;
+      border: 0;
+      width: 1px;
+      min-width: 100%;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
+<li><a class="" href="working-with-dataframes.html"><span class="header-section-number">4</span> Working with Dataframes</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Prbability</li>
+<li><a class="active" href="sampling-and-probability.html"><span class="header-section-number">7</span> Sampling and Probability</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">8</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">9</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">10</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sampling-and-probability" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Sampling and Probability<a class="anchor" aria-label="anchor" href="#sampling-and-probability"><i class="fas fa-link"></i></a>
+</h1>
+<div id="an-overview-on-probability" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> An overview on probability<a class="anchor" aria-label="anchor" href="#an-overview-on-probability"><i class="fas fa-link"></i></a>
+</h2>
+<p>While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any <strong>chance process</strong>, the proportion of times that a specific outcome occurs approaches a single value. This is called <strong>The Law of Large Numbers</strong>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-107"></span>
+<img src="resources/images/07-Sampling-and-Probability/LLN.png" alt="(a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin." width="100%"><p class="caption">
+FIGURE 7.1: (a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin.
+</p>
+</div>
+<p>Above is the cumulative proportion of tosses for a fair coin. The previous example confirms that the probability of getting a head when we toss a fair coin is 0.5. Probability 0.5 means “occurs half the time in a very large number of trials.” That <strong>doesn’t</strong> mean that you are always guaranteed 50% heads and 50% tails for any number of tosses!</p>
+<p>The Law of Large Numbers, therefore, never guarantees a specific outcome when we observe a chance process—rather, it points out that there the proportion <em>trends</em> towards the value that we predict for the chance process.</p>
+<div class="rmdnote">
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<ul>
+<li>
+<span style="text-decoration:underline"><strong>Empirical</strong></span> means something based in observation and experience, rather than theory or logic.</li>
+<li>“<strong>Empirical probabilities</strong> come from carrying out a simulation and recording the results. The probability of each event and outcome was the observed relative frequency from the simulation. You found empirical probabilities from Random Babies and Pass the Pigs activity.”</li>
+</ul>
+</div>
+<div>
+<ul>
+<li>
+<span style="text-decoration:underline"><strong>Theoretical</strong></span> means something based in logic, rather than observation.</li>
+<li>
+<strong>Theoretical probabilities</strong> come from constructing a <strong>sample space.</strong>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rmdnote">
+<div style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>The <span style="text-decoration:underline"><strong>sample space</strong></span> is a list of all possible outcomes.
+- For example, when you toss a die, there are six possible outcomes. If the die is fair, then are all equally likely to occur. So, the sample space S for a fair die is <span class="math display">\[S= {1,2,3,4,5,6}.\]</span></p>
+</div>
+<div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-108"></span>
+<img src="resources/images/07-Sampling-and-Probability/dice.png" alt="All possibilities of a six-sided die." width="100%"><p class="caption">
+FIGURE 7.2: All possibilities of a six-sided die.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="rmdnote">
+<p>An <span style="text-decoration:underline"><strong>event</strong></span> is a subset of a sample space.
+- For example, the event of “tossing a prime number” in our dice example is the set {2,3,5}. In a sample space with equally likely outcomes, the probability of an event P(E) is <span class="math display">\[P(E)=\frac{\text{Number of Outcomes in the Event}}{\text{Total Number of Outcomes in the Sample Space}}\]</span></p>
+<p>So, the theoretical probability of tossing a prime number is <span class="math inline">\(\frac{1}{2}\)</span>.</p>
+<p>Finally…
+- All events have probabilities between 0 and 1, inclusive.
+- The probability of an impossible event is 0.<br>
+- The probability of a certain <em>(guaranteed to happen)</em> event is 1.</p>
+</div>
+</div>
+<div id="carrying-out-simulations-in-r-using-sample" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Carrying out simulations in R using <code>sample()</code><a class="anchor" aria-label="anchor" href="#carrying-out-simulations-in-r-using-sample"><i class="fas fa-link"></i></a>
+</h2>
+<p>Carrying out a simulation in R is very easy– much easier to do than using a chance process like dice, a random number generator, and so forth. Like all those other processes though, you must first construct <strong>the sample space</strong>.</p>
+<p>Let’s simulate the roll of dice. First, I’ll create a new vector that counts from 1 to 6, and store it as <code>dice</code>.</p>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dice</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span></span></code></pre></div>
+<p>When you run the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> command, R effectively selects an element randomly from the vector– almost like you placed each vector element on its own index card, and you pull one out. This behavior cannot be changed.</p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
+<span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 1 3 4 2 5</code></pre>
+<p>Here are the parameters, explained:</p>
+<ul>
+<li>
+<code>dice=</code> is the vector that we are sampling from.</li>
+<li>
+<code>size=</code> is the number of times that we are sampling from this vector. This is the <strong>sample size</strong>.</li>
+<li>
+<code>replace=</code> tells R whether to sample for replacement. <code>FALSE</code> means sampling <strong>without</strong> replacement. <code>FALSE</code> is the default setting; if you do not specify <code>replace=</code>, it will assume <code>FALSE</code>. What that means is that once R has selected that element, it will exclude that element from the second selection.</li>
+</ul>
+<p>As you can see, it means that every face of the die is selected exactly once. While this works for 6 index cards labeled 1 to 6, it doesn’t make sense for dice. We know for a fact that numbers can be repeated on a dice.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>Replacing with <code>replace=TRUE</code> allows us to properly replicate the chance process of rolling a dice. Here, we roll the dice 7 times. Notice that some numbers repeat.</p>
+</div>
+<div>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
+<span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 6 1 2 5 6</code></pre>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>If you kept <code>replace=FALSE</code>, and selected a <code>size=</code> that was larger than the number of elements in <code>dice</code>, you get an error. If you sample without replacement, and you exclude any elements that have already been selected, you select all elements exactly once with <code>size=6</code>. There are no more elements beyond 6.</p>
+</div>
+<div style="max-width: 340px;">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
+<span>       size <span class="op">=</span> <span class="fl">7</span>, </span>
+<span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Error in sample.int(length(x), size, replace, prob): cannot take a sample larger than the population when 'replace = FALSE'</code></pre>
+</div>
+</div>
+</div>
+<div id="sampling-from-a-table-using-slice_sample" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Sampling from a table using <code>slice_sample()</code><a class="anchor" aria-label="anchor" href="#sampling-from-a-table-using-slice_sample"><i class="fas fa-link"></i></a>
+</h2>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></div>
+<div class="next"><a href="census-data-and-linear-regression.html"><span class="header-section-number">8</span> Census Data and Linear Regression</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sampling-and-probability"><span class="header-section-number">7</span> Sampling and Probability</a></li>
+<li><a class="nav-link" href="#an-overview-on-probability"><span class="header-section-number">7.1</span> An overview on probability</a></li>
+<li><a class="nav-link" href="#carrying-out-simulations-in-r-using-sample"><span class="header-section-number">7.2</span> Carrying out simulations in R using sample()</a></li>
+<li><a class="nav-link" href="#sampling-from-a-table-using-slice_sample"><span class="header-section-number">7.3</span> Sampling from a table using slice_sample()</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/07-Sampling-and-Probability.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/07-Sampling-and-Probability.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 28 June, 2022.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

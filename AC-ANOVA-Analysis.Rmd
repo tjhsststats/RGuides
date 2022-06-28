@@ -24,6 +24,7 @@ In order for R to process the data, I need to convert the data from "wide" forma
 
 ```{r, results='hide'}
 Flowers_long<- gather(Flowers, "Species", "Length", factor_key= TRUE)
+Flowers_long<- na.omit(Flowers_long)
 head(Flowers_long)
 ```
 
@@ -77,7 +78,6 @@ Now that we have stated our Null and Alternative Hypotheses, we can check for co
 ggplot(Flowers_long, aes(x=Length, y=Species, fill=Species))+
   geom_boxplot(color="black")+ 
   labs(title= "Flower Lengths from Textbook")+
-  theme_gdocs()+ 
   geom_jitter(width=0.1) #This overlays a jittered dotplot on top of the boxplot.
 ```
 
@@ -175,6 +175,3 @@ plot(TukeyHSD(anova.test, conflevel=.95), las=1, col="blue")
 
 Notice that the x-axis doesn't even include 0-- our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).
 
-```{r publish to gdoc, echo=FALSE, eval=FALSE}
-#gdoc_render(filename="ANOVA.Rmd")
-```

@@ -1,0 +1,118 @@
+# (PART\*) Sampling and Prbability {.unnumbered}
+
+# Sampling and Probability
+
+## An overview on probability
+
+While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any **chance process**, the proportion of times that a specific outcome occurs approaches a single value. This is called **The Law of Large Numbers**.
+
+```{r, echo = FALSE, fig.align='center', fig.cap="(a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin."}
+knitr::include_graphics("resources/images/07-Sampling-and-Probability/LLN.png") 
+```
+
+Above is the cumulative proportion of tosses for a fair coin. The previous example confirms that the probability of getting a head when we toss a fair coin is 0.5. Probability 0.5 means “occurs half the time in a very large number of trials.” That **doesn’t** mean that you are always guaranteed 50% heads and 50% tails for any number of tosses!
+
+The Law of Large Numbers, therefore, never guarantees a specific outcome when we observe a chance process—rather, it points out that there the proportion *trends* towards the value that we predict for the chance process.
+
+:::::{.rmdnote}
+
+:::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+
+::: {}
+- <span style="text-decoration:underline">**Empirical**</span> means something based in observation and experience, rather than theory or logic.
+- "**Empirical probabilities** come from carrying out a simulation and recording the results. The probability of each event and outcome was the observed relative frequency from the simulation. You found empirical probabilities from Random Babies and Pass the Pigs activity."
+:::
+
+::: {}
+- <span style="text-decoration:underline">**Theoretical**</span> means something based in logic, rather than observation.
+- **Theoretical probabilities** come from constructing a **sample space.**
+:::
+
+::::
+:::::
+
+:::::{.rmdnote}
+:::: {style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;"}
+:::{}
+The <span style="text-decoration:underline">**sample space**</span> is a list of all possible outcomes. 
+- For example, when you toss a die, there are six possible outcomes. If the die is fair, then are all equally likely to occur. So, the sample space S for a fair die is $$S= {1,2,3,4,5,6}.$$ 
+:::
+
+::: {}
+```{r, echo = FALSE, fig.align='center', fig.cap="All possibilities of a six-sided die."}
+knitr::include_graphics("resources/images/07-Sampling-and-Probability/dice.png") 
+```
+:::
+::::
+:::::
+:::{.rmdnote}
+An <span style="text-decoration:underline">**event**</span> is a subset of a sample space.
+- For example, the event of “tossing a prime number” in our dice example is the set {2,3,5}. In a sample space with equally likely outcomes, the probability of an event P(E) is $$P(E)=\frac{\text{Number of Outcomes in the Event}}{\text{Total Number of Outcomes in the Sample Space}}$$ 
+
+So, the theoretical probability of tossing a prime number is $\frac{1}{2}$. 
+
+Finally…
+-	All events have probabilities between 0 and 1, inclusive.
+-	The probability of an impossible event is 0.  
+-	The probability of a certain *(guaranteed to happen)* event is 1.
+
+:::
+
+## Carrying out simulations in R using `sample()`
+
+Carrying out a simulation in R is very easy-- much easier to do than using a chance process like dice, a random number generator, and so forth. Like all those other processes though, you must first construct **the sample space**. 
+
+Let's simulate the roll of dice. First, I'll create a new vector that counts from 1 to 6, and store it as `dice`.
+
+```{r}
+dice <- 1:6
+```
+
+When you run the `sample()` command, R effectively selects an element randomly from the vector-- almost like you placed each vector element on its own index card, and you pull one out. This behavior cannot be changed. 
+
+```{r}
+sample(dice, 
+       size = 5, 
+       replace=FALSE)
+```
+Here are the parameters, explained:
+
+- `dice= ` is the vector that we are sampling from.
+- `size= ` is the number of times that we are sampling from this vector. This is the **sample size**.
+- `replace= ` tells R whether to sample for replacement. `FALSE` means sampling **without** replacement. `FALSE` is the default setting; if you do not specify `replace=`, it will assume `FALSE`. What that means is that once R has selected that element, it will exclude that element from the second selection. 
+
+As you can see, it means that every face of the die is selected exactly once. While this works for 6 index cards labeled 1 to 6, it doesn't make sense for dice. We know for a fact that numbers can be repeated on a dice.
+
+:::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+
+::: {}
+Replacing with `replace=TRUE` allows us to properly replicate the chance process of rolling a dice. Here, we roll the dice 7 times. Notice that some numbers repeat.
+
+:::
+
+::: {}
+
+
+```{r}
+sample(dice, 
+       size = 5, 
+       replace=TRUE)
+```
+:::
+::::
+
+:::: {style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;"}
+
+::: {}
+If you kept `replace=FALSE`, and selected a `size=` that was larger than the number of elements in `dice`, you get an error. If you sample without replacement, and you exclude any elements that have already been selected, you select all elements exactly once with `size=6`. There are no more elements beyond 6. 
+:::
+:::{style="max-width: 340px;"}
+```{r, error=TRUE}
+sample(dice, 
+       size = 7, 
+       replace=FALSE)
+```
+:::
+::::
+
+## Sampling from a table using `slice_sample()`

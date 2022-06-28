@@ -101,10 +101,12 @@
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
 <li><a class="active" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Prbability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">7</span> Sampling and Probability</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">7</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">8</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">9</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">8</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">9</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">10</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -128,13 +130,13 @@
 </h2>
 <p>You can use the built-in <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function in order to create histograms, very easily. Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in February, when <code>month</code> equals 2.</p>
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">feb_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">feb_temps</span>, 
-     col<span class="op">=</span> <span class="st">"skyblue"</span>, 
-     main<span class="op">=</span> <span class="st">"Average Daily Temperature at DCA in February 2022"</span>, 
-     xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>, 
-     ylab<span class="op">=</span><span class="st">"Number of Days"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-91-1.png" width="100%" style="display: block; margin: auto;"></div>
+<code class="sourceCode R"><span><span class="va">feb_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">feb_temps</span>, </span>
+<span>     col<span class="op">=</span> <span class="st">"skyblue"</span>, </span>
+<span>     main<span class="op">=</span> <span class="st">"Average Daily Temperature at DCA in February 2022"</span>, </span>
+<span>     xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>, </span>
+<span>     ylab<span class="op">=</span><span class="st">"Number of Days"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-96-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>When we use any plotting function in R, we always pass some extra commands to customize the chart called a <strong>parameter</strong>.</p>
 <p>You can type all the parameters in a single line, but it is usually cleaner to make a new line for each parameter. As long as you follow each parameter with a comma <code>,</code> and the parameters are all inside the parentheses <code>()</code> of your plot command, you will be OK.</p>
 <div id="graphical-parameters" class="section level3" number="6.1.1">
@@ -170,15 +172,15 @@
 <p>Unfortunately, there’s no built in function to create dotplots in R. We have to repurpose the <code>stripchart</code> command in order to make something closest to a dotplot.</p>
 <p>Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in June, when <code>month</code> equals 6.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, 
-           offset <span class="op">=</span> <span class="fl">.5</span>, 
-           at <span class="op">=</span> <span class="fl">0</span>, 
-           pch <span class="op">=</span> <span class="fl">19</span>,
-           col <span class="op">=</span> <span class="st">"steelblue"</span>, 
-           main <span class="op">=</span> <span class="st">"Average June Temperatures at DCA"</span>, 
-           xlab <span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;"></div>
+<code class="sourceCode R"><span><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, </span>
+<span>           offset <span class="op">=</span> <span class="fl">.5</span>, </span>
+<span>           at <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>           pch <span class="op">=</span> <span class="fl">19</span>,</span>
+<span>           col <span class="op">=</span> <span class="st">"steelblue"</span>, </span>
+<span>           main <span class="op">=</span> <span class="st">"Average June Temperatures at DCA"</span>, </span>
+<span>           xlab <span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-97-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>As before, you pass several parameters into <code><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart()</a></code>. You can safely ignore <code>stack=</code>, <code>offset=</code>, and <code>at=</code>. Just include them, any time you need a dotplot.</p>
 <p><code>pch=</code> is a parameter that you can feel free to modify. It specifies the style of each dot. For a list of different dot styles you can use, <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">click here.</a></p>
 </div>
@@ -192,12 +194,12 @@
 </h3>
 <p>Let’s start off with the most simple case: making one boxplot with one variable. I’ll make a boxplot of June Temperatures in DCA:</p>
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">june_temps</span>,
-        col<span class="op">=</span><span class="st">"pink"</span>,
-        main<span class="op">=</span> <span class="st">"Boxplot of June Temperatures at DCA Airport"</span>,
-        xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>,
-        horizontal<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-93-1.png" width="100%" style="display: block; margin: auto;"></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">june_temps</span>,</span>
+<span>        col<span class="op">=</span><span class="st">"pink"</span>,</span>
+<span>        main<span class="op">=</span> <span class="st">"Boxplot of June Temperatures at DCA Airport"</span>,</span>
+<span>        xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>,</span>
+<span>        horizontal<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-98-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>By default, the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command will create boxplots in the vertical orientation (more on this later). If you want to have the boxplots become horizontal, set the <code>horizontal=</code> parameter to <code>TRUE</code>.</p>
 </div>
 <div id="grouped-boxplots" class="section level3" number="6.4.2">
@@ -207,17 +209,17 @@
 <p>Normally, you don’t just make one boxplot, but several boxplots to compare variance <em>within groups</em>. To do this, we have to give the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command a second <strong>grouping variable</strong>, which we indicate with the <code>~</code> operator.</p>
 <p>Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the <code>data=</code> parameter. Below are the bosplots for <code>TAVG</code> with the <code>dca_weather</code> dataset, grouped by <code>month</code>.</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,
-        col<span class="op">=</span><span class="st">"skyblue"</span>,
-        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,
-        xlab<span class="op">=</span> <span class="st">"Month"</span>,
-        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-94-1.png" width="100%" style="display: block; margin: auto;"></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,</span>
+<span>        col<span class="op">=</span><span class="st">"skyblue"</span>,</span>
+<span>        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,</span>
+<span>        xlab<span class="op">=</span> <span class="st">"Month"</span>,</span>
+<span>        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-99-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>The <code>~</code> variable effectively tells R which axis to to place each variable in, based on <code>y~x</code>. In other words, since the first variable is <code>TAVG</code>, that goes on the y-axis, and <code>month</code> goes on the x-axis. We have effectively set <code>month</code> as our grouping variable.</p>
 <p>Look at what happens when you switch the axes around:</p>
 <div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">month</span><span class="op">~</span><span class="va">TAVG</span>, data<span class="op">=</span><span class="va">dca_weather</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-95-1.png" width="100%" style="display: block; margin: auto;"></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">month</span><span class="op">~</span><span class="va">TAVG</span>, data<span class="op">=</span><span class="va">dca_weather</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-100-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Yep. It’s not pretty. Be careful of which variable goes where.</p>
 </div>
 <div id="customizing-boxplot" class="section level3" number="6.4.3">
@@ -226,13 +228,13 @@
 </h3>
 <p>Here’s an idea of the things you can do with boxplots:</p>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,
-        col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"skyblue"</span>, <span class="st">"darkcyan"</span>, <span class="st">"cadetblue1"</span>, <span class="st">"chartreuse"</span>, <span class="st">"forestgreen"</span>, <span class="st">"darkorange"</span><span class="op">)</span>,
-        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,
-        xlab<span class="op">=</span> <span class="st">"Month"</span>,
-        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span>,
-        names<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-96-1.png" width="100%" style="display: block; margin: auto;"></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,</span>
+<span>        col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"skyblue"</span>, <span class="st">"darkcyan"</span>, <span class="st">"cadetblue1"</span>, <span class="st">"chartreuse"</span>, <span class="st">"forestgreen"</span>, <span class="st">"darkorange"</span><span class="op">)</span>,</span>
+<span>        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,</span>
+<span>        xlab<span class="op">=</span> <span class="st">"Month"</span>,</span>
+<span>        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span>,</span>
+<span>        names<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-101-1.png" width="100%" style="display: block; margin: auto;"></div>
 <ul>
 <li>In our original graph, <code>Months</code> were labeled as their numbers. If you want to give custom names for each group, use the <code>names=</code> parameter. Remember to set the <code>names=</code> parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.</li>
 <li>If you want to give your boxplots different colors, set <code>col=</code> to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots.</li>
@@ -334,7 +336,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 27 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 28 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -8,28 +8,28 @@ Finally, as in \@ref(vector-operations), you can alter your dataframe by using t
 
 Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 friends$names[1]<- "Abe"
 friends
 ```
 
 I want to see what everybody's age is in 50 years.
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 friends$ages<- friends$ages+50
 friends
 ```
 
 I want to add their last names.
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
 friends
 ```
 
 Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents "Abram A":
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 friends<- friends[-1, ]
 
 friends
@@ -44,8 +44,10 @@ Let's practice importing data, from \@ref(dataframe). Download the [periodic tab
 
 -   Change the name of the data set to **periodic_table** before you import it. Remember that's on the bottom left.
 
-`periodic_table` is reproduced below.
+
 :::
+
+The first 10 rows of `periodic_table` are reproduced below.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(readr)
@@ -53,7 +55,7 @@ periodic_table <- read_csv("resources/data/periodic-table-data.csv")
 ```
 
 ```{r, echo=FALSE, fig.cap="The Periodic Table"}
-knitr::kable(periodic_table, caption="The Periodic Table", booktabs=TRUE) %>%
+knitr::kable(periodic_table[1:10,], caption="The Periodic Table", booktabs=TRUE) %>%
   scroll_box(height="500px") %>%
   kable_styling(position= "center", font_size = 10)
 ```
@@ -68,7 +70,7 @@ By default, R will organize character strings in alphabetical order. To see this
 
 Let's say I'm interested in elements in a gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.
 
-```{r, attr.output='style="max-height: 100px;"'}
+```{r, attr.output='style="max-height: 100px; font-size:10px;"'}
 periodic_table$state_at_stp
 
 ```
@@ -87,7 +89,7 @@ The `[ ]` operator allows you to select elements within a vector or a dataframe 
 
 Let's say I wanted to select the `name` for `Sodium`, that is in row 11, column 3.
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 periodic_table[11, 3]
 
 periodic_table$name[11]
@@ -97,7 +99,7 @@ Notice that both commands above give me the desired value-- Sodium-- but the for
 
 Recall the use of `[ ]` when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the `periodic_table$name` variable:
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 periodic_table$name[10:20]
 ```
 
@@ -107,7 +109,7 @@ You have now seen how to select specific elements of a vector or a variable, but
 
 We can use `[ , ]` where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let's select rows 40 to 50 and columns 1, 2, and 4 from `periodic_table`:
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 periodic_table[41:50, c(1, 2, 4)]
 ```
 
@@ -117,7 +119,7 @@ periodic_table[41:50, c(1, 2, 4)]
 **The comma is very important.** Let's look at some examples:
 :::
 
-```{r,attr.output='style="max-height: 140px;"'}
+```{r,attr.output='style="max-height: 150px; font-size:10px;"'}
 #Returns all of column 2:
 periodic_table[2]
 
@@ -139,7 +141,7 @@ At its most basic level, you can use the `==` operator to test whether one eleme
 
 Let's say that I want to find any elements that are naturally gasses.
 
-```{r, attr.output='style="max-height: 200px;"'}
+```{r, attr.output='style="max-height: 200px; font-size:10px;"'}
 periodic_table[periodic_table$state_at_stp == "Liquid", ]
 ```
 
@@ -147,7 +149,7 @@ You'll notice that this returns back a massive table of `NAs`, rather than just 
 
 Let's examine the command `periodic_table$state_at_stp=="Liquid"` more carefully.
 
-```{r, attr.output='style="max-height: 100px;"'}
+```{r, attr.output='style="max-height: 100px; font-size:10px;"'}
 periodic_table$state_at_stp=="Liquid"
 ```
 
@@ -156,7 +158,7 @@ periodic_table$state_at_stp=="Liquid"
 
 Although this technically does the job you want, it is not a very elegant solution, which is why the `%in%` operator is better.
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 periodic_table[periodic_table$state_at_stp %in% "Liquid", ]
 ```
 
@@ -164,7 +166,7 @@ Much better. Notice that, with this call, we didn't specify any columns for R to
 
 Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 periodic_table[ (periodic_table$name %in% c("Hydrogen", "Oxygen") ),
         c("atomic_weight", "state_at_stp")]
 ```
@@ -180,7 +182,7 @@ These operators are self explanatory. The `<` and `>` can be used to select rows
 
 `!=` is the **not equals** operator. This operator allows for both numeric and character types. 
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 # Prints any row whose atomic number is less than 10.
 periodic_table[periodic_table$atomic_number<10,]
 
@@ -193,7 +195,7 @@ Finally, the `&` operator means **and**, and the `|` operator means **or**. You 
 
 It allows you to combine multiple logical statements together, which may be useful if you have multiple criteria to work on.
 
-```{r}
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
 #Prints any element which is Non-metal AND whose  atomic number is less than 15
 periodic_table[periodic_table$description != "Non-metal" & periodic_table$atomic_number <15,]
 
