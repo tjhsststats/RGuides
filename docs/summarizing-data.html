@@ -106,8 +106,8 @@
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
-<li class="book-part">Miscellaneous</li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">11</span> Census Data and Linear Regression</a></li>
+<li class="book-part">Linear Regression</li>
+<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
@@ -127,7 +127,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-88">TABLE 8.1: </span>Weather Data for DCA Airport from 1/1/2022 to 6/19/2022
+<span id="tab:unnamed-chunk-90">TABLE 8.1: </span>Weather Data for DCA Airport from 1/1/2022 to 6/19/2022
 </caption>
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -6678,8 +6678,10 @@ NA
 <code class="sourceCode R"><span><span class="co">#This will return an error-- since dca_weather </span></span>
 <span><span class="co">#has multiple columns, R doesn't know which column you want.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">)</span> </span></code></pre></div>
-<pre><code>## Warning in mean.default(dca_weather): argument is
-## not numeric or logical: returning NA</code></pre>
+<pre><code>## Warning in
+## mean.default(dca_weather):
+## argument is not numeric or
+## logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">)</span></span></code></pre></div>
@@ -6716,14 +6718,16 @@ NA
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 3 × 12
-##   STATION     NAME    year month   day  TAVG  TMAX
-##   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 USW00013743 WASHI…  2022     6    18    77    79
-## 2 USW00013743 WASHI…  2022     6    19    70    80
-## 3 USW00013743 WASHI…  2022     6    20    72    NA
-## # … with 5 more variables: TMIN &lt;dbl&gt;,
-## #   AWND &lt;dbl&gt;, PRCP &lt;dbl&gt;, SNOW &lt;dbl&gt;,
-## #   SNWD &lt;dbl&gt;</code></pre>
+##   STATION    NAME   year month
+##   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 USW000137… WASH…  2022     6
+## 2 USW000137… WASH…  2022     6
+## 3 USW000137… WASH…  2022     6
+## # … with 8 more variables:
+## #   day &lt;int&gt;, TAVG &lt;dbl&gt;,
+## #   TMAX &lt;dbl&gt;, TMIN &lt;dbl&gt;,
+## #   AWND &lt;dbl&gt;, PRCP &lt;dbl&gt;,
+## #   SNOW &lt;dbl&gt;, SNWD &lt;dbl&gt;</code></pre>
 <p>At this point, we have a choice to make. Obviously, the data for June 20th wasn’t available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn’t make sense to treat <code>NA</code> as 0, because clearly the temperature wasn’t 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any <code>NAs</code> in the data.</p>
 <div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -6770,7 +6774,7 @@ NA
 <li>And finally, the summarize command allows you to not just calculate one statistic, but many statistics at once.</li>
 </ul>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-98"></span>
+<span style="display:block;" id="fig:unnamed-chunk-100"></span>
 <img src="resources/images/05-Summarizing-Data/Base_vs_dplyr.png" alt="A comparison between Base R commands and dplyr commands." width="100%"><p class="caption">
 FIGURE 8.1: A comparison between Base R commands and dplyr commands.
 </p>

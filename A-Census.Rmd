@@ -1,0 +1,52 @@
+#Downloading Data from the Census
+
+
+
+
+
+## Install packages and Census API Key
+
+Start by loading the required libraries.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+
+library("tidycensus")
+library("tidyverse")
+library("reshape")
+```
+
+Install your Census API Key into R with this call. This uses the `census_api_key` command in tidycensus.
+
+```{r eval=FALSE}
+census_api_key("<Census Key Goes Here>", install=TRUE, overwrite=TRUE)
+```
+
+## Pull data from the Census
+
+Pull variable data into dataframe. 
+
+* Notice the "geography" is "zcta," which is the Census Bureau's equivalent of a ZIP Code. 
+
+* state="VA" variable helps limit the scope of our data to just VA, otherwise it will download all US.
+
+```{r, eval=FALSE, results='hide'}
+income_with_children <- get_acs(geography="zcta",
+                  state="VA",
+                  variables=c("B19125_002"),
+                  year=2019)
+
+head(income_with_children)
+
+income_no_children<- get_acs(geography="zcta",
+                            state="VA",
+                            variables=c("B19125_003"),
+                            year=2019)
+head(income_no_children)
+```
+
+```{r, echo=FALSE, fig.cap="Zip Code Data for Household Income for Households with Children, and Without Children"}
+load("~/Github/RGuides/resources/data/Census_Data.RData")
+knitr::kable(list(income_with_children, income_no_children), caption="Zip Code Data for Household Income for Households with Children, and Without Children", booktabs=TRUE) %>%
+  scroll_box(height="500px") %>%
+  kable_styling(position= "center", font_size = 10)
+```

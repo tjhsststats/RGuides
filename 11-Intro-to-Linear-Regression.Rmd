@@ -1,0 +1,226 @@
+# (PART\*) Linear Regression {.unnumbered}
+
+# Interpreting Scatterplots
+
+## Explanatory and Response Variables, Correlation and Scatterplots
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+An **Explanatory Variable** is sometimes referred to as an *independent variable* or a *predictor variable*. This variable explains the variation in the response variable.
+
+</div>
+
+<div>
+
+A **Response Variable** is sometimes referred to as a *dependent variable* or an *outcome variable*. The value of this variable responds to changes in the explanatory variable.
+
+</div>
+:::
+
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/11-Linear-Regression/exp-resp.png")
+```
+
+The simplest graph for displaying two quantitative variables simultaneously is a **scatterplot**, which uses an x-axis for (traditionally) the explanatory variable, and a y-axis for (traditionally) the response variable.
+
+For each observational pair, a dot is placed at the intersection of its two values.
+
+When we have two quantitative variables, we often want to investigate the relationship between them-- that is, whether the two variables have an *association* with each other.
+
+::: {style="display: grid; grid-template-columns: 1.5fr 1fr; grid-column-gap: 5px;"}
+<div>
+
+Let's take a closer look at the scatterplot on the right. This is a scatterplot of the percent of high school graduates in each state who took the SAT and the state's mean SAT Math score in a recent year. We think that "percent taking" will help explain "mean score." So "percent taking" is the explanatory variable and "mean score" is the response variable. What do we see?
+
+</div>
+
+<div>
+
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/11-Linear-Regression/scatter_ex_1.png")
+```
+
+</div>
+:::
+
+-   The graph shows a clear **direction**: the overall pattern moves from upper left to lower right. That is, states in which higher percents of high school graduates take the SAT tend to have lower mean SAT Math scores. We call this a negative association between the two variables.
+-   The **form** of the relationship is slightly curved. More important, most states fall into one of two distinct *clusters.* In about half of the states, 25% or fewer graduates took the SAT. In the other half, more than 40% took the SAT.
+-   The **strength** of a relationship in a scatterplot is determined by how closely the points follow a clear form. The overall relationship in the scatterplot is moderately strong: states with similar percents taking the SAT tend to have roughly similar mean SAT Math scores.
+
+Ultimately, what we care about when analyzing scatterplots is **linearity**: whether the data is roughly forming the shape of a line, which allows us to fit a straight line on top. 
+
+## Constructing Scatterplots
+
+Let's return to the `diamonds` data. It looks like this:
+
+```{r, echo=FALSE}
+knitr::kable(head(diamonds))
+```
+
+And you can find the documentation here:
+
+```{r}
+?diamonds
+```
+
+`carat` is a rough indicator of a diamond's weight, and I want to investigate whether the `price` is positively correlated with the `carat` of the diamond. In that case, I should construct a scatter plot using the `plot()` command.
+
+```{r, fig.cap="A Scatter Plot of Diamond Weight and Diamond Price"}
+plot(x= diamonds$carat,
+     y= diamonds$price,
+     main= "Carat of Diamond vs Price in US Dollars",
+     xlab= "Weight of Diamond (Carats)",
+     ylab= "Price (USD)")
+
+```
+
+This is probably a good time to mention that the `diamonds` dataset has 53,940 rows, so individual diamonds, recorded. Good look trying to plot this in Excel. Let's do DOFS:
+
+- The direction is clearly positive. As the weight of the diamond increases, the price of the diamond increases too.
+- There doesn't appear to be any major outliers. 
+- The form of the scatterplot is roughly linear, especially when judging the cheapest diamonds of any `carat`.
+- The strength of the diamonds gets weaker as `weight` increases. In other words, it is fan-shaped, which means the *spread* of the price of diamonds increases as the weight of diamonds increases. This is worrisome, because it makes it harder to judge linearity, and decide whether a linear model is appropriate. One explanation, in context, is that no one wants to buy a tiny diamond, no matter how great its `color`, `clairty`, or `cut.`  As the diamond gets bigger, these other factors start to matter.
+
+At this point, we have to make a decision. Either we stop here, claiming that a linear model isn't appropriate, or we judge that the increase in variance is not that bad, and enough for us to continue. We'll continue. 
+
+## Creating a Linear Model
+
+99% of the time in Stats, you're not just looking for an association. You want a **regression line** to create a linear model.  
+
+A **regression line** summarizes the relationship between the two variables, but only in a specific setting: when one of the variables helps explain or predict the other. *Regression, unlike correlation, requires that we have an explanatory variable and a response variable.*
+
+A regression line is a model for the data, much like a sample space in our Probability unit. The equation of a regression line gives a compact mathematical description of what the model tells us between the response variable y and the explanatory variable x. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/11-Linear-Regression/reg_def.png")
+```
+
+We construct a linear model using the `lm` command, and store it into the variable **reg_line**.
+
+```{r, fig.cap="Creating a Regression Model, and Creating a Computer Printout"}
+reg_line<- lm(diamonds$price~diamonds$carat)
+```
+
+If you were waiting for the regression line to suddenly appear on the scatterplot, it won't. You must call a separate command `abline()`, which adds the line on top of the existing scatterplot as a *new layer*. 
+
+This means that you must run `plot()` first to create the scatterplot, and then `abline()` right after. 
+
+```{r, fig.cap="A Scatter Plot of Diamond Weight and Diamond Price"}
+plot(x= diamonds$carat,
+     y= diamonds$price,
+     main= "Carat of Diamond vs Price in US Dollars",
+     xlab= "Weight of Diamond (Carats)",
+     ylab= "Price (USD)")
+
+abline(reg_line, col="red")
+
+```
+
+Like the `boxplot()` command in \@ref(grouped-boxplots), the `lm()` command takes on two variables in the order of `y~x`. Be careful with placement-- you always want the `x` variable, the explanatory variable, on the x-axis. 
+
+
+
+
+Finally, we can get a computer printout of our regression line's results. 
+
+```{r}
+summary(reg_line)
+```
+
+By using `summary`, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the **standard deviation of the residuals** and the **R-Squared Value**. In R, that is labeled as *Multiple R-Squared*.
+
+```{r, echo=FALSE, out.width="90%", fig.cap="Interpreting a Regression Printout"}
+knitr::include_graphics("resources/images/01-Census-and-Linear-Regression/Regression-Printout.png") 
+```
+
+
+
+```{r, echo=FALSE, fig.cap="Zip Code Data for Household Income for Households with Children, and Without Children"}
+load("~/Github/RGuides/resources/data/Census_Data.RData")
+knitr::kable(list(income_with_children, income_no_children), caption="Zip Code Data for Household Income for Households with Children, and Without Children", booktabs=TRUE) %>%
+  scroll_box(height="500px") %>%
+  kable_styling(position= "center", font_size = 10)
+```
+
+## Create a Residual Plot
+
+You should always evaluate whether a linear regression line is a good fit for the model. One of those tools to evaluate whether the regression is a good fit is to examine the residual plot.
+
+Whenever you create a linear model using the `lm` command,
+
+```{r, fig.cap="Resdial Plot for the linear model stored as reg_line"}
+plot(reg_line$residuals, 
+     ylab= "Residual",
+     main= "Residual Plot for Linear Model")
+```
+
+## Creating boxplots with Five-Number Summaries
+
+I want to know if households with children tend to have a higher median income than households with no children. Let's make those two histograms.
+
+```{r}
+par(mfrow=c(2, 1))
+no_children_histo <- hist(income_no_children$estimate,
+                          xlab= "Median Household Income",
+                          ylab= "Count (number of Zip Codes)",
+                          main= "Median Income of Households with No Children in VA, by Zip Code",
+                          col= "sky blue")
+
+no_children_boxplot <- boxplot(income_no_children$estimate,
+                               horizontal=TRUE,
+                               xlab="Median Household Income",
+                               main= "Boxplot with 1.5*IQR Outliers"
+                               )
+text(x=fivenum(income_no_children$estimate), labels=fivenum(income_no_children$estimate), y=1.3)
+
+par(mfrow=c(2, 1))
+with_children_histo <- hist(income_with_children$estimate,
+                            xlab= "Median Income",
+                            ylab= "Count (number of Zip Codes)",
+                            main= "Median Income of Households with Children in VA, by Zip Code",
+                            col= "light green")
+with_children_boxplot <- boxplot(income_with_children$estimate,
+                               horizontal=TRUE,
+                               xlab="Median Household Income",
+                               main= "Boxplot with 1.5*IQR Outliers"
+                               )
+text(x=fivenum(income_with_children$estimate), labels=fivenum(income_with_children$estimate), y=1.3)
+```
+
+This looks nice, but notice the y-scales are not the same. To make them more comparable, stack the histograms on top of each other using the plot() function.
+
+```{r, out.width="90%"}
+plot(no_children_histo, 
+     col= alpha("sky blue", 1),
+     xlim= c(0, 300000),
+     xlab= "Median Income",
+     main= "Median Household Income in VA, by Zip Code")
+
+plot(with_children_histo,
+     col= alpha("light green", 0.5),
+     xlim=c(0,300000),
+     add= TRUE)
+
+legend(200000, 150, c("No Children", "With Children"), fill= c("sky blue", "light green"), title= "Zoomer Status")
+```
+
+### Removing NA's
+
+Let's say you want to find the average household income for households with children. You run the following command.
+
+```{r}
+mean(income_with_children$estimate)
+```
+
+But the result returns `NA` instead, rather than the actual statistic. Why?
+
+**NA's** show up when either data is not available, or the sample size is so small that the data can be personally identifiable. The Census suppresses such data.
+
+Whether you completely remove the NA's is up to you, and dependent on context. When you create any data visualization, R will automatically exclude NA's from this analysis.
+
+In some contexts, you may want to replace NA's with a specific number like 0. Talk to your teacher about this before you continue.
+
+```{r}
+mean(na.omit(income_with_children$estimate))
+```

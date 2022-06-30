@@ -106,8 +106,8 @@
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
-<li class="book-part">Miscellaneous</li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">11</span> Census Data and Linear Regression</a></li>
+<li class="book-part">Linear Regression</li>
+<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
@@ -139,13 +139,20 @@
 <span></span>
 <span><span class="va">friends</span><span class="op">[</span> ,<span class="st">'last_names'</span><span class="op">]</span><span class="op">&lt;-</span> <span class="va">last_names</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names
-## 1    Abram   34        TRUE        1.0          A
-## 2   Bryant   35       FALSE        2.2          B
-## 3  Colleen   32       FALSE       26.0          C
-## 4    David   29        TRUE        7.0          D
-## 5   Esther   30       FALSE       10.0          E
-## 6 Jeremiah   30        TRUE        9.0          J</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1    Abram   34        TRUE
+## 2   Bryant   35       FALSE
+## 3  Colleen   32       FALSE
+## 4    David   29        TRUE
+## 5   Esther   30       FALSE
+## 6 Jeremiah   30        TRUE
+##   fav_number last_names
+## 1        1.0          A
+## 2        2.2          B
+## 3       26.0          C
+## 4        7.0          D
+## 5       10.0          E
+## 6        9.0          J</code></pre>
 </div>
 <div id="merging-two-columns-together-into-a-new-column" class="section level2" number="6.2">
 <h2>
@@ -155,13 +162,20 @@
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">full_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">friends</span><span class="op">$</span><span class="va">names</span>, <span class="va">friends</span><span class="op">$</span><span class="va">last_names</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names
-## 1    Abram   34        TRUE        1.0          A
-## 2   Bryant   35       FALSE        2.2          B
-## 3  Colleen   32       FALSE       26.0          C
-## 4    David   29        TRUE        7.0          D
-## 5   Esther   30       FALSE       10.0          E
-## 6 Jeremiah   30        TRUE        9.0          J
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1    Abram   34        TRUE
+## 2   Bryant   35       FALSE
+## 3  Colleen   32       FALSE
+## 4    David   29        TRUE
+## 5   Esther   30       FALSE
+## 6 Jeremiah   30        TRUE
+##   fav_number last_names
+## 1        1.0          A
+## 2        2.2          B
+## 3       26.0          C
+## 4        7.0          D
+## 5       10.0          E
+## 6        9.0          J
 ##   full_names
 ## 1    Abram A
 ## 2   Bryant B
@@ -180,20 +194,34 @@
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">age_and_fav_number</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span> <span class="op">+</span> <span class="va">friends</span><span class="op">$</span><span class="va">fav_number</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names
-## 1    Abram   34        TRUE        1.0          A
-## 2   Bryant   35       FALSE        2.2          B
-## 3  Colleen   32       FALSE       26.0          C
-## 4    David   29        TRUE        7.0          D
-## 5   Esther   30       FALSE       10.0          E
-## 6 Jeremiah   30        TRUE        9.0          J
-##   full_names age_and_fav_number
-## 1    Abram A                 35
-## 2   Bryant B                 37
-## 3  Colleen C                 58
-## 4    David D                 36
-## 5   Esther E                 40
-## 6 Jeremiah J                 39</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1    Abram   34        TRUE
+## 2   Bryant   35       FALSE
+## 3  Colleen   32       FALSE
+## 4    David   29        TRUE
+## 5   Esther   30       FALSE
+## 6 Jeremiah   30        TRUE
+##   fav_number last_names
+## 1        1.0          A
+## 2        2.2          B
+## 3       26.0          C
+## 4        7.0          D
+## 5       10.0          E
+## 6        9.0          J
+##   full_names
+## 1    Abram A
+## 2   Bryant B
+## 3  Colleen C
+## 4    David D
+## 5   Esther E
+## 6 Jeremiah J
+##   age_and_fav_number
+## 1                 35
+## 2                 37
+## 3                 58
+## 4                 36
+## 5                 40
+## 6                 39</code></pre>
 
 </div>
 </div>

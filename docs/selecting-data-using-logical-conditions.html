@@ -106,8 +106,8 @@
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
-<li class="book-part">Miscellaneous</li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">11</span> Census Data and Linear Regression</a></li>
+<li class="book-part">Linear Regression</li>
+<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
@@ -133,53 +133,66 @@
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">==</span> <span class="st">"Liquid"</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 200px; font-size:10px;"><code>## # A tibble: 17 × 22
-##    atomic_number symbol name    name_origin  group
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
-##  1            35 Br     Bromine the Greek b…    17
-##  2            80 Hg     Mercury the New Lat…    12
-##  3            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-##  4            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-##  5            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-##  6            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-##  7            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-##  8            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-##  9            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 10            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 11            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 12            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 13            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 14            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 15            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 16            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## 17            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;            NA
-## # … with 17 more variables: period &lt;dbl&gt;,
-## #   block &lt;chr&gt;, state_at_stp &lt;chr&gt;,
-## #   occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
-## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, …</code></pre>
+##    atomic_number symbol name  
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+##  1            35 Br     Bromi…
+##  2            80 Hg     Mercu…
+##  3            NA &lt;NA&gt;   &lt;NA&gt;  
+##  4            NA &lt;NA&gt;   &lt;NA&gt;  
+##  5            NA &lt;NA&gt;   &lt;NA&gt;  
+##  6            NA &lt;NA&gt;   &lt;NA&gt;  
+##  7            NA &lt;NA&gt;   &lt;NA&gt;  
+##  8            NA &lt;NA&gt;   &lt;NA&gt;  
+##  9            NA &lt;NA&gt;   &lt;NA&gt;  
+## 10            NA &lt;NA&gt;   &lt;NA&gt;  
+## 11            NA &lt;NA&gt;   &lt;NA&gt;  
+## 12            NA &lt;NA&gt;   &lt;NA&gt;  
+## 13            NA &lt;NA&gt;   &lt;NA&gt;  
+## 14            NA &lt;NA&gt;   &lt;NA&gt;  
+## 15            NA &lt;NA&gt;   &lt;NA&gt;  
+## 16            NA &lt;NA&gt;   &lt;NA&gt;  
+## 17            NA &lt;NA&gt;   &lt;NA&gt;  
+## # … with 19 more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, …</code></pre>
 <p>You’ll notice that this returns back a massive table of <code>NAs</code>, rather than just the two elements that exist in liquid state! Why?</p>
 <p>Let’s examine the command <code>periodic_table$state_at_stp=="Liquid"</code> more carefully.</p>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">==</span><span class="st">"Liquid"</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##   [8] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [15] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [22] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [29] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-##  [36] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [43] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [50] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [57] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [64] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [71] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [78] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
-##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [92] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [99] FALSE FALSE FALSE FALSE FALSE    NA    NA
-## [106]    NA    NA    NA    NA    NA    NA    NA
-## [113]    NA    NA    NA    NA    NA    NA</code></pre>
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] FALSE FALSE FALSE FALSE
+##   [5] FALSE FALSE FALSE FALSE
+##   [9] FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE
+##  [17] FALSE FALSE FALSE FALSE
+##  [21] FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE
+##  [29] FALSE FALSE FALSE FALSE
+##  [33] FALSE FALSE  TRUE FALSE
+##  [37] FALSE FALSE FALSE FALSE
+##  [41] FALSE FALSE FALSE FALSE
+##  [45] FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE
+##  [53] FALSE FALSE FALSE FALSE
+##  [57] FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE
+##  [65] FALSE FALSE FALSE FALSE
+##  [69] FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE
+##  [77] FALSE FALSE FALSE  TRUE
+##  [81] FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE
+##  [89] FALSE FALSE FALSE FALSE
+##  [93] FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE
+## [101] FALSE FALSE FALSE    NA
+## [105]    NA    NA    NA    NA
+## [109]    NA    NA    NA    NA
+## [113]    NA    NA    NA    NA
+## [117]    NA    NA</code></pre>
 <ul>
 <li>Every time the element’s state is not <code>Liquid</code>, R returns False, instead of ignoring the row, which means you get a logical vector of all 118 elements.</li>
 <li>This gets passed onto the subset function, which, rather than ignore any row that says FALSE, returns each row as entirely NAs.</li>
@@ -188,17 +201,17 @@
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Liquid"</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 2 × 22
-##   atomic_number symbol name    name_origin   group
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;
-## 1            35 Br     Bromine the Greek br…    17
-## 2            80 Hg     Mercury the New Lati…    12
-## # … with 17 more variables: period &lt;dbl&gt;,
-## #   block &lt;chr&gt;, state_at_stp &lt;chr&gt;,
-## #   occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
-## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, …</code></pre>
+##   atomic_number symbol name   
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
+## 1            35 Br     Bromine
+## 2            80 Hg     Mercury
+## # … with 19 more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, …</code></pre>
 <p>Much better. Notice that, with this call, we didn’t specify any columns for R to filter out, so it left those blank.</p>
 <p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
@@ -222,47 +235,47 @@
 <code class="sourceCode R"><span><span class="co"># Prints any row whose atomic number is less than 10.</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span><span class="op">&lt;</span><span class="fl">10</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 9 × 22
-##   atomic_number symbol name      name_origin group
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;
-## 1             1 H      Hydrogen  composed o…     1
-## 2             2 He     Helium    the Greek …    18
-## 3             3 Li     Lithium   the Greek …     1
-## 4             4 Be     Beryllium beryl, a m…     2
-## 5             5 B      Boron     borax, a m…    13
-## 6             6 C      Carbon    the Latin …    14
-## 7             7 N      Nitrogen  the Greek …    15
-## 8             8 O      Oxygen    from the G…    16
-## 9             9 F      Fluorine  the Latin …    17
-## # … with 17 more variables: period &lt;dbl&gt;,
-## #   block &lt;chr&gt;, state_at_stp &lt;chr&gt;,
-## #   occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
-## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, …</code></pre>
+##   atomic_number symbol name   
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
+## 1             1 H      Hydrog…
+## 2             2 He     Helium 
+## 3             3 Li     Lithium
+## 4             4 Be     Beryll…
+## 5             5 B      Boron  
+## 6             6 C      Carbon 
+## 7             7 N      Nitrog…
+## 8             8 O      Oxygen 
+## 9             9 F      Fluori…
+## # … with 19 more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, …</code></pre>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any row whose state at standard room temperature is not Solid.</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">!=</span> <span class="st">"Solid"</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 28 × 22
-##    atomic_number symbol name     name_origin group
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;
-##  1             1 H      Hydrogen composed o…     1
-##  2             2 He     Helium   the Greek …    18
-##  3             7 N      Nitrogen the Greek …    15
-##  4             8 O      Oxygen   from the G…    16
-##  5             9 F      Fluorine the Latin …    17
-##  6            10 Ne     Neon     the Greek …    18
-##  7            17 Cl     Chlorine the Greek …    17
-##  8            18 Ar     Argon    the Greek …    18
-##  9            35 Br     Bromine  the Greek …    17
-## 10            36 Kr     Krypton  the Greek …    18
-## # … with 18 more rows, and 17 more variables:
-## #   period &lt;dbl&gt;, block &lt;chr&gt;,
-## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
-## #   aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, …</code></pre>
+##    atomic_number symbol name  
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+##  1             1 H      Hydro…
+##  2             2 He     Helium
+##  3             7 N      Nitro…
+##  4             8 O      Oxygen
+##  5             9 F      Fluor…
+##  6            10 Ne     Neon  
+##  7            17 Cl     Chlor…
+##  8            18 Ar     Argon 
+##  9            35 Br     Bromi…
+## 10            36 Kr     Krypt…
+## # … with 18 more rows, and 19
+## #   more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;, …</code></pre>
 </div>
 <div id="combining-logical-operators-with-or-and-conditions" class="section level2" number="7.3">
 <h2>
@@ -274,48 +287,48 @@
 <code class="sourceCode R"><span><span class="co">#Prints any element which is Non-metal AND whose  atomic number is less than 15</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">description</span> <span class="op">!=</span> <span class="st">"Non-metal"</span> <span class="op">&amp;</span> <span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span> <span class="op">&lt;</span><span class="fl">15</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 22
-##    atomic_number symbol name     name_origin group
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;
-##  1             2 He     Helium   the Greek …    18
-##  2             3 Li     Lithium  the Greek …     1
-##  3             4 Be     Berylli… beryl, a m…     2
-##  4             5 B      Boron    borax, a m…    13
-##  5             9 F      Fluorine the Latin …    17
-##  6            10 Ne     Neon     the Greek …    18
-##  7            11 Na     Sodium   the Englis…     1
-##  8            12 Mg     Magnesi… Magnesia, …     2
-##  9            13 Al     Alumini… from alumi…    13
-## 10            14 Si     Silicon  from the L…    14
-## # … with 17 more variables: period &lt;dbl&gt;,
-## #   block &lt;chr&gt;, state_at_stp &lt;chr&gt;,
-## #   occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
-## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, …</code></pre>
+##    atomic_number symbol name  
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+##  1             2 He     Helium
+##  2             3 Li     Lithi…
+##  3             4 Be     Beryl…
+##  4             5 B      Boron 
+##  5             9 F      Fluor…
+##  6            10 Ne     Neon  
+##  7            11 Na     Sodium
+##  8            12 Mg     Magne…
+##  9            13 Al     Alumi…
+## 10            14 Si     Silic…
+## # … with 19 more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, …</code></pre>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any element which is Non-metal OR whose atomic number is less than 15</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">description</span> <span class="op">!=</span> <span class="st">"Non-metal"</span> <span class="op">|</span> <span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span> <span class="op">&lt;</span><span class="fl">15</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 115 × 22
-##    atomic_number symbol name     name_origin group
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;
-##  1             1 H      Hydrogen composed o…     1
-##  2             2 He     Helium   the Greek …    18
-##  3             3 Li     Lithium  the Greek …     1
-##  4             4 Be     Berylli… beryl, a m…     2
-##  5             5 B      Boron    borax, a m…    13
-##  6             6 C      Carbon   the Latin …    14
-##  7             7 N      Nitrogen the Greek …    15
-##  8             8 O      Oxygen   from the G…    16
-##  9             9 F      Fluorine the Latin …    17
-## 10            10 Ne     Neon     the Greek …    18
-## # … with 105 more rows, and 17 more variables:
-## #   period &lt;dbl&gt;, block &lt;chr&gt;,
-## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
-## #   aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, …</code></pre>
+##    atomic_number symbol name  
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+##  1             1 H      Hydro…
+##  2             2 He     Helium
+##  3             3 Li     Lithi…
+##  4             4 Be     Beryl…
+##  5             5 B      Boron 
+##  6             6 C      Carbon
+##  7             7 N      Nitro…
+##  8             8 O      Oxygen
+##  9             9 F      Fluor…
+## 10            10 Ne     Neon  
+## # … with 105 more rows, and
+## #   19 more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;, …</code></pre>
 </div>
 </div>
   <div class="chapter-nav">
