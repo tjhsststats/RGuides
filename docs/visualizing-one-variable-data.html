@@ -129,7 +129,7 @@
 <span class="header-section-number">6.1</span> Histograms<a class="anchor" aria-label="anchor" href="#histograms"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can use the built-in <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> function in order to create histograms, very easily. Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in February, when <code>month</code> equals 2.</p>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">feb_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">feb_temps</span>, </span>
 <span>     col<span class="op">=</span> <span class="st">"skyblue"</span>, </span>
@@ -171,7 +171,7 @@
 </h2>
 <p>Unfortunately, there’s no built in function to create dotplots in R. We have to repurpose the <code>stripchart</code> command in order to make something closest to a dotplot.</p>
 <p>Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in June, when <code>month</code> equals 6.</p>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, </span>
 <span>           offset <span class="op">=</span> <span class="fl">.5</span>, </span>
@@ -193,7 +193,7 @@
 <span class="header-section-number">6.4.1</span> Single Boxplots<a class="anchor" aria-label="anchor" href="#single-boxplots"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s start off with the most simple case: making one boxplot with one variable. I’ll make a boxplot of June Temperatures in DCA:</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">june_temps</span>,</span>
 <span>        col<span class="op">=</span><span class="st">"pink"</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Boxplot of June Temperatures at DCA Airport"</span>,</span>
@@ -208,7 +208,7 @@
 </h3>
 <p>Normally, you don’t just make one boxplot, but several boxplots to compare variance <em>within groups</em>. To do this, we have to give the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command a second <strong>grouping variable</strong>, which we indicate with the <code>~</code> operator.</p>
 <p>Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the <code>data=</code> parameter. Below are the bosplots for <code>TAVG</code> with the <code>dca_weather</code> dataset, grouped by <code>month</code>.</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,</span>
 <span>        col<span class="op">=</span><span class="st">"skyblue"</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,</span>
@@ -217,7 +217,7 @@
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-99-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>The <code>~</code> variable effectively tells R which axis to to place each variable in, based on <code>y~x</code>. In other words, since the first variable is <code>TAVG</code>, that goes on the y-axis, and <code>month</code> goes on the x-axis. We have effectively set <code>month</code> as our grouping variable.</p>
 <p>Look at what happens when you switch the axes around:</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">month</span><span class="op">~</span><span class="va">TAVG</span>, data<span class="op">=</span><span class="va">dca_weather</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-100-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Yep. It’s not pretty. Be careful of which variable goes where.</p>
@@ -227,7 +227,7 @@
 <span class="header-section-number">6.4.3</span> Customizing <code>boxplot()</code><a class="anchor" aria-label="anchor" href="#customizing-boxplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>Here’s an idea of the things you can do with boxplots:</p>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,</span>
 <span>        col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"skyblue"</span>, <span class="st">"darkcyan"</span>, <span class="st">"cadetblue1"</span>, <span class="st">"chartreuse"</span>, <span class="st">"forestgreen"</span>, <span class="st">"darkorange"</span><span class="op">)</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,</span>
@@ -336,7 +336,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 28 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 30 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

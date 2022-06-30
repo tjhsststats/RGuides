@@ -11,7 +11,7 @@ knitr::kable(dca_weather, caption="Weather Data for DCA Airport from 1/1/2022 to
   kable_styling(position= "center", font_size = 10)
 ```
 
-## `mean`, `median`, `fivenum`, and `sd()`
+## Quantitative Variables: `mean()`, `median()`, `fivenum()`, and `sd()`
 
 These functions do exactly as they sound, however, you must pass a **numeric vector** through each of them.
 
@@ -71,7 +71,7 @@ sd(dca_weather$TMAX[dca_weather$month %in% 6], na.rm=TRUE)
 
 Notice that the argument `na.rm=` is passed into the `sd()` argument. Try typing `?sd()` to read the documentation on this function.
 
-## The `table` function
+## Categorical Variables: The `table()` function {#table}
 
 Let's say I'm interested in how many elements are in gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.
 
@@ -79,9 +79,13 @@ Let's say I'm interested in how many elements are in gas, liquid, and solid stat
 table(periodic_table$state_at_stp)
 ```
 
--   The table function provides a count of the number of elements that appear in each state. But as you can see, the ordering is off.
+- You should only use `table()` for **categorical data**, because it returns a counts to you. Counting quanatitative variables is meaningless. 
 
-### Optional: Making code efficient with piping and dplyr
+- The table function takes a single vector, or two vectors, into the function. Do not pass an entire table through table(), or else R will return an error. 
+
+- The table function provides a count of the number of elements that appear in each state. But as you can see, the ordering is off.
+
+## Making code efficient with piping and dplyr {#dplyr-filter}
 
 The following code does the same exact thing as the previous command, using the `dyplr` package and the piping operator.[^3]
 ```{r}

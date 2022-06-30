@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 4 Working with Dataframes | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="4.1 Operations with Dataframes Finally, as in 2.2, you can alter your dataframe by using the storage operator &lt;- to overwrite data.2 Let’s say that I accidentally typed ‘Abram’ as my friend’s...">
+<meta name="description" content="4.1 Destructive Operations with Dataframes Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for...">
 <meta name="generator" content="bookdown 0.27.1 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Working with Dataframes | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Operations with Dataframes Finally, as in 2.2, you can alter your dataframe by using the storage operator &lt;- to overwrite data.2 Let’s say that I accidentally typed ‘Abram’ as my friend’s...">
+<meta property="og:description" content="4.1 Destructive Operations with Dataframes Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 4 Working with Dataframes | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="4.1 Operations with Dataframes Finally, as in 2.2, you can alter your dataframe by using the storage operator &lt;- to overwrite data.2 Let’s say that I accidentally typed ‘Abram’ as my friend’s...">
+<meta name="twitter:description" content="4.1 Destructive Operations with Dataframes Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -120,55 +120,75 @@
 <h1>
 <span class="header-section-number">4</span> Working with Dataframes<a class="anchor" aria-label="anchor" href="#working-with-dataframes"><i class="fas fa-link"></i></a>
 </h1>
-<div id="operations-with-dataframes" class="section level2" number="4.1">
+<div id="destructive-operations-with-dataframes" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">4.1</span> Operations with Dataframes<a class="anchor" aria-label="anchor" href="#operations-with-dataframes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Destructive Operations with Dataframes<a class="anchor" aria-label="anchor" href="#destructive-operations-with-dataframes"><i class="fas fa-link"></i></a>
 </h2>
-<p>Finally, as in <a href="vectors.html#vector-operations">2.2</a>, you can alter your dataframe by using the storage operator <code>&lt;-</code> to overwrite data.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note in the last example, I had to manually override the vector. That’s because these are characters, and if you use the &lt;code&gt;+&lt;/code&gt; operator, R will return an error saying that you can’t add “a” with “b”. There are ways to deal with this in a more efficient manner using the &lt;code&gt;stringr&lt;/code&gt; package, but learning it is not required to understand the basics of R. We will assume that you’re entering your data into Excel first, before feeding it into R for processing.&lt;/p&gt;"><sup>2</sup></a></p>
+<p>Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for the original data, but want to manipulate it in some way. However, it means that if you made a mistake, the only way to revert the mistake is to completely reload the data from its original source, and repeat all your operations again. As in <a href="vectors.html#vector-operations">2.2</a>, you can alter your dataframe by using the storage operator <code>&lt;-</code> to overwrite data.</p>
+<div id="replacing-one-element" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Replacing one element<a class="anchor" aria-label="anchor" href="#replacing-one-element"><i class="fas fa-link"></i></a>
+</h3>
 <p>Let’s say that I accidentally typed ‘Abram’ as my friend’s name, and I want to replace it with ‘Abe’</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="st">"Abe"</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1      Abe   34        TRUE
-## 2   Bryant   35        TRUE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30          NA</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1      Abe   34        TRUE        1.0
+## 2   Bryant   35       FALSE        2.2
+## 3  Colleen   32       FALSE       26.0
+## 4    David   29        TRUE        7.0
+## 5   Esther   30       FALSE       10.0
+## 6 Jeremiah   30        TRUE        9.0</code></pre>
+</div>
+<div id="replacing-columns-with-a-mathematical-formula" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> Replacing columns with a mathematical formula<a class="anchor" aria-label="anchor" href="#replacing-columns-with-a-mathematical-formula"><i class="fas fa-link"></i></a>
+</h3>
 <p>I want to see what everybody’s age is in 50 years.</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">+</span><span class="fl">50</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1      Abe   84        TRUE
-## 2   Bryant   85        TRUE
-## 3  Colleen   82       FALSE
-## 4    David   79        TRUE
-## 5   Esther   80       FALSE
-## 6 Jeremiah   80          NA</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1      Abe   84        TRUE        1.0
+## 2   Bryant   85       FALSE        2.2
+## 3  Colleen   82       FALSE       26.0
+## 4    David   79        TRUE        7.0
+## 5   Esther   80       FALSE       10.0
+## 6 Jeremiah   80        TRUE        9.0</code></pre>
+</div>
+<div id="replacing-entire-columns-with-another-vector" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> Replacing entire columns with another vector<a class="anchor" aria-label="anchor" href="#replacing-entire-columns-with-another-vector"><i class="fas fa-link"></i></a>
+</h3>
 <p>I want to add their last names.</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram A"</span>, <span class="st">"Bryant B"</span>, <span class="st">"Colleen C"</span>, <span class="st">"David D"</span>, <span class="st">"Esther E"</span>, <span class="st">"Jeremiah J"</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
-## 1    Abram A   84        TRUE
-## 2   Bryant B   85        TRUE
-## 3  Colleen C   82       FALSE
-## 4    David D   79        TRUE
-## 5   Esther E   80       FALSE
-## 6 Jeremiah J   80          NA</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
+## 1    Abram A   84        TRUE        1.0
+## 2   Bryant B   85       FALSE        2.2
+## 3  Colleen C   82       FALSE       26.0
+## 4    David D   79        TRUE        7.0
+## 5   Esther E   80       FALSE       10.0
+## 6 Jeremiah J   80        TRUE        9.0</code></pre>
+<p>Note in the last example, I had to type the entire vector I planned to override. That’s because these are characters, and if you use the <code>+</code> operator, R will return an error saying that you can’t add “a” with “b”. We will discuss a better way to do this, below.</p>
+</div>
+<div id="dropping-rows" class="section level3" number="4.1.4">
+<h3>
+<span class="header-section-number">4.1.4</span> Dropping Rows<a class="anchor" aria-label="anchor" href="#dropping-rows"><i class="fas fa-link"></i></a>
+</h3>
 <p>Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents “Abram A”:</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
-## 2   Bryant B   85        TRUE
-## 3  Colleen C   82       FALSE
-## 4    David D   79        TRUE
-## 5   Esther E   80       FALSE
-## 6 Jeremiah J   80          NA</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
+## 2   Bryant B   85       FALSE        2.2
+## 3  Colleen C   82       FALSE       26.0
+## 4    David D   79        TRUE        7.0
+## 5   Esther E   80       FALSE       10.0
+## 6 Jeremiah J   80        TRUE        9.0</code></pre>
 <div class="rmdtip">
 <p>Let’s practice importing data, from <a href="dataframe.html#dataframe">3</a>. Download the <a href="https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv" target="_blank">periodic table</a> data now, and import it into R as <code>periodic_table</code>.</p>
 <ul>
@@ -181,7 +201,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-68">TABLE 4.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-64">TABLE 4.1: </span>The Periodic Table
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -937,6 +957,7 @@ NA
 </div>
 <p>So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?</p>
 </div>
+</div>
 <div id="filtering-data" class="section level2" number="4.2">
 <h2>
 <span class="header-section-number">4.2</span> Filtering Data<a class="anchor" aria-label="anchor" href="#filtering-data"><i class="fas fa-link"></i></a>
@@ -949,23 +970,26 @@ NA
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"   
-##   [8] "Gas"    "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [15] "Solid"  "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid" 
-##  [22] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [29] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid"
-##  [36] "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [43] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [50] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid" 
-##  [57] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [64] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [71] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [78] "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid" 
-##  [85] "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [92] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [99] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  NA       NA      
-## [106] NA       NA       NA       NA       NA       NA       NA      
-## [113] NA       NA       NA       NA       NA       NA</code></pre>
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
+##   [7] "Gas"    "Gas"    "Gas"    "Gas"    "Solid"  "Solid" 
+##  [13] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"   
+##  [19] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [25] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [31] "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Gas"   
+##  [37] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [43] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [49] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"   
+##  [55] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [61] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [67] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [73] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [79] "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid" 
+##  [85] "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
+##  [91] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [97] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+## [103] "Solid"  NA       NA       NA       NA       NA      
+## [109] NA       NA       NA       NA       NA       NA      
+## [115] NA       NA       NA       NA</code></pre>
 <p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
 </div>
 <div id="using-for-a-dataframe" class="section level3" number="4.2.2">
@@ -993,9 +1017,9 @@ NA
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"   
-##  [6] "Phosphorus" "Sulfur"     "Chlorine"   "Argon"      "Potassium" 
-## [11] "Calcium"</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium" 
+##  [5] "Silicon"    "Phosphorus" "Sulfur"     "Chlorine"  
+##  [9] "Argon"      "Potassium"  "Calcium"</code></pre>
 </div>
 <div id="selecting-rows-and-columns-using" class="section level4" number="4.2.2.2">
 <h4>
@@ -1006,21 +1030,22 @@ NA
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 3
-##    atomic_number symbol name_origin                                       
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                             
-##  1            41 Nb     Niobe, daughter of king Tantalus from Greek mytho…
-##  2            42 Mo     the Greek molybdos meaning 'lead'                 
-##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'         
-##  4            44 Ru     Ruthenia, the New Latin name for Russia           
-##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'         
-##  6            46 Pd     the then recently discovered asteroid Pallas, con…
-##  7            47 Ag     English word (argentum in Latin)                  
-##  8            48 Cd     the New Latin cadmia, from King Kadmos            
-##  9            49 In     indigo                                            
+##    atomic_number symbol name_origin                              
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                    
+##  1            41 Nb     Niobe, daughter of king Tantalus from Gr…
+##  2            42 Mo     the Greek molybdos meaning 'lead'        
+##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'
+##  4            44 Ru     Ruthenia, the New Latin name for Russia  
+##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'
+##  6            46 Pd     the then recently discovered asteroid Pa…
+##  7            47 Ag     English word (argentum in Latin)         
+##  8            48 Cd     the New Latin cadmia, from King Kadmos   
+##  9            49 In     indigo                                   
 ## 10            50 Sn     English word (stannum in Latin)</code></pre>
-<div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level5 unnumbered">
-<h5>“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
-</h5>
+</div>
+<div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level4 unnumbered">
+<h4>“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
+</h4>
 <div class="rmdwarning">
 <p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
 </div>
@@ -1045,14 +1070,16 @@ NA
 <code class="sourceCode R"><span><span class="co">#Returns all of row 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 22
-##   atomic_number symbol name   name_origin  group period block state_at_stp
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-## 1             2 He     Helium the Greek h…    18      1 s     Gas         
-## # … with 14 more variables: occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+##   atomic_number symbol name   name_origin      group period block
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+## 1             2 He     Helium the Greek helio…    18      1 s    
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
 ## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
 ## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
-## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
+## #   abundance &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
@@ -1080,54 +1107,57 @@ NA
 </div>
 </div>
 </div>
-<div id="using-in-and-logical-vectors" class="section level3" number="4.2.3">
-<h3>
-<span class="header-section-number">4.2.3</span> Using <code>%in%</code>, <code>==</code>, and Logical Vectors<a class="anchor" aria-label="anchor" href="#using-in-and-logical-vectors"><i class="fas fa-link"></i></a>
-</h3>
+<div id="using-in-and-logical-vectors" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Using <code>%in%</code>, <code>==</code>, and Logical Vectors<a class="anchor" aria-label="anchor" href="#using-in-and-logical-vectors"><i class="fas fa-link"></i></a>
+</h2>
 <p>Recall in <a href="vectors.html#vector-logical-selection">2.3.1</a> that we could use a logical vector, and the <code>%in%</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
 <p>At its most basic level, you can use the <code>==</code> operator to test whether one element <strong>exactly</strong> matches another. For example, <code>"gas"=="gas"</code> returns TRUE, but <code>"gas"=="Gas"</code> will return false.</p>
 <p>Let’s say that I want to find any elements that are naturally gasses.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">==</span> <span class="st">"Liquid"</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 200px; font-size:10px;"><code>## # A tibble: 17 × 22
-##    atomic_number symbol name   name_origin group period block state_at_stp
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-##  1            35 Br     Bromi… the Greek …    17      4 p     Liquid      
-##  2            80 Hg     Mercu… the New La…    12      6 d     Liquid      
-##  3            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-##  4            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-##  5            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-##  6            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-##  7            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-##  8            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-##  9            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 10            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 11            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 12            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 13            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 14            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 15            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 16            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## 17            NA &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;           NA     NA &lt;NA&gt;  &lt;NA&gt;        
-## # … with 14 more variables: occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+##    atomic_number symbol name    name_origin    group period block
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+##  1            35 Br     Bromine the Greek bro…    17      4 p    
+##  2            80 Hg     Mercury the New Latin…    12      6 d    
+##  3            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+##  4            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+##  5            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+##  6            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+##  7            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+##  8            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+##  9            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 10            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 11            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 12            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 13            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 14            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 15            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 16            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## 17            NA &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;              NA     NA &lt;NA&gt; 
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
 ## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
 ## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
-## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
+## #   abundance &lt;dbl&gt;</code></pre>
 <p>You’ll notice that this returns back a massive table of <code>NAs</code>, rather than just the two elements that exist in liquid state! Why?</p>
 <p>Let’s examine the command <code>periodic_table$state_at_stp=="Liquid"</code> more carefully.</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">==</span><span class="st">"Liquid"</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [34] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [78] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [100] FALSE FALSE FALSE FALSE    NA    NA    NA    NA    NA    NA    NA
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [11] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [21] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [31] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+##  [41] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [51] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [71] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+##  [81] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [91] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [101] FALSE FALSE FALSE    NA    NA    NA    NA    NA    NA    NA
 ## [111]    NA    NA    NA    NA    NA    NA    NA    NA</code></pre>
 <ul>
 <li>Every time the element’s state is not <code>Liquid</code>, R returns False, instead of ignoring the row, which means you get a logical vector of all 118 elements.</li>
@@ -1137,15 +1167,17 @@ NA
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Liquid"</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 2 × 22
-##   atomic_number symbol name    name_origin group period block state_at_stp
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-## 1            35 Br     Bromine the Greek …    17      4 p     Liquid      
-## 2            80 Hg     Mercury the New La…    12      6 d     Liquid      
-## # … with 14 more variables: occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+##   atomic_number symbol name    name_origin     group period block
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+## 1            35 Br     Bromine the Greek brom…    17      4 p    
+## 2            80 Hg     Mercury the New Latin …    12      6 d    
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
 ## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
 ## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
-## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
+## #   abundance &lt;dbl&gt;</code></pre>
 <p>Much better. Notice that, with this call, we didn’t specify any columns for R to filter out, so it left those blank.</p>
 <p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
@@ -1158,114 +1190,183 @@ NA
 ## 2         16.0  Gas</code></pre>
 <p>The extra parentheses around <code>periodic_table$name %in% c("Hydrogen", "Oxygen")</code> are a good habit to get into as they ensure everything before the comma is used to select specific rows matching that condition. For the columns, we can specify a vector of the column names to focus on only those variables. The resulting table here gives the <code>atomic_weight</code> and <code>state_at_stp</code> for <code>"Hydrogen"</code> and then for <code>"Oxygen"</code>.</p>
 <p>There are many more complicated ways to subset a data frame and one can use the <code>subset</code> function built into R, but in my experience, whenever you want to do anything more complicated than what we have done here, it is easier to use the <code>filter</code> and <code>select</code> functions in the <code>dplyr</code> package.</p>
-</div>
-<div id="more-logical-operations-like-and" class="section level3" number="4.2.4">
+<div id="comparison-operators" class="section level3" number="4.3.1">
 <h3>
-<span class="header-section-number">4.2.4</span> More logical operations like <code>&lt;</code>, <code>&gt;</code>, <code>!=</code>; <code>&amp;</code> and <code>|</code><a class="anchor" aria-label="anchor" href="#more-logical-operations-like-and"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.1</span> Comparison Operators<a class="anchor" aria-label="anchor" href="#comparison-operators"><i class="fas fa-link"></i></a>
 </h3>
-<div id="comparison-operators" class="section level4" number="4.2.4.1">
-<h4>
-<span class="header-section-number">4.2.4.1</span> Comparison Operators<a class="anchor" aria-label="anchor" href="#comparison-operators"><i class="fas fa-link"></i></a>
-</h4>
 <p>These operators are self explanatory. The <code>&lt;</code> and <code>&gt;</code> can be used to select rows based on a <strong>numeric</strong> condition.</p>
 <p><code>!=</code> is the <strong>not equals</strong> operator. This operator allows for both numeric and character types.</p>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Prints any row whose atomic number is less than 10.</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span><span class="op">&lt;</span><span class="fl">10</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 9 × 22
-##   atomic_number symbol name    name_origin group period block state_at_stp
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-## 1             1 H      Hydrog… composed o…     1      1 s     Gas         
-## 2             2 He     Helium  the Greek …    18      1 s     Gas         
-## 3             3 Li     Lithium the Greek …     1      2 s     Solid       
-## 4             4 Be     Beryll… beryl, a m…     2      2 s     Solid       
-## 5             5 B      Boron   borax, a m…    13      2 p     Solid       
-## 6             6 C      Carbon  the Latin …    14      2 p     Solid       
-## 7             7 N      Nitrog… the Greek …    15      2 p     Gas         
-## 8             8 O      Oxygen  from the G…    16      2 p     Gas         
-## 9             9 F      Fluori… the Latin …    17      2 p     Gas         
-## # … with 14 more variables: occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+##   atomic_number symbol name      name_origin   group period block
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+## 1             1 H      Hydrogen  composed of …     1      1 s    
+## 2             2 He     Helium    the Greek he…    18      1 s    
+## 3             3 Li     Lithium   the Greek li…     1      2 s    
+## 4             4 Be     Beryllium beryl, a min…     2      2 s    
+## 5             5 B      Boron     borax, a min…    13      2 p    
+## 6             6 C      Carbon    the Latin ca…    14      2 p    
+## 7             7 N      Nitrogen  the Greek ni…    15      2 p    
+## 8             8 O      Oxygen    from the Gre…    16      2 p    
+## 9             9 F      Fluorine  the Latin fl…    17      2 p    
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
 ## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
 ## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
-## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
+## #   abundance &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any row whose state at standard room temperature is not Solid.</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">!=</span> <span class="st">"Solid"</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 28 × 22
-##    atomic_number symbol name   name_origin group period block state_at_stp
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-##  1             1 H      Hydro… composed o…     1      1 s     Gas         
-##  2             2 He     Helium the Greek …    18      1 s     Gas         
-##  3             7 N      Nitro… the Greek …    15      2 p     Gas         
-##  4             8 O      Oxygen from the G…    16      2 p     Gas         
-##  5             9 F      Fluor… the Latin …    17      2 p     Gas         
-##  6            10 Ne     Neon   the Greek …    18      2 p     Gas         
-##  7            17 Cl     Chlor… the Greek …    17      3 p     Gas         
-##  8            18 Ar     Argon  the Greek …    18      3 p     Gas         
-##  9            35 Br     Bromi… the Greek …    17      4 p     Liquid      
-## 10            36 Kr     Krypt… the Greek …    18      4 p     Gas         
-## # … with 18 more rows, and 14 more variables: occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;, density_predicted &lt;lgl&gt;,
-## #   melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
-## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
-## #   abundance &lt;dbl&gt;</code></pre>
+##    atomic_number symbol name     name_origin   group period block
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+##  1             1 H      Hydrogen composed of …     1      1 s    
+##  2             2 He     Helium   the Greek he…    18      1 s    
+##  3             7 N      Nitrogen the Greek ni…    15      2 p    
+##  4             8 O      Oxygen   from the Gre…    16      2 p    
+##  5             9 F      Fluorine the Latin fl…    17      2 p    
+##  6            10 Ne     Neon     the Greek ne…    18      2 p    
+##  7            17 Cl     Chlorine the Greek ch…    17      3 p    
+##  8            18 Ar     Argon    the Greek ar…    18      3 p    
+##  9            35 Br     Bromine  the Greek br…    17      4 p    
+## 10            36 Kr     Krypton  the Greek kr…    18      4 p    
+## # … with 18 more rows, and 15 more variables:
+## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;, description &lt;chr&gt;,
+## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
+## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
+## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
+## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, …</code></pre>
 </div>
-<div id="combining-logical-operators" class="section level4" number="4.2.4.2">
-<h4>
-<span class="header-section-number">4.2.4.2</span> Combining logical operators<a class="anchor" aria-label="anchor" href="#combining-logical-operators"><i class="fas fa-link"></i></a>
-</h4>
+<div id="combining-logical-operators-with-or-and-conditions" class="section level3" number="4.3.2">
+<h3>
+<span class="header-section-number">4.3.2</span> Combining logical operators with “or”, “and” conditions<a class="anchor" aria-label="anchor" href="#combining-logical-operators-with-or-and-conditions"><i class="fas fa-link"></i></a>
+</h3>
 <p>Finally, the <code>&amp;</code> operator means <strong>and</strong>, and the <code>|</code> operator means <strong>or</strong>. You can fund <code>|</code> by pressing the shirt key and kitting the “reverse slash” key above the <code>enter</code> key on your keyboard.</p>
 <p>It allows you to combine multiple logical statements together, which may be useful if you have multiple criteria to work on.</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any element which is Non-metal AND whose  atomic number is less than 15</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">description</span> <span class="op">!=</span> <span class="st">"Non-metal"</span> <span class="op">&amp;</span> <span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span> <span class="op">&lt;</span><span class="fl">15</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 22
-##    atomic_number symbol name   name_origin group period block state_at_stp
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-##  1             2 He     Helium the Greek …    18      1 s     Gas         
-##  2             3 Li     Lithi… the Greek …     1      2 s     Solid       
-##  3             4 Be     Beryl… beryl, a m…     2      2 s     Solid       
-##  4             5 B      Boron  borax, a m…    13      2 p     Solid       
-##  5             9 F      Fluor… the Latin …    17      2 p     Gas         
-##  6            10 Ne     Neon   the Greek …    18      2 p     Gas         
-##  7            11 Na     Sodium the Englis…     1      3 s     Solid       
-##  8            12 Mg     Magne… Magnesia, …     2      3 s     Solid       
-##  9            13 Al     Alumi… from alumi…    13      3 p     Solid       
-## 10            14 Si     Silic… from the L…    14      3 p     Solid       
-## # … with 14 more variables: occurrence &lt;chr&gt;, description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+##    atomic_number symbol name      name_origin  group period block
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+##  1             2 He     Helium    the Greek h…    18      1 s    
+##  2             3 Li     Lithium   the Greek l…     1      2 s    
+##  3             4 Be     Beryllium beryl, a mi…     2      2 s    
+##  4             5 B      Boron     borax, a mi…    13      2 p    
+##  5             9 F      Fluorine  the Latin f…    17      2 p    
+##  6            10 Ne     Neon      the Greek n…    18      2 p    
+##  7            11 Na     Sodium    the English…     1      3 s    
+##  8            12 Mg     Magnesium Magnesia, a…     2      3 s    
+##  9            13 Al     Aluminium from alumin…    13      3 p    
+## 10            14 Si     Silicon   from the La…    14      3 p    
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
 ## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
 ## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
-## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
+## #   abundance &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any element which is Non-metal OR whose atomic number is less than 15</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">description</span> <span class="op">!=</span> <span class="st">"Non-metal"</span> <span class="op">|</span> <span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span> <span class="op">&lt;</span><span class="fl">15</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 115 × 22
-##    atomic_number symbol name   name_origin group period block state_at_stp
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       
-##  1             1 H      Hydro… composed o…     1      1 s     Gas         
-##  2             2 He     Helium the Greek …    18      1 s     Gas         
-##  3             3 Li     Lithi… the Greek …     1      2 s     Solid       
-##  4             4 Be     Beryl… beryl, a m…     2      2 s     Solid       
-##  5             5 B      Boron  borax, a m…    13      2 p     Solid       
-##  6             6 C      Carbon the Latin …    14      2 p     Solid       
-##  7             7 N      Nitro… the Greek …    15      2 p     Gas         
-##  8             8 O      Oxygen from the G…    16      2 p     Gas         
-##  9             9 F      Fluor… the Latin …    17      2 p     Gas         
-## 10            10 Ne     Neon   the Greek …    18      2 p     Gas         
-## # … with 105 more rows, and 14 more variables: occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;, density_predicted &lt;lgl&gt;,
-## #   melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
-## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
-## #   abundance &lt;dbl&gt;</code></pre>
+##    atomic_number symbol name      name_origin  group period block
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+##  1             1 H      Hydrogen  composed of…     1      1 s    
+##  2             2 He     Helium    the Greek h…    18      1 s    
+##  3             3 Li     Lithium   the Greek l…     1      2 s    
+##  4             4 Be     Beryllium beryl, a mi…     2      2 s    
+##  5             5 B      Boron     borax, a mi…    13      2 p    
+##  6             6 C      Carbon    the Latin c…    14      2 p    
+##  7             7 N      Nitrogen  the Greek n…    15      2 p    
+##  8             8 O      Oxygen    from the Gr…    16      2 p    
+##  9             9 F      Fluorine  the Latin f…    17      2 p    
+## 10            10 Ne     Neon      the Greek n…    18      2 p    
+## # … with 105 more rows, and 15 more variables:
+## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;, description &lt;chr&gt;,
+## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
+## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
+## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
+## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div id="non-destructive-operations-with-dataframes" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Non-Destructive Operations with Dataframes<a class="anchor" aria-label="anchor" href="#non-destructive-operations-with-dataframes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Whew! Now that we’ve learned how to filter properly, and select columns, we can talk about non-destructive operations.</p>
+<div id="creating-new-columns-using-a-vector" class="section level3" number="4.4.1">
+<h3>
+<span class="header-section-number">4.4.1</span> Creating New Columns using a Vector<a class="anchor" aria-label="anchor" href="#creating-new-columns-using-a-vector"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s return to our original <code>friends</code> dataframe. Rather than replacing original data, we might prefer to add columns to reach the same purpose. Let’s return to the example where I want to include my friend’s last names. A smarter thing to do would be to <strong>add a column.</strong></p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">last_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"J"</span><span class="op">)</span> </span>
+<span><span class="co">#Method 1: Use $</span></span>
+<span></span>
+<span><span class="va">friends</span><span class="op">$</span><span class="va">last_names</span><span class="op">&lt;-</span> <span class="va">last_names</span></span>
+<span></span>
+<span><span class="co">#Method 2: Use []. Notice that the column name is in quotes, because this is a name. If you don't have the quotes, R will literally use the vector to create a new column for each element in the vector last_names. </span></span>
+<span></span>
+<span><span class="va">friends</span><span class="op">[</span> ,<span class="st">'last_names'</span><span class="op">]</span><span class="op">&lt;-</span> <span class="va">last_names</span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names
+## 1    Abram   34        TRUE        1.0          A
+## 2   Bryant   35       FALSE        2.2          B
+## 3  Colleen   32       FALSE       26.0          C
+## 4    David   29        TRUE        7.0          D
+## 5   Esther   30       FALSE       10.0          E
+## 6 Jeremiah   30        TRUE        9.0          J</code></pre>
+</div>
+<div id="merging-two-columns-together-into-a-new-column" class="section level3" number="4.4.2">
+<h3>
+<span class="header-section-number">4.4.2</span> Merging two columns together into a new column<a class="anchor" aria-label="anchor" href="#merging-two-columns-together-into-a-new-column"><i class="fas fa-link"></i></a>
+</h3>
+<p>The last names are great, but we can improve even on this by <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>ing the <code>names</code> column and the <code>last_names</code> column.</p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">full_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">friends</span><span class="op">$</span><span class="va">names</span>, <span class="va">friends</span><span class="op">$</span><span class="va">last_names</span><span class="op">)</span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names full_names
+## 1    Abram   34        TRUE        1.0          A    Abram A
+## 2   Bryant   35       FALSE        2.2          B   Bryant B
+## 3  Colleen   32       FALSE       26.0          C  Colleen C
+## 4    David   29        TRUE        7.0          D    David D
+## 5   Esther   30       FALSE       10.0          E   Esther E
+## 6 Jeremiah   30        TRUE        9.0          J Jeremiah J</code></pre>
+<p>The paste function takes separate elements and combines them into one. Notice that this is different from the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, which keeps elements separate into a single list.</p>
+<p>There are many other ways to also combine columns together, like the <code>stringr</code> package or the <code>tidyr</code> package, which you can learn here, but are outside the scope of the book.</p>
+</div>
+<div id="merging-two-numerical-columns-into-a-new-column" class="section level3" number="4.4.3">
+<h3>
+<span class="header-section-number">4.4.3</span> Merging two numerical columns into a new column<a class="anchor" aria-label="anchor" href="#merging-two-numerical-columns-into-a-new-column"><i class="fas fa-link"></i></a>
+</h3>
+<p>Combining two columns doesn’t make sense for numerical vectors– after all, if we want to combine 4 and 1, we don’t want <code>4, 1</code>, we want 5 as our answer. Let’s say I want to add my friend’s ages to their favorite number (no reason why). Since we can add, subtract, and any other mathematical operation to two vectors as long as they have the same number of elements, this is easy to do.</p>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">age_and_fav_number</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span> <span class="op">+</span> <span class="va">friends</span><span class="op">$</span><span class="va">fav_number</span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names full_names
+## 1    Abram   34        TRUE        1.0          A    Abram A
+## 2   Bryant   35       FALSE        2.2          B   Bryant B
+## 3  Colleen   32       FALSE       26.0          C  Colleen C
+## 4    David   29        TRUE        7.0          D    David D
+## 5   Esther   30       FALSE       10.0          E   Esther E
+## 6 Jeremiah   30        TRUE        9.0          J Jeremiah J
+##   age_and_fav_number
+## 1                 35
+## 2                 37
+## 3                 58
+## 4                 36
+## 5                 40
+## 6                 39</code></pre>
 </div>
 </div>
 </div>
-</div>
-
   <div class="chapter-nav">
 <div class="prev"><a href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></div>
 <div class="next"><a href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></div>
@@ -1273,25 +1374,31 @@ NA
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#working-with-dataframes"><span class="header-section-number">4</span> Working with Dataframes</a></li>
-<li><a class="nav-link" href="#operations-with-dataframes"><span class="header-section-number">4.1</span> Operations with Dataframes</a></li>
+<li>
+<a class="nav-link" href="#destructive-operations-with-dataframes"><span class="header-section-number">4.1</span> Destructive Operations with Dataframes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#replacing-one-element"><span class="header-section-number">4.1.1</span> Replacing one element</a></li>
+<li><a class="nav-link" href="#replacing-columns-with-a-mathematical-formula"><span class="header-section-number">4.1.2</span> Replacing columns with a mathematical formula</a></li>
+<li><a class="nav-link" href="#replacing-entire-columns-with-another-vector"><span class="header-section-number">4.1.3</span> Replacing entire columns with another vector</a></li>
+<li><a class="nav-link" href="#dropping-rows"><span class="header-section-number">4.1.4</span> Dropping Rows</a></li>
+</ul>
+</li>
 <li>
 <a class="nav-link" href="#filtering-data"><span class="header-section-number">4.2</span> Filtering Data</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#selecting-a-column-using"><span class="header-section-number">4.2.1</span> Selecting a column using $</a></li>
-<li>
-<a class="nav-link" href="#using-for-a-dataframe"><span class="header-section-number">4.2.2</span> Using [ , ] for a dataframe</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#selecting-a-single-element-using"><span class="header-section-number">4.2.2.1</span> Selecting a single element using [ , ]</a></li>
-<li>
-<a class="nav-link" href="#selecting-rows-and-columns-using"><span class="header-section-number">4.2.2.2</span> Selecting rows and columns using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#lets-eat-grandma-vs.-lets-eat-grandma">“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”</a></li></ul>
-</li>
-<li><a class="nav-link" href="#using-in-and-logical-vectors"><span class="header-section-number">4.2.3</span> Using %in%, ==, and Logical Vectors</a></li>
-<li>
-<a class="nav-link" href="#more-logical-operations-like-and"><span class="header-section-number">4.2.4</span> More logical operations like &lt;, &gt;, !=; &amp; and |</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#comparison-operators"><span class="header-section-number">4.2.4.1</span> Comparison Operators</a></li>
-<li><a class="nav-link" href="#combining-logical-operators"><span class="header-section-number">4.2.4.2</span> Combining logical operators</a></li>
+<li><a class="nav-link" href="#using-for-a-dataframe"><span class="header-section-number">4.2.2</span> Using [ , ] for a dataframe</a></li>
 </ul>
 </li>
+<li>
+<a class="nav-link" href="#using-in-and-logical-vectors"><span class="header-section-number">4.3</span> Using %in%, ==, and Logical Vectors</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#comparison-operators"><span class="header-section-number">4.3.1</span> Comparison Operators</a></li>
+<li><a class="nav-link" href="#combining-logical-operators-with-or-and-conditions"><span class="header-section-number">4.3.2</span> Combining logical operators with “or”, “and” conditions</a></li>
 </ul>
 </li>
+<li>
+<a class="nav-link" href="#non-destructive-operations-with-dataframes"><span class="header-section-number">4.4</span> Non-Destructive Operations with Dataframes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#creating-new-columns-using-a-vector"><span class="header-section-number">4.4.1</span> Creating New Columns using a Vector</a></li>
+<li><a class="nav-link" href="#merging-two-columns-together-into-a-new-column"><span class="header-section-number">4.4.2</span> Merging two columns together into a new column</a></li>
+<li><a class="nav-link" href="#merging-two-numerical-columns-into-a-new-column"><span class="header-section-number">4.4.3</span> Merging two numerical columns into a new column</a></li>
 </ul>
 </li>
 </ul>
@@ -1310,7 +1417,7 @@ NA
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 28 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 30 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

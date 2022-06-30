@@ -58,7 +58,9 @@ Finally…
 
 :::
 
-## Carrying out simulations in R using `sample()`
+## Performing Simulations
+
+### Carrying out simulations in R using `sample()`
 
 Carrying out a simulation in R is very easy-- much easier to do than using a chance process like dice, a random number generator, and so forth. Like all those other processes though, you must first construct **the sample space**. 
 
@@ -115,4 +117,88 @@ sample(dice,
 :::
 ::::
 
-## Sampling from a table using `slice_sample()`
+### Sampling from a table using `slice_sample()`
+
+Let's return to our `periodic_table` data from the previous chapter. Given that each row represented an element (in our case, an **observational unit**), we can use the slice_sample() function to select different elements at random.
+
+```{r}
+slice_sample(periodic_table, n=5, replace=FALSE)
+```
+
+The advantage here over using `sample(1:118, 5)` (since there are 118 rows, and therefore chemical elements, in this table), is that you don't need to choose the data associated with that observation all over again. You can now work with an columns associated with each sampled row, instead of manually selecting it.
+
+Here's another example using \@ref(dplyr-filter) to do more advanced sampling. In our `ChickWeight` scenario, we couldn't just sample each row first, because each row represented a single observation of a chicken by `Day`. Let's say I want to sample 5 chickens, on Diet 1, on Day 18:
+
+```{r}
+chicken_sample <- ChickWeight %>%
+  dplyr::filter(Time==18, Diet==1)
+
+chicken_sample<- slice_sample(chicken_sample, n=5, replace=FALSE)
+
+chicken_sample
+
+```
+Now, we can derive a mean weight from our `chicken_sample` with `mean(chicken_sample$weight)`.
+
+### Repeating Trials
+
+R cannot do everything for us. At every point when we design a simulation, we must make choices.
+
+```{r}
+sample(dice, 
+       size = 5, 
+       replace=TRUE)
+```
+
+The code above can be interpreted as taking a single dice, and rolling it five times. That means there are **5 trials** with **1 observation** in each trial.
+
+But an alternative interpretation of the code above is that this is **1 trial** where we threw *5 dice at once, simultaneously.* In this case, it means that, if we want 5 trials, we would have to run the code over and over.
+
+If we were to simulate the probability of throwing multiple dice at once, over multiple trials, we would need to run the `sample()` command over and over. Manually running the command isn't practical, so we use the `replicate()` function instead. 
+
+```{r}
+simul_5dice_10trials<- replicate(10, sample(dice,size=5,replace=TRUE))
+simul_5dice_10trials
+```
+
+`simul_5dice_10trials` represents the simulation of throwing five dice per trial, over ten trials. Therefore, each column represents **one trial**, and each element in the column represents the result of that dice.
+
+**Your turn!** Store the sample space of a 8-sided die into `dice_8`. Then, run a simulation where you throw two 8-sided dice over 6 trials. 
+
+<------!> TODO Insert Ch7_Sampling_Ex learnr module here<-----!>
+
+
+
+## Tabluating using Two-Way Tables
+
+As we learned in \@(table), we can use the `table()` function to return the counts of a single quantitative variable. Here's an example with the `diamonds` dataset, built into R, which contains the prices and attributes of 54,000 diamonds.
+
+```{r}
+head(diamonds)
+
+```
+
+The `diamonds` dataset includes multiple cateogorical variables that describe the quality of a diamond, including `cut`, `color`, and `clairty`. It would be very easy to tabulate each variable at once, by selecting each column as a vector.
+
+```{r}
+table(diamonds$cut)
+table(diamonds$color)
+```
+
+We can go further. What if I wanted to know how many diamonds were both `cut== "Ideal"`and `color== "E"`? In this case, we can pass both variables into R so it *cross-tabulates* the data for us.
+
+```{r}
+table(diamonds$cut, diamonds$color)
+```
+
+### Deriving Marginal probabilities/ proportions from a two-way table
+
+Now that we have the counts, it is easy for R to find the marginal probabilities from the table. Just pass the entire `table()` output into the `proportions` command.
+
+```{r}
+proportions(table(diamonds$cut, diamonds$color))
+```
+
+
+
+

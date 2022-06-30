@@ -179,20 +179,24 @@ FIGURE 7.2: All possibilities of a six-sided die.
 - The probability of a certain <em>(guaranteed to happen)</em> event is 1.</p>
 </div>
 </div>
-<div id="carrying-out-simulations-in-r-using-sample" class="section level2" number="7.2">
+<div id="performing-simulations" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">7.2</span> Carrying out simulations in R using <code>sample()</code><a class="anchor" aria-label="anchor" href="#carrying-out-simulations-in-r-using-sample"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Performing Simulations<a class="anchor" aria-label="anchor" href="#performing-simulations"><i class="fas fa-link"></i></a>
 </h2>
+<div id="carrying-out-simulations-in-r-using-sample" class="section level3" number="7.2.1">
+<h3>
+<span class="header-section-number">7.2.1</span> Carrying out simulations in R using <code>sample()</code><a class="anchor" aria-label="anchor" href="#carrying-out-simulations-in-r-using-sample"><i class="fas fa-link"></i></a>
+</h3>
 <p>Carrying out a simulation in R is very easy– much easier to do than using a chance process like dice, a random number generator, and so forth. Like all those other processes though, you must first construct <strong>the sample space</strong>.</p>
 <p>Let’s simulate the roll of dice. First, I’ll create a new vector that counts from 1 to 6, and store it as <code>dice</code>.</p>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dice</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span></span></code></pre></div>
 <p>When you run the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> command, R effectively selects an element randomly from the vector– almost like you placed each vector element on its own index card, and you pull one out. This behavior cannot be changed.</p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 1 3 4 2 5</code></pre>
+<pre><code>## [1] 5 1 6 4 3</code></pre>
 <p>Here are the parameters, explained:</p>
 <ul>
 <li>
@@ -208,11 +212,11 @@ FIGURE 7.2: All possibilities of a six-sided die.
 <p>Replacing with <code>replace=TRUE</code> allows us to properly replicate the chance process of rolling a dice. Here, we roll the dice 7 times. Notice that some numbers repeat.</p>
 </div>
 <div>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 6 1 2 5 6</code></pre>
+<pre><code>## [1] 6 4 2 6 5</code></pre>
 </div>
 </div>
 <div style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;">
@@ -220,7 +224,7 @@ FIGURE 7.2: All possibilities of a six-sided die.
 <p>If you kept <code>replace=FALSE</code>, and selected a <code>size=</code> that was larger than the number of elements in <code>dice</code>, you get an error. If you sample without replacement, and you exclude any elements that have already been selected, you select all elements exactly once with <code>size=6</code>. There are no more elements beyond 6.</p>
 </div>
 <div style="max-width: 340px;">
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">7</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
@@ -228,11 +232,125 @@ FIGURE 7.2: All possibilities of a six-sided die.
 </div>
 </div>
 </div>
-<div id="sampling-from-a-table-using-slice_sample" class="section level2" number="7.3">
+<div id="sampling-from-a-table-using-slice_sample" class="section level3" number="7.2.2">
+<h3>
+<span class="header-section-number">7.2.2</span> Sampling from a table using <code>slice_sample()</code><a class="anchor" aria-label="anchor" href="#sampling-from-a-table-using-slice_sample"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s return to our <code>periodic_table</code> data from the previous chapter. Given that each row represented an element (in our case, an <strong>observational unit</strong>), we can use the slice_sample() function to select different elements at random.</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">periodic_table</span>, n<span class="op">=</span><span class="fl">5</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 5 × 22
+##   atomic_number symbol name        name_origin group period block
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+## 1            64 Gd     Gadolinium  Johan Gado…    NA      6 f    
+## 2            28 Ni     Nickel      from Swedi…    10      4 d    
+## 3           111 Rg     Roentgenium Wilhelm Co…    11      7 d    
+## 4            63 Eu     Europium    Europe         NA      6 f    
+## 5            88 Ra     Radium      the Latin …     2      7 s    
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;,
+## #   density &lt;dbl&gt;, density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
+## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
+## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
+## #   abundance &lt;dbl&gt;</code></pre>
+<p>The advantage here over using <code>sample(1:118, 5)</code> (since there are 118 rows, and therefore chemical elements, in this table), is that you don’t need to choose the data associated with that observation all over again. You can now work with an columns associated with each sampled row, instead of manually selecting it.</p>
+<p>Here’s another example using <a href="summarizing-data.html#dplyr-filter">5.3</a> to do more advanced sampling. In our <code>ChickWeight</code> scenario, we couldn’t just sample each row first, because each row represented a single observation of a chicken by <code>Day</code>. Let’s say I want to sample 5 chickens, on Diet 1, on Day 18:</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">chicken_sample</span> <span class="op">&lt;-</span> <span class="va">ChickWeight</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Time</span><span class="op">==</span><span class="fl">18</span>, <span class="va">Diet</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chicken_sample</span><span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">chicken_sample</span>, n<span class="op">=</span><span class="fl">5</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">chicken_sample</span></span></code></pre></div>
+<pre><code>##   weight Time Chick Diet
+## 1    123   18    17    1
+## 2    154   18     4    1
+## 3    250   18     7    1
+## 4    160   18     6    1
+## 5    184   18    11    1</code></pre>
+<p>Now, we can derive a mean weight from our <code>chicken_sample</code> with <code>mean(chicken_sample$weight)</code>.</p>
+</div>
+<div id="repeating-trials" class="section level3" number="7.2.3">
+<h3>
+<span class="header-section-number">7.2.3</span> Repeating Trials<a class="anchor" aria-label="anchor" href="#repeating-trials"><i class="fas fa-link"></i></a>
+</h3>
+<p>R cannot do everything for us. At every point when we design a simulation, we must make choices.</p>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
+<span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 5 3 6 6 4</code></pre>
+<p>The code above can be interpreted as taking a single dice, and rolling it five times. That means there are <strong>5 trials</strong> with <strong>1 observation</strong> in each trial.</p>
+<p>But an alternative interpretation of the code above is that this is <strong>1 trial</strong> where we threw <em>5 dice at once, simultaneously.</em> In this case, it means that, if we want 5 trials, we would have to run the code over and over.</p>
+<p>If we were to simulate the probability of throwing multiple dice at once, over multiple trials, we would need to run the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> command over and over. Manually running the command isn’t practical, so we use the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function instead.</p>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">simul_5dice_10trials</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>,size<span class="op">=</span><span class="fl">5</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">simul_5dice_10trials</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    2    4    2    6    1    4    5    4    6     4
+## [2,]    5    6    6    3    4    3    2    2    1     5
+## [3,]    5    1    1    2    3    2    6    3    4     5
+## [4,]    2    3    2    3    5    6    3    2    3     2
+## [5,]    1    6    5    4    4    5    2    5    4     3</code></pre>
+<p><code>simul_5dice_10trials</code> represents the simulation of throwing five dice per trial, over ten trials. Therefore, each column represents <strong>one trial</strong>, and each element in the column represents the result of that dice.</p>
+<p><strong>Your turn!</strong> Store the sample space of a 8-sided die into <code>dice_8</code>. Then, run a simulation where you throw two 8-sided dice over 6 trials.</p>
+<p>&lt;——!&gt; TODO Insert Ch7_Sampling_Ex learnr module here&lt;—–!&gt;</p>
+</div>
+</div>
+<div id="tabluating-using-two-way-tables" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">7.3</span> Sampling from a table using <code>slice_sample()</code><a class="anchor" aria-label="anchor" href="#sampling-from-a-table-using-slice_sample"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> Tabluating using Two-Way Tables<a class="anchor" aria-label="anchor" href="#tabluating-using-two-way-tables"><i class="fas fa-link"></i></a>
 </h2>
+<p>As we learned in @(table), we can use the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function to return the counts of a single quantitative variable. Here’s an example with the <code>diamonds</code> dataset, built into R, which contains the prices and attributes of 54,000 diamonds.</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 10
+##   carat cut     color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.23 Ideal   E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2  0.21 Premium E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3  0.23 Good    E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4  0.29 Premium I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5  0.31 Good    J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very G… J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
+<p>The <code>diamonds</code> dataset includes multiple cateogorical variables that describe the quality of a diamond, including <code>cut</code>, <code>color</code>, and <code>clairty</code>. It would be very easy to tabulate each variable at once, by selecting each column as a vector.</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##      Fair      Good Very Good   Premium     Ideal 
+##      1610      4906     12082     13791     21551</code></pre>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">color</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##     D     E     F     G     H     I     J 
+##  6775  9797  9542 11292  8304  5422  2808</code></pre>
+<p>We can go further. What if I wanted to know how many diamonds were both <code>cut== "Ideal"</code>and <code>color== "E"</code>? In this case, we can pass both variables into R so it <em>cross-tabulates</em> the data for us.</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">color</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##            
+##                D    E    F    G    H    I    J
+##   Fair       163  224  312  314  303  175  119
+##   Good       662  933  909  871  702  522  307
+##   Very Good 1513 2400 2164 2299 1824 1204  678
+##   Premium   1603 2337 2331 2924 2360 1428  808
+##   Ideal     2834 3903 3826 4884 3115 2093  896</code></pre>
+<div id="deriving-marginal-probabilities-proportions-from-a-two-way-table" class="section level3" number="7.3.1">
+<h3>
+<span class="header-section-number">7.3.1</span> Deriving Marginal probabilities/ proportions from a two-way table<a class="anchor" aria-label="anchor" href="#deriving-marginal-probabilities-proportions-from-a-two-way-table"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now that we have the counts, it is easy for R to find the marginal probabilities from the table. Just pass the entire <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> output into the <code>proportions</code> command.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">proportions</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">color</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##            
+##                  D      E      F      G      H      I      J
+##   Fair      0.0030 0.0042 0.0058 0.0058 0.0056 0.0032 0.0022
+##   Good      0.0123 0.0173 0.0169 0.0161 0.0130 0.0097 0.0057
+##   Very Good 0.0280 0.0445 0.0401 0.0426 0.0338 0.0223 0.0126
+##   Premium   0.0297 0.0433 0.0432 0.0542 0.0438 0.0265 0.0150
+##   Ideal     0.0525 0.0724 0.0709 0.0905 0.0577 0.0388 0.0166</code></pre>
 
+</div>
 </div>
 </div>
 
@@ -246,8 +364,16 @@ FIGURE 7.2: All possibilities of a six-sided die.
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#sampling-and-probability"><span class="header-section-number">7</span> Sampling and Probability</a></li>
 <li><a class="nav-link" href="#an-overview-on-probability"><span class="header-section-number">7.1</span> An overview on probability</a></li>
-<li><a class="nav-link" href="#carrying-out-simulations-in-r-using-sample"><span class="header-section-number">7.2</span> Carrying out simulations in R using sample()</a></li>
-<li><a class="nav-link" href="#sampling-from-a-table-using-slice_sample"><span class="header-section-number">7.3</span> Sampling from a table using slice_sample()</a></li>
+<li>
+<a class="nav-link" href="#performing-simulations"><span class="header-section-number">7.2</span> Performing Simulations</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#carrying-out-simulations-in-r-using-sample"><span class="header-section-number">7.2.1</span> Carrying out simulations in R using sample()</a></li>
+<li><a class="nav-link" href="#sampling-from-a-table-using-slice_sample"><span class="header-section-number">7.2.2</span> Sampling from a table using slice_sample()</a></li>
+<li><a class="nav-link" href="#repeating-trials"><span class="header-section-number">7.2.3</span> Repeating Trials</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#tabluating-using-two-way-tables"><span class="header-section-number">7.3</span> Tabluating using Two-Way Tables</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#deriving-marginal-probabilities-proportions-from-a-two-way-table"><span class="header-section-number">7.3.1</span> Deriving Marginal probabilities/ proportions from a two-way table</a></li></ul>
+</li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -264,7 +390,7 @@ FIGURE 7.2: All possibilities of a six-sided die.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 28 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 30 June, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

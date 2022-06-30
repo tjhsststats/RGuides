@@ -20,7 +20,7 @@ In order to combine vectors of information into a single data frame, you can use
 friends <- data.frame(names = friend_names,
            ages = friend_ages,
            DC_Resident = lives_in_dc,
-           stringsAsFactors = FALSE)
+           fav_number = friend_fav_number)
 friends
 ```
 
