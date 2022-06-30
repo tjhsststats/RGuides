@@ -95,18 +95,21 @@
 <li class="book-part">Working with Data</li>
 <li><a class="active" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
 <li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
-<li><a class="" href="working-with-dataframes.html"><span class="header-section-number">4</span> Working with Dataframes</a></li>
+<li><a class="" href="replacing-or-removing-data.html"><span class="header-section-number">4</span> Replacing or Removing Data</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">5</span> Selecting and Filtering Data</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">6</span> Creating New Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">7</span> Selecting Data Using Logical Conditions</a></li>
 <li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">8</span> Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">9</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">7</span> Sampling and Probability</a></li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">8</span> Census Data and Linear Regression</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">9</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">10</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="census-data-and-linear-regression.html"><span class="header-section-number">11</span> Census Data and Linear Regression</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -195,8 +198,8 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friend_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Bryant"</span>, <span class="st">"Colleen"</span>, <span class="st">"David"</span>, <span class="st">"Esther"</span>, <span class="st">"Jeremiah"</span><span class="op">)</span></span>
 <span><span class="va">friend_names</span></span></code></pre></div>
-<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"  
-## [6] "Jeremiah"</code></pre>
+<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"   
+## [5] "Esther"   "Jeremiah"</code></pre>
 <p>You can see when <code>friend_names</code> is outputted that there are four entries to it. This is vector is known as a <strong>strings</strong> vector since it contains character strings. You can check to see what type an object is by using the <code>class</code> function:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span></span></code></pre></div>
@@ -221,10 +224,11 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sequence_by_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">sequence_by_2</span></span></code></pre></div>
-<pre><code>##  [1]   0   2   4   6   8  10  12  14  16  18  20  22  24  26  28
-## [16]  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58
-## [31]  60  62  64  66  68  70  72  74  76  78  80  82  84  86  88
-## [46]  90  92  94  96  98 100</code></pre>
+<pre><code>##  [1]   0   2   4   6   8  10  12  14  16  18  20
+## [12]  22  24  26  28  30  32  34  36  38  40  42
+## [23]  44  46  48  50  52  54  56  58  60  62  64
+## [34]  66  68  70  72  74  76  78  80  82  84  86
+## [45]  88  90  92  94  96  98 100</code></pre>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">sequence_by_2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
@@ -233,9 +237,10 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dec_frac_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">10</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span></span>
 <span><span class="va">dec_frac_seq</span></span></code></pre></div>
-<pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2  9.0  8.8  8.6  8.4  8.2  8.0  7.8
-## [13]  7.6  7.4  7.2  7.0  6.8  6.6  6.4  6.2  6.0  5.8  5.6  5.4
-## [25]  5.2  5.0  4.8  4.6  4.4  4.2  4.0  3.8  3.6  3.4  3.2  3.0</code></pre>
+<pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2  9.0  8.8  8.6  8.4
+## [10]  8.2  8.0  7.8  7.6  7.4  7.2  7.0  6.8  6.6
+## [19]  6.4  6.2  6.0  5.8  5.6  5.4  5.2  5.0  4.8
+## [28]  4.6  4.4  4.2  4.0  3.8  3.6  3.4  3.2  3.0</code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dec_frac_seq</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
@@ -248,7 +253,8 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inc_seq</span> <span class="op">&lt;-</span> <span class="fl">98</span><span class="op">:</span><span class="fl">112</span></span>
 <span><span class="va">inc_seq</span></span></code></pre></div>
-<pre><code>##  [1]  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112</code></pre>
+<pre><code>##  [1]  98  99 100 101 102 103 104 105 106 107 108
+## [12] 109 110 111 112</code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dec_seq</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="op">-</span><span class="fl">5</span></span>
 <span><span class="va">dec_seq</span></span></code></pre></div>
@@ -278,8 +284,8 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#We're using the friend_names list.</span></span>
 <span><span class="va">friend_names</span></span></code></pre></div>
-<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"  
-## [6] "Jeremiah"</code></pre>
+<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"   
+## [5] "Esther"   "Jeremiah"</code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Selects the first element from the list.</span></span>
 <span><span class="va">friend_names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>

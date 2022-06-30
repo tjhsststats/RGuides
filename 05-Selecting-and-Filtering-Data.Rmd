@@ -1,0 +1,98 @@
+# Selecting and Filtering Data
+
+::: rmdtip
+Let's practice importing data, from \@ref(dataframe). Download the [periodic table](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv){target="_blank"} data now, and import it into R as `periodic_table`.
+
+-   Remember to move this into your working directory: `getwd()`
+
+-   Since this is a CSV file, use the **From Text (readr)** function.
+
+-   Change the name of the data set to **periodic_table** before you import it. Remember that's on the bottom left.
+
+:::
+
+The first 10 rows of `periodic_table` are reproduced below.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(readr)
+periodic_table <- read_csv("resources/data/periodic-table-data.csv")
+```
+
+```{r, echo=FALSE, fig.cap="The Periodic Table"}
+knitr::kable(periodic_table[1:10,], caption="The Periodic Table", booktabs=TRUE) %>%
+  scroll_box(height="500px") %>%
+  kable_styling(position= "center", font_size = 10)
+```
+
+So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?
+
+
+## Selecting a column using `$`
+
+By default, R will organize character strings in alphabetical order. To see this, we'll introduce two new features: the `table` function and the `$` operator.
+
+Let's say I'm interested in elements in a gas, liquid, and solid state at room temperature. Looking at the `periodic_table` columns, I see that the column that gives me that information is `state_at_stp`.
+
+```{r, attr.output='style="max-height: 100px; font-size:10px;"'}
+periodic_table$state_at_stp
+
+```
+
+As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by `$` and the name of the variable. (Note that spaces in variable names will not work. You'll likely learn that the hard way, as I have.)
+
+## Selecting an element using `[ , ]` 
+
+Recall in \@ref(vector-selection) section that we could use the `[ ]` operator, to select elements from a single vector. We can extend these operations into a dataframe.
+
+A single vector can be thought of as a dataframe with one row and $n$ columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.
+
+The `[ ]` operator allows you to select elements within a vector or a dataframe **based on its row and column position.** It starts by locating the row position, and then the column position.
+
+### Selecting a single element using `[ , ]`
+
+Let's say I wanted to select the `name` for `Sodium`, that is in row 11, column 3.
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+periodic_table[11, 3]
+
+periodic_table$name[11]
+```
+
+Notice that both commands above give me the desired value-- Sodium-- but the formats are different. + In the first command, R gives me back a table with 1 row and 1 column. This isn't a coincidence, because you pulled directly from the table itself. It's the difference between copying a "cell" in Excel versus double-clicking on the cell, and then copying the text inside. Here, you directly pulled from the table, so R returns back a value within a table. + The second gives me a single character vector. This makes sense-- the `$` operator selects a single vector `name` from the table, and then selects the 11th element. Generally, this is the way you want to select a single table.
+
+Recall the use of `[ ]` when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the `periodic_table$name` variable:
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+periodic_table$name[10:20]
+```
+
+## Selecting rows and columns using `[ , ]`
+
+You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?
+
+We can use `[ , ]` where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let's select rows 40 to 50 and columns 1, 2, and 4 from `periodic_table`:
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+periodic_table[41:50, c(1, 2, 4)]
+```
+
+### "Let's eat Grandma!" vs. "Let's eat, Grandma!" {.unnumbered}
+
+::: rmdwarning
+**The comma is very important.** Let's look at some examples:
+:::
+
+```{r,attr.output='style="max-height: 150px; font-size:10px;"'}
+#Returns all of column 2:
+periodic_table[2]
+
+#Returns all of row 2:
+periodic_table[2, ]
+
+#Returns all of column 2:
+periodic_table[ ,2]
+
+#Returns a single element in Row 2, Column 2:
+periodic_table[2,2]
+```
+

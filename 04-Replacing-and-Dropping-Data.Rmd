@@ -1,0 +1,53 @@
+# Replacing or Removing Data
+```{r, echo=FALSE}
+friends <- data.frame(names = c("Abram", "Bryant", "Colleen", "David", "Esther", "Jeremiah"),
+           ages = c(34, 35, 32, 29, 30, 30),
+           DC_Resident = c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE),
+           fav_number = c(1, 2.17, 26, 7, 10, 9),
+           stringsAsFactors = FALSE)
+```
+Destructive operations are any operation where you override the original data. This is not necessairly a bad thing-- sometimes, we don't have a need for the original data, but want to manipulate it in some way. However, it means that if you made a mistake, the only way to revert the mistake is to completely reload the data from its original source, and repeat all your operations again. As in \@ref(vector-operations), you can alter your dataframe by using the storage operator `<-` to overwrite data.
+
+## Replacing one element 
+
+Let's say that I accidentally typed 'Abram' as my friend's name, and I want to replace it with 'Abe'
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+friends$names[1]<- "Abe"
+friends
+```
+
+## Replacing columns with a mathematical formula
+
+I want to see what everybody's age is in 50 years.
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+friends$ages<- friends$ages+50
+friends
+```
+
+## Replacing entire columns with another vector
+
+I want to add their last names.
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+friends$names <- c("Abram A", "Bryant B", "Colleen C", "David D", "Esther E", "Jeremiah J")
+friends
+```
+
+Note in the last example, I had to type the entire vector I planned to override. That's because these are characters, and if you use the `+` operator, R will return an error saying that you can't add "a" with "b". We will discuss a better way to do this, below.
+
+## Dropping Rows
+
+Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents "Abram A":
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+friends<- friends[-1, ]
+
+friends
+```
+
+
+
+
+

@@ -1,0 +1,50 @@
+# Creating New Data
+
+Whew! Now that we've learned how to filter properly, and select columns, we can talk about non-destructive operations. 
+
+## Creating New Columns using a Vector
+Let's return to our original `friends` dataframe. Rather than replacing original data, we might prefer to add columns to reach the same purpose. Let's return to the example where I want to include my friend's last names. A smarter thing to do would be to **add a column.**
+```{r, echo=FALSE}
+friends <- data.frame(names = c("Abram", "Bryant", "Colleen", "David", "Esther", "Jeremiah"),
+           ages = c(34, 35, 32, 29, 30, 30),
+           DC_Resident = c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE),
+           fav_number = c(1, 2.17, 26, 7, 10, 9),
+           stringsAsFactors = FALSE)
+```
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+last_names<- c("A", "B", "C", "D", "E", "J") 
+#Method 1: Use $
+
+friends$last_names<- last_names
+
+#Method 2: Use []. Notice that the column name is in quotes, because this is a name. If you don't have the quotes, R will literally use the vector to create a new column for each element in the vector last_names. 
+
+friends[ ,'last_names']<- last_names
+friends
+```
+
+## Merging two columns together into a new column
+
+The last names are great, but we can improve even on this by `paste()`ing the `names` column and the `last_names` column. 
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+friends$full_names<- paste(friends$names, friends$last_names)
+friends
+
+```
+
+The paste function takes separate elements and combines them into one. Notice that this is different from the `c()` function, which keeps elements separate into a single list. 
+
+There are many other ways to also combine columns together, like the `stringr` package or the `tidyr` package, which you can learn here, but are outside the scope of the book. 
+
+## Merging two numerical columns into a new column
+
+Combining two columns doesn't make sense for numerical vectors-- after all, if we want to combine 4 and 1, we don't want `4, 1`, we want 5 as our answer. Let's say I want to add my friend's ages to their favorite number (no reason why). Since we can add, subtract, and any other mathematical operation to two vectors as long as they have the same number of elements, this is easy to do. 
+
+```{r, attr.output='style="max-height: 150px; font-size:10px;"'}
+friends$age_and_fav_number<- friends$ages + friends$fav_number
+friends
+
+```
+
