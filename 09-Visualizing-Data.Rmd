@@ -116,6 +116,7 @@ boxplot(TAVG~month, data=dca_weather,
 
 -   In our original graph, `Months` were labeled as their numbers. If you want to give custom names for each group, use the `names=` parameter. Remember to set the `names=` parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.
 -   If you want to give your boxplots different colors, set `col=` to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots.
+- R automatically calculates what the appropriate x and y axes values are. If you want to change them, specify an `xlim=` and `ylim=` parameter. Each parameter should take the form of `c(min, max)`, where min and max are the numeric values for the start of the axis and the end of the axis, respectively.
 
 ## Boxplot Exercise
 
@@ -125,6 +126,7 @@ boxplot(TAVG~month, data=dca_weather,
 -   You have an appropriate main title, x-axis, and y-axis labels
 -   The "Months" are labeled as "Jan", "Feb", "Mar", etc. etc.
 -   You add some pretty colors to your boxplots.
+-   You have a y-axis that goes from 0 to 100.
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-box-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
 
@@ -159,9 +161,11 @@ Blurry graphs happen because your plot window is too small. For some reason, it 
 1.  Under the plots tab, click **"Zoom"**. A new window will pop open.
 2.  This window will have a larger version of your graph. Use the right click method to save your graph.
 
-## More advanced graphical parameters, like par()
+## More graphing options 
 
-If you run par() before the command for any graph, you can stack multiple graphs into the same window. Here's an example:
+### Using `par()`
+
+If you run `par()` before the command for any graph, you can stack multiple graphs into the same window. Here's an example:
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-par-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
 
@@ -170,6 +174,23 @@ If you run par() before the command for any graph, you can stack multiple graphs
 Switch the `1` and `2` around in the `mfrow=` parameter so it says `par(mfrow=c(2,1))`. Then, rerun the code. What happens?
 
 As you can see, passing the `mfrow=` parameter allows you to stack multiple graphs based on the a certain number of rows and columns. This will be helpful, especially when you have multiple graphs of the same variable.
+
+
+### Overlaying a five number summary onto a boxplot
+
+Every graph in R can be thought of as a layer-- if you want to add anything on top of your graph, it is represented as a subsequent call after your plot command. 
+
+For example, if I wanted to overlay a five number summary on top of each part of the boxplot, I run the `text()` command. Inside the text command, I tell R what `labels=` to place, and at which `x=` value they should be placed at. 
+
+```{r}
+boxplot(june_temps,
+        col="pink",
+        main= "Boxplot of June Temperatures at DCA Airport",
+        xlab= "Temperature (Fahrenheit)",
+        horizontal= TRUE)
+text(labels=fivenum(june_temps), x=fivenum(june_temps),  y=1.3)
+```
+
 
 ```{=html}
 <script>

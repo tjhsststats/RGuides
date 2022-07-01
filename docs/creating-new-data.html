@@ -108,8 +108,12 @@
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
 <li class="book-part">Linear Regression</li>
 <li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
+<li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -139,20 +143,20 @@
 <span></span>
 <span><span class="va">friends</span><span class="op">[</span> ,<span class="st">'last_names'</span><span class="op">]</span><span class="op">&lt;-</span> <span class="va">last_names</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1    Abram   34        TRUE
-## 2   Bryant   35       FALSE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30        TRUE
-##   fav_number last_names
-## 1        1.0          A
-## 2        2.2          B
-## 3       26.0          C
-## 4        7.0          D
-## 5       10.0          E
-## 6        9.0          J</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1    Abram   34        TRUE        1.0
+## 2   Bryant   35       FALSE        2.2
+## 3  Colleen   32       FALSE       26.0
+## 4    David   29        TRUE        7.0
+## 5   Esther   30       FALSE       10.0
+## 6 Jeremiah   30        TRUE        9.0
+##   last_names
+## 1          A
+## 2          B
+## 3          C
+## 4          D
+## 5          E
+## 6          J</code></pre>
 </div>
 <div id="merging-two-columns-together-into-a-new-column" class="section level2" number="6.2">
 <h2>
@@ -162,27 +166,20 @@
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">full_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">friends</span><span class="op">$</span><span class="va">names</span>, <span class="va">friends</span><span class="op">$</span><span class="va">last_names</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1    Abram   34        TRUE
-## 2   Bryant   35       FALSE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30        TRUE
-##   fav_number last_names
-## 1        1.0          A
-## 2        2.2          B
-## 3       26.0          C
-## 4        7.0          D
-## 5       10.0          E
-## 6        9.0          J
-##   full_names
-## 1    Abram A
-## 2   Bryant B
-## 3  Colleen C
-## 4    David D
-## 5   Esther E
-## 6 Jeremiah J</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1    Abram   34        TRUE        1.0
+## 2   Bryant   35       FALSE        2.2
+## 3  Colleen   32       FALSE       26.0
+## 4    David   29        TRUE        7.0
+## 5   Esther   30       FALSE       10.0
+## 6 Jeremiah   30        TRUE        9.0
+##   last_names full_names
+## 1          A    Abram A
+## 2          B   Bryant B
+## 3          C  Colleen C
+## 4          D    David D
+## 5          E   Esther E
+## 6          J Jeremiah J</code></pre>
 <p>The paste function takes separate elements and combines them into one. Notice that this is different from the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, which keeps elements separate into a single list.</p>
 <p>There are many other ways to also combine columns together, like the <code>stringr</code> package or the <code>tidyr</code> package, which you can learn here, but are outside the scope of the book.</p>
 </div>
@@ -194,34 +191,20 @@
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">age_and_fav_number</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span> <span class="op">+</span> <span class="va">friends</span><span class="op">$</span><span class="va">fav_number</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1    Abram   34        TRUE
-## 2   Bryant   35       FALSE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30        TRUE
-##   fav_number last_names
-## 1        1.0          A
-## 2        2.2          B
-## 3       26.0          C
-## 4        7.0          D
-## 5       10.0          E
-## 6        9.0          J
-##   full_names
-## 1    Abram A
-## 2   Bryant B
-## 3  Colleen C
-## 4    David D
-## 5   Esther E
-## 6 Jeremiah J
-##   age_and_fav_number
-## 1                 35
-## 2                 37
-## 3                 58
-## 4                 36
-## 5                 40
-## 6                 39</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1    Abram   34        TRUE        1.0
+## 2   Bryant   35       FALSE        2.2
+## 3  Colleen   32       FALSE       26.0
+## 4    David   29        TRUE        7.0
+## 5   Esther   30       FALSE       10.0
+## 6 Jeremiah   30        TRUE        9.0
+##   last_names full_names age_and_fav_number
+## 1          A    Abram A                 35
+## 2          B   Bryant B                 37
+## 3          C  Colleen C                 58
+## 4          D    David D                 36
+## 5          E   Esther E                 40
+## 6          J Jeremiah J                 39</code></pre>
 
 </div>
 </div>
@@ -251,7 +234,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 30 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

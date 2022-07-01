@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 12 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R</title>
+<title>Chapter 15 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="12.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta name="description" content="15.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
 <meta name="generator" content="bookdown 0.27.1 with bs4_book()">
-<meta property="og:title" content="Chapter 12 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 15 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="12.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta property="og:description" content="15.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 12 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="12.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta name="twitter:title" content="Chapter 15 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="15.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -108,8 +108,12 @@
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
 <li class="book-part">Linear Regression</li>
 <li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
-<li><a class="active" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
+<li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></li>
+<li><a class="active" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -119,188 +123,151 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-two-sample-t-tests" class="section level1" number="12">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-two-sample-t-tests" class="section level1" number="15">
 <h1>
-<span class="header-section-number">12</span> Intro to Two-Sample T-Tests<a class="anchor" aria-label="anchor" href="#intro-to-two-sample-t-tests"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15</span> Intro to Two-Sample T-Tests<a class="anchor" aria-label="anchor" href="#intro-to-two-sample-t-tests"><i class="fas fa-link"></i></a>
 </h1>
-<div id="loading-data." class="section level2" number="12.1">
+<div id="loading-data." class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">12.1</span> Loading Data.<a class="anchor" aria-label="anchor" href="#loading-data."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> Loading Data.<a class="anchor" aria-label="anchor" href="#loading-data."><i class="fas fa-link"></i></a>
 </h2>
 <p>The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option.</p>
 <p>When it first gets loaded, I want certain columns to be treated as numeric vectors. The code is below.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/anime.csv"</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>MAL_ID <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Score <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Episodes <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Popularity <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Members <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Favorites <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Watching <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Completed <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `On-Hold` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Dropped <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Plan to Watch` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-10` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-9` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-8` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-7` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-6` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-5` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-4` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-3` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-2` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Score-1` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: One or more parsing
-## issues, see `problems()` for
-## details</code></pre>
+<pre><code>## Warning: One or more parsing issues, see
+## `problems()` for details</code></pre>
 </div>
-<div id="data-wrangling" class="section level2" number="12.2">
+<div id="data-wrangling" class="section level2" number="15.2">
 <h2>
-<span class="header-section-number">12.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Examine any problems with the dataset. Notice that there are a lot of randome problems where we treated a column as a numeric vector, but the actual data value was “Unknown” instead. R will convert the value to “NA,” which is fine with us.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 16,570 × 5
-##      row   col expected actual
-##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; 
-##  1    13     8 a number Unkno…
-##  2   213     8 a number Unkno…
-##  3   873     8 a number Unkno…
-##  4  1095     8 a number Unkno…
-##  5  1267    33 a number Unkno…
-##  6  1406     3 a number Unkno…
-##  7  1506     3 a number Unkno…
-##  8  1580     3 a number Unkno…
-##  9  1580    34 a number Unkno…
-## 10  1701     3 a number Unkno…
-## # … with 16,560 more rows,
-## #   and 1 more variable:
-## #   file &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+##      row   col expected actual  file        
+##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;       
+##  1    13     8 a number Unknown /Users/kais…
+##  2   213     8 a number Unknown /Users/kais…
+##  3   873     8 a number Unknown /Users/kais…
+##  4  1095     8 a number Unknown /Users/kais…
+##  5  1267    33 a number Unknown /Users/kais…
+##  6  1406     3 a number Unknown /Users/kais…
+##  7  1506     3 a number Unknown /Users/kais…
+##  8  1580     3 a number Unknown /Users/kais…
+##  9  1580    34 a number Unknown /Users/kais…
+## 10  1701     3 a number Unknown /Users/kais…
+## # … with 16,560 more rows</code></pre>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name    Score Genders
-##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
-## 1      1 Cowboy…  8.78 Action…
-## 2      5 Cowboy…  8.39 Action…
-## 3      6 Trigun   8.24 Action…
-## 4      7 Witch …  7.27 Action…
-## 5      8 Bouken…  6.98 Advent…
-## 6     15 Eyeshi…  7.95 Action…
-## # … with 31 more variables:
-## #   `English name` &lt;chr&gt;,
-## #   `Japanese name` &lt;chr&gt;,
-## #   Type &lt;chr&gt;,
-## #   Episodes &lt;dbl&gt;,
-## #   Aired &lt;chr&gt;,
-## #   Premiered &lt;chr&gt;, …</code></pre>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+##   MAL_ID Name   Score Genders `English name`
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;         
+## 1      1 Cowbo…  8.78 Action… Cowboy Bebop  
+## 2      5 Cowbo…  8.39 Action… Cowboy Bebop:…
+## 3      6 Trigun  8.24 Action… Trigun        
+## 4      7 Witch…  7.27 Action… Witch Hunter …
+## 5      8 Bouke…  6.98 Advent… Beet the Vand…
+## 6     15 Eyesh…  7.95 Action… Unknown       
+## # … with 30 more variables:
+## #   `Japanese name` &lt;chr&gt;, Type &lt;chr&gt;,
+## #   Episodes &lt;dbl&gt;, Aired &lt;chr&gt;,
+## #   Premiered &lt;chr&gt;, Producers &lt;chr&gt;,
+## #   Licensors &lt;chr&gt;, Studios &lt;chr&gt;,
+## #   Source &lt;chr&gt;, Duration &lt;chr&gt;,
+## #   Rating &lt;chr&gt;, Ranked &lt;chr&gt;, …</code></pre>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "MAL_ID"       
-##  [2] "Name"         
-##  [3] "Score"        
-##  [4] "Genders"      
-##  [5] "English name" 
-##  [6] "Japanese name"
-##  [7] "Type"         
-##  [8] "Episodes"     
-##  [9] "Aired"        
-## [10] "Premiered"    
-## [11] "Producers"    
-## [12] "Licensors"    
-## [13] "Studios"      
-## [14] "Source"       
-## [15] "Duration"     
-## [16] "Rating"       
-## [17] "Ranked"       
-## [18] "Popularity"   
-## [19] "Members"      
-## [20] "Favorites"    
-## [21] "Watching"     
-## [22] "Completed"    
-## [23] "On-Hold"      
-## [24] "Dropped"      
-## [25] "Plan to Watch"
-## [26] "Score-10"     
-## [27] "Score-9"      
-## [28] "Score-8"      
-## [29] "Score-7"      
-## [30] "Score-6"      
-## [31] "Score-5"      
-## [32] "Score-4"      
-## [33] "Score-3"      
-## [34] "Score-2"      
+<pre><code>##  [1] "MAL_ID"        "Name"         
+##  [3] "Score"         "Genders"      
+##  [5] "English name"  "Japanese name"
+##  [7] "Type"          "Episodes"     
+##  [9] "Aired"         "Premiered"    
+## [11] "Producers"     "Licensors"    
+## [13] "Studios"       "Source"       
+## [15] "Duration"      "Rating"       
+## [17] "Ranked"        "Popularity"   
+## [19] "Members"       "Favorites"    
+## [21] "Watching"      "Completed"    
+## [23] "On-Hold"       "Dropped"      
+## [25] "Plan to Watch" "Score-10"     
+## [27] "Score-9"       "Score-8"      
+## [29] "Score-7"       "Score-6"      
+## [31] "Score-5"       "Score-4"      
+## [33] "Score-3"       "Score-2"      
 ## [35] "Score-1"</code></pre>
 <p>If you look, for some reason the “Genres” column is named “Genders.” Let’s rename to “Genres.”</p>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">==</span><span class="st">"Genders"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Genres"</span></span></code></pre></div>
 <p>Verify that the column names are now correct.</p>
-<pre><code>##  [1] "MAL_ID"       
-##  [2] "Name"         
-##  [3] "Score"        
-##  [4] "Genres"       
-##  [5] "English name" 
-##  [6] "Japanese name"
-##  [7] "Type"         
-##  [8] "Episodes"     
-##  [9] "Aired"        
-## [10] "Premiered"    
-## [11] "Producers"    
-## [12] "Licensors"    
-## [13] "Studios"      
-## [14] "Source"       
-## [15] "Duration"     
-## [16] "Rating"       
-## [17] "Ranked"       
-## [18] "Popularity"   
-## [19] "Members"      
-## [20] "Favorites"    
-## [21] "Watching"     
-## [22] "Completed"    
-## [23] "On-Hold"      
-## [24] "Dropped"      
-## [25] "Plan to Watch"
-## [26] "Score-10"     
-## [27] "Score-9"      
-## [28] "Score-8"      
-## [29] "Score-7"      
-## [30] "Score-6"      
-## [31] "Score-5"      
-## [32] "Score-4"      
-## [33] "Score-3"      
-## [34] "Score-2"      
+<pre><code>##  [1] "MAL_ID"        "Name"         
+##  [3] "Score"         "Genres"       
+##  [5] "English name"  "Japanese name"
+##  [7] "Type"          "Episodes"     
+##  [9] "Aired"         "Premiered"    
+## [11] "Producers"     "Licensors"    
+## [13] "Studios"       "Source"       
+## [15] "Duration"      "Rating"       
+## [17] "Ranked"        "Popularity"   
+## [19] "Members"       "Favorites"    
+## [21] "Watching"      "Completed"    
+## [23] "On-Hold"       "Dropped"      
+## [25] "Plan to Watch" "Score-10"     
+## [27] "Score-9"       "Score-8"      
+## [29] "Score-7"       "Score-6"      
+## [31] "Score-5"       "Score-4"      
+## [33] "Score-3"       "Score-2"      
 ## [35] "Score-1"</code></pre>
 <p>Save the new file as a R dataframe.</p>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="isolate-the-variables-of-interest." class="section level2" number="12.3">
+<div id="isolate-the-variables-of-interest." class="section level2" number="15.3">
 <h2>
-<span class="header-section-number">12.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
 </h2>
 <p>This uses subsets all rows within the anime dataframe based on the condition in the brackets, and then saves it into a new dataframe called action_anime. The condition is satifised with the “grep” function, which will search for any character string and return “TRUE” if it contains “Action” within the column anime$Genres.</p>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">action_anime</span><span class="op">&lt;-</span> <span class="va">anime</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"Action"</span>, <span class="va">anime</span><span class="op">$</span><span class="va">Genres</span><span class="op">)</span>, <span class="op">]</span></span></code></pre></div>
 <p>View the dataframe. How many animes do you recognize?</p>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name     Score Genres
-##    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; 
-## 1      1 Cowboy …  8.78 Actio…
-## 2      5 Cowboy …  8.39 Actio…
-## 3      6 Trigun    8.24 Actio…
-## 4      7 Witch H…  7.27 Actio…
-## 5     15 Eyeshie…  7.95 Actio…
-## 6     18 Initial…  8.15 Actio…
-## # … with 31 more variables:
-## #   `English name` &lt;chr&gt;,
-## #   `Japanese name` &lt;chr&gt;,
-## #   Type &lt;chr&gt;,
-## #   Episodes &lt;dbl&gt;,
-## #   Aired &lt;chr&gt;,
-## #   Premiered &lt;chr&gt;, …</code></pre>
+##   MAL_ID Name    Score Genres `English name`
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         
+## 1      1 Cowboy…  8.78 Actio… Cowboy Bebop  
+## 2      5 Cowboy…  8.39 Actio… Cowboy Bebop:…
+## 3      6 Trigun   8.24 Actio… Trigun        
+## 4      7 Witch …  7.27 Actio… Witch Hunter …
+## 5     15 Eyeshi…  7.95 Actio… Unknown       
+## 6     18 Initia…  8.15 Actio… Unknown       
+## # … with 30 more variables:
+## #   `Japanese name` &lt;chr&gt;, Type &lt;chr&gt;,
+## #   Episodes &lt;dbl&gt;, Aired &lt;chr&gt;,
+## #   Premiered &lt;chr&gt;, Producers &lt;chr&gt;,
+## #   Licensors &lt;chr&gt;, Studios &lt;chr&gt;,
+## #   Source &lt;chr&gt;, Duration &lt;chr&gt;,
+## #   Rating &lt;chr&gt;, Ranked &lt;chr&gt;, …</code></pre>
 <p>We’re interested in how people rated these animes. Let’s calculate the score column for each.</p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6.8</code></pre>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6.5</code></pre>
 <p>Interesting! Let’s isolate the score columns from both dataframes and store them as separate vectors.</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">anime_score</span><span class="op">&lt;-</span> <span class="va">anime</span><span class="op">$</span><span class="va">Score</span></span>
 <span><span class="va">action_anime_score</span> <span class="op">&lt;-</span> <span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span></span></code></pre></div>
 </div>
-<div id="graph-boxplots." class="section level2" number="12.4">
+<div id="graph-boxplots." class="section level2" number="15.4">
 <h2>
-<span class="header-section-number">12.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
 </h2>
 <p>It looks like the average rating for action animes is indeed higher than the average rating for all animes. But by how much? To answer this question, let’s first graph a boxplot.</p>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">anime_score</span>, <span class="va">action_anime_score</span>, </span>
 <span>        ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">10</span><span class="op">)</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Boxplot comparison of All Anime vs. Action Anime"</span>,</span>
@@ -310,9 +277,9 @@
 <span>        horizontal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/boxplot%20anime-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
-<div id="run-a-two-sample-t-test." class="section level2" number="12.5">
+<div id="run-a-two-sample-t-test." class="section level2" number="15.5">
 <h2>
-<span class="header-section-number">12.5</span> Run a Two Sample T-Test.<a class="anchor" aria-label="anchor" href="#run-a-two-sample-t-test."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.5</span> Run a Two Sample T-Test.<a class="anchor" aria-label="anchor" href="#run-a-two-sample-t-test."><i class="fas fa-link"></i></a>
 </h2>
 <p>Based on the boxplots, it looks like there’s a difference. Action animes appear to be rated higher than the rest. That means:</p>
 <ul>
@@ -320,15 +287,14 @@
 <li><p>Our alternative hypothesis is that there <strong>is</strong> a difference between two averages, specifically that the average rating for all animes is lower than the average rating for action animes.</p></li>
 </ul>
 <p>Set the alternative hypothesis to be that the true average score of all animes is LOWER than the true average score for action animes.</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">action_t_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">anime_score</span>, <span class="va">action_anime_score</span>, alternative<span class="op">=</span> <span class="st">"less"</span>, var.equal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>View the results.</p>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
 ## data:  anime_score and action_anime_score
-## t = -14, df = 15731,
-## p-value &lt;2e-16
+## t = -14, df = 15731, p-value &lt;2e-16
 ## alternative hypothesis: true difference in means is less than 0
 ## 95 percent confidence interval:
 ##   -Inf -0.21
@@ -337,16 +303,16 @@
 ##       6.5       6.8</code></pre>
 <p>Wow! There’s a serious difference. Look at the p-value for that. Now we need to graph this.</p>
 </div>
-<div id="graph-the-t-distribution-and-test-statistic." class="section level2" number="12.6">
+<div id="graph-the-t-distribution-and-test-statistic." class="section level2" number="15.6">
 <h2>
-<span class="header-section-number">12.6</span> Graph the t-distribution and test statistic.<a class="anchor" aria-label="anchor" href="#graph-the-t-distribution-and-test-statistic."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.6</span> Graph the t-distribution and test statistic.<a class="anchor" aria-label="anchor" href="#graph-the-t-distribution-and-test-statistic."><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s start by:</p>
 <ol style="list-style-type: decimal">
 <li><p>storing the degrees of freedom in a variable called action_t_test.</p></li>
 <li><p>creating an x-axis and store it as a variable called <strong>t_d_st_x_axis</strong>. This is the equivalent of drawing tick marks everywhere on a graph, but a ton of tick marks. We’re making a huge sequence 10^4 numbers long (so 10000 numbers) between -15.5 and 15.5. This helps fit in my massive test statistic of -14.34</p></li>
 </ol>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">action_t_test_df</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">anime_score</span><span class="op">)</span> <span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">action_anime_score</span><span class="op">)</span> <span class="op">-</span><span class="fl">2</span> <span class="co">#Recall how to calculate degrees of freedom.</span></span>
 <span><span class="va">t_dist_x_axis</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">15.5</span>, <span class="fl">15.5</span>, length<span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <p>Finally, plot. Notice here that for plot():</p>
@@ -354,7 +320,7 @@
 <li><p>the x-value is <strong>t_dist_x_axis</strong></p></li>
 <li><p>the y-value is <strong>dt(t_dist_x_axis, df=action_t_test_df)</strong>. This generates a t-value for every value in <strong>t_dist_x_axis</strong>, so basically <em>f(x)</em>, with the degrees of greedom we set earlier.</p></li>
 </ul>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">t_dist_x_axis</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">t_dist_x_axis</span>, df<span class="op">=</span><span class="va">action_t_test_df</span><span class="op">)</span>, </span>
 <span>     type<span class="op">=</span><span class="st">'l'</span>, </span>
 <span>     xlab<span class="op">=</span><span class="st">'t'</span>, </span>
@@ -362,30 +328,30 @@
 <span>     main<span class="op">=</span><span class="st">"The most ridiculous t-test graph ever"</span>,</span>
 <span>     sub<span class="op">=</span><span class="st">"Look at that test statistic in the dotted line. Just look."</span><span class="op">)</span></span></code></pre></div>
 <p>I want to show how ridiculous this is. We’re going to store the critical t* value of 0.01 in it’s own variable, and plot that with red lines.</p>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">crit_t_value_0.01</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.01</span>, df<span class="op">=</span><span class="va">action_t_test_df</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">crit_t_value_0.01</span>, col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="op">-</span><span class="va">crit_t_value_0.01</span>, col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span></span></code></pre></div>
 <p>Finally, plot the test statistic, using a dotted line.</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">action_t_test</span><span class="op">$</span><span class="va">statistic</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/t-test%20plot2-1.png" width="100%" style="display: block; margin: auto;"></div>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></div>
-<div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></div>
+<div class="prev"><a href="downloading-data-from-the-census-bureau.html"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></div>
+<div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="nav-link" href="#loading-data."><span class="header-section-number">12.1</span> Loading Data.</a></li>
-<li><a class="nav-link" href="#data-wrangling"><span class="header-section-number">12.2</span> Data Wrangling</a></li>
-<li><a class="nav-link" href="#isolate-the-variables-of-interest."><span class="header-section-number">12.3</span> Isolate the variables of interest.</a></li>
-<li><a class="nav-link" href="#graph-boxplots."><span class="header-section-number">12.4</span> Graph boxplots.</a></li>
-<li><a class="nav-link" href="#run-a-two-sample-t-test."><span class="header-section-number">12.5</span> Run a Two Sample T-Test.</a></li>
-<li><a class="nav-link" href="#graph-the-t-distribution-and-test-statistic."><span class="header-section-number">12.6</span> Graph the t-distribution and test statistic.</a></li>
+<li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="nav-link" href="#loading-data."><span class="header-section-number">15.1</span> Loading Data.</a></li>
+<li><a class="nav-link" href="#data-wrangling"><span class="header-section-number">15.2</span> Data Wrangling</a></li>
+<li><a class="nav-link" href="#isolate-the-variables-of-interest."><span class="header-section-number">15.3</span> Isolate the variables of interest.</a></li>
+<li><a class="nav-link" href="#graph-boxplots."><span class="header-section-number">15.4</span> Graph boxplots.</a></li>
+<li><a class="nav-link" href="#run-a-two-sample-t-test."><span class="header-section-number">15.5</span> Run a Two Sample T-Test.</a></li>
+<li><a class="nav-link" href="#graph-the-t-distribution-and-test-statistic."><span class="header-section-number">15.6</span> Graph the t-distribution and test statistic.</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -402,7 +368,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 30 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

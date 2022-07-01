@@ -1,25 +1,44 @@
-#Downloading Data from the Census
+# (PART\*) Miscellaneous {.unnumbered}
+# Downloading Data from the Census Bureau 
 
+The Census Bureau is one of the richest sources of data that you will find-- and it's all free, and cleaned up for you! 
 
+There are a couple of steps you'll need to do first, however. 
 
+## Register for a Census Bureau Key
 
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
 
-## Install packages and Census API Key
+1. Go to [Key Signup](https://api.census.gov/data/key_signup.html) and signup for a key. **DO NOT Use your FCPS email, otherwise, the email will be blocked :(**
 
-Start by loading the required libraries.
+2. Wait a minute, and check your email. **Click on the link to activate your key, otherwise the next steps won't work!**
+</div>
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+<div>
 
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/A-Downloading-from-Census/census_key.png")
+```
+</div>
+:::
+
+## Install the `tidycensus` package
+
+The package that easily downloads Census Bureau data is called `tidycensus`. Install the package and load it.
+
+```{r eval=FALSE,echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+install.packages("tidycensus")
 library("tidycensus")
-library("tidyverse")
-library("reshape")
 ```
 
-Install your Census API Key into R with this call. This uses the `census_api_key` command in tidycensus.
+Then, install your Census API Key into R with this command.
 
 ```{r eval=FALSE}
 census_api_key("<Census Key Goes Here>", install=TRUE, overwrite=TRUE)
 ```
+
+Restart your R Session by clicking on Menu's Session >> Restart R Session. Then, reload the tidycensus library by running `library("tidycensus")`.
 
 ## Pull data from the Census
 

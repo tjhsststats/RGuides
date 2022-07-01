@@ -108,8 +108,12 @@
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
 <li class="book-part">Linear Regression</li>
 <li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">12</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">13</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
+<li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -132,20 +136,13 @@
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="st">"Abe"</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1      Abe   34        TRUE
-## 2   Bryant   35       FALSE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30        TRUE
-##   fav_number
-## 1        1.0
-## 2        2.2
-## 3       26.0
-## 4        7.0
-## 5       10.0
-## 6        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1      Abe   34        TRUE        1.0
+## 2   Bryant   35       FALSE        2.2
+## 3  Colleen   32       FALSE       26.0
+## 4    David   29        TRUE        7.0
+## 5   Esther   30       FALSE       10.0
+## 6 Jeremiah   30        TRUE        9.0</code></pre>
 </div>
 <div id="replacing-columns-with-a-mathematical-formula" class="section level2" number="4.2">
 <h2>
@@ -155,20 +152,13 @@
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">+</span><span class="fl">50</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
-## 1      Abe   84        TRUE
-## 2   Bryant   85       FALSE
-## 3  Colleen   82       FALSE
-## 4    David   79        TRUE
-## 5   Esther   80       FALSE
-## 6 Jeremiah   80        TRUE
-##   fav_number
-## 1        1.0
-## 2        2.2
-## 3       26.0
-## 4        7.0
-## 5       10.0
-## 6        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
+## 1      Abe   84        TRUE        1.0
+## 2   Bryant   85       FALSE        2.2
+## 3  Colleen   82       FALSE       26.0
+## 4    David   79        TRUE        7.0
+## 5   Esther   80       FALSE       10.0
+## 6 Jeremiah   80        TRUE        9.0</code></pre>
 </div>
 <div id="replacing-entire-columns-with-another-vector" class="section level2" number="4.3">
 <h2>
@@ -178,20 +168,13 @@
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram A"</span>, <span class="st">"Bryant B"</span>, <span class="st">"Colleen C"</span>, <span class="st">"David D"</span>, <span class="st">"Esther E"</span>, <span class="st">"Jeremiah J"</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
-## 1    Abram A   84        TRUE
-## 2   Bryant B   85       FALSE
-## 3  Colleen C   82       FALSE
-## 4    David D   79        TRUE
-## 5   Esther E   80       FALSE
-## 6 Jeremiah J   80        TRUE
-##   fav_number
-## 1        1.0
-## 2        2.2
-## 3       26.0
-## 4        7.0
-## 5       10.0
-## 6        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
+## 1    Abram A   84        TRUE        1.0
+## 2   Bryant B   85       FALSE        2.2
+## 3  Colleen C   82       FALSE       26.0
+## 4    David D   79        TRUE        7.0
+## 5   Esther E   80       FALSE       10.0
+## 6 Jeremiah J   80        TRUE        9.0</code></pre>
 <p>Note in the last example, I had to type the entire vector I planned to override. That’s because these are characters, and if you use the <code>+</code> operator, R will return an error saying that you can’t add “a” with “b”. We will discuss a better way to do this, below.</p>
 </div>
 <div id="dropping-rows" class="section level2" number="4.4">
@@ -203,18 +186,12 @@
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
-## 2   Bryant B   85       FALSE
-## 3  Colleen C   82       FALSE
-## 4    David D   79        TRUE
-## 5   Esther E   80       FALSE
-## 6 Jeremiah J   80        TRUE
-##   fav_number
-## 2        2.2
-## 3       26.0
-## 4        7.0
-## 5       10.0
-## 6        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
+## 2   Bryant B   85       FALSE        2.2
+## 3  Colleen C   82       FALSE       26.0
+## 4    David D   79        TRUE        7.0
+## 5   Esther E   80       FALSE       10.0
+## 6 Jeremiah J   80        TRUE        9.0</code></pre>
 
 </div>
 </div>
@@ -245,7 +222,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 30 June, 2022.</p>
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
