@@ -1050,16 +1050,16 @@ FIGURE 16.1: The F-Distribution
 <code class="sourceCode R"><span><span class="va">Flowers_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></span>
 <span><span class="va">anova.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Length</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova.test</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq
-## Species      2   1083     541
-## Residuals   51    107       2
-##             F value Pr(&gt;F)    
-## Species         259 &lt;2e-16 ***
-## Residuals                     
+<pre><code>##             Df Sum Sq Mean Sq F value
+## Species      2   1083     541     259
+## Residuals   51    107       2        
+##             Pr(&gt;F)    
+## Species     &lt;2e-16 ***
+## Residuals             
 ## ---
 ## Signif. codes:  
-##   0 '***' 0.001 '**' 0.01 '*'
-##   0.05 '.' 0.1 ' ' 1</code></pre>
+##   0 '***' 0.001 '**' 0.01 '*' 0.05 '.'
+##   0.1 ' ' 1</code></pre>
 <p>Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther <em>is</em> a significant difference between the three species.</p>
 </div>
 <div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="16.6">
@@ -1146,16 +1146,18 @@ FIGURE 16.1: The F-Distribution
   <div class="col-12 col-md-6 mt-3">
     <font size="+1"><strong>Mr. Ng</strong></font>
     <br>Hopper Commons, Room 229
+    <br>🏫 <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <a class="text-light" href="mailto:kng@fcps.edu"> ✉️ kng@fcps.edu</a> 
-    <br><i class="fas fa-door-open"></i><strong>Office Hours:</strong> Fridays, 8A and 8B
+    <strong>Other Links:</strong>
+    <br>📅 <a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+    <br>📓 <a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">🏫 Thomas Jefferson High School for Science and Technology</a>
-  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">🔗 ION</a> 
+    <p> ✉️ Email: <a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+    <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

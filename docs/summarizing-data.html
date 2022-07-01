@@ -6682,10 +6682,9 @@ NA
 <code class="sourceCode R"><span><span class="co">#This will return an error-- since dca_weather </span></span>
 <span><span class="co">#has multiple columns, R doesn't know which column you want.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">)</span> </span></code></pre></div>
-<pre><code>## Warning in
-## mean.default(dca_weather): argument
-## is not numeric or logical: returning
-## NA</code></pre>
+<pre><code>## Warning in mean.default(dca_weather):
+## argument is not numeric or logical:
+## returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">)</span></span></code></pre></div>
@@ -6722,16 +6721,14 @@ NA
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 3 × 12
-##   STATION    NAME   year month   day
-##   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-## 1 USW000137… WASH…  2022     6    18
-## 2 USW000137… WASH…  2022     6    19
-## 3 USW000137… WASH…  2022     6    20
-## # … with 7 more variables:
-## #   TAVG &lt;dbl&gt;, TMAX &lt;dbl&gt;,
-## #   TMIN &lt;dbl&gt;, AWND &lt;dbl&gt;,
-## #   PRCP &lt;dbl&gt;, SNOW &lt;dbl&gt;,
-## #   SNWD &lt;dbl&gt;</code></pre>
+##   STATION     NAME    year month   day  TAVG
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 USW00013743 WASHI…  2022     6    18    77
+## 2 USW00013743 WASHI…  2022     6    19    70
+## 3 USW00013743 WASHI…  2022     6    20    72
+## # … with 6 more variables: TMAX &lt;dbl&gt;,
+## #   TMIN &lt;dbl&gt;, AWND &lt;dbl&gt;, PRCP &lt;dbl&gt;,
+## #   SNOW &lt;dbl&gt;, SNWD &lt;dbl&gt;</code></pre>
 <p>At this point, we have a choice to make. Obviously, the data for June 20th wasn’t available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn’t make sense to treat <code>NA</code> as 0, because clearly the temperature wasn’t 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any <code>NAs</code> in the data.</p>
 <div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -6833,16 +6830,18 @@ FIGURE 8.1: A comparison between Base R commands and dplyr commands.
   <div class="col-12 col-md-6 mt-3">
     <font size="+1"><strong>Mr. Ng</strong></font>
     <br>Hopper Commons, Room 229
+    <br>🏫 <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <a class="text-light" href="mailto:kng@fcps.edu"> ✉️ kng@fcps.edu</a> 
-    <br><i class="fas fa-door-open"></i><strong>Office Hours:</strong> Fridays, 8A and 8B
+    <strong>Other Links:</strong>
+    <br>📅 <a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+    <br>📓 <a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">🏫 Thomas Jefferson High School for Science and Technology</a>
-  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">🔗 ION</a> 
+    <p> ✉️ Email: <a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+    <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

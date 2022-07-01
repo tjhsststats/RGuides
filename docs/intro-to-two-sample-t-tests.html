@@ -136,8 +136,8 @@
 <div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/anime.csv"</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>MAL_ID <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Score <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Episodes <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Popularity <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Members <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Favorites <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Watching <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Completed <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `On-Hold` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, Dropped <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Plan to Watch` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-10` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-9` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-8` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-7` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-6` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-5` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-4` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-3` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>, `Score-2` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,`Score-1` <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: One or more parsing issues,
-## see `problems()` for details</code></pre>
+<pre><code>## Warning: One or more parsing issues, see
+## `problems()` for details</code></pre>
 </div>
 <div id="data-wrangling" class="section level2" number="15.2">
 <h2>
@@ -147,37 +147,37 @@
 <div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 16,570 × 5
-##      row   col expected actual file 
-##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;
-##  1    13     8 a number Unkno… /Use…
-##  2   213     8 a number Unkno… /Use…
-##  3   873     8 a number Unkno… /Use…
-##  4  1095     8 a number Unkno… /Use…
-##  5  1267    33 a number Unkno… /Use…
-##  6  1406     3 a number Unkno… /Use…
-##  7  1506     3 a number Unkno… /Use…
-##  8  1580     3 a number Unkno… /Use…
-##  9  1580    34 a number Unkno… /Use…
-## 10  1701     3 a number Unkno… /Use…
+##      row   col expected actual  file        
+##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;       
+##  1    13     8 a number Unknown /Users/kais…
+##  2   213     8 a number Unknown /Users/kais…
+##  3   873     8 a number Unknown /Users/kais…
+##  4  1095     8 a number Unknown /Users/kais…
+##  5  1267    33 a number Unknown /Users/kais…
+##  6  1406     3 a number Unknown /Users/kais…
+##  7  1506     3 a number Unknown /Users/kais…
+##  8  1580     3 a number Unknown /Users/kais…
+##  9  1580    34 a number Unknown /Users/kais…
+## 10  1701     3 a number Unknown /Users/kais…
 ## # … with 16,560 more rows</code></pre>
 <div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name          Score Genders
-##    &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;  
-## 1      1 Cowboy Bebop   8.78 Action…
-## 2      5 Cowboy Bebop…  8.39 Action…
-## 3      6 Trigun         8.24 Action…
-## 4      7 Witch Hunter…  7.27 Action…
-## 5      8 Bouken Ou Be…  6.98 Advent…
-## 6     15 Eyeshield 21   7.95 Action…
-## # … with 31 more variables:
-## #   `English name` &lt;chr&gt;,
-## #   `Japanese name` &lt;chr&gt;,
-## #   Type &lt;chr&gt;, Episodes &lt;dbl&gt;,
-## #   Aired &lt;chr&gt;, Premiered &lt;chr&gt;,
-## #   Producers &lt;chr&gt;,
-## #   Licensors &lt;chr&gt;, …</code></pre>
+##   MAL_ID Name   Score Genders `English name`
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;         
+## 1      1 Cowbo…  8.78 Action… Cowboy Bebop  
+## 2      5 Cowbo…  8.39 Action… Cowboy Bebop:…
+## 3      6 Trigun  8.24 Action… Trigun        
+## 4      7 Witch…  7.27 Action… Witch Hunter …
+## 5      8 Bouke…  6.98 Advent… Beet the Vand…
+## 6     15 Eyesh…  7.95 Action… Unknown       
+## # … with 30 more variables:
+## #   `Japanese name` &lt;chr&gt;, Type &lt;chr&gt;,
+## #   Episodes &lt;dbl&gt;, Aired &lt;chr&gt;,
+## #   Premiered &lt;chr&gt;, Producers &lt;chr&gt;,
+## #   Licensors &lt;chr&gt;, Studios &lt;chr&gt;,
+## #   Source &lt;chr&gt;, Duration &lt;chr&gt;,
+## #   Rating &lt;chr&gt;, Ranked &lt;chr&gt;, …</code></pre>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "MAL_ID"        "Name"         
@@ -235,21 +235,21 @@
 <div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name           Score Genres
-##    &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-## 1      1 Cowboy Bebop    8.78 Actio…
-## 2      5 Cowboy Bebop:…  8.39 Actio…
-## 3      6 Trigun          8.24 Actio…
-## 4      7 Witch Hunter …  7.27 Actio…
-## 5     15 Eyeshield 21    7.95 Actio…
-## 6     18 Initial D Fou…  8.15 Actio…
-## # … with 31 more variables:
-## #   `English name` &lt;chr&gt;,
-## #   `Japanese name` &lt;chr&gt;,
-## #   Type &lt;chr&gt;, Episodes &lt;dbl&gt;,
-## #   Aired &lt;chr&gt;, Premiered &lt;chr&gt;,
-## #   Producers &lt;chr&gt;,
-## #   Licensors &lt;chr&gt;, …</code></pre>
+##   MAL_ID Name    Score Genres `English name`
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         
+## 1      1 Cowboy…  8.78 Actio… Cowboy Bebop  
+## 2      5 Cowboy…  8.39 Actio… Cowboy Bebop:…
+## 3      6 Trigun   8.24 Actio… Trigun        
+## 4      7 Witch …  7.27 Actio… Witch Hunter …
+## 5     15 Eyeshi…  7.95 Actio… Unknown       
+## 6     18 Initia…  8.15 Actio… Unknown       
+## # … with 30 more variables:
+## #   `Japanese name` &lt;chr&gt;, Type &lt;chr&gt;,
+## #   Episodes &lt;dbl&gt;, Aired &lt;chr&gt;,
+## #   Premiered &lt;chr&gt;, Producers &lt;chr&gt;,
+## #   Licensors &lt;chr&gt;, Studios &lt;chr&gt;,
+## #   Source &lt;chr&gt;, Duration &lt;chr&gt;,
+## #   Rating &lt;chr&gt;, Ranked &lt;chr&gt;, …</code></pre>
 <p>We’re interested in how people rated these animes. Let’s calculate the score column for each.</p>
 <div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -294,8 +294,7 @@
 ##  Two Sample t-test
 ## 
 ## data:  anime_score and action_anime_score
-## t = -14, df = 15731, p-value
-## &lt;2e-16
+## t = -14, df = 15731, p-value &lt;2e-16
 ## alternative hypothesis: true difference in means is less than 0
 ## 95 percent confidence interval:
 ##   -Inf -0.21
@@ -371,16 +370,18 @@
   <div class="col-12 col-md-6 mt-3">
     <font size="+1"><strong>Mr. Ng</strong></font>
     <br>Hopper Commons, Room 229
+    <br>🏫 <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <a class="text-light" href="mailto:kng@fcps.edu"> ✉️ kng@fcps.edu</a> 
-    <br><i class="fas fa-door-open"></i><strong>Office Hours:</strong> Fridays, 8A and 8B
+    <strong>Other Links:</strong>
+    <br>📅 <a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+    <br>📓 <a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">🏫 Thomas Jefferson High School for Science and Technology</a>
-  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">🔗 ION</a> 
+    <p> ✉️ Email: <a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+    <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

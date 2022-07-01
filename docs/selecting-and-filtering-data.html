@@ -902,46 +902,36 @@ NA
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid" 
-##   [4] "Solid"  "Solid"  "Solid" 
-##   [7] "Gas"    "Gas"    "Gas"   
-##  [10] "Gas"    "Solid"  "Solid" 
-##  [13] "Solid"  "Solid"  "Solid" 
-##  [16] "Solid"  "Gas"    "Gas"   
-##  [19] "Solid"  "Solid"  "Solid" 
-##  [22] "Solid"  "Solid"  "Solid" 
-##  [25] "Solid"  "Solid"  "Solid" 
-##  [28] "Solid"  "Solid"  "Solid" 
-##  [31] "Solid"  "Solid"  "Solid" 
-##  [34] "Solid"  "Liquid" "Gas"   
-##  [37] "Solid"  "Solid"  "Solid" 
-##  [40] "Solid"  "Solid"  "Solid" 
-##  [43] "Solid"  "Solid"  "Solid" 
-##  [46] "Solid"  "Solid"  "Solid" 
-##  [49] "Solid"  "Solid"  "Solid" 
-##  [52] "Solid"  "Solid"  "Gas"   
-##  [55] "Solid"  "Solid"  "Solid" 
-##  [58] "Solid"  "Solid"  "Solid" 
-##  [61] "Solid"  "Solid"  "Solid" 
-##  [64] "Solid"  "Solid"  "Solid" 
-##  [67] "Solid"  "Solid"  "Solid" 
-##  [70] "Solid"  "Solid"  "Solid" 
-##  [73] "Solid"  "Solid"  "Solid" 
-##  [76] "Solid"  "Solid"  "Solid" 
-##  [79] "Solid"  "Liquid" "Solid" 
-##  [82] "Solid"  "Solid"  "Solid" 
-##  [85] "Solid"  "Gas"    "Solid" 
-##  [88] "Solid"  "Solid"  "Solid" 
-##  [91] "Solid"  "Solid"  "Solid" 
-##  [94] "Solid"  "Solid"  "Solid" 
-##  [97] "Solid"  "Solid"  "Solid" 
-## [100] "Solid"  "Solid"  "Solid" 
-## [103] "Solid"  NA       NA      
-## [106] NA       NA       NA      
-## [109] NA       NA       NA      
-## [112] NA       NA       NA      
-## [115] NA       NA       NA      
-## [118] NA</code></pre>
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid" 
+##   [5] "Solid"  "Solid"  "Gas"    "Gas"   
+##   [9] "Gas"    "Gas"    "Solid"  "Solid" 
+##  [13] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [17] "Gas"    "Gas"    "Solid"  "Solid" 
+##  [21] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [25] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [29] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [33] "Solid"  "Solid"  "Liquid" "Gas"   
+##  [37] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [41] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [45] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [49] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [53] "Solid"  "Gas"    "Solid"  "Solid" 
+##  [57] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [61] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [65] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [69] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [73] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [77] "Solid"  "Solid"  "Solid"  "Liquid"
+##  [81] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [85] "Solid"  "Gas"    "Solid"  "Solid" 
+##  [89] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [93] "Solid"  "Solid"  "Solid"  "Solid" 
+##  [97] "Solid"  "Solid"  "Solid"  "Solid" 
+## [101] "Solid"  "Solid"  "Solid"  NA      
+## [105] NA       NA       NA       NA      
+## [109] NA       NA       NA       NA      
+## [113] NA       NA       NA       NA      
+## [117] NA       NA</code></pre>
 <p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
 </div>
 <div id="selecting-an-element-using" class="section level2" number="5.2">
@@ -969,12 +959,10 @@ NA
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"    
-##  [3] "Magnesium"  "Aluminium" 
-##  [5] "Silicon"    "Phosphorus"
-##  [7] "Sulfur"     "Chlorine"  
-##  [9] "Argon"      "Potassium" 
-## [11] "Calcium"</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium" 
+##  [4] "Aluminium"  "Silicon"    "Phosphorus"
+##  [7] "Sulfur"     "Chlorine"   "Argon"     
+## [10] "Potassium"  "Calcium"</code></pre>
 </div>
 </div>
 <div id="selecting-rows-and-columns-using" class="section level2" number="5.3">
@@ -986,18 +974,18 @@ NA
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 3
-##    atomic_number symbol name_origin 
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       
-##  1            41 Nb     Niobe, daug…
-##  2            42 Mo     the Greek m…
-##  3            43 Tc     the Greek t…
-##  4            44 Ru     Ruthenia, t…
-##  5            45 Rh     the Greek r…
-##  6            46 Pd     the then re…
-##  7            47 Ag     English wor…
-##  8            48 Cd     the New Lat…
-##  9            49 In     indigo      
-## 10            50 Sn     English wor…</code></pre>
+##    atomic_number symbol name_origin         
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;               
+##  1            41 Nb     Niobe, daughter of …
+##  2            42 Mo     the Greek molybdos …
+##  3            43 Tc     the Greek tekhn??to…
+##  4            44 Ru     Ruthenia, the New L…
+##  5            45 Rh     the Greek rhodos, m…
+##  6            46 Pd     the then recently d…
+##  7            47 Ag     English word (argen…
+##  8            48 Cd     the New Latin cadmi…
+##  9            49 In     indigo              
+## 10            50 Sn     English word (stann…</code></pre>
 <div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3 unnumbered">
 <h3>“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
 </h3>
@@ -1025,16 +1013,16 @@ NA
 <code class="sourceCode R"><span><span class="co">#Returns all of row 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 22
-##   atomic_number symbol name  
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
-## 1             2 He     Helium
-## # … with 19 more variables:
-## #   name_origin &lt;chr&gt;, group &lt;dbl&gt;,
+##   atomic_number symbol name   name_origin   
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         
+## 1             2 He     Helium the Greek hel…
+## # … with 18 more variables: group &lt;dbl&gt;,
 ## #   period &lt;dbl&gt;, block &lt;chr&gt;,
-## #   state_at_stp &lt;chr&gt;,
-## #   occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;,
-## #   atomic_weight &lt;dbl&gt;, …</code></pre>
+## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
+## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
+## #   aw_uncertainty &lt;dbl&gt;,
+## #   any_stable_nuclides &lt;chr&gt;,
+## #   density &lt;dbl&gt;, …</code></pre>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
@@ -1095,16 +1083,18 @@ NA
   <div class="col-12 col-md-6 mt-3">
     <font size="+1"><strong>Mr. Ng</strong></font>
     <br>Hopper Commons, Room 229
+    <br>🏫 <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <a class="text-light" href="mailto:kng@fcps.edu"> ✉️ kng@fcps.edu</a> 
-    <br><i class="fas fa-door-open"></i><strong>Office Hours:</strong> Fridays, 8A and 8B
+    <strong>Other Links:</strong>
+    <br>📅 <a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+    <br>📓 <a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">🏫 Thomas Jefferson High School for Science and Technology</a>
-  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">🔗 ION</a> 
+    <p> ✉️ Email: <a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+    <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
