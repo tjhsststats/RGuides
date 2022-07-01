@@ -133,7 +133,7 @@
 </h2>
 <p>While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any <strong>chance process</strong>, the proportion of times that a specific outcome occurs approaches a single value. This is called <strong>The Law of Large Numbers</strong>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-113"></span>
+<span style="display:block;" id="fig:unnamed-chunk-112"></span>
 <img src="resources/images/07-Sampling-and-Probability/LLN.png" alt="(a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin." width="100%"><p class="caption">
 FIGURE 10.1: (a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin.
 </p>
@@ -168,7 +168,7 @@ FIGURE 10.1: (a) The proportion of heads in the first 20 tosses of a coin. (b) T
 </div>
 <div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-114"></span>
+<span style="display:block;" id="fig:unnamed-chunk-113"></span>
 <img src="resources/images/07-Sampling-and-Probability/dice.png" alt="All possibilities of a six-sided die." width="100%"><p class="caption">
 FIGURE 10.2: All possibilities of a six-sided die.
 </p>
@@ -203,7 +203,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 1 5 6 2 4</code></pre>
+<pre><code>## [1] 2 1 5 6 3</code></pre>
 <p>Here are the parameters, explained:</p>
 <ul>
 <li>
@@ -223,7 +223,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 3 4 1 2 3</code></pre>
+<pre><code>## [1] 6 1 6 1 3</code></pre>
 </div>
 </div>
 <div style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;">
@@ -247,13 +247,13 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">periodic_table</span>, n<span class="op">=</span><span class="fl">5</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 5 × 22
-##   atomic_number symbol name        
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       
-## 1           110 Ds     Darmstadtium
-## 2            43 Tc     Technetium  
-## 3           101 Md     Mendelevium 
-## 4            29 Cu     Copper      
-## 5            17 Cl     Chlorine    
+##   atomic_number symbol name      
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
+## 1             8 O      Oxygen    
+## 2            12 Mg     Magnesium 
+## 3            61 Pm     Promethium
+## 4            43 Tc     Technetium
+## 5             2 He     Helium    
 ## # … with 19 more variables:
 ## #   name_origin &lt;chr&gt;, group &lt;dbl&gt;,
 ## #   period &lt;dbl&gt;, block &lt;chr&gt;,
@@ -271,11 +271,11 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <span></span>
 <span><span class="va">chicken_sample</span></span></code></pre></div>
 <pre><code>##   weight Time Chick Diet
-## 1    185   18    12    1
-## 2    171   18     1    1
-## 3    134   18     8    1
+## 1    134   18     8    1
+## 2    187   18     2    1
+## 3    120   18    19    1
 ## 4    160   18     6    1
-## 5    100   18     9    1</code></pre>
+## 5    171   18     1    1</code></pre>
 <p>Now, we can derive a mean weight from our <code>chicken_sample</code> with <code>mean(chicken_sample$weight)</code>.</p>
 </div>
 <div id="repeating-trials" class="section level3" number="10.2.3">
@@ -287,7 +287,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 4 5 2 3 5</code></pre>
+<pre><code>## [1] 6 6 1 5 3</code></pre>
 <p>The code above can be interpreted as taking a single dice, and rolling it five times. That means there are <strong>5 trials</strong> with <strong>1 observation</strong> in each trial.</p>
 <p>But an alternative interpretation of the code above is that this is <strong>1 trial</strong> where we threw <em>5 dice at once, simultaneously.</em> In this case, it means that, if we want 5 trials, we would have to run the code over and over.</p>
 <p>If we were to simulate the probability of throwing multiple dice at once, over multiple trials, we would need to run the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> command over and over. Manually running the command isn’t practical, so we use the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function instead.</p>
@@ -295,17 +295,17 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="va">simul_5dice_10trials</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>,size<span class="op">=</span><span class="fl">5</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">simul_5dice_10trials</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]    4    6    1    4    1    1
-## [2,]    2    2    4    6    4    4
-## [3,]    4    6    6    5    4    3
-## [4,]    5    4    1    5    1    3
-## [5,]    2    1    6    5    5    4
+## [1,]    3    1    2    6    1    6
+## [2,]    6    3    5    2    3    6
+## [3,]    1    4    3    3    4    1
+## [4,]    6    2    3    4    2    5
+## [5,]    6    1    5    6    3    4
 ##      [,7] [,8] [,9] [,10]
-## [1,]    4    1    4     5
-## [2,]    2    1    5     3
-## [3,]    5    5    4     6
-## [4,]    3    5    6     4
-## [5,]    5    6    1     5</code></pre>
+## [1,]    2    3    3     6
+## [2,]    6    5    4     1
+## [3,]    1    1    1     3
+## [4,]    4    5    2     6
+## [5,]    5    3    6     2</code></pre>
 <p><code>simul_5dice_10trials</code> represents the simulation of throwing five dice per trial, over ten trials. Therefore, each column represents <strong>one trial</strong>, and each element in the column represents the result of that dice.</p>
 <p><strong>Your turn!</strong> Store the sample space of a 8-sided die into <code>dice_8</code>. Then, run a simulation where you throw two 8-sided dice over 6 trials.</p>
 <p>&lt;——!&gt; TODO Insert Ch7_Sampling_Ex learnr module here&lt;—–!&gt;</p>
@@ -431,18 +431,18 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <strong>Mr. Ng</strong>
-    <br>Hopper Commons, Room 229
+    <strong><stylemr. ng><br>Hopper Commons, Room 229
+  </stylemr.></strong>
+</div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <a class="text-light" href="mailto:kng@fcps.edu"> ✉️ kng@fcps.edu</a> 
+    <br><i class="fas fa-door-open"></i><strong>Office Hours:</strong> Fridays, 8A and 8B
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <i class="fas fa-envelope"></i><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu</a> 
-    <br><i class="fas fa-door-open"></i><strong> Office Hours: Fridays 8A and 8B</strong>
-  </div>
-
-  <div class="col-12 col-md-6 mt-3">
-  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener"> Thomas Jefferson High School for Science and Technology</a>
-  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a> 
+  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">🏫 Thomas Jefferson High School for Science and Technology</a>
+  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">🔗 ION</a> 
   </div>
 
   <div class="col-12 col-md-6 mt-3">

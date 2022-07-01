@@ -27,11 +27,3 @@ Almost everything else was written by Mr. Ng and Mr. McFee.
 ```{r, echo = FALSE, fig.align='center'}
 knitr::include_graphics("resources/images/casper.jpeg") 
 ```
-
-## Timothée Chalamet (famous actor or something) rapping for his High School Stats Project {.unnumbered}
-
-If you become famous in the future, please cite me in a similarly cringey video.
-
-```{r, echo = FALSE, out.width="80%", fig.align='center'}
-knitr::include_app("https://youtu.be/BvWefB4NGGI?t=8")
-```
