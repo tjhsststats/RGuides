@@ -64,7 +64,7 @@ summary(reg_line)
 
 By using `summary`, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the **standard deviation of the residuals** and the **R-Squared Value**. In R, that is labeled as *Multiple R-Squared*.
 
-```{r, echo=FALSE, out.width="90%", fig.cap="Interpreting a Regression Printout"}
+```{r, echo=FALSE, fig.cap="Interpreting a Regression Printout"}
 knitr::include_graphics("resources/images/11-Linear-Regression/Regression-Printout.png") 
 ```
 

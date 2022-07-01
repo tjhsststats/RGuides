@@ -136,13 +136,20 @@
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="st">"Abe"</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
-## 1      Abe   34        TRUE        1.0
-## 2   Bryant   35       FALSE        2.2
-## 3  Colleen   32       FALSE       26.0
-## 4    David   29        TRUE        7.0
-## 5   Esther   30       FALSE       10.0
-## 6 Jeremiah   30        TRUE        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1      Abe   34        TRUE
+## 2   Bryant   35       FALSE
+## 3  Colleen   32       FALSE
+## 4    David   29        TRUE
+## 5   Esther   30       FALSE
+## 6 Jeremiah   30        TRUE
+##   fav_number
+## 1        1.0
+## 2        2.2
+## 3       26.0
+## 4        7.0
+## 5       10.0
+## 6        9.0</code></pre>
 </div>
 <div id="replacing-columns-with-a-mathematical-formula" class="section level2" number="4.2">
 <h2>
@@ -152,13 +159,20 @@
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">+</span><span class="fl">50</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
-## 1      Abe   84        TRUE        1.0
-## 2   Bryant   85       FALSE        2.2
-## 3  Colleen   82       FALSE       26.0
-## 4    David   79        TRUE        7.0
-## 5   Esther   80       FALSE       10.0
-## 6 Jeremiah   80        TRUE        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1      Abe   84        TRUE
+## 2   Bryant   85       FALSE
+## 3  Colleen   82       FALSE
+## 4    David   79        TRUE
+## 5   Esther   80       FALSE
+## 6 Jeremiah   80        TRUE
+##   fav_number
+## 1        1.0
+## 2        2.2
+## 3       26.0
+## 4        7.0
+## 5       10.0
+## 6        9.0</code></pre>
 </div>
 <div id="replacing-entire-columns-with-another-vector" class="section level2" number="4.3">
 <h2>
@@ -168,13 +182,20 @@
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram A"</span>, <span class="st">"Bryant B"</span>, <span class="st">"Colleen C"</span>, <span class="st">"David D"</span>, <span class="st">"Esther E"</span>, <span class="st">"Jeremiah J"</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
-## 1    Abram A   84        TRUE        1.0
-## 2   Bryant B   85       FALSE        2.2
-## 3  Colleen C   82       FALSE       26.0
-## 4    David D   79        TRUE        7.0
-## 5   Esther E   80       FALSE       10.0
-## 6 Jeremiah J   80        TRUE        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
+## 1    Abram A   84        TRUE
+## 2   Bryant B   85       FALSE
+## 3  Colleen C   82       FALSE
+## 4    David D   79        TRUE
+## 5   Esther E   80       FALSE
+## 6 Jeremiah J   80        TRUE
+##   fav_number
+## 1        1.0
+## 2        2.2
+## 3       26.0
+## 4        7.0
+## 5       10.0
+## 6        9.0</code></pre>
 <p>Note in the last example, I had to type the entire vector I planned to override. That’s because these are characters, and if you use the <code>+</code> operator, R will return an error saying that you can’t add “a” with “b”. We will discuss a better way to do this, below.</p>
 </div>
 <div id="dropping-rows" class="section level2" number="4.4">
@@ -186,12 +207,18 @@
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
-## 2   Bryant B   85       FALSE        2.2
-## 3  Colleen C   82       FALSE       26.0
-## 4    David D   79        TRUE        7.0
-## 5   Esther E   80       FALSE       10.0
-## 6 Jeremiah J   80        TRUE        9.0</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
+## 2   Bryant B   85       FALSE
+## 3  Colleen C   82       FALSE
+## 4    David D   79        TRUE
+## 5   Esther E   80       FALSE
+## 6 Jeremiah J   80        TRUE
+##   fav_number
+## 2        2.2
+## 3       26.0
+## 4        7.0
+## 5       10.0
+## 6        9.0</code></pre>
 
 </div>
 </div>
@@ -222,12 +249,23 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022.</p>
+    <strong>Mr. Ng</strong>
+    <br>Hopper Commons, Room 229
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+    <i class="fas fa-envelope"></i><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu</a> 
+    <br><i class="fas fa-door-open"></i><strong> Office Hours: Fridays 8A and 8B</strong>
   </div>
+
+  <div class="col-12 col-md-6 mt-3">
+  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener"> Thomas Jefferson High School for Science and Technology</a>
+  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a> 
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</p>
+  </div>  
 
 </div></div>
 </footer><!-- dynamically load mathjax for compatibility with self-contained --><script>

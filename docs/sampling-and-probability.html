@@ -133,7 +133,7 @@
 </h2>
 <p>While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any <strong>chance process</strong>, the proportion of times that a specific outcome occurs approaches a single value. This is called <strong>The Law of Large Numbers</strong>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-114"></span>
+<span style="display:block;" id="fig:unnamed-chunk-113"></span>
 <img src="resources/images/07-Sampling-and-Probability/LLN.png" alt="(a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin." width="100%"><p class="caption">
 FIGURE 10.1: (a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin.
 </p>
@@ -168,7 +168,7 @@ FIGURE 10.1: (a) The proportion of heads in the first 20 tosses of a coin. (b) T
 </div>
 <div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-115"></span>
+<span style="display:block;" id="fig:unnamed-chunk-114"></span>
 <img src="resources/images/07-Sampling-and-Probability/dice.png" alt="All possibilities of a six-sided die." width="100%"><p class="caption">
 FIGURE 10.2: All possibilities of a six-sided die.
 </p>
@@ -203,7 +203,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 6 4 1 5 3</code></pre>
+<pre><code>## [1] 1 5 6 2 4</code></pre>
 <p>Here are the parameters, explained:</p>
 <ul>
 <li>
@@ -223,7 +223,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 6 5 5 5 1</code></pre>
+<pre><code>## [1] 3 4 1 2 3</code></pre>
 </div>
 </div>
 <div style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;">
@@ -247,20 +247,20 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">periodic_table</span>, n<span class="op">=</span><span class="fl">5</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 5 × 22
-##   atomic_number symbol name      name_origin
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      
-## 1            78 Pt     Platinum  the Spanis…
-## 2            22 Ti     Titanium  Titans, th…
-## 3           100 Fm     Fermium   Enrico Fer…
-## 4            29 Cu     Copper    English wo…
-## 5            94 Pu     Plutonium Pluto, a d…
-## # … with 18 more variables: group &lt;dbl&gt;,
+##   atomic_number symbol name        
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       
+## 1           110 Ds     Darmstadtium
+## 2            43 Tc     Technetium  
+## 3           101 Md     Mendelevium 
+## 4            29 Cu     Copper      
+## 5            17 Cl     Chlorine    
+## # … with 19 more variables:
+## #   name_origin &lt;chr&gt;, group &lt;dbl&gt;,
 ## #   period &lt;dbl&gt;, block &lt;chr&gt;,
-## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;,
-## #   aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;,
-## #   density &lt;dbl&gt;, …</code></pre>
+## #   state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;,
+## #   description &lt;chr&gt;,
+## #   atomic_weight &lt;dbl&gt;, …</code></pre>
 <p>The advantage here over using <code>sample(1:118, 5)</code> (since there are 118 rows, and therefore chemical elements, in this table), is that you don’t need to choose the data associated with that observation all over again. You can now work with an columns associated with each sampled row, instead of manually selecting it.</p>
 <p>Here’s another example using <a href="summarizing-data.html#dplyr-filter">8.3</a> to do more advanced sampling. In our <code>ChickWeight</code> scenario, we couldn’t just sample each row first, because each row represented a single observation of a chicken by <code>Day</code>. Let’s say I want to sample 5 chickens, on Diet 1, on Day 18:</p>
 <div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
@@ -272,10 +272,10 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <span><span class="va">chicken_sample</span></span></code></pre></div>
 <pre><code>##   weight Time Chick Diet
 ## 1    185   18    12    1
-## 2    248   18    14    1
-## 3    100   18     9    1
-## 4    171   18     1    1
-## 5    250   18     7    1</code></pre>
+## 2    171   18     1    1
+## 3    134   18     8    1
+## 4    160   18     6    1
+## 5    100   18     9    1</code></pre>
 <p>Now, we can derive a mean weight from our <code>chicken_sample</code> with <code>mean(chicken_sample$weight)</code>.</p>
 </div>
 <div id="repeating-trials" class="section level3" number="10.2.3">
@@ -287,25 +287,25 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 1 1 2 3 4</code></pre>
+<pre><code>## [1] 4 5 2 3 5</code></pre>
 <p>The code above can be interpreted as taking a single dice, and rolling it five times. That means there are <strong>5 trials</strong> with <strong>1 observation</strong> in each trial.</p>
 <p>But an alternative interpretation of the code above is that this is <strong>1 trial</strong> where we threw <em>5 dice at once, simultaneously.</em> In this case, it means that, if we want 5 trials, we would have to run the code over and over.</p>
 <p>If we were to simulate the probability of throwing multiple dice at once, over multiple trials, we would need to run the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> command over and over. Manually running the command isn’t practical, so we use the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function instead.</p>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simul_5dice_10trials</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>,size<span class="op">=</span><span class="fl">5</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">simul_5dice_10trials</span></span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
-## [1,]    6    1    1    3    4    6    5
-## [2,]    6    1    4    2    5    6    6
-## [3,]    4    3    4    5    3    6    1
-## [4,]    6    2    5    2    4    4    3
-## [5,]    1    4    2    6    4    5    4
-##      [,8] [,9] [,10]
-## [1,]    5    2     6
-## [2,]    6    1     6
-## [3,]    5    2     6
-## [4,]    2    3     2
-## [5,]    5    1     5</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    4    6    1    4    1    1
+## [2,]    2    2    4    6    4    4
+## [3,]    4    6    6    5    4    3
+## [4,]    5    4    1    5    1    3
+## [5,]    2    1    6    5    5    4
+##      [,7] [,8] [,9] [,10]
+## [1,]    4    1    4     5
+## [2,]    2    1    5     3
+## [3,]    5    5    4     6
+## [4,]    3    5    6     4
+## [5,]    5    6    1     5</code></pre>
 <p><code>simul_5dice_10trials</code> represents the simulation of throwing five dice per trial, over ten trials. Therefore, each column represents <strong>one trial</strong>, and each element in the column represents the result of that dice.</p>
 <p><strong>Your turn!</strong> Store the sample space of a 8-sided die into <code>dice_8</code>. Then, run a simulation where you throw two 8-sided dice over 6 trials.</p>
 <p>&lt;——!&gt; TODO Insert Ch7_Sampling_Ex learnr module here&lt;—–!&gt;</p>
@@ -319,46 +319,49 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
-##   carat cut       color clarity depth table
-##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.23 Ideal     E     SI2      61.5    55
-## 2  0.21 Premium   E     SI1      59.8    61
-## 3  0.23 Good      E     VS1      56.9    65
-## 4  0.29 Premium   I     VS2      62.4    58
-## 5  0.31 Good      J     SI2      63.3    58
-## 6  0.24 Very Good J     VVS2     62.8    57
-## # … with 4 more variables: price &lt;int&gt;,
+##   carat cut      color clarity depth
+##   &lt;dbl&gt; &lt;ord&gt;    &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt;
+## 1  0.23 Ideal    E     SI2      61.5
+## 2  0.21 Premium  E     SI1      59.8
+## 3  0.23 Good     E     VS1      56.9
+## 4  0.29 Premium  I     VS2      62.4
+## 5  0.31 Good     J     SI2      63.3
+## 6  0.24 Very Go… J     VVS2     62.8
+## # … with 5 more variables:
+## #   table &lt;dbl&gt;, price &lt;int&gt;,
 ## #   x &lt;dbl&gt;, y &lt;dbl&gt;, z &lt;dbl&gt;</code></pre>
 <p>The <code>diamonds</code> dataset includes multiple cateogorical variables that describe the quality of a diamond, including <code>cut</code>, <code>color</code>, and <code>clairty</code>. It would be very easy to tabulate each variable at once, by selecting each column as a vector.</p>
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-##      Fair      Good Very Good   Premium 
-##      1610      4906     12082     13791 
-##     Ideal 
-##     21551</code></pre>
+##      Fair      Good Very Good 
+##      1610      4906     12082 
+##   Premium     Ideal 
+##     13791     21551</code></pre>
 <div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">color</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-##     D     E     F     G     H     I     J 
-##  6775  9797  9542 11292  8304  5422  2808</code></pre>
+##     D     E     F     G     H     I 
+##  6775  9797  9542 11292  8304  5422 
+##     J 
+##  2808</code></pre>
 <p>We can go further. What if I wanted to know how many diamonds were both <code>cut== "Ideal"</code>and <code>color== "E"</code>? In this case, we can pass both variables into R so it <em>cross-tabulates</em> the data for us.</p>
 <div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">color</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##            
-##                D    E    F    G    H    I
-##   Fair       163  224  312  314  303  175
-##   Good       662  933  909  871  702  522
-##   Very Good 1513 2400 2164 2299 1824 1204
-##   Premium   1603 2337 2331 2924 2360 1428
-##   Ideal     2834 3903 3826 4884 3115 2093
+##                D    E    F    G
+##   Fair       163  224  312  314
+##   Good       662  933  909  871
+##   Very Good 1513 2400 2164 2299
+##   Premium   1603 2337 2331 2924
+##   Ideal     2834 3903 3826 4884
 ##            
-##                J
-##   Fair       119
-##   Good       307
-##   Very Good  678
-##   Premium    808
-##   Ideal      896</code></pre>
+##                H    I    J
+##   Fair       303  175  119
+##   Good       702  522  307
+##   Very Good 1824 1204  678
+##   Premium   2360 1428  808
+##   Ideal     3115 2093  896</code></pre>
 <div id="deriving-marginal-probabilities-proportions-from-a-two-way-table" class="section level3" number="10.3.1">
 <h3>
 <span class="header-section-number">10.3.1</span> Deriving Marginal probabilities/ proportions from a two-way table<a class="anchor" aria-label="anchor" href="#deriving-marginal-probabilities-proportions-from-a-two-way-table"><i class="fas fa-link"></i></a>
@@ -367,19 +370,26 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">proportions</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span>, <span class="va">diamonds</span><span class="op">$</span><span class="va">color</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##            
-##                  D      E      F      G
-##   Fair      0.0030 0.0042 0.0058 0.0058
-##   Good      0.0123 0.0173 0.0169 0.0161
-##   Very Good 0.0280 0.0445 0.0401 0.0426
-##   Premium   0.0297 0.0433 0.0432 0.0542
-##   Ideal     0.0525 0.0724 0.0709 0.0905
+##                  D      E      F
+##   Fair      0.0030 0.0042 0.0058
+##   Good      0.0123 0.0173 0.0169
+##   Very Good 0.0280 0.0445 0.0401
+##   Premium   0.0297 0.0433 0.0432
+##   Ideal     0.0525 0.0724 0.0709
 ##            
-##                  H      I      J
-##   Fair      0.0056 0.0032 0.0022
-##   Good      0.0130 0.0097 0.0057
-##   Very Good 0.0338 0.0223 0.0126
-##   Premium   0.0438 0.0265 0.0150
-##   Ideal     0.0577 0.0388 0.0166</code></pre>
+##                  G      H      I
+##   Fair      0.0058 0.0056 0.0032
+##   Good      0.0161 0.0130 0.0097
+##   Very Good 0.0426 0.0338 0.0223
+##   Premium   0.0542 0.0438 0.0265
+##   Ideal     0.0905 0.0577 0.0388
+##            
+##                  J
+##   Fair      0.0022
+##   Good      0.0057
+##   Very Good 0.0126
+##   Premium   0.0150
+##   Ideal     0.0166</code></pre>
 
 </div>
 </div>
@@ -421,12 +431,23 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022.</p>
+    <strong>Mr. Ng</strong>
+    <br>Hopper Commons, Room 229
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+    <i class="fas fa-envelope"></i><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu</a> 
+    <br><i class="fas fa-door-open"></i><strong> Office Hours: Fridays 8A and 8B</strong>
   </div>
+
+  <div class="col-12 col-md-6 mt-3">
+  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener"> Thomas Jefferson High School for Science and Technology</a>
+  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a> 
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</p>
+  </div>  
 
 </div></div>
 </footer><!-- dynamically load mathjax for compatibility with self-contained --><script>

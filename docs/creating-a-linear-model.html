@@ -145,8 +145,8 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">reg_line</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-144"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-144-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-143"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-143-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
 FIGURE 12.1: A Scatter Plot of Diamond Weight and Diamond Price
 </p>
 </div>
@@ -164,8 +164,8 @@ FIGURE 12.1: A Scatter Plot of Diamond Weight and Diamond Price
 <span>     ylab<span class="op">=</span> <span class="st">"Residual"</span>,</span>
 <span>     main<span class="op">=</span> <span class="st">"Residual Plot for Orange Tree Regression"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-145"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-145-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-144-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
 FIGURE 12.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 </p>
 </div>
@@ -193,24 +193,24 @@ FIGURE 12.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 ## -46.31 -14.95  -0.08  19.70  45.11 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value
-## (Intercept) 17.39965    8.62266    2.02
-## Orange$age   0.10677    0.00828   12.90
-##             Pr(&gt;|t|)    
-## (Intercept)    0.052 .  
-## Orange$age   1.9e-14 ***
+##             Estimate Std. Error
+## (Intercept) 17.39965    8.62266
+## Orange$age   0.10677    0.00828
+##             t value Pr(&gt;|t|)    
+## (Intercept)    2.02    0.052 .  
+## Orange$age    12.90  1.9e-14 ***
 ## ---
 ## Signif. codes:  
-##   0 '***' 0.001 '**' 0.01 '*' 0.05 '.'
-##   0.1 ' ' 1
+##   0 '***' 0.001 '**' 0.01 '*'
+##   0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 24 on 33 degrees of freedom
 ## Multiple R-squared:  0.835,  Adjusted R-squared:  0.83 
 ## F-statistic:  166 on 1 and 33 DF,  p-value: 1.93e-14</code></pre>
 <p>By using <code>summary</code>, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the <strong>standard deviation of the residuals</strong> and the <strong>R-Squared Value</strong>. In R, that is labeled as <em>Multiple R-Squared</em>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-147"></span>
-<img src="resources/images/11-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="90%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<img src="resources/images/11-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="100%"><p class="caption">
 FIGURE 12.3: Interpreting a Regression Printout
 </p>
 </div>
@@ -251,12 +251,23 @@ FIGURE 12.3: Interpreting a Regression Printout
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022.</p>
+    <strong>Mr. Ng</strong>
+    <br>Hopper Commons, Room 229
   </div>
 
   <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+    <i class="fas fa-envelope"></i><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu</a> 
+    <br><i class="fas fa-door-open"></i><strong> Office Hours: Fridays 8A and 8B</strong>
   </div>
+
+  <div class="col-12 col-md-6 mt-3">
+  <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener"> Thomas Jefferson High School for Science and Technology</a>
+  <br><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a> 
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</p>
+  </div>  
 
 </div></div>
 </footer><!-- dynamically load mathjax for compatibility with self-contained --><script>

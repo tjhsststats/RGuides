@@ -497,7 +497,10 @@ body {
 .rmdnote, .rmdcaution, .rmdimportant, .rmdtip, .rmdwarning {
   margin: 1rem calc(-2px - 0.5em);
   padding: 1rem;
-  border: 2px solid #eee;
+  border: 4px solid #eee;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-radius: 10px;
 }
 
 .rmdnote > *:last-child, .rmdcaution > *:last-child, .rmdimportant > *:last-child, .rmdtip > *:last-child, .rmdwarning > *:last-child {
@@ -507,24 +510,34 @@ body {
 @media (max-width: 767.98px) {
   .rmdnote, .rmdcaution, .rmdimportant, .rmdtip, .rmdwarning {
     margin: 1rem -1rem;
-    border-width: 4px;
+    border-width: 6px;
   }
 }
 
 .rmdnote {
+  background-image: url("resources/images/icons/note.png");
   border-color: var(--primary);
+  background: #b4d1e2 5px center/3em no-repeat;
 }
 .rmdimportant {
+  background-image: url("resources/images/icons/important.png");
   border-color: var(--success);
+  background: #badbcb 5px center/3em no-repeat;
 }
 .rmdcaution {
+  background-image: url("resources/images/icons/caution.png");
   border-color: var(--danger);
+  background: #f4c2c7 5px center/3em no-repeat;
 }
 .rmdwarning {
+  background-image: url("resources/images/icons/warning.png");
   border-color: var(--warning);
+  background: #ffecb4 5px center/3em no-repeat;
 }
 .rmdtip {
+  background-image: url("resources/images/icons/tip.png");
   border-color: var(--info);
+  background: #b6effa 5px center/3em no-repeat;
 }
 
 .rmdcaution pre, .rmdimportant pre, .rmdnote pre, .rmdtip pre, .rmdwarning pre {

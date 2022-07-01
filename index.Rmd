@@ -20,7 +20,7 @@ code_folding: show
 
 # Preface {.unnumbered}
 
-This website serves as a digital companion for TJ students taking the RS1 class. Materials and format here are heavily inspired and borrowed from @kane2022, heiss_2022, and @starnes_yates_moore_2012. LearnR and related javascript magic was inspired by @de_leon_2022.
+This website serves as a digital companion for TJ students taking the RS1 class. Materials and format here are heavily inspired and borrowed from @kane2022, @heiss_2022, and @starnes_yates_moore_2012. LearnR and related javascript magic was inspired by @de_leon_2022.
 
 Almost everything else was written by Mr. Ng and Mr. McFee.
 
@@ -28,12 +28,10 @@ Almost everything else was written by Mr. Ng and Mr. McFee.
 knitr::include_graphics("resources/images/casper.jpeg") 
 ```
 
-## Casper Sleeping {.unnumbered}
+## Timothée Chalamet (famous actor or something) rapping for his High School Stats Project {.unnumbered}
 
-```{r, echo = FALSE, fig.align='center'}
-knitr::include_graphics("resources/images/casper_sleeping.jpeg") 
-```
+If you become famous in the future, please cite me in a similarly cringey video.
 
 ```{r, echo = FALSE, out.width="80%", fig.align='center'}
-knitr::include_app("https://youtube.com/embed/EAV6J6hE9rk?t=10")
+knitr::include_app("https://youtu.be/BvWefB4NGGI?t=8")
 ```
