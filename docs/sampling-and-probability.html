@@ -203,7 +203,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 1 4 6 2 5</code></pre>
+<pre><code>## [1] 4 6 3 5 1</code></pre>
 <p>Here are the parameters, explained:</p>
 <ul>
 <li>
@@ -223,7 +223,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 1 2 3 2 4</code></pre>
+<pre><code>## [1] 5 5 2 3 1</code></pre>
 </div>
 </div>
 <div style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 10px;">
@@ -249,11 +249,11 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <pre><code>## # A tibble: 5 × 22
 ##   atomic_number symbol name      name_origin
 ##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      
-## 1            43 Tc     Techneti… the Greek …
-## 2            16 S      Sulfur    the Latin …
-## 3            99 Es     Einstein… Albert Ein…
-## 4            60 Nd     Neodymium the Greek …
-## 5            14 Si     Silicon   from the L…
+## 1            42 Mo     Molybden… the Greek …
+## 2           102 No     Nobelium  Alfred Nob…
+## 3            98 Cf     Californ… California…
+## 4           105 Db     Dubnium   Dubna, Rus…
+## 5            33 As     Arsenic   English wo…
 ## # … with 18 more variables: group &lt;dbl&gt;,
 ## #   period &lt;dbl&gt;, block &lt;chr&gt;,
 ## #   state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
@@ -271,11 +271,11 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <span></span>
 <span><span class="va">chicken_sample</span></span></code></pre></div>
 <pre><code>##   weight Time Chick Diet
-## 1    187   18     3    1
-## 2    199   18     5    1
-## 3    120   18    19    1
-## 4    185   18    12    1
-## 5     81   18    13    1</code></pre>
+## 1    123   18    17    1
+## 2    154   18     4    1
+## 3    134   18     8    1
+## 4    199   18     5    1
+## 5    171   18     1    1</code></pre>
 <p>Now, we can derive a mean weight from our <code>chicken_sample</code> with <code>mean(chicken_sample$weight)</code>.</p>
 </div>
 <div id="repeating-trials" class="section level3" number="10.2.3">
@@ -287,7 +287,7 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>, </span>
 <span>       size <span class="op">=</span> <span class="fl">5</span>, </span>
 <span>       replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 6 2 5 6 1</code></pre>
+<pre><code>## [1] 1 2 4 1 4</code></pre>
 <p>The code above can be interpreted as taking a single dice, and rolling it five times. That means there are <strong>5 trials</strong> with <strong>1 observation</strong> in each trial.</p>
 <p>But an alternative interpretation of the code above is that this is <strong>1 trial</strong> where we threw <em>5 dice at once, simultaneously.</em> In this case, it means that, if we want 5 trials, we would have to run the code over and over.</p>
 <p>If we were to simulate the probability of throwing multiple dice at once, over multiple trials, we would need to run the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> command over and over. Manually running the command isn’t practical, so we use the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function instead.</p>
@@ -295,17 +295,17 @@ FIGURE 10.2: All possibilities of a six-sided die.
 <code class="sourceCode R"><span><span class="va">simul_5dice_10trials</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">dice</span>,size<span class="op">=</span><span class="fl">5</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">simul_5dice_10trials</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
-## [1,]    3    5    6    2    3    5    6
-## [2,]    3    6    1    3    1    4    5
-## [3,]    1    4    1    4    1    5    4
-## [4,]    5    4    6    1    3    3    5
-## [5,]    4    1    3    5    6    5    2
+## [1,]    6    6    2    2    5    6    1
+## [2,]    5    1    2    4    1    5    1
+## [3,]    5    1    6    6    6    5    1
+## [4,]    5    2    1    2    5    6    6
+## [5,]    1    2    2    3    4    1    2
 ##      [,8] [,9] [,10]
-## [1,]    6    3     6
-## [2,]    6    6     5
-## [3,]    4    3     5
-## [4,]    2    4     1
-## [5,]    4    5     3</code></pre>
+## [1,]    5    5     2
+## [2,]    4    1     4
+## [3,]    6    1     4
+## [4,]    5    4     6
+## [5,]    1    2     1</code></pre>
 <p><code>simul_5dice_10trials</code> represents the simulation of throwing five dice per trial, over ten trials. Therefore, each column represents <strong>one trial</strong>, and each element in the column represents the result of that dice.</p>
 <p><strong>Your turn!</strong> Store the sample space of a 8-sided die into <code>dice_8</code>. Then, run a simulation where you throw two 8-sided dice over 6 trials.</p>
 <p>&lt;——!&gt; TODO Insert Ch7_Sampling_Ex learnr module here&lt;—–!&gt;</p>
@@ -418,30 +418,24 @@ FIGURE 10.2: All possibilities of a six-sided die.
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <font size="+2"><strong>Mr. Ng</strong></font>
+        <br>📍 Hopper Commons, Room 229
+        <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+          <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+          <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
+        </div>
+        <div class="col-12 col-md-6 mt-3">
+          <br><strong>Other Links:</strong>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://ion.tjhsst.edu/static/img/logos/Login-Logo.svg"><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
+          <br><br><small><strong>"📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+</div>
 
-  <div class="col-12 col-md-6 mt-3">
-    <font size="+1"><strong>Mr. Ng</strong></font>
-    <br>Hopper Commons, Room 229
-    <br>🏫 <a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
-  </div>
-
-  <div class="col-12 col-md-6 mt-3">
-    <strong>Other Links:</strong>
-    <br>📅 <a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
-    <br>📓 <a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-  </div>
-
-  <div class="col-12 col-md-6 mt-3">
-    <p> ✉️ Email: <a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
-    <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B</p>
-  </div>
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</p>
-  </div>  
-
-</div></div>
+</div>
+</div>
 </footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
