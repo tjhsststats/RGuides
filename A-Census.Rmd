@@ -1,9 +1,7 @@
 # (PART\*) Miscellaneous {.unnumbered}
-# Downloading Data from the Census Bureau 
+# Downloading Data from the Census Bureau {-}
 
-The Census Bureau is one of the richest sources of data that you will find-- and it's all free, and cleaned up for you! 
-
-There are a couple of steps you'll need to do first, however. 
+The Census Bureau is one of the richest sources of data about Americans. Best of all, it's free! 
 
 ## Register for a Census Bureau Key
 
@@ -40,9 +38,63 @@ census_api_key("<Census Key Goes Here>", install=TRUE, overwrite=TRUE)
 
 Restart your R Session by clicking on Menu's Session >> Restart R Session. Then, reload the tidycensus library by running `library("tidycensus")`.
 
+## Picking Variables from the Census
+
+There are many datasets and tables that you can pull from the Census Bureau, but we're only going to focus on one-- the Census Bureau’s **5-Year American Community Survey (ACS)**.
+
+The ACS is a massive dataset that the Federal Government publishes every year about the characteristics of households that live in a neighborhood. This survey is used by government agencies, corporations, non-profit groups, and policymakers to make decisions about certain neighborhoods, or give money to certain neighborhoods over others. 
+
+A household is described as a family unit. If you, your mom, your sister, and your grandfather live under one roof, then you are considered a household. The ACS counts the number of households that meet a variable’s criteria. 
+
+For example, if the zip code 22312 in a table called “Households who own a smartphone only” has a value of 2954, that means that there are 2954 households in the zip code 22312 that own just smartphones. 
+
+You can easily find a specific variable from the Census Bureau by using a website like [Census Reporter](https://censusreporter.org/). 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+1. The easiest way to start exploring variables is to scroll down to the topics section. Pick a topic that interests you.
+</div>
+
+<div>
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/A-Downloading-from-Census/census_reporter_1.png")
+```
+</div>
+
+:::
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+2. For demonstration purposes, I chose income. This website has a great curation of Census tables with interesting topics. I’m interested in B19125: Median Family Income by Presence of Own Children. Click it. 
+</div>
+
+<div>
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/A-Downloading-from-Census/census_reporter_2.png")
+```
+</div>
+:::
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+3. To get the **variable code**, *hover* your mouse over the variables you’re interested in, and a pop up will appear near your mouse. 
+
+In this case, I’m interested in the median household income households with children: that’s B19125002, and households with no children: B19125003. 
+</div>
+<div>
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/A-Downloading-from-Census/census_reporter_3.png")
+```
+</div>
+:::
+
 ## Pull data from the Census
 
-Pull variable data into dataframe. 
+Since this is data from the ACS, we will use the `get_acs()` command from the `tidycensus` package.
+
+:::{.rmdwarning}
+*In order for your variable to parse correctly in tidycensus, you’ll need to place a hyphen before the last three digits. So “B19125002” becomes “B19125_002”, and “B19125003” becomes “B19125_003”.
+:::
 
 * Notice the "geography" is "zcta," which is the Census Bureau's equivalent of a ZIP Code. 
 
@@ -62,6 +114,8 @@ income_no_children<- get_acs(geography="zcta",
                             year=2019)
 head(income_no_children)
 ```
+
+And there you have it-- data from the census!
 
 ```{r, echo=FALSE, fig.cap="Zip Code Data for Household Income for Households with Children, and Without Children"}
 load("~/Github/RGuides/resources/data/Census_Data.RData")

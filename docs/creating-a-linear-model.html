@@ -111,9 +111,9 @@
 <li><a class="active" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
 <li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="downloading-data-from-the-census-bureau.html"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -189,20 +189,28 @@ FIGURE 12.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 ## lm(formula = Orange$circumference ~ Orange$age)
 ## 
 ## Residuals:
-##    Min     1Q Median     3Q    Max 
-## -46.31 -14.95  -0.08  19.70  45.11 
+##    Min     1Q Median     3Q 
+## -46.31 -14.95  -0.08  19.70 
+##    Max 
+##  45.11 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value
-## (Intercept) 17.39965    8.62266    2.02
-## Orange$age   0.10677    0.00828   12.90
-##             Pr(&gt;|t|)    
-## (Intercept)    0.052 .  
-## Orange$age   1.9e-14 ***
+##             Estimate
+## (Intercept) 17.39965
+## Orange$age   0.10677
+##             Std. Error
+## (Intercept)    8.62266
+## Orange$age     0.00828
+##             t value Pr(&gt;|t|)
+## (Intercept)    2.02    0.052
+## Orange$age    12.90  1.9e-14
+##                
+## (Intercept) .  
+## Orange$age  ***
 ## ---
 ## Signif. codes:  
-##   0 '***' 0.001 '**' 0.01 '*' 0.05 '.'
-##   0.1 ' ' 1
+##   0 '***' 0.001 '**' 0.01
+##   '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 24 on 33 degrees of freedom
 ## Multiple R-squared:  0.835,  Adjusted R-squared:  0.83 
@@ -253,15 +261,15 @@ FIGURE 12.3: Interpreting a Regression Printout
       <div class="col-12 col-md-6 mt-3">
         <font size="+2"><strong>Mr. Ng</strong></font>
         <br>📍 Hopper Commons, Room 229
-        <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
           <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
           <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
         </div>
         <div class="col-12 col-md-6 mt-3">
           <br><strong>Other Links:</strong>
-          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://ion.tjhsst.edu/static/img/logos/Login-Logo.svg"><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>"📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 02 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

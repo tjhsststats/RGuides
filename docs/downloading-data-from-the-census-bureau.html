@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 14 Downloading Data from the Census Bureau | 📊 TJ RS1 with R</title>
+<title>Downloading Data from the Census Bureau | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="The Census Bureau is one of the richest sources of data that you will find– and it’s all free, and cleaned up for you! There are a couple of steps you’ll need to do first, however.  14.1 Register...">
+<meta name="description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.1 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
 <meta name="generator" content="bookdown 0.27.1 with bs4_book()">
-<meta property="og:title" content="Chapter 14 Downloading Data from the Census Bureau | 📊 TJ RS1 with R">
+<meta property="og:title" content="Downloading Data from the Census Bureau | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="The Census Bureau is one of the richest sources of data that you will find– and it’s all free, and cleaned up for you! There are a couple of steps you’ll need to do first, however.  14.1 Register...">
+<meta property="og:description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.1 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 14 Downloading Data from the Census Bureau | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="The Census Bureau is one of the richest sources of data that you will find– and it’s all free, and cleaned up for you! There are a couple of steps you’ll need to do first, however.  14.1 Register...">
+<meta name="twitter:title" content="Downloading Data from the Census Bureau | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.1 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -111,9 +111,9 @@
 <li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
 <li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="active" href="downloading-data-from-the-census-bureau.html"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
+<li><a class="active" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -123,15 +123,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="downloading-data-from-the-census-bureau" class="section level1" number="14">
-<h1>
-<span class="header-section-number">14</span> Downloading Data from the Census Bureau<a class="anchor" aria-label="anchor" href="#downloading-data-from-the-census-bureau"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="downloading-data-from-the-census-bureau" class="section level1 unnumbered">
+<h1>Downloading Data from the Census Bureau<a class="anchor" aria-label="anchor" href="#downloading-data-from-the-census-bureau"><i class="fas fa-link"></i></a>
 </h1>
-<p>The Census Bureau is one of the richest sources of data that you will find– and it’s all free, and cleaned up for you!</p>
-<p>There are a couple of steps you’ll need to do first, however.</p>
-<div id="register-for-a-census-bureau-key" class="section level2" number="14.1">
+<p>The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!</p>
+<div id="register-for-a-census-bureau-key" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">14.1</span> Register for a Census Bureau Key<a class="anchor" aria-label="anchor" href="#register-for-a-census-bureau-key"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> Register for a Census Bureau Key<a class="anchor" aria-label="anchor" href="#register-for-a-census-bureau-key"><i class="fas fa-link"></i></a>
 </h2>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -145,9 +143,9 @@
 </div>
 </div>
 </div>
-<div id="install-the-tidycensus-package" class="section level2" number="14.2">
+<div id="install-the-tidycensus-package" class="section level2" number="13.2">
 <h2>
-<span class="header-section-number">14.2</span> Install the <code>tidycensus</code> package<a class="anchor" aria-label="anchor" href="#install-the-tidycensus-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2</span> Install the <code>tidycensus</code> package<a class="anchor" aria-label="anchor" href="#install-the-tidycensus-package"><i class="fas fa-link"></i></a>
 </h2>
 <p>The package that easily downloads Census Bureau data is called <code>tidycensus</code>. Install the package and load it.</p>
 <div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
@@ -158,11 +156,55 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://walker-data.com/tidycensus/reference/census_api_key.html">census_api_key</a></span><span class="op">(</span><span class="st">"&lt;Census Key Goes Here&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Restart your R Session by clicking on Menu’s Session &gt;&gt; Restart R Session. Then, reload the tidycensus library by running <code><a href="https://walker-data.com/tidycensus/">library("tidycensus")</a></code>.</p>
 </div>
-<div id="pull-data-from-the-census" class="section level2" number="14.3">
+<div id="picking-variables-from-the-census" class="section level2" number="13.3">
 <h2>
-<span class="header-section-number">14.3</span> Pull data from the Census<a class="anchor" aria-label="anchor" href="#pull-data-from-the-census"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3</span> Picking Variables from the Census<a class="anchor" aria-label="anchor" href="#picking-variables-from-the-census"><i class="fas fa-link"></i></a>
 </h2>
-<p>Pull variable data into dataframe.</p>
+<p>There are many datasets and tables that you can pull from the Census Bureau, but we’re only going to focus on one– the Census Bureau’s <strong>5-Year American Community Survey (ACS)</strong>.</p>
+<p>The ACS is a massive dataset that the Federal Government publishes every year about the characteristics of households that live in a neighborhood. This survey is used by government agencies, corporations, non-profit groups, and policymakers to make decisions about certain neighborhoods, or give money to certain neighborhoods over others.</p>
+<p>A household is described as a family unit. If you, your mom, your sister, and your grandfather live under one roof, then you are considered a household. The ACS counts the number of households that meet a variable’s criteria.</p>
+<p>For example, if the zip code 22312 in a table called “Households who own a smartphone only” has a value of 2954, that means that there are 2954 households in the zip code 22312 that own just smartphones.</p>
+<p>You can easily find a specific variable from the Census Bureau by using a website like <a href="https://censusreporter.org/">Census Reporter</a>.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<ol style="list-style-type: decimal">
+<li>The easiest way to start exploring variables is to scroll down to the topics section. Pick a topic that interests you.</li>
+</ol>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/A-Downloading-from-Census/census_reporter_1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<ol start="2" style="list-style-type: decimal">
+<li>For demonstration purposes, I chose income. This website has a great curation of Census tables with interesting topics. I’m interested in B19125: Median Family Income by Presence of Own Children. Click it.</li>
+</ol>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/A-Downloading-from-Census/census_reporter_2.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<ol start="3" style="list-style-type: decimal">
+<li>To get the <strong>variable code</strong>, <em>hover</em> your mouse over the variables you’re interested in, and a pop up will appear near your mouse.</li>
+</ol>
+<p>In this case, I’m interested in the median household income households with children: that’s B19125002, and households with no children: B19125003.</p>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/A-Downloading-from-Census/census_reporter_3.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+</div>
+<div id="pull-data-from-the-census" class="section level2" number="13.4">
+<h2>
+<span class="header-section-number">13.4</span> Pull data from the Census<a class="anchor" aria-label="anchor" href="#pull-data-from-the-census"><i class="fas fa-link"></i></a>
+</h2>
+<p>Since this is data from the ACS, we will use the <code><a href="https://walker-data.com/tidycensus/reference/get_acs.html">get_acs()</a></code> command from the <code>tidycensus</code> package.</p>
+<div class="rmdwarning">
+<p>*In order for your variable to parse correctly in tidycensus, you’ll need to place a hyphen before the last three digits. So “B19125002” becomes “B19125_002”, and “B19125003” becomes “B19125_003”.</p>
+</div>
 <ul>
 <li><p>Notice the “geography” is “zcta,” which is the Census Bureau’s equivalent of a ZIP Code.</p></li>
 <li><p>state=“VA” variable helps limit the scope of our data to just VA, otherwise it will download all US.</p></li>
@@ -180,10 +222,11 @@
 <span>                            variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B19125_003"</span><span class="op">)</span>,</span>
 <span>                            year<span class="op">=</span><span class="fl">2019</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">income_no_children</span><span class="op">)</span></span></code></pre></div>
+<p>And there you have it– data from the census!</p>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-153">TABLE 14.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
+<span id="tab:unnamed-chunk-156">TABLE 13.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
 </caption>
 <tbody><tr>
 <td>
@@ -30704,14 +30747,15 @@ B19125_003
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></div>
-<div class="next"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></div>
+<div class="next"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#downloading-data-from-the-census-bureau"><span class="header-section-number">14</span> Downloading Data from the Census Bureau</a></li>
-<li><a class="nav-link" href="#register-for-a-census-bureau-key"><span class="header-section-number">14.1</span> Register for a Census Bureau Key</a></li>
-<li><a class="nav-link" href="#install-the-tidycensus-package"><span class="header-section-number">14.2</span> Install the tidycensus package</a></li>
-<li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">14.3</span> Pull data from the Census</a></li>
+<li><a class="nav-link" href="#downloading-data-from-the-census-bureau">Downloading Data from the Census Bureau</a></li>
+<li><a class="nav-link" href="#register-for-a-census-bureau-key"><span class="header-section-number">13.1</span> Register for a Census Bureau Key</a></li>
+<li><a class="nav-link" href="#install-the-tidycensus-package"><span class="header-section-number">13.2</span> Install the tidycensus package</a></li>
+<li><a class="nav-link" href="#picking-variables-from-the-census"><span class="header-section-number">13.3</span> Picking Variables from the Census</a></li>
+<li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">13.4</span> Pull data from the Census</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -30730,15 +30774,15 @@ B19125_003
       <div class="col-12 col-md-6 mt-3">
         <font size="+2"><strong>Mr. Ng</strong></font>
         <br>📍 Hopper Commons, Room 229
-        <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
           <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
           <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
         </div>
         <div class="col-12 col-md-6 mt-3">
           <br><strong>Other Links:</strong>
-          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://ion.tjhsst.edu/static/img/logos/Login-Logo.svg"><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>"📊 TJ RS1 with R</strong>" was written by Mr. Ng. It was last built on 01 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 02 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

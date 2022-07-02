@@ -17,10 +17,10 @@ fig:unnamed-chunk-142
 fig:unnamed-chunk-143
 fig:unnamed-chunk-145
 fig:unnamed-chunk-146
-tab:unnamed-chunk-153
-tab:unnamed-chunk-160
-tab:unnamed-chunk-162
-fig:unnamed-chunk-165
+tab:unnamed-chunk-156
+tab:unnamed-chunk-163
+tab:unnamed-chunk-165
+fig:unnamed-chunk-168
 interacting-with-r-studio
 using-rstudio
 packages
@@ -95,9 +95,9 @@ creating-a-linear-model
 create-a-residual-plot
 print-regression-output
 regression-wisdom
-downloading-data-from-the-census-bureau
 register-for-a-census-bureau-key
 install-the-tidycensus-package
+picking-variables-from-the-census
 pull-data-from-the-census
 intro-to-two-sample-t-tests
 loading-data.
