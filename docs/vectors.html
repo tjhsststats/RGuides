@@ -109,7 +109,8 @@
 <li class="book-part">Linear Regression</li>
 <li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
 <li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
-<li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
@@ -171,10 +172,9 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <li>
 <strong>Character</strong> vectors, on the other hand, stores any combination of letters and symbols. As soon as you include a character in any double vector, it will become a character vector.</li>
 <li>
-<strong>Logical</strong> vectors store truth values <code>TRUE</code> and <code>FALSE</code>. They are useful when meeting a condition.
-&lt;——!&gt; TODO: Replace this with the Ch2_Vectors_Ex Shiny App. &lt;——–!&gt;</li>
+<strong>Logical</strong> vectors store truth values <code>TRUE</code> and <code>FALSE</code>. They are useful when meeting a condition.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<!-- TODO: Replace this with the Ch2_Vectors_Ex Shiny App. --><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Atomic vector of type character.</span></span>
 <span><span class="va">character</span><span class="op">&lt;-</span> <span class="st">"abc"</span></span>
 <span></span>
@@ -202,9 +202,8 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friend_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Bryant"</span>, <span class="st">"Colleen"</span>, <span class="st">"David"</span>, <span class="st">"Esther"</span>, <span class="st">"Jeremiah"</span><span class="op">)</span></span>
 <span><span class="va">friend_names</span></span></code></pre></div>
-<pre><code>## [1] "Abram"    "Bryant"  
-## [3] "Colleen"  "David"   
-## [5] "Esther"   "Jeremiah"</code></pre>
+<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"  
+## [6] "Jeremiah"</code></pre>
 <p>You can see when <code>friend_names</code> is outputted that there are four entries to it. This is vector is known as a <strong>strings</strong> vector since it contains character strings. You can check to see what type an object is by using the <code>class</code> function:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span></span></code></pre></div>
@@ -229,15 +228,10 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sequence_by_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">sequence_by_2</span></span></code></pre></div>
-<pre><code>##  [1]   0   2   4   6   8  10
-##  [7]  12  14  16  18  20  22
-## [13]  24  26  28  30  32  34
-## [19]  36  38  40  42  44  46
-## [25]  48  50  52  54  56  58
-## [31]  60  62  64  66  68  70
-## [37]  72  74  76  78  80  82
-## [43]  84  86  88  90  92  94
-## [49]  96  98 100</code></pre>
+<pre><code>##  [1]   0   2   4   6   8  10  12  14  16  18  20  22  24  26  28
+## [16]  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58
+## [31]  60  62  64  66  68  70  72  74  76  78  80  82  84  86  88
+## [46]  90  92  94  96  98 100</code></pre>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">sequence_by_2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
@@ -246,14 +240,9 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dec_frac_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">10</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span></span>
 <span><span class="va">dec_frac_seq</span></span></code></pre></div>
-<pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2
-##  [6]  9.0  8.8  8.6  8.4  8.2
-## [11]  8.0  7.8  7.6  7.4  7.2
-## [16]  7.0  6.8  6.6  6.4  6.2
-## [21]  6.0  5.8  5.6  5.4  5.2
-## [26]  5.0  4.8  4.6  4.4  4.2
-## [31]  4.0  3.8  3.6  3.4  3.2
-## [36]  3.0</code></pre>
+<pre><code>##  [1] 10.0  9.8  9.6  9.4  9.2  9.0  8.8  8.6  8.4  8.2  8.0  7.8
+## [13]  7.6  7.4  7.2  7.0  6.8  6.6  6.4  6.2  6.0  5.8  5.6  5.4
+## [25]  5.2  5.0  4.8  4.6  4.4  4.2  4.0  3.8  3.6  3.4  3.2  3.0</code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">dec_frac_seq</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
@@ -266,14 +255,11 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inc_seq</span> <span class="op">&lt;-</span> <span class="fl">98</span><span class="op">:</span><span class="fl">112</span></span>
 <span><span class="va">inc_seq</span></span></code></pre></div>
-<pre><code>##  [1]  98  99 100 101 102 103
-##  [7] 104 105 106 107 108 109
-## [13] 110 111 112</code></pre>
+<pre><code>##  [1]  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112</code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dec_seq</span> <span class="op">&lt;-</span> <span class="fl">5</span><span class="op">:</span><span class="op">-</span><span class="fl">5</span></span>
 <span><span class="va">dec_seq</span></span></code></pre></div>
-<pre><code>##  [1]  5  4  3  2  1  0 -1 -2
-##  [9] -3 -4 -5</code></pre>
+<pre><code>##  [1]  5  4  3  2  1  0 -1 -2 -3 -4 -5</code></pre>
 </div>
 </div>
 <div id="vector-operations" class="section level2" number="2.2">
@@ -299,9 +285,8 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#We're using the friend_names list.</span></span>
 <span><span class="va">friend_names</span></span></code></pre></div>
-<pre><code>## [1] "Abram"    "Bryant"  
-## [3] "Colleen"  "David"   
-## [5] "Esther"   "Jeremiah"</code></pre>
+<pre><code>## [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"  
+## [6] "Jeremiah"</code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Selects the first element from the list.</span></span>
 <span><span class="va">friend_names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div>
@@ -309,18 +294,15 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Selects the 2nd, 3rd, and 4th element from the list.</span></span>
 <span><span class="va">friend_names</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div>
-<pre><code>## [1] "Bryant"  "Colleen"
-## [3] "David"</code></pre>
+<pre><code>## [1] "Bryant"  "Colleen" "David"</code></pre>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Selects every other element from the list.</span></span>
 <span><span class="va">friend_names</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span>, by<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<pre><code>## [1] "Abram"   "Colleen"
-## [3] "Esther"</code></pre>
+<pre><code>## [1] "Abram"   "Colleen" "Esther"</code></pre>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Selects every element except the 2nd to 4th element. Notice that 2:4 generates the sequence 2, 3, 4, which you then concatenate using c(). Then, you use the `-` operator to exclude those opsitions from friend_names. </span></span>
 <span><span class="va">friend_names</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<pre><code>## [1] "Abram"    "Esther"  
-## [3] "Jeremiah"</code></pre>
+<pre><code>## [1] "Abram"    "Esther"   "Jeremiah"</code></pre>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Select the last element of the vector. Note the use of the `length()` function-- it will always select the last element of the list, because the length of the vector is always equal to the index of the last element. </span></span>
 <span><span class="va">friend_names</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
@@ -336,8 +318,7 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <p>This can be extended to choose specific elements from a data frame based on the values in the “cells” of the data frame. A logical vector like the one above (<code>c(TRUE, FALSE, FALSE, FALSE, FALSE, TRUE)</code>) can be generated based on our entries:</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friend_names</span> <span class="op">==</span> <span class="st">"Abram"</span></span></code></pre></div>
-<pre><code>## [1]  TRUE FALSE FALSE FALSE
-## [5] FALSE FALSE</code></pre>
+<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <p>We see that only the first element in this new vector is set to <code>TRUE</code> because <code>"Abram"</code> is the first entry in the friend_names vector. We thus have another way of subsetting that will return only those names that are <code>"Abram"</code> or <code>"Esther"</code>:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friend_names</span><span class="op">[</span><span class="va">friend_names</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Microsoft Bing"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
@@ -394,7 +375,7 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 02 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 05 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

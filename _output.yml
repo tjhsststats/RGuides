@@ -1,6 +1,10 @@
 bookdown::bs4_book:
   theme:
     primary: "#07679f"
+    danger: "#dc3545"
+    success: "#198754"
+    info: "#0dcaf0"
+    warning: "#ffc107"
   repo: 
     base: https://github.com/kaisamng/RGuides
     branch: main

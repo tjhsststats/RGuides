@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Downloading Data from the Census Bureau | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.1 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
+<meta name="description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.5 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
 <meta name="generator" content="bookdown 0.27.1 with bs4_book()">
 <meta property="og:title" content="Downloading Data from the Census Bureau | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.1 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
+<meta property="og:description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.5 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Downloading Data from the Census Bureau | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.1 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
+<meta name="twitter:description" content="The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!  13.5 Register for a Census Bureau Key  Go to Key Signup and signup for a key. DO NOT Use your FCPS...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -109,7 +109,8 @@
 <li class="book-part">Linear Regression</li>
 <li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
 <li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
-<li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="active" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
@@ -127,9 +128,9 @@
 <h1>Downloading Data from the Census Bureau<a class="anchor" aria-label="anchor" href="#downloading-data-from-the-census-bureau"><i class="fas fa-link"></i></a>
 </h1>
 <p>The Census Bureau is one of the richest sources of data about Americans. Best of all, it’s free!</p>
-<div id="register-for-a-census-bureau-key" class="section level2" number="13.1">
+<div id="register-for-a-census-bureau-key" class="section level2" number="13.5">
 <h2>
-<span class="header-section-number">13.1</span> Register for a Census Bureau Key<a class="anchor" aria-label="anchor" href="#register-for-a-census-bureau-key"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5</span> Register for a Census Bureau Key<a class="anchor" aria-label="anchor" href="#register-for-a-census-bureau-key"><i class="fas fa-link"></i></a>
 </h2>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -143,22 +144,22 @@
 </div>
 </div>
 </div>
-<div id="install-the-tidycensus-package" class="section level2" number="13.2">
+<div id="install-the-tidycensus-package" class="section level2" number="13.6">
 <h2>
-<span class="header-section-number">13.2</span> Install the <code>tidycensus</code> package<a class="anchor" aria-label="anchor" href="#install-the-tidycensus-package"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.6</span> Install the <code>tidycensus</code> package<a class="anchor" aria-label="anchor" href="#install-the-tidycensus-package"><i class="fas fa-link"></i></a>
 </h2>
 <p>The package that easily downloads Census Bureau data is called <code>tidycensus</code>. Install the package and load it.</p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidycensus"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://walker-data.com/tidycensus/">"tidycensus"</a></span><span class="op">)</span></span></code></pre></div>
 <p>Then, install your Census API Key into R with this command.</p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://walker-data.com/tidycensus/reference/census_api_key.html">census_api_key</a></span><span class="op">(</span><span class="st">"&lt;Census Key Goes Here&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Restart your R Session by clicking on Menu’s Session &gt;&gt; Restart R Session. Then, reload the tidycensus library by running <code><a href="https://walker-data.com/tidycensus/">library("tidycensus")</a></code>.</p>
 </div>
-<div id="picking-variables-from-the-census" class="section level2" number="13.3">
+<div id="picking-variables-from-the-census" class="section level2" number="13.7">
 <h2>
-<span class="header-section-number">13.3</span> Picking Variables from the Census<a class="anchor" aria-label="anchor" href="#picking-variables-from-the-census"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.7</span> Picking Variables from the Census<a class="anchor" aria-label="anchor" href="#picking-variables-from-the-census"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are many datasets and tables that you can pull from the Census Bureau, but we’re only going to focus on one– the Census Bureau’s <strong>5-Year American Community Survey (ACS)</strong>.</p>
 <p>The ACS is a massive dataset that the Federal Government publishes every year about the characteristics of households that live in a neighborhood. This survey is used by government agencies, corporations, non-profit groups, and policymakers to make decisions about certain neighborhoods, or give money to certain neighborhoods over others.</p>
@@ -197,9 +198,9 @@
 </div>
 </div>
 </div>
-<div id="pull-data-from-the-census" class="section level2" number="13.4">
+<div id="pull-data-from-the-census" class="section level2" number="13.8">
 <h2>
-<span class="header-section-number">13.4</span> Pull data from the Census<a class="anchor" aria-label="anchor" href="#pull-data-from-the-census"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.8</span> Pull data from the Census<a class="anchor" aria-label="anchor" href="#pull-data-from-the-census"><i class="fas fa-link"></i></a>
 </h2>
 <p>Since this is data from the ACS, we will use the <code><a href="https://walker-data.com/tidycensus/reference/get_acs.html">get_acs()</a></code> command from the <code>tidycensus</code> package.</p>
 <div class="rmdwarning">
@@ -209,7 +210,7 @@
 <li><p>Notice the “geography” is “zcta,” which is the Census Bureau’s equivalent of a ZIP Code.</p></li>
 <li><p>state=“VA” variable helps limit the scope of our data to just VA, otherwise it will download all US.</p></li>
 </ul>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">income_with_children</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://walker-data.com/tidycensus/reference/get_acs.html">get_acs</a></span><span class="op">(</span>geography<span class="op">=</span><span class="st">"zcta"</span>,</span>
 <span>                  state<span class="op">=</span><span class="st">"VA"</span>,</span>
 <span>                  variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B19125_002"</span><span class="op">)</span>,</span>
@@ -226,7 +227,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-156">TABLE 13.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
+<span id="tab:unnamed-chunk-169">TABLE 13.1: </span>Zip Code Data for Household Income for Households with Children, and Without Children
 </caption>
 <tbody><tr>
 <td>
@@ -30746,16 +30747,16 @@ B19125_003
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></div>
+<div class="prev"><a href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></div>
 <div class="next"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#downloading-data-from-the-census-bureau">Downloading Data from the Census Bureau</a></li>
-<li><a class="nav-link" href="#register-for-a-census-bureau-key"><span class="header-section-number">13.1</span> Register for a Census Bureau Key</a></li>
-<li><a class="nav-link" href="#install-the-tidycensus-package"><span class="header-section-number">13.2</span> Install the tidycensus package</a></li>
-<li><a class="nav-link" href="#picking-variables-from-the-census"><span class="header-section-number">13.3</span> Picking Variables from the Census</a></li>
-<li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">13.4</span> Pull data from the Census</a></li>
+<li><a class="nav-link" href="#register-for-a-census-bureau-key"><span class="header-section-number">13.5</span> Register for a Census Bureau Key</a></li>
+<li><a class="nav-link" href="#install-the-tidycensus-package"><span class="header-section-number">13.6</span> Install the tidycensus package</a></li>
+<li><a class="nav-link" href="#picking-variables-from-the-census"><span class="header-section-number">13.7</span> Picking Variables from the Census</a></li>
+<li><a class="nav-link" href="#pull-data-from-the-census"><span class="header-section-number">13.8</span> Pull data from the Census</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -30782,7 +30783,7 @@ B19125_003
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 02 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 05 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

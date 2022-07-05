@@ -28,6 +28,7 @@ rmd_files:
     "10-Sampling-and-Probability.Rmd",
     "11-Scatterplots.Rmd",
     "12-Creating-Linear-Models.Rmd",
+    "13-Sampling-Distributions.Rmd",
     "A-Census.Rmd",
     "AB-Two-Sample-T-Test.Rmd",
     "AC-ANOVA-Analysis.Rmd",

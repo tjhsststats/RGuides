@@ -11,7 +11,7 @@ knitr::kable(dca_weather, caption="Weather Data for DCA Airport from 1/1/2022 to
   kable_styling(position= "center", font_size = 10)
 ```
 
-## Quantitative Variables: `mean()`, `median()`, `fivenum()`, and `sd()`
+## Quantitative Variables: `mean()`, `median()`, `fivenum()`, `IQR()`, and `sd()`
 
 These functions do exactly as they sound, however, you must pass a **numeric vector** through each of them.
 
@@ -44,9 +44,15 @@ fivenum(dca_weather$TMIN[dca_weather$month %in% 2])
 
 median(dca_weather$TMAX[dca_weather$month %in% 5])
 
-sd(dca_weather$TMAX[dca_weather$month %in% 3])
 ```
 
+Finally, `sd()` and `IQR()` will give you measures of spread.
+
+```{r}
+sd(dca_weather$TMAX[dca_weather$month %in% 3])
+
+IQR(dca_weather$TAVG[dca_weather$month %in% 6])
+```
 ### The dreaded `NA` response
 
 Consider the following code:

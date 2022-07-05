@@ -109,7 +109,8 @@
 <li class="book-part">Linear Regression</li>
 <li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
 <li><a class="active" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
-<li><a class="" href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
@@ -132,11 +133,11 @@
 <p>A regression line is a model for the data, much like a sample space in our Probability unit. The equation of a regression line gives a compact mathematical description of what the model tells us between the response variable y and the explanatory variable x.</p>
 <div class="inline-figure"><img src="resources/images/11-Linear-Regression/reg_def.png" width="100%" style="display: block; margin: auto;"></div>
 <p>We construct a linear model using the <code>lm</code> command, and store it into the variable <strong>reg_line</strong>.</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reg_line</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Orange</span><span class="op">$</span><span class="va">circumference</span><span class="op">~</span><span class="va">Orange</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span></code></pre></div>
 <p>If you were waiting for the regression line to suddenly appear on the scatterplot, it won’t. You must call a separate command <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code>, which adds the line on top of the existing scatterplot as a <em>new layer</em>.</p>
 <p>This means that you must run <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> first to create the scatterplot, and then <code><a href="https://rdrr.io/r/graphics/abline.html">abline()</a></code> right after.</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>y<span class="op">=</span> <span class="va">Orange</span><span class="op">$</span><span class="va">circumference</span>,</span>
 <span>     x<span class="op">=</span> <span class="va">Orange</span><span class="op">$</span><span class="va">age</span>,</span>
 <span>     main<span class="op">=</span> <span class="st">"Age of Orange Trees vs. Circumference of Trunks"</span>,</span>
@@ -145,8 +146,8 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">reg_line</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-142"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-142-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-143"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-143-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
 FIGURE 12.1: A Scatter Plot of Diamond Weight and Diamond Price
 </p>
 </div>
@@ -159,13 +160,13 @@ FIGURE 12.1: A Scatter Plot of Diamond Weight and Diamond Price
 <span class="math display">\[ \text{residual} = \text{observed y} - \text{predicted y} = y - \hat{y}\]</span></p>
 <p>A <strong>residual plot</strong> takes every residual and plots it in a separate scatterplot. In effect, residual plots turn the regression line horizontal. It magnifies the deviations of the points from the line, making it easier to see unusual observations and patterns. You should always evaluate whether a linear regression line is a good fit for the model.</p>
 <p>Whenever you create a linear model using the <code>lm</code> command, R automatically creates a list of residuals for you, which you plot separately.</p>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">reg_line</span><span class="op">$</span><span class="va">residuals</span>, </span>
 <span>     ylab<span class="op">=</span> <span class="st">"Residual"</span>,</span>
 <span>     main<span class="op">=</span> <span class="st">"Residual Plot for Orange Tree Regression"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-143"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-143-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-144-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
 FIGURE 12.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 </p>
 </div>
@@ -182,42 +183,29 @@ FIGURE 12.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 <span class="header-section-number">12.2</span> Print Regression Output<a class="anchor" aria-label="anchor" href="#print-regression-output"><i class="fas fa-link"></i></a>
 </h2>
 <p>Finally, we can get a computer printout of our regression line’s results.</p>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_line</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Orange$circumference ~ Orange$age)
 ## 
 ## Residuals:
-##    Min     1Q Median     3Q 
-## -46.31 -14.95  -0.08  19.70 
-##    Max 
-##  45.11 
+##    Min     1Q Median     3Q    Max 
+## -46.31 -14.95  -0.08  19.70  45.11 
 ## 
 ## Coefficients:
-##             Estimate
-## (Intercept) 17.39965
-## Orange$age   0.10677
-##             Std. Error
-## (Intercept)    8.62266
-## Orange$age     0.00828
-##             t value Pr(&gt;|t|)
-## (Intercept)    2.02    0.052
-## Orange$age    12.90  1.9e-14
-##                
-## (Intercept) .  
-## Orange$age  ***
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 17.39965    8.62266    2.02    0.052 .  
+## Orange$age   0.10677    0.00828   12.90  1.9e-14 ***
 ## ---
-## Signif. codes:  
-##   0 '***' 0.001 '**' 0.01
-##   '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 24 on 33 degrees of freedom
 ## Multiple R-squared:  0.835,  Adjusted R-squared:  0.83 
 ## F-statistic:  166 on 1 and 33 DF,  p-value: 1.93e-14</code></pre>
 <p>By using <code>summary</code>, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the <strong>standard deviation of the residuals</strong> and the <strong>R-Squared Value</strong>. In R, that is labeled as <em>Multiple R-Squared</em>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<span style="display:block;" id="fig:unnamed-chunk-146"></span>
 <img src="resources/images/11-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="100%"><p class="caption">
 FIGURE 12.3: Interpreting a Regression Printout
 </p>
@@ -233,16 +221,48 @@ FIGURE 12.3: Interpreting a Regression Printout
 </ul>
 <p>In the R Printout, ignore Adjusted R-Squared. This is for multivariable regressions, which you might learn about in RS3.</p>
 </div>
+<div id="regression-wisdom" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> Regression Wisdom<a class="anchor" aria-label="anchor" href="#regression-wisdom"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>You should never, ever, rely soley on the <span class="math inline">\(R^2\)</span> value in order to determine whether the model is a good fit. </strong></p>
+<p>Anscombe’s Data (find it in R under <code>anscombe</code>) is a famous dataset that shows why. It is reproduced below. Read the description, and then proceed to each individual tab.</p>
+<iframe style="margin:0 auto; min-width: 100%;" id="anscombe" class="interactive" src="https://thisisnic.shinyapps.io/anscombe/" scrolling="no" frameborder="yes">
+</iframe>
+<p>As you can see, every dataset here has the same exact <em>r</em> correlation coefficient, and the same <span class="math inline">\(R^2\)</span> coefficient. However, only the first set of data is appropriate for a linear model– the other 3 are clearly not appropriate for a linear model.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<img src="resources/images/11-Linear-Regression/anscombe.png" alt="All four of Anscombe's plots. Taken from https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet" width="90%"><p class="caption">
+FIGURE 12.4: All four of Anscombe’s plots. Taken from <a href="https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet" class="uri">https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet</a>
+</p>
 </div>
+<p>Always ask yourself these questions when you are fitting as linear model to your scatter plot:</p>
+<ol style="list-style-type: decimal">
+<li>Are these variables quantitative?</li>
+<li>Is there a reasonable assumption that the two variables have a relationship with each other?</li>
+<li>Does the scatterplot show a reasonable strength, direction, and form?</li>
+<li>Does the residual plot show a reasonable scatter with no obvious pattern?</li>
+<li>Is the standard deviation of the residuals reasonably small?</li>
+<li>Is the R^2 value large?</li>
+</ol>
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+</div>
+</div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></div>
-<div class="next"><a href="regression-wisdom.html"><span class="header-section-number">13</span> Regression Wisdom</a></div>
+<div class="next"><a href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#creating-a-linear-model"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
 <li><a class="nav-link" href="#create-a-residual-plot"><span class="header-section-number">12.1</span> Create a Residual Plot</a></li>
 <li><a class="nav-link" href="#print-regression-output"><span class="header-section-number">12.2</span> Print Regression Output</a></li>
+<li><a class="nav-link" href="#regression-wisdom"><span class="header-section-number">12.3</span> Regression Wisdom</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -269,7 +289,7 @@ FIGURE 12.3: Interpreting a Regression Printout
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 02 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 05 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

@@ -46,7 +46,11 @@ In this class, we will only focus on ***character***, ***double***, and ***logic
 -   A **numeric** vector, also called a *double* vector, is a vector that is entirely made of numbers. A vector that is entirely decimals is an *integer* vector, and you can specify to R that a number is an integer by adding `L` at the end-- so `34L` specifies the integer 34. The reasons behind this have to do with [floating point arithmetic](https://0.30000000000000004.com/) in computers, and we won't get to the differences between these in this class.
 -   **Character** vectors, on the other hand, stores any combination of letters and symbols. As soon as you include a character in any double vector, it will become a character vector.
 -   **Logical** vectors store truth values `TRUE` and `FALSE`. They are useful when meeting a condition.
-<------!> TODO: Replace this with the Ch2_Vectors_Ex Shiny App. <--------!>
+
+
+<!-- TODO: Replace this with the Ch2_Vectors_Ex Shiny App. -->
+
+
 ```{r}
 # Atomic vector of type character.
 character<- "abc"

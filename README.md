@@ -6,7 +6,7 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
 
 ##### Proposed Table of Contents
 
-1.  Getting Started
+~~1.  Getting Started
 
     A.  Installing R and R Studio
 
@@ -34,15 +34,19 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
 
 4. Linear Regression
     
-5. Sampling Distributions
+5. Sampling Distributions~~
 
-6. Significance Testing
+6. Confidence Intervals
+
+7. Significance Testing
 
     A. One Sample Z and T Testing
     
     B. Two Sample Z and T Testing
+
+    C. One-Way ANOVA
     
-7. Beyond
+8. Beyond
 
     A. Long Form vs. Wide Form Data
     
