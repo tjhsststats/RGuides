@@ -165,7 +165,7 @@ simul_5dice_10trials
 
 **Your turn!** Store the sample space of a 8-sided die into `dice_8`. Then, run a simulation where you throw two 8-sided dice over 6 trials. 
 
-<------!> TODO Insert Ch7_Sampling_Ex learnr module here<-----!>
+<!-- TODO Insert Ch7_Sampling_Ex learnr module here -->
 
 
 

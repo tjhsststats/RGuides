@@ -160,16 +160,17 @@ pnorm(70.25, mean=69, sd=2.5)
 
 Notice that all the methods we've covered assume that the **area is always to the left of $z$**. If you want to find the area to the right of $z$, or $P(X≥z)$, then you need to do $1- P(z≥X)$.
 
-## Solving for a z-score given a probability
+## Solving for $z$ given a probability
 
-We found the probabilities given the z-score—but we sometimes need the reverse. Here, you are given the area/probability and asked to find the corresponding data value.  
+We found the probabilities given the z-score—but we sometimes need the reverse. 
 
 To do this, we use the `qnorm()` function in R (Q stands for quantile, another word for percentile—see the connection?).  `qnorm()` finds the z-score for which the area to the left equals the given value.  You are answering the question $P(X < z)= \text{Given Area}$ where you are finding little z. 
 
 For example, what is the highest z-score for heights of adult men  that will mark where the bottom 25%? What you are looking for is the bottom 25% of the shaded area, which is represented by $P(X< z) =0.25$. 
 
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 30px; font-size: 0.9em;"}
+
 <div>
 Since we don’t know the upper bound, so we need to use `qnorm()`: 
 ```{r}
@@ -198,7 +199,11 @@ $$ x= 67.314$$
 
 This means any adult man shorter than 67.314 inches falls in the bottom 25% of adult men's heights.
 
+</div>
 
+:::
+
+## Distributions Calculator {#dist-calc}
 <!-- TODO: Insert Calculator Here -->
 
 

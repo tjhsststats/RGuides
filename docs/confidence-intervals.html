@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 15 Confidence Intervals | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="Suppose you want to know the true proportion of Freshmen at TJ who’ve had Boba tea. You select a SRS of 30 students and ask them if they have had Boba tea. You find out that, among your sample,...">
+<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Confidence Intervals | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Suppose you want to know the true proportion of Freshmen at TJ who’ve had Boba tea. You select a SRS of 30 students and ask them if they have had Boba tea. You find out that, among your sample,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 15 Confidence Intervals | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="Suppose you want to know the true proportion of Freshmen at TJ who’ve had Boba tea. You select a SRS of 30 students and ask them if they have had Boba tea. You find out that, among your sample,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><style>
+    .interactive {
+      position: relative;
+    }  
+    .interactive iframe {
+      position: relative;
+      z-index: 100;
+      border: 0;
+      width: 1px;
+      min-width: 100%;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Homepage</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
+<li><a class="" href="replacing-or-removing-data.html"><span class="header-section-number">4</span> Replacing or Removing Data</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">5</span> Selecting and Filtering Data</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">6</span> Creating New Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">7</span> Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">8</span> Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">9</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Prbability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
+<li class="book-part">Linear Regression</li>
+<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
+<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">14</span> The Central Limit Theorem</a></li>
+<li><a class="active" href="confidence-intervals.html"><span class="header-section-number">15</span> Confidence Intervals</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="confidence-intervals" class="section level1" number="15">
+<h1>
+<span class="header-section-number">15</span> Confidence Intervals<a class="anchor" aria-label="anchor" href="#confidence-intervals"><i class="fas fa-link"></i></a>
+</h1>
+<div style="display: grid; grid-template-columns: 6fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>Suppose you want to know the true proportion of Freshmen at TJ who’ve had Boba tea. You select a SRS of 30 students and ask them if they have had Boba tea. You find out that, among your sample, 65% have had Boba tea.</p>
+<p>Up to now, the promise in this class that that we’ll give you the tools to estimate the true population parameter using only a sample. So now we return to this question: how close were you to the <strong>true</strong> percentage of TJ Freshmen who’ve ever had Boba tea?</p>
+</div>
+<div style="border: none; margin: 0rem;">
+<div class="inline-figure"><img src="resources/images/15-One-Prop-CIs/boba.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<p>Here’s what we know:</p>
+<ul>
+<li>We know that our sample was not biased, because it was an SRS.</li>
+<li>We know that this one sample is part of a sampling distribution, that is approximately normal.</li>
+<li>We know that if we took another sample, our mean sample statistic will be different, because of <strong>sampling variability</strong>.</li>
+<li>
+<strong>Sampling variability</strong> fundamentally means that we know we can <em>sort of</em> trust our sample, but we can’t completely trust it– because we know for a fact that our sample statistic is not <em>exactly</em> equal to the true population parameter.</li>
+</ul>
+<div style="display: grid; grid-template-columns: 6fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>On top of that, we still don’t know how close we are to the sample, because we don’t know the population standard deviation. It is completely possible that we got very unlucky, and our sample is completely unrepresentative of the population. The chances that we get an unrepresentative sample with SRS is smaller, but it is not 0.</p>
+<p>If you were to guess the number of jelly beans in a jar, you’re more likely to be correct by giving a range of values, rather than a single number. We are more likely to <em>capture</em> the “true” population parameter with a <em>range</em> of values instead of a single estimate. This range of values is called a <strong>confidence interval</strong>.</p>
+</div>
+<div style="border: none; margin: 0rem;">
+<div class="inline-figure"><img src="resources/images/15-One-Prop-CIs/jelly_beans.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="interpreting-confidence-intervals" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Interpreting Confidence Intervals<a class="anchor" aria-label="anchor" href="#interpreting-confidence-intervals"><i class="fas fa-link"></i></a>
+</h2>
+<p>Every confidence interval is constructed by using the <strong>point estimate</strong>. The point estimate is the sample statistic that you calculated initially.</p>
+<p>From there, we create an upper and lower bound by adding and subtracting a <strong>margin of error</strong> from the point estimate. In other words:</p>
+<p><span class="math display">\[ \text{Confidence Interval}= \text{Point Estimate} \pm \text{Margin of Error}\]</span></p>
+<p>The margin of error, is based on standard deviation of the sampling distribution (as referenced in <a href="the-central-limit-theorem.html#samp-prop">14.5.1</a> and <a href="the-central-limit-theorem.html#samp-mean">14.4</a>) and the <strong>critical value</strong> derived from the <strong>Confidence Level</strong>. In other words, <span class="math inline">\(\text{Margin of Error}= \text{critical value} * \text{standard deviation of sampling distribution}\)</span> (You do not need to know the Margin of Error calculation yet, as we will revisit this later.)</p>
+<p>Graphically speaking, a confidence interval looks like this:</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-173"></span>
+<img src="resources/images/15-One-Prop-CIs/CI_Annotation.png" alt="Confidence Interval, Annotated" width="70%"><p class="caption">
+FIGURE 15.1: Confidence Interval, Annotated
+</p>
+</div>
+</div>
+<div id="interpreting-confidence-levels" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> Interpreting Confidence <u>Levels</u><a class="anchor" aria-label="anchor" href="#interpreting-confidence-levels"><i class="fas fa-link"></i></a>
+</h2>
+<p>Your final grade in this class will be between an F and an A.</p>
+<p>This range guarantees that I am always right about what your final grade in this class is. But it’s also useless.</p>
+<p>On the other hand, “your final grade in this class will be between 92.3% and a 92.4%” is incredibly narrow and gives you a lot of info, but also increases the chance that I will be wrong. When we pick a range of values, we need to ensure that it lies in a good middle ground between being too narrow that we don’t capture the value, but not too wide that the confidence interval becomes useless.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>A <strong>Confidence Level</strong> determines how “wide” will be in order to properly capture the true population parameter. It is usually 95%, or 99%. The <strong>critical value</strong> is the associated z-score with the middle % of the sampling distribution.</p>
+</div>
+<div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-174"></span>
+<img src="resources/images/15-One-Prop-CIs/Norm_95_Percent.png" alt="The middle 95% of the Normal distribution is associated with the z-scores 1.96 and -1.96." width="100%"><p class="caption">
+FIGURE 15.2: The middle 95% of the Normal distribution is associated with the z-scores 1.96 and -1.96.
+</p>
+</div>
+</div>
+</div>
+<p>If you repeatedly took samples from the population of size <span class="math inline">\(n\)</span>, you can expect that 95% of the confidence intervals that you construct will capture the population parameter.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-175"></span>
+<img src="resources/images/15-One-Prop-CIs/95CI.gif" alt="Repeatedly creating multiple confidence intervals over and over. THis is a recording from https://seeing-theory.brown.edu/frequentist-inference/index.html#section2" width="100%"><p class="caption">
+FIGURE 15.3: Repeatedly creating multiple confidence intervals over and over. THis is a recording from <a href="https://seeing-theory.brown.edu/frequentist-inference/index.html#section2" class="uri">https://seeing-theory.brown.edu/frequentist-inference/index.html#section2</a>
+</p>
+</div>
+<p>Notice that, sometimes, we still get an unlucky sample that, even with the wider width, fails to correct capture the true population parameter. That confidence interval is highlighted in red.</p>
+<div class="rmdwarning">
+<p>A confidence level of <span class="math inline">\(95%\)</span> does <strong>NOT</strong> mean that the single confidence interval you create has a 95% probability of capturing the true population parameter.</p>
+<p>Your confidence interval either captures the true population parameter, or it doesn’t capture it. That probability is either 0% or 100%.</p>
+<p>A 95% confidence interval states that, <strong>over repeated sampling</strong>, around 95% of the confidence intervals you construct will capture the true population parameter.</p>
+</div>
+<p>If you lower the confidence level, the width of the confidence intervals decreases, and you get more red confidence intervals.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-176"></span>
+<img src="resources/images/15-One-Prop-CIs/35CI.gif" alt="Lowering the confidence leve leads to more precise intervals, but increases the likelihood of not correctlly capturing the population parameter." width="100%"><p class="caption">
+FIGURE 15.4: Lowering the confidence leve leads to more precise intervals, but increases the likelihood of not correctlly capturing the population parameter.
+</p>
+</div>
+</div>
+<div id="confidence-intervals-of-one-proportion" class="section level2" number="15.3">
+<h2>
+<span class="header-section-number">15.3</span> Confidence Intervals of One Proportion<a class="anchor" aria-label="anchor" href="#confidence-intervals-of-one-proportion"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="confidence-interval-of-one-mean" class="section level2" number="15.4">
+<h2>
+<span class="header-section-number">15.4</span> Confidence Interval of One Mean<a class="anchor" aria-label="anchor" href="#confidence-interval-of-one-mean"><i class="fas fa-link"></i></a>
+</h2>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="the-central-limit-theorem.html"><span class="header-section-number">14</span> The Central Limit Theorem</a></div>
+<div class="next"><a href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#confidence-intervals"><span class="header-section-number">15</span> Confidence Intervals</a></li>
+<li><a class="nav-link" href="#interpreting-confidence-intervals"><span class="header-section-number">15.1</span> Interpreting Confidence Intervals</a></li>
+<li><a class="nav-link" href="#interpreting-confidence-levels"><span class="header-section-number">15.2</span> Interpreting Confidence Levels</a></li>
+<li><a class="nav-link" href="#confidence-intervals-of-one-proportion"><span class="header-section-number">15.3</span> Confidence Intervals of One Proportion</a></li>
+<li><a class="nav-link" href="#confidence-interval-of-one-mean"><span class="header-section-number">15.4</span> Confidence Interval of One Mean</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/15-One-Prop-CIs.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/15-One-Prop-CIs.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <font size="+2"><strong>Mr. Ng</strong></font>
+        <br>📍 Hopper Commons, Room 229
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+          <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+          <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
+        </div>
+        <div class="col-12 col-md-6 mt-3">
+          <br><strong>Other Links:</strong>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 06 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+</div>
+
+</div>
+</div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
