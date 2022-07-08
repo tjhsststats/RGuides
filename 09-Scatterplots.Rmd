@@ -19,7 +19,7 @@ A **Response Variable** is sometimes referred to as a *dependent variable* or an
 :::
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/exp-resp.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/exp-resp.png")
 ```
 
 The simplest graph for displaying two quantitative variables simultaneously is a **scatterplot**, which uses an x-axis for (traditionally) the explanatory variable, and a y-axis for (traditionally) the response variable.
@@ -38,7 +38,7 @@ Let's take a closer look at the scatterplot on the right. This is a scatterplot 
 <div>
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/scatter_ex_1.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/scatter_ex_1.png")
 ```
 
 </div>
@@ -64,9 +64,9 @@ And you can find the documentation here:
 ?Orange
 ```
 
-`age` is represents the age of each tree, and I want to investigate whether the `circumference` is positively correlated with the `age` of the diamond. In that case, I should construct a scatter plot using the `plot()` command.
+`age` is represents the age of each tree, and I want to investigate whether the `circumference` is positively correlated with the `age` of the tree In that case, I should construct a scatter plot using the `plot()` command.
 
-```{r, fig.cap="A Scatter Plot of Diamond Weight and Diamond Price"}
+```{r, fig.cap="A Scatter Plot of Orange Age and Orange Circumference"}
 plot(y= Orange$circumference,
      x= Orange$age,
      main= "Age of Orange Trees vs. Circumference",
@@ -80,7 +80,7 @@ Let's do DOFS:
 - The direction is clearly positive. As the age of the tree increases, the circumference increases too.
 - There doesn't appear to be any major outliers. 
 - The form of the scatterplot is roughly linear.
-- The strength of the diamonds gets weaker as `age` increases. In other words, it is fan-shaped, which means the *spread* of trunk circumference increases as the age of the Orange trees increases. This is worrisome, because it makes it harder to judge linearity, and decide whether a linear model is appropriate. One explanation, in context, is that all teh trees started off relatively the same, but there were small genetic variations between the trees that became magnified as they grew bigger.
+- The strength of the scatterplot gets weaker as `age` increases. In other words, it is fan-shaped, which means the *spread* of trunk circumference increases as the age of the Orange trees increases. This is worrisome, because it makes it harder to judge linearity, and decide whether a linear model is appropriate. One explanation, in context, is that all the trees started off relatively the same, but there were small genetic variations between the trees that became magnified as they grew bigger.
 
 At this point, we have to make a decision. Either we stop here, claiming that a linear model isn't appropriate, or we judge that the increase in variance is not that bad, and enough for us to continue. We'll continue. 
 
@@ -89,7 +89,7 @@ At this point, we have to make a decision. Either we stop here, claiming that a 
 Look at the two scatterplots below. Which one has the stronger association?
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/corr.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/corr.png")
 ```
 
 
@@ -98,7 +98,7 @@ Surprise! They actually have the same correlation. Look closely at the scales. O
 Since it’s easy to be fooled by different scales or by the amount of space around “clouds” of points in a scatterplot, we need a numerical measurement to supplement the graph. **Correlation** is the measure we use.  
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/corr_def.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/corr_def.png")
 ```
 
 
@@ -120,7 +120,7 @@ knitr::include_graphics("resources/images/11-Linear-Regression/corr_def.png")
 <div>
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/corr_exs.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/corr_exs.png")
 ```
 </div>
 :::
@@ -139,7 +139,7 @@ The correlation coefficient indicates to us that our data is **strongly positive
 ### Correlation is not Causation
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/ice_cream_murders.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/ice_cream_murders.png")
 ```
 
 If two variables have a strong correlation with each other, all it implies is that they are associated with each other— in other words, it suggests that the two variables have a relationship. 

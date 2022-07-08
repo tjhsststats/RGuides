@@ -29,7 +29,7 @@ Clearly, a point in Mr. Ng’s class isn’t as valuable as a point in Mr. B’s
 
 <div>
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/13-Sampling-Distributions/zscores_1.png")
+knitr::include_graphics("resources/images/11-Sampling-Distributions/zscores_1.png")
 ```
 </div>
 
@@ -40,7 +40,7 @@ Look at the x-axis: this is how we’re measuring the distribution, as it define
 Instead of using points as our ruler, we will use standard deviations. 
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("resources/images/13-Sampling-Distributions/zscore_def.png")
+knitr::include_graphics("resources/images/11-Sampling-Distributions/zscore_def.png")
 ```
 
 <!---> TODO: Create Shiny App for students to calculate z-scores<!---->
@@ -61,7 +61,7 @@ Normal distributions play a large role in statistics, but they are rather specia
 
 <div>
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/13-Sampling-Distributions/galton_board.gif")
+knitr::include_graphics("resources/images/11-Sampling-Distributions/galton_board.gif")
 
 ```
 
@@ -79,7 +79,7 @@ Normal distributions have several special facts:
 In a normal distribution 68% of the values lie within 1 standard deviation of the mean, 95% of the values lie within 2 standard deviations of the mean, and 99.7% of the values lie within 3 standard deviations of the mean.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/13-Sampling-Distributions/empirical_rule.png")
+knitr::include_graphics("resources/images/11-Sampling-Distributions/empirical_rule.png")
 ```
 
 You can use the Empirical Rule to find probabilities (or the proportion of data) that lies between 2 points. 
@@ -99,7 +99,7 @@ In order to do this, we start with a diagram of the normal curve.
 
 <div>
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/13-Sampling-Distributions/empirical_rule_1.png")
+knitr::include_graphics("resources/images/11-Sampling-Distributions/empirical_rule_1.png")
 ```
 </div>
 
@@ -137,7 +137,7 @@ In our previous example, we wanted to find the proportion of American adult men 
 Once we calculate a z-score, (remember this is a *standardized score*), we use this score to find the probability.  Label the mean in the center as 0, and label $\pm$3 standard deviations of 1 from the mean.  Then mark the z-score of 0.5 on the number line of the curve and shade all the region under the curve that is to the left of 0.5.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/13-Sampling-Distributions/SNP.png")
+knitr::include_graphics("resources/images/11-Sampling-Distributions/SNP.png")
 ```
 
 The probability (the area that you shaded) = 0.6915 or 69.15%.  On the table, the left-hand margin lists the unit’s place and the tenth’s place of the z-score.  The top margin shows the hundredth’s place of the z-score (and also has 0 in the tenth’s place). So, $P(z ≤ 0.50) = 0.6915.$

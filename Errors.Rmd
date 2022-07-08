@@ -1,8 +1,14 @@
-# Deciphering Common R Errors {- #errors}
+# Deciphering Common R Errors {-}
 
 *Adapted from @usedtor2016 *
 
 For references on errors, check out the following two links by Noam Ross [here](https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md) and David Smith [here](http://blog.revolutionanalytics.com/2015/03/the-most-common-r-error-messages.html).
+
+## General guidelines {-}
+
+Try your best to not be intimidated by R errors. Oftentimes, you will find that you are able to understand what they mean by carefully reading over them. When you can't, carefully look over your R Markdown file again. You might also want to clear out all of your R environment and start at the top by running the chunks. Remember to only include what you deem your reader will need to follow your analysis.
+
+Even people who have worked with R and programmed for years still use Google and support websites like Stack Overflow to ask for help with their R errors or when they aren't sure how to do something in R. I think you'll be pleasantly surprised at just how much support is available.
 
 ## `Error: unexpected input in ______’`, or, `'` versus `’` {-}
 
@@ -52,11 +58,7 @@ In this case, there needs to be one more parenthesis added at the end of your ca
 mean(x = c(1, 5, 10, 52))
 ```
 
-## Graphs are blurry
-(See here.)[https://kaisamng.github.io/RGuides/visualizing-one-variable-data.html#blurry-graphs]
+## Graphs are blurry {-}
+[See here.](https://kaisamng.github.io/RGuides/visualizing-one-variable-data.html#blurry-graphs)
 
-## General guidelines {-}
 
-Try your best to not be intimidated by R errors. Oftentimes, you will find that you are able to understand what they mean by carefully reading over them. When you can't, carefully look over your R Markdown file again. You might also want to clear out all of your R environment and start at the top by running the chunks. Remember to only include what you deem your reader will need to follow your analysis.
-
-Even people who have worked with R and programmed for years still use Google and support websites like Stack Overflow to ask for help with their R errors or when they aren't sure how to do something in R. I think you'll be pleasantly surprised at just how much support is available.

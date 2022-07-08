@@ -7,7 +7,7 @@
 While a chance process is impossible to predict in the short term, if we observe more and more repetitions of any **chance process**, the proportion of times that a specific outcome occurs approaches a single value. This is called **The Law of Large Numbers**.
 
 ```{r, echo = FALSE, fig.align='center', fig.cap="(a) The proportion of heads in the first 20 tosses of a coin. (b) The proportion of heads in the first 500 tosses of a coin."}
-knitr::include_graphics("resources/images/07-Sampling-and-Probability/LLN.png") 
+knitr::include_graphics("resources/images/08-Sampling-and-Probability/LLN.png") 
 ```
 
 Above is the cumulative proportion of tosses for a fair coin. The previous example confirms that the probability of getting a head when we toss a fair coin is 0.5. Probability 0.5 means “occurs half the time in a very large number of trials.” That **doesn’t** mean that you are always guaranteed 50% heads and 50% tails for any number of tosses!
@@ -40,7 +40,7 @@ The <span style="text-decoration:underline">**sample space**</span> is a list of
 
 ::: {}
 ```{r, echo = FALSE, fig.align='center', fig.cap="All possibilities of a six-sided die."}
-knitr::include_graphics("resources/images/07-Sampling-and-Probability/dice.png") 
+knitr::include_graphics("resources/images/08-Sampling-and-Probability/dice.png") 
 ```
 :::
 ::::

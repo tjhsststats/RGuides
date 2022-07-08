@@ -76,7 +76,7 @@ Draw an SRS of size $n$ from any population with mean $μ$. The **central limit 
 
 
 ```{r, echo=FALSE, out.width="90%"}
-knitr::include_graphics("resources/images/14-CLT/CLT_def.png")
+knitr::include_graphics("resources/images/12-CLT/CLT_def.png")
 ```
 
 ## The Sampling Distribution of Sample Means {#samp-mean}
@@ -106,7 +106,7 @@ The central limit theorem provides an incredible fact: if we want to measure a v
 Consider a bag of 200 chips: 100 red, and 100 blue. The variable of interest is the proportion of red chips in the bag.
 
 ```{r, echo=FALSE, out.width="90%", fig.cap="The process of creating a Sampling Distribution of Proportions."}
-knitr::include_graphics("resources/images/14-CLT/prop_samp_dist.png")
+knitr::include_graphics("resources/images/12-CLT/prop_samp_dist.png")
 ```
 
 -	The population distribution gives the values of the variable (proportion of red chips) for all the individuals in the population. In this case, that’s 50%. 

@@ -7,7 +7,7 @@
 <title>Chapter 4 Replacing or Removing Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for the original data, but want to manipulate it...">
-<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Replacing or Removing Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for the original data, but want to manipulate it...">
@@ -112,12 +112,11 @@
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">14</span> The Central Limit Theorem</a></li>
-<li><a class="" href="confidence-intervals.html"><span class="header-section-number">15</span> Confidence Intervals</a></li>
+<li><a class="" href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">15</span> Confidence Intervals of One Proportion</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
 <li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
-<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -140,12 +139,12 @@
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="st">"Abe"</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
-## 1      Abe   34        TRUE        1.0
-## 2   Bryant   35       FALSE        2.2
-## 3  Colleen   32       FALSE       26.0
-## 4    David   29        TRUE        7.0
-## 5   Esther   30       FALSE       10.0
-## 6 Jeremiah   30        TRUE        9.0</code></pre>
+## 1      Abe   34        TRUE       1.00
+## 2   Bryant   35       FALSE       2.17
+## 3  Colleen   32       FALSE      26.00
+## 4    David   29        TRUE       7.00
+## 5   Esther   30       FALSE      10.00
+## 6 Jeremiah   30        TRUE       9.00</code></pre>
 </div>
 <div id="replacing-columns-with-a-mathematical-formula" class="section level2" number="4.2">
 <h2>
@@ -156,12 +155,12 @@
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">+</span><span class="fl">50</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
-## 1      Abe   84        TRUE        1.0
-## 2   Bryant   85       FALSE        2.2
-## 3  Colleen   82       FALSE       26.0
-## 4    David   79        TRUE        7.0
-## 5   Esther   80       FALSE       10.0
-## 6 Jeremiah   80        TRUE        9.0</code></pre>
+## 1      Abe   84        TRUE       1.00
+## 2   Bryant   85       FALSE       2.17
+## 3  Colleen   82       FALSE      26.00
+## 4    David   79        TRUE       7.00
+## 5   Esther   80       FALSE      10.00
+## 6 Jeremiah   80        TRUE       9.00</code></pre>
 </div>
 <div id="replacing-entire-columns-with-another-vector" class="section level2" number="4.3">
 <h2>
@@ -172,12 +171,12 @@
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram A"</span>, <span class="st">"Bryant B"</span>, <span class="st">"Colleen C"</span>, <span class="st">"David D"</span>, <span class="st">"Esther E"</span>, <span class="st">"Jeremiah J"</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
-## 1    Abram A   84        TRUE        1.0
-## 2   Bryant B   85       FALSE        2.2
-## 3  Colleen C   82       FALSE       26.0
-## 4    David D   79        TRUE        7.0
-## 5   Esther E   80       FALSE       10.0
-## 6 Jeremiah J   80        TRUE        9.0</code></pre>
+## 1    Abram A   84        TRUE       1.00
+## 2   Bryant B   85       FALSE       2.17
+## 3  Colleen C   82       FALSE      26.00
+## 4    David D   79        TRUE       7.00
+## 5   Esther E   80       FALSE      10.00
+## 6 Jeremiah J   80        TRUE       9.00</code></pre>
 <p>Note in the last example, I had to type the entire vector I planned to override. That’s because these are characters, and if you use the <code>+</code> operator, R will return an error saying that you can’t add “a” with “b”. We will discuss a better way to do this, below.</p>
 </div>
 <div id="dropping-rows" class="section level2" number="4.4">
@@ -190,11 +189,11 @@
 <span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
-## 2   Bryant B   85       FALSE        2.2
-## 3  Colleen C   82       FALSE       26.0
-## 4    David D   79        TRUE        7.0
-## 5   Esther E   80       FALSE       10.0
-## 6 Jeremiah J   80        TRUE        9.0</code></pre>
+## 2   Bryant B   85       FALSE       2.17
+## 3  Colleen C   82       FALSE      26.00
+## 4    David D   79        TRUE       7.00
+## 5   Esther E   80       FALSE      10.00
+## 6 Jeremiah J   80        TRUE       9.00</code></pre>
 
 </div>
 </div>
@@ -235,7 +234,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 06 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 08 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

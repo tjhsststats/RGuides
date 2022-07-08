@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 5 Selecting and Filtering Data | 📊 TJ RS1 with R</title>
+<title>Chapter 3 Selecting and Filtering Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="Let’s practice importing data, from 3. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
-<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
-<meta property="og:title" content="Chapter 5 Selecting and Filtering Data | 📊 TJ RS1 with R">
+<meta name="description" content="Let’s practice importing data, from 2. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Selecting and Filtering Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Let’s practice importing data, from 3. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
+<meta property="og:description" content="Let’s practice importing data, from 2. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 5 Selecting and Filtering Data | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="Let’s practice importing data, from 3. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
+<meta name="twitter:title" content="Chapter 3 Selecting and Filtering Data | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="Let’s practice importing data, from 2. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,33 +91,32 @@
 <li><a class="" href="index.html">Homepage</a></li>
 <li class="book-part">Getting Started</li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">Interacting with R Studio</a></li>
 <li class="book-part">Working with Data</li>
-<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
-<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
-<li><a class="" href="replacing-or-removing-data.html"><span class="header-section-number">4</span> Replacing or Removing Data</a></li>
-<li><a class="active" href="selecting-and-filtering-data.html"><span class="header-section-number">5</span> Selecting and Filtering Data</a></li>
-<li><a class="" href="creating-new-data.html"><span class="header-section-number">6</span> Creating New Data</a></li>
-<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">7</span> Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
+<li><a class="active" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
 <li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
 <li class="book-part">Presenting Data</li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">8</span> Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">9</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Linear Regression</li>
-<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
+<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">9</span> Interpreting Scatterplots</a></li>
+<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
-<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
-<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">14</span> The Central Limit Theorem</a></li>
-<li><a class="" href="confidence-intervals.html"><span class="header-section-number">15</span> Confidence Intervals</a></li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
+<li><a class="" href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">13</span> Confidence Intervals of One Proportion</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
-<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -126,12 +125,12 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="selecting-and-filtering-data" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="selecting-and-filtering-data" class="section level1" number="3">
 <h1>
-<span class="header-section-number">5</span> Selecting and Filtering Data<a class="anchor" aria-label="anchor" href="#selecting-and-filtering-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> Selecting and Filtering Data<a class="anchor" aria-label="anchor" href="#selecting-and-filtering-data"><i class="fas fa-link"></i></a>
 </h1>
 <div class="rmdtip">
-<p>Let’s practice importing data, from <a href="dataframe.html#dataframe">3</a>. Download the <a href="https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv" target="_blank">periodic table</a> data now, and import it into R as <code>periodic_table</code>.</p>
+<p>Let’s practice importing data, from <a href="dataframe.html#dataframe">2</a>. Download the <a href="https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv" target="_blank">periodic table</a> data now, and import it into R as <code>periodic_table</code>.</p>
 <ul>
 <li><p>Remember to move this into your working directory: <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code></p></li>
 <li><p>Since this is a CSV file, use the <strong>From Text (readr)</strong> function.</p></li>
@@ -142,7 +141,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-68">TABLE 5.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-59">TABLE 3.1: </span>The Periodic Table
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -245,7 +244,7 @@ Primordial
 Non-metal
 </td>
 <td style="text-align:right;">
-1.0
+1.008
 </td>
 <td style="text-align:right;">
 NA
@@ -254,31 +253,31 @@ NA
 Yes
 </td>
 <td style="text-align:right;">
-0.00
+0.0001
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-14.01
+14.010
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-20.3
+20.28
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-14.30
+14.304
 </td>
 <td style="text-align:right;">
 2.20
 </td>
 <td style="text-align:right;">
-1.4e+03
+1.40e+03
 </td>
 </tr>
 <tr>
@@ -313,7 +312,7 @@ Primordial
 Noble gas
 </td>
 <td style="text-align:right;">
-4.0
+4.003
 </td>
 <td style="text-align:right;">
 2
@@ -322,31 +321,31 @@ Noble gas
 Yes
 </td>
 <td style="text-align:right;">
-0.00
+0.0002
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-0.96
+0.956
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-4.2
+4.22
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-5.19
+5.193
 </td>
 <td style="text-align:right;">
 NA
 </td>
 <td style="text-align:right;">
-1.0e-02
+8.00e-03
 </td>
 </tr>
 <tr>
@@ -381,7 +380,7 @@ Primordial
 Alkali metal
 </td>
 <td style="text-align:right;">
-6.9
+6.940
 </td>
 <td style="text-align:right;">
 NA
@@ -390,31 +389,31 @@ NA
 Yes
 </td>
 <td style="text-align:right;">
-0.53
+0.5340
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-453.69
+453.690
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-1560.0
+1560.00
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-3.58
+3.582
 </td>
 <td style="text-align:right;">
 0.98
 </td>
 <td style="text-align:right;">
-2.0e+01
+2.00e+01
 </td>
 </tr>
 <tr>
@@ -449,7 +448,7 @@ Primordial
 Alkaline earth metal
 </td>
 <td style="text-align:right;">
-9.0
+9.012
 </td>
 <td style="text-align:right;">
 5
@@ -458,31 +457,31 @@ Alkaline earth metal
 Yes
 </td>
 <td style="text-align:right;">
-1.85
+1.8500
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-1560.00
+1560.000
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-2742.0
+2742.00
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-1.82
+1.825
 </td>
 <td style="text-align:right;">
 1.57
 </td>
 <td style="text-align:right;">
-2.8e+00
+2.80e+00
 </td>
 </tr>
 <tr>
@@ -517,7 +516,7 @@ Primordial
 Metalloid
 </td>
 <td style="text-align:right;">
-10.8
+10.810
 </td>
 <td style="text-align:right;">
 NA
@@ -526,31 +525,31 @@ NA
 Yes
 </td>
 <td style="text-align:right;">
-2.34
+2.3400
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-2349.00
+2349.000
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-4200.0
+4200.00
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-1.03
+1.026
 </td>
 <td style="text-align:right;">
 2.04
 </td>
 <td style="text-align:right;">
-1.0e+01
+1.00e+01
 </td>
 </tr>
 <tr>
@@ -585,7 +584,7 @@ Primordial
 Non-metal
 </td>
 <td style="text-align:right;">
-12.0
+12.011
 </td>
 <td style="text-align:right;">
 NA
@@ -594,31 +593,31 @@ NA
 Yes
 </td>
 <td style="text-align:right;">
-2.27
+2.2670
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-3800.00
+3800.000
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-4300.0
+4300.00
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-0.71
+0.709
 </td>
 <td style="text-align:right;">
 2.55
 </td>
 <td style="text-align:right;">
-2.0e+02
+2.00e+02
 </td>
 </tr>
 <tr>
@@ -653,7 +652,7 @@ Primordial
 Non-metal
 </td>
 <td style="text-align:right;">
-14.0
+14.007
 </td>
 <td style="text-align:right;">
 NA
@@ -662,31 +661,31 @@ NA
 Yes
 </td>
 <td style="text-align:right;">
-0.00
+0.0013
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-63.15
+63.150
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-77.4
+77.36
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-1.04
+1.040
 </td>
 <td style="text-align:right;">
 3.04
 </td>
 <td style="text-align:right;">
-1.9e+01
+1.90e+01
 </td>
 </tr>
 <tr>
@@ -721,7 +720,7 @@ Primordial
 Non-metal
 </td>
 <td style="text-align:right;">
-16.0
+15.999
 </td>
 <td style="text-align:right;">
 NA
@@ -730,31 +729,31 @@ NA
 Yes
 </td>
 <td style="text-align:right;">
-0.00
+0.0014
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-54.36
+54.360
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-90.2
+90.20
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-0.92
+0.918
 </td>
 <td style="text-align:right;">
 3.44
 </td>
 <td style="text-align:right;">
-4.6e+05
+4.61e+05
 </td>
 </tr>
 <tr>
@@ -789,7 +788,7 @@ Primordial
 Halogen
 </td>
 <td style="text-align:right;">
-19.0
+18.998
 </td>
 <td style="text-align:right;">
 6
@@ -798,31 +797,31 @@ Halogen
 Yes
 </td>
 <td style="text-align:right;">
-0.00
+0.0017
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-53.53
+53.530
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-85.0
+85.03
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-0.82
+0.824
 </td>
 <td style="text-align:right;">
 3.98
 </td>
 <td style="text-align:right;">
-5.8e+02
+5.85e+02
 </td>
 </tr>
 <tr>
@@ -857,7 +856,7 @@ Primordial
 Noble gas
 </td>
 <td style="text-align:right;">
-20.2
+20.180
 </td>
 <td style="text-align:right;">
 6
@@ -866,122 +865,169 @@ Noble gas
 Yes
 </td>
 <td style="text-align:right;">
-0.00
+0.0009
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-24.56
+24.560
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-27.1
+27.07
 </td>
 <td style="text-align:left;">
 FALSE
 </td>
 <td style="text-align:right;">
-1.03
+1.030
 </td>
 <td style="text-align:right;">
 NA
 </td>
 <td style="text-align:right;">
-0.0e+00
+5.00e-03
 </td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>So we have a big data frame of information about the periodic table, but what if we wanted to extract smaller pieces of the data frame?</p>
-<div id="selecting-a-column-using" class="section level2" number="5.1">
+<div id="selecting-a-column-using" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">5.1</span> Selecting a column using <code>$</code><a class="anchor" aria-label="anchor" href="#selecting-a-column-using"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Selecting a column using <code>$</code><a class="anchor" aria-label="anchor" href="#selecting-a-column-using"><i class="fas fa-link"></i></a>
 </h2>
 <p>By default, R will organize character strings in alphabetical order. To see this, we’ll introduce two new features: the <code>table</code> function and the <code>$</code> operator.</p>
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"   
-##   [8] "Gas"    "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [15] "Solid"  "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid" 
-##  [22] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [29] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid"
-##  [36] "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [43] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [50] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid" 
-##  [57] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [64] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [71] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [78] "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid" 
-##  [85] "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [92] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [99] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  NA       NA      
-## [106] NA       NA       NA       NA       NA       NA       NA      
-## [113] NA       NA       NA       NA       NA       NA</code></pre>
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"   
+##   [3] "Solid"  "Solid" 
+##   [5] "Solid"  "Solid" 
+##   [7] "Gas"    "Gas"   
+##   [9] "Gas"    "Gas"   
+##  [11] "Solid"  "Solid" 
+##  [13] "Solid"  "Solid" 
+##  [15] "Solid"  "Solid" 
+##  [17] "Gas"    "Gas"   
+##  [19] "Solid"  "Solid" 
+##  [21] "Solid"  "Solid" 
+##  [23] "Solid"  "Solid" 
+##  [25] "Solid"  "Solid" 
+##  [27] "Solid"  "Solid" 
+##  [29] "Solid"  "Solid" 
+##  [31] "Solid"  "Solid" 
+##  [33] "Solid"  "Solid" 
+##  [35] "Liquid" "Gas"   
+##  [37] "Solid"  "Solid" 
+##  [39] "Solid"  "Solid" 
+##  [41] "Solid"  "Solid" 
+##  [43] "Solid"  "Solid" 
+##  [45] "Solid"  "Solid" 
+##  [47] "Solid"  "Solid" 
+##  [49] "Solid"  "Solid" 
+##  [51] "Solid"  "Solid" 
+##  [53] "Solid"  "Gas"   
+##  [55] "Solid"  "Solid" 
+##  [57] "Solid"  "Solid" 
+##  [59] "Solid"  "Solid" 
+##  [61] "Solid"  "Solid" 
+##  [63] "Solid"  "Solid" 
+##  [65] "Solid"  "Solid" 
+##  [67] "Solid"  "Solid" 
+##  [69] "Solid"  "Solid" 
+##  [71] "Solid"  "Solid" 
+##  [73] "Solid"  "Solid" 
+##  [75] "Solid"  "Solid" 
+##  [77] "Solid"  "Solid" 
+##  [79] "Solid"  "Liquid"
+##  [81] "Solid"  "Solid" 
+##  [83] "Solid"  "Solid" 
+##  [85] "Solid"  "Gas"   
+##  [87] "Solid"  "Solid" 
+##  [89] "Solid"  "Solid" 
+##  [91] "Solid"  "Solid" 
+##  [93] "Solid"  "Solid" 
+##  [95] "Solid"  "Solid" 
+##  [97] "Solid"  "Solid" 
+##  [99] "Solid"  "Solid" 
+## [101] "Solid"  "Solid" 
+## [103] "Solid"  NA      
+## [105] NA       NA      
+## [107] NA       NA      
+## [109] NA       NA      
+## [111] NA       NA      
+## [113] NA       NA      
+## [115] NA       NA      
+## [117] NA       NA</code></pre>
 <p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
 </div>
-<div id="selecting-an-element-using" class="section level2" number="5.2">
+<div id="selecting-an-element-using" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">5.2</span> Selecting an element using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-an-element-using"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Selecting an element using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-an-element-using"><i class="fas fa-link"></i></a>
 </h2>
-<p>Recall in <a href="vectors.html#vector-selection">2.3</a> section that we could use the <code>[ ]</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
+<p>Recall in <a href="vectors.html#vector-selection">1.3</a> section that we could use the <code>[ ]</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
 <p>A single vector can be thought of as a dataframe with one row and <span class="math inline">\(n\)</span> columns, which is why you just needed a single number to select an element. Now, since there are multiple rows and columns, you need a comma to differentiate the row and column index.</p>
 <p>The <code>[ ]</code> operator allows you to select elements within a vector or a dataframe <strong>based on its row and column position.</strong> It starts by locating the row position, and then the column position.</p>
-<div id="selecting-a-single-element-using" class="section level3" number="5.2.1">
+<div id="selecting-a-single-element-using" class="section level3" number="3.2.1">
 <h3>
-<span class="header-section-number">5.2.1</span> Selecting a single element using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-a-single-element-using"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.1</span> Selecting a single element using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-a-single-element-using"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s say I wanted to select the <code>name</code> for <code>Sodium</code>, that is in row 11, column 3.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">11</span>, <span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 1
 ##   name  
 ##   &lt;chr&gt; 
 ## 1 Sodium</code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">11</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## [1] "Sodium"</code></pre>
 <p>Notice that both commands above give me the desired value– Sodium– but the formats are different. + In the first command, R gives me back a table with 1 row and 1 column. This isn’t a coincidence, because you pulled directly from the table itself. It’s the difference between copying a “cell” in Excel versus double-clicking on the cell, and then copying the text inside. Here, you directly pulled from the table, so R returns back a value within a table. + The second gives me a single character vector. This makes sense– the <code>$</code> operator selects a single vector <code>name</code> from the table, and then selects the 11th element. Generally, this is the way you want to select a single table.</p>
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"   
-##  [6] "Phosphorus" "Sulfur"     "Chlorine"   "Argon"      "Potassium" 
+<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"    
+##  [3] "Magnesium"  "Aluminium" 
+##  [5] "Silicon"    "Phosphorus"
+##  [7] "Sulfur"     "Chlorine"  
+##  [9] "Argon"      "Potassium" 
 ## [11] "Calcium"</code></pre>
 </div>
 </div>
-<div id="selecting-rows-and-columns-using" class="section level2" number="5.3">
+<div id="selecting-rows-and-columns-using" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">5.3</span> Selecting rows and columns using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-rows-and-columns-using"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Selecting rows and columns using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-rows-and-columns-using"><i class="fas fa-link"></i></a>
 </h2>
 <p>You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?</p>
 <p>We can use <code>[ , ]</code> where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let’s select rows 40 to 50 and columns 1, 2, and 4 from <code>periodic_table</code>:</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 3
-##    atomic_number symbol name_origin                                    
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                          
-##  1            41 Nb     Niobe, daughter of king Tantalus from Greek my…
-##  2            42 Mo     the Greek molybdos meaning 'lead'              
-##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'      
-##  4            44 Ru     Ruthenia, the New Latin name for Russia        
-##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'      
-##  6            46 Pd     the then recently discovered asteroid Pallas, …
-##  7            47 Ag     English word (argentum in Latin)               
-##  8            48 Cd     the New Latin cadmia, from King Kadmos         
-##  9            49 In     indigo                                         
-## 10            50 Sn     English word (stannum in Latin)</code></pre>
+##    atomic_number symbol
+##            &lt;dbl&gt; &lt;chr&gt; 
+##  1            41 Nb    
+##  2            42 Mo    
+##  3            43 Tc    
+##  4            44 Ru    
+##  5            45 Rh    
+##  6            46 Pd    
+##  7            47 Ag    
+##  8            48 Cd    
+##  9            49 In    
+## 10            50 Sn    
+## # … with 1 more variable:
+## #   name_origin &lt;chr&gt;</code></pre>
 <div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3 unnumbered">
 <h3>“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
 </h3>
 <div class="rmdwarning">
 <p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
 </div>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 118 × 1
@@ -998,20 +1044,21 @@ NA
 ##  9 F     
 ## 10 Ne    
 ## # … with 108 more rows</code></pre>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of row 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 22
-##   atomic_number symbol name   name_origin            group period block
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
-## 1             2 He     Helium the Greek helios, 'su…    18      1 s    
-## # … with 15 more variables: state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;, density_predicted &lt;lgl&gt;,
-## #   melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
-## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;,
-## #   abundance &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+##   atomic_number symbol name  
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+## 1             2 He     Helium
+## # … with 19 more variables:
+## #   name_origin &lt;chr&gt;,
+## #   group &lt;dbl&gt;,
+## #   period &lt;dbl&gt;,
+## #   block &lt;chr&gt;,
+## #   state_at_stp &lt;chr&gt;,
+## #   occurrence &lt;chr&gt;, …</code></pre>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 118 × 1
@@ -1028,36 +1075,142 @@ NA
 ##  9 F     
 ## 10 Ne    
 ## # … with 108 more rows</code></pre>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns a single element in Row 2, Column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 1
 ##   symbol
 ##   &lt;chr&gt; 
 ## 1 He</code></pre>
+</div>
+</div>
+<div id="replacing-and-removing-data" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Replacing and Removing Data<a class="anchor" aria-label="anchor" href="#replacing-and-removing-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Destructive operations are any operation where you override the original data. This is not necessairly a bad thing– sometimes, we don’t have a need for the original data, but want to manipulate it in some way. However, it means that if you made a mistake, the only way to revert the mistake is to completely reload the data from its original source, and repeat all your operations again. As in <a href="vectors.html#vector-operations">1.2</a>, you can alter your dataframe by using the storage operator <code>&lt;-</code> to overwrite data.</p>
+<div id="replacing-one-element" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Replacing one element<a class="anchor" aria-label="anchor" href="#replacing-one-element"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s say that I accidentally typed ‘Abram’ as my friend’s name, and I want to replace it with ‘Abe’</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="st">"Abe"</span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1      Abe   34        TRUE
+## 2   Bryant   35       FALSE
+## 3  Colleen   32       FALSE
+## 4    David   29        TRUE
+## 5   Esther   30       FALSE
+## 6 Jeremiah   30        TRUE
+##   fav_number
+## 1       1.00
+## 2       2.17
+## 3      26.00
+## 4       7.00
+## 5      10.00
+## 6       9.00</code></pre>
+</div>
+<div id="replacing-columns-with-a-mathematical-formula" class="section level3" number="3.4.2">
+<h3>
+<span class="header-section-number">3.4.2</span> Replacing columns with a mathematical formula<a class="anchor" aria-label="anchor" href="#replacing-columns-with-a-mathematical-formula"><i class="fas fa-link"></i></a>
+</h3>
+<p>I want to see what everybody’s age is in 50 years.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">+</span><span class="fl">50</span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident
+## 1      Abe   84        TRUE
+## 2   Bryant   85       FALSE
+## 3  Colleen   82       FALSE
+## 4    David   79        TRUE
+## 5   Esther   80       FALSE
+## 6 Jeremiah   80        TRUE
+##   fav_number
+## 1       1.00
+## 2       2.17
+## 3      26.00
+## 4       7.00
+## 5      10.00
+## 6       9.00</code></pre>
+</div>
+<div id="replacing-entire-columns-with-another-vector" class="section level3" number="3.4.3">
+<h3>
+<span class="header-section-number">3.4.3</span> Replacing entire columns with another vector<a class="anchor" aria-label="anchor" href="#replacing-entire-columns-with-another-vector"><i class="fas fa-link"></i></a>
+</h3>
+<p>I want to add their last names.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram A"</span>, <span class="st">"Bryant B"</span>, <span class="st">"Colleen C"</span>, <span class="st">"David D"</span>, <span class="st">"Esther E"</span>, <span class="st">"Jeremiah J"</span><span class="op">)</span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
+## 1    Abram A   84        TRUE
+## 2   Bryant B   85       FALSE
+## 3  Colleen C   82       FALSE
+## 4    David D   79        TRUE
+## 5   Esther E   80       FALSE
+## 6 Jeremiah J   80        TRUE
+##   fav_number
+## 1       1.00
+## 2       2.17
+## 3      26.00
+## 4       7.00
+## 5      10.00
+## 6       9.00</code></pre>
+<p>Note in the last example, I had to type the entire vector I planned to override. That’s because these are characters, and if you use the <code>+</code> operator, R will return an error saying that you can’t add “a” with “b”. We will discuss a better way to do this, below.</p>
+</div>
+<div id="dropping-rows" class="section level3" number="3.4.4">
+<h3>
+<span class="header-section-number">3.4.4</span> Dropping Rows<a class="anchor" aria-label="anchor" href="#dropping-rows"><i class="fas fa-link"></i></a>
+</h3>
+<p>Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents “Abram A”:</p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">friends</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span></span>
+<span></span>
+<span><span class="va">friends</span></span></code></pre></div>
+<pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident
+## 2   Bryant B   85       FALSE
+## 3  Colleen C   82       FALSE
+## 4    David D   79        TRUE
+## 5   Esther E   80       FALSE
+## 6 Jeremiah J   80        TRUE
+##   fav_number
+## 2       2.17
+## 3      26.00
+## 4       7.00
+## 5      10.00
+## 6       9.00</code></pre>
 
 </div>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="replacing-or-removing-data.html"><span class="header-section-number">4</span> Replacing or Removing Data</a></div>
-<div class="next"><a href="creating-new-data.html"><span class="header-section-number">6</span> Creating New Data</a></div>
+<div class="prev"><a href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></div>
+<div class="next"><a href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#selecting-and-filtering-data"><span class="header-section-number">5</span> Selecting and Filtering Data</a></li>
-<li><a class="nav-link" href="#selecting-a-column-using"><span class="header-section-number">5.1</span> Selecting a column using $</a></li>
+<li><a class="nav-link" href="#selecting-and-filtering-data"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
+<li><a class="nav-link" href="#selecting-a-column-using"><span class="header-section-number">3.1</span> Selecting a column using $</a></li>
 <li>
-<a class="nav-link" href="#selecting-an-element-using"><span class="header-section-number">5.2</span> Selecting an element using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#selecting-a-single-element-using"><span class="header-section-number">5.2.1</span> Selecting a single element using [ , ]</a></li></ul>
+<a class="nav-link" href="#selecting-an-element-using"><span class="header-section-number">3.2</span> Selecting an element using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#selecting-a-single-element-using"><span class="header-section-number">3.2.1</span> Selecting a single element using [ , ]</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#selecting-rows-and-columns-using"><span class="header-section-number">5.3</span> Selecting rows and columns using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#lets-eat-grandma-vs.-lets-eat-grandma">“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”</a></li></ul>
+<a class="nav-link" href="#selecting-rows-and-columns-using"><span class="header-section-number">3.3</span> Selecting rows and columns using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#lets-eat-grandma-vs.-lets-eat-grandma">“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#replacing-and-removing-data"><span class="header-section-number">3.4</span> Replacing and Removing Data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#replacing-one-element"><span class="header-section-number">3.4.1</span> Replacing one element</a></li>
+<li><a class="nav-link" href="#replacing-columns-with-a-mathematical-formula"><span class="header-section-number">3.4.2</span> Replacing columns with a mathematical formula</a></li>
+<li><a class="nav-link" href="#replacing-entire-columns-with-another-vector"><span class="header-section-number">3.4.3</span> Replacing entire columns with another vector</a></li>
+<li><a class="nav-link" href="#dropping-rows"><span class="header-section-number">3.4.4</span> Dropping Rows</a></li>
+</ul>
 </li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/05-Selecting-and-Filtering-Data.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/05-Selecting-and-Filtering-Data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/03-Selecting-Data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/03-Selecting-Data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -1079,7 +1232,7 @@ NA
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 06 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 08 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

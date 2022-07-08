@@ -114,7 +114,7 @@ Although it is one more thing to learn, it is more powerful and sustainable in t
 
 
 ```{r, echo = FALSE, fig.align='center', fig.cap="A comparison between Base R commands and dplyr commands."}
-knitr::include_graphics("resources/images/05-Summarizing-Data/Base_vs_dplyr.png") 
+knitr::include_graphics("resources/images/06-Summarizing-Data/Base_vs_dplyr.png") 
 ```
 
 Finally, dplyr allows us to do more powerful things like the `group_by` function. Now, we can find the mean, median, and standard deviation of all 6 months with just one command.

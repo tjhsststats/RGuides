@@ -30,7 +30,7 @@ This website serves as a digital companion for TJ students taking RS1, or any ot
 
     b.  In fact, we actively encourage you to find different ways of doing code, if it makes sense to you. R is a vast, wide, universe. Go out there and explore.
 
-2.  **Three Before Me Rule:**. If you encounter a problem you are expected to ask three people before you ask your teacher. Some people you can ask are:
+2.  **Three Before Me Rule:** If you encounter a problem you are expected to ask three people before you ask your teacher. Some people you can ask are:
 
     -   Google (Stack Overflow).
 

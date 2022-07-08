@@ -137,7 +137,7 @@ boxplot(TAVG~month, data=dca_weather,
 You can find your plots under the **Plots** tab in the lower right.
 
 ```{r, echo = FALSE, fig.align='center', out.width="40%"}
-knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab.png") 
+knitr::include_graphics("resources/images/07-Visualizing-Data/plots_tab.png") 
 ```
 
 There are a couple of ways to export your graphs in RStudio.
@@ -145,13 +145,13 @@ There are a couple of ways to export your graphs in RStudio.
 1.  Right click on the plot, and select *"Save Image As"*, or *"Copy to Clipboard"*.
 
 ```{r, echo = FALSE, fig.align='center', out.width="30%"}
-knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_right_click.png") 
+knitr::include_graphics("resources/images/07-Visualizing-Data/plots_tab_right_click.png") 
 ```
 
 2.  Click on Export on the top, and then click *"Save As Image"*, or *"Copy to Clipboard"*.
 
 ```{r, echo = FALSE, fig.align='center', out.width="45%"}
-knitr::include_graphics("resources/images/06-Visualizing-Data/plots_tab_export.png") 
+knitr::include_graphics("resources/images/07-Visualizing-Data/plots_tab_export.png") 
 ```
 
 ### Blurry Graphs?

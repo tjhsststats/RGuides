@@ -1,9 +1,10 @@
 # (PART\*) Miscellaneous {.unnumbered}
+
 # Downloading Data from the Census Bureau {-}
 
 The Census Bureau is one of the richest sources of data about Americans. Best of all, it's free! 
 
-## Register for a Census Bureau Key
+## Register for a Census Bureau Key {-}
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -21,7 +22,7 @@ knitr::include_graphics("resources/images/A-Downloading-from-Census/census_key.p
 </div>
 :::
 
-## Install the `tidycensus` package
+## Install the `tidycensus` package {-}
 
 The package that easily downloads Census Bureau data is called `tidycensus`. Install the package and load it.
 
@@ -38,7 +39,7 @@ census_api_key("<Census Key Goes Here>", install=TRUE, overwrite=TRUE)
 
 Restart your R Session by clicking on Menu's Session >> Restart R Session. Then, reload the tidycensus library by running `library("tidycensus")`.
 
-## Picking Variables from the Census
+## Picking Variables from the Census {-}
 
 There are many datasets and tables that you can pull from the Census Bureau, but we're only going to focus on one-- the Census Bureau’s **5-Year American Community Survey (ACS)**.
 
@@ -88,7 +89,7 @@ knitr::include_graphics("resources/images/A-Downloading-from-Census/census_repor
 </div>
 :::
 
-## Pull data from the Census
+## Pull data from the Census {-}
 
 Since this is data from the ACS, we will use the `get_acs()` command from the `tidycensus` package.
 

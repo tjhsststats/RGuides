@@ -8,7 +8,7 @@ A **regression line** summarizes the relationship between the two variables, but
 A regression line is a model for the data, much like a sample space in our Probability unit. The equation of a regression line gives a compact mathematical description of what the model tells us between the response variable y and the explanatory variable x. 
 
 ```{r, echo=FALSE}
-knitr::include_graphics("resources/images/11-Linear-Regression/reg_def.png")
+knitr::include_graphics("resources/images/09-Linear-Regression/reg_def.png")
 ```
 
 We construct a linear model using the `lm` command, and store it into the variable **reg_line**.
@@ -65,7 +65,7 @@ summary(reg_line)
 By using `summary`, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the **standard deviation of the residuals** and the **R-Squared Value**. In R, that is labeled as *Multiple R-Squared*.
 
 ```{r, echo=FALSE, fig.cap="Interpreting a Regression Printout"}
-knitr::include_graphics("resources/images/11-Linear-Regression/Regression-Printout.png") 
+knitr::include_graphics("resources/images/09-Linear-Regression/Regression-Printout.png") 
 ```
 
 A measure derived from the standard deviation of the residuals is the **Coefficient of Determination**, or $R^2$. 
@@ -93,7 +93,7 @@ Anscombe's Data (find it in R under `anscombe`) is a famous dataset that shows w
 As you can see, every dataset here has the same exact *r* correlation coefficient, and the same $R^2$ coefficient. However, only the first set of data is appropriate for a linear model-- the other 3 are clearly not appropriate for a linear model. 
 
 ```{r, echo=FALSE, out.width="90%", fig.cap="All four of Anscombe's plots. Taken from https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet"}
-knitr::include_graphics("resources/images/11-Linear-Regression/anscombe.png") 
+knitr::include_graphics("resources/images/09-Linear-Regression/anscombe.png") 
 ```
 
 Always ask yourself these questions when you are fitting as linear model to your scatter plot:

@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 14 The Central Limit Theorem | 📊 TJ RS1 with R</title>
+<title>Chapter 12 The Central Limit Theorem | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="14.1 Review: Parameter vs. Statistic  Remember:  A parameter is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because...">
-<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
-<meta property="og:title" content="Chapter 14 The Central Limit Theorem | 📊 TJ RS1 with R">
+<meta name="description" content="12.1 Review: Parameter vs. Statistic  Remember:  A parameter is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because...">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta property="og:title" content="Chapter 12 The Central Limit Theorem | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="14.1 Review: Parameter vs. Statistic  Remember:  A parameter is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because...">
+<meta property="og:description" content="12.1 Review: Parameter vs. Statistic  Remember:  A parameter is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 14 The Central Limit Theorem | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="14.1 Review: Parameter vs. Statistic  Remember:  A parameter is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because...">
+<meta name="twitter:title" content="Chapter 12 The Central Limit Theorem | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="12.1 Review: Parameter vs. Statistic  Remember:  A parameter is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,33 +91,32 @@
 <li><a class="" href="index.html">Homepage</a></li>
 <li class="book-part">Getting Started</li>
 <li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="interacting-with-r-studio.html"><span class="header-section-number">1</span> Interacting with R Studio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">Interacting with R Studio</a></li>
 <li class="book-part">Working with Data</li>
-<li><a class="" href="vectors.html"><span class="header-section-number">2</span> Vectors</a></li>
-<li><a class="" href="dataframe.html"><span class="header-section-number">3</span> Creating Dataframes</a></li>
-<li><a class="" href="replacing-or-removing-data.html"><span class="header-section-number">4</span> Replacing or Removing Data</a></li>
-<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">5</span> Selecting and Filtering Data</a></li>
-<li><a class="" href="creating-new-data.html"><span class="header-section-number">6</span> Creating New Data</a></li>
-<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">7</span> Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
 <li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
 <li class="book-part">Presenting Data</li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">8</span> Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">9</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">10</span> Sampling and Probability</a></li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Linear Regression</li>
-<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">11</span> Interpreting Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">12</span> Creating a Linear Model</a></li>
+<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">9</span> Interpreting Scatterplots</a></li>
+<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
-<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></li>
-<li><a class="active" href="the-central-limit-theorem.html"><span class="header-section-number">14</span> The Central Limit Theorem</a></li>
-<li><a class="" href="confidence-intervals.html"><span class="header-section-number">15</span> Confidence Intervals</a></li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="active" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
+<li><a class="" href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">13</span> Confidence Intervals of One Proportion</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
-<li><a class="" href="errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -126,13 +125,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="the-central-limit-theorem" class="section level1" number="14">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="the-central-limit-theorem" class="section level1" number="12">
 <h1>
-<span class="header-section-number">14</span> The Central Limit Theorem<a class="anchor" aria-label="anchor" href="#the-central-limit-theorem"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> The Central Limit Theorem<a class="anchor" aria-label="anchor" href="#the-central-limit-theorem"><i class="fas fa-link"></i></a>
 </h1>
-<div id="review-parameter-vs.-statistic" class="section level2" number="14.1">
+<div id="review-parameter-vs.-statistic" class="section level2" number="12.1">
 <h2>
-<span class="header-section-number">14.1</span> Review: Parameter vs. Statistic<a class="anchor" aria-label="anchor" href="#review-parameter-vs.-statistic"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> Review: Parameter vs. Statistic<a class="anchor" aria-label="anchor" href="#review-parameter-vs.-statistic"><i class="fas fa-link"></i></a>
 </h2>
 <div class="rmdimportant">
 <p><strong>Remember:</strong></p>
@@ -205,9 +204,9 @@ Standard Deviation
 <li><p>Examine the distribution displayed in the graph for shape, center, and spread, as well as outliers or other deviations.</p></li>
 </ul>
 </div>
-<div id="the-sampling-distribution" class="section level2" number="14.2">
+<div id="the-sampling-distribution" class="section level2" number="12.2">
 <h2>
-<span class="header-section-number">14.2</span> The Sampling Distribution<a class="anchor" aria-label="anchor" href="#the-sampling-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2</span> The Sampling Distribution<a class="anchor" aria-label="anchor" href="#the-sampling-distribution"><i class="fas fa-link"></i></a>
 </h2>
 <p>In the applet below…</p>
 <ol style="list-style-type: decimal">
@@ -225,16 +224,16 @@ Standard Deviation
 
 </iframe>
 </div>
-<div id="the-central-limit-theorem-1" class="section level2" number="14.3">
+<div id="the-central-limit-theorem-1" class="section level2" number="12.3">
 <h2>
-<span class="header-section-number">14.3</span> The Central Limit Theorem<a class="anchor" aria-label="anchor" href="#the-central-limit-theorem-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> The Central Limit Theorem<a class="anchor" aria-label="anchor" href="#the-central-limit-theorem-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Draw an SRS of size <span class="math inline">\(n\)</span> from any population with mean <span class="math inline">\(μ\)</span>. The <strong>central limit theorem (CLT)</strong> says that when n is large, the sampling distribution of the sample mean <span class="math inline">\(\bar{x}\)</span> is approximately normal.</p>
-<div class="inline-figure"><img src="resources/images/14-CLT/CLT_def.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="resources/images/12-CLT/CLT_def.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="samp-mean" class="section level2" number="14.4">
+<div id="samp-mean" class="section level2" number="12.4">
 <h2>
-<span class="header-section-number">14.4</span> The Sampling Distribution of Sample Means<a class="anchor" aria-label="anchor" href="#samp-mean"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> The Sampling Distribution of Sample Means<a class="anchor" aria-label="anchor" href="#samp-mean"><i class="fas fa-link"></i></a>
 </h2>
 <p>Choose a SRS of size <span class="math inline">\(n\)</span> from a population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. If <span class="math inline">\(n \ge 30\)</span>, then the distribution of sample means <span class="math inline">\(\bar{x}\)</span> will also be approximately Normal, even if the population is not.</p>
 <ul>
@@ -249,16 +248,16 @@ Standard Deviation
 </ul>
 </div>
 </div>
-<div id="the-sampling-distribution-of-sample-proportions" class="section level2" number="14.5">
+<div id="the-sampling-distribution-of-sample-proportions" class="section level2" number="12.5">
 <h2>
-<span class="header-section-number">14.5</span> The Sampling Distribution of Sample Proportions<a class="anchor" aria-label="anchor" href="#the-sampling-distribution-of-sample-proportions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5</span> The Sampling Distribution of Sample Proportions<a class="anchor" aria-label="anchor" href="#the-sampling-distribution-of-sample-proportions"><i class="fas fa-link"></i></a>
 </h2>
 <p>The central limit theorem provides an incredible fact: if we want to measure a variable of interest within a population, we don’t need to take a census. Instead, if we sample repeatedly, in large amounts, then we have a very good estimate of the population’s true parameters. But as the figure below shows, there are actually three distinct distributions involved when we sample repeatedly.</p>
 <p>Consider a bag of 200 chips: 100 red, and 100 blue. The variable of interest is the proportion of red chips in the bag.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-168"></span>
-<img src="resources/images/14-CLT/prop_samp_dist.png" alt="The process of creating a Sampling Distribution of Proportions." width="90%"><p class="caption">
-FIGURE 14.1: The process of creating a Sampling Distribution of Proportions.
+<span style="display:block;" id="fig:unnamed-chunk-164"></span>
+<img src="resources/images/12-CLT/prop_samp_dist.png" alt="The process of creating a Sampling Distribution of Proportions." width="90%"><p class="caption">
+FIGURE 12.1: The process of creating a Sampling Distribution of Proportions.
 </p>
 </div>
 <ul>
@@ -271,9 +270,9 @@ FIGURE 14.1: The process of creating a Sampling Distribution of Proportions.
 </div>
 <p>Notice that, in this example, we are calculating <strong>proportions</strong>, rather than <em>means</em>. We use proportions because we are using categorical data, rather than quantitative data, and you can’t calculate the average of blue and red.</p>
 <p>It turns out that this still follows the same laws of the central limit theorem! However, instead of the mean of the sample means being equal to the true population mean, <strong>the mean of the sample proportions equals to the true population proportion</strong>. While the mean of any sampling distribution is a statistic, if that statistic equals to the population parameter, we call it an <em>unbiased estimator</em>.</p>
-<div id="samp-prop" class="section level3" number="14.5.1">
+<div id="samp-prop" class="section level3" number="12.5.1">
 <h3>
-<span class="header-section-number">14.5.1</span> The Sampling Distribution of Sample Proportions<a class="anchor" aria-label="anchor" href="#samp-prop"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5.1</span> The Sampling Distribution of Sample Proportions<a class="anchor" aria-label="anchor" href="#samp-prop"><i class="fas fa-link"></i></a>
 </h3>
 <div class="rmdimportant">
 <p>Choose a SRS of size n from a population with proportion p of successes. Let <span class="math inline">\(\hat{p}\)</span> be the sample proportion of successes. If the sample’s size <span class="math inline">\(n\)</span> is less than 10% of the population, then the distributions of sample proportions <span class="math inline">\(\hat{p}\)</span> will be approximately Normal, even if the population is not.</p>
@@ -290,24 +289,24 @@ FIGURE 14.1: The process of creating a Sampling Distribution of Proportions.
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">13</span> Z-Scores and the Normal Distribution</a></div>
-<div class="next"><a href="confidence-intervals.html"><span class="header-section-number">15</span> Confidence Intervals</a></div>
+<div class="prev"><a href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></div>
+<div class="next"><a href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">13</span> Confidence Intervals of One Proportion</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-central-limit-theorem"><span class="header-section-number">14</span> The Central Limit Theorem</a></li>
-<li><a class="nav-link" href="#review-parameter-vs.-statistic"><span class="header-section-number">14.1</span> Review: Parameter vs. Statistic</a></li>
-<li><a class="nav-link" href="#the-sampling-distribution"><span class="header-section-number">14.2</span> The Sampling Distribution</a></li>
-<li><a class="nav-link" href="#the-central-limit-theorem-1"><span class="header-section-number">14.3</span> The Central Limit Theorem</a></li>
-<li><a class="nav-link" href="#samp-mean"><span class="header-section-number">14.4</span> The Sampling Distribution of Sample Means</a></li>
+<li><a class="nav-link" href="#the-central-limit-theorem"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
+<li><a class="nav-link" href="#review-parameter-vs.-statistic"><span class="header-section-number">12.1</span> Review: Parameter vs. Statistic</a></li>
+<li><a class="nav-link" href="#the-sampling-distribution"><span class="header-section-number">12.2</span> The Sampling Distribution</a></li>
+<li><a class="nav-link" href="#the-central-limit-theorem-1"><span class="header-section-number">12.3</span> The Central Limit Theorem</a></li>
+<li><a class="nav-link" href="#samp-mean"><span class="header-section-number">12.4</span> The Sampling Distribution of Sample Means</a></li>
 <li>
-<a class="nav-link" href="#the-sampling-distribution-of-sample-proportions"><span class="header-section-number">14.5</span> The Sampling Distribution of Sample Proportions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#samp-prop"><span class="header-section-number">14.5.1</span> The Sampling Distribution of Sample Proportions</a></li></ul>
+<a class="nav-link" href="#the-sampling-distribution-of-sample-proportions"><span class="header-section-number">12.5</span> The Sampling Distribution of Sample Proportions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#samp-prop"><span class="header-section-number">12.5.1</span> The Sampling Distribution of Sample Proportions</a></li></ul>
 </li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/14-CLT.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/14-CLT.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/12-CLT.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/12-CLT.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -329,7 +328,7 @@ FIGURE 14.1: The process of creating a Sampling Distribution of Proportions.
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 06 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 08 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>
