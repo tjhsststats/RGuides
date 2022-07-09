@@ -1,4 +1,4 @@
-# Confidence Intervals of One Proportion
+# One Proportion Z-Interval for $\hat{p}$
 
 ::: {style="display: grid; grid-template-columns: 6fr 1fr; grid-column-gap: 10px;"}
 
@@ -140,15 +140,20 @@ In every method of statistical inference (where we try to draw conclusions about
 
 Use this sentence stem:
 
-> We want to construct a One-Proportion Z-Interval for the proportion of adults who "often or always" get enough sleep during the last 7 nights, with 98% confidence.
+:::{.rmdtip}
 
+We want to construct a One-Proportion Z-Interval for the proportion of adults who "often or always" get enough sleep during the last 7 nights, with 98% confidence.
+
+:::
 
 Then, list out statistics that are important to the problem:
 
 > n=1029
 > $\hat{p}= 0.48
 
-### Plan
+### Plan: Check for Conditions
+
+:::{.rmdtip}
 
 Before we figure out what the appropriate **Critical Value** is associated with a 98% confidence level, we need to ensure that the sampling distribution follows the normal distribution. There are three conditions you need to check for:
 
@@ -158,6 +163,7 @@ Before we figure out what the appropriate **Critical Value** is associated with 
 
 - **Independent (10% Condition)**: The number of successes (observational units in $\hat{p}$) and the number of failures (observation units *not* in $\hat{p}$) must be less than 10% of the population. This is necessary because if your sample size is too large, then that increases the lik elihood that the same observational units will be selected for multiple samples. That increases the chances that the samples will have response bias.
 
+:::
 
 Let's see how this works in our example:
 
@@ -205,7 +211,11 @@ Notice that they are both the same magnitude, so we only take the positive value
 
 Next, calculate the margin of error. For a One-Sample Z-Interval, the formula is:
 
+::: {.rmdtip}
+
 $$ \text{Margin of Error}= z^* \sqrt{\frac{p(1-p)}{n}}$$
+
+:::
 
 Plugging in the numbers from our example, we have:
 
@@ -244,14 +254,19 @@ $$ \text{98% CI}= \hat{p} \pm \text{M.o.E}= 0.48 \pm 0.036231 =  [0.4437683, 0.5
 
 ### Conclude
 
-Use this sentence starter:
+::: {.rmdtip}
 
-> We are _____% Confident that the interval from _______ to _____ captures the true ________.
+Now we want to interpret the confidence interval in context. Use this sentence starter:
+
+ We are _____% Confident that the interval from _______ to _____ captures the true ________.
+
+:::
+
+In our example, it's:
 
 > We are 98% Confident that the interval from 0.44377 to 0.51623 captures the true proportion of U.S. adults who "often or always" get enough sleep in the past 7 nights. 
 
-
-And that's it!
+**You must always use context.** Failure to do so would mean lost points. 
 
 :::{.rmdwarning}
 

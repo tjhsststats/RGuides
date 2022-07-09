@@ -85,3 +85,12 @@ knitr::include_graphics("resources/images/casper_vinyl.png")
 
 </div>
 :::
+
+## Timothee Chalamet rapping about Statistics {-}
+
+When you become rich and famous later on, please remember me. 
+
+```{r, echo=FALSE}
+knitr::include_app("https://www.youtube.com/embed/BvWefB4NGGI")
+
+```

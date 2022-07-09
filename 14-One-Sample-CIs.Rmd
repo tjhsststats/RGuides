@@ -1,0 +1,19 @@
+# One Sample t-Interval for $\mu$
+
+## The t-distribution
+
+```{r, echo=FALSE}
+knitr::include_app("https://www.youtube.com/embed/Ea4_eX--mIY?start=12")
+
+```
+
+## One Sample Confidence Interval for $\mu$
+
+
+
+
+
+
+
+
+

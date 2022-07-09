@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 14 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R</title>
+<title>Chapter 15 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="14.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
-<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
-<meta property="og:title" content="Chapter 14 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
+<meta name="description" content="15.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="14.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta property="og:description" content="15.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 14 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="14.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
+<meta name="twitter:title" content="Chapter 15 Intro to Two-Sample T-Tests | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="15.1 Loading Data. The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option. When it first gets loaded, I want...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -97,25 +97,26 @@
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
 <li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
 <li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
-<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
 <li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
-<li class="book-part">Linear Regression</li>
-<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">9</span> Interpreting Scatterplots</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
 <li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
-<li><a class="" href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">13</span> Confidence Intervals of One Proportion</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="active" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
+<li><a class="active" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -125,13 +126,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-two-sample-t-tests" class="section level1" number="14">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-two-sample-t-tests" class="section level1" number="15">
 <h1>
-<span class="header-section-number">14</span> Intro to Two-Sample T-Tests<a class="anchor" aria-label="anchor" href="#intro-to-two-sample-t-tests"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15</span> Intro to Two-Sample T-Tests<a class="anchor" aria-label="anchor" href="#intro-to-two-sample-t-tests"><i class="fas fa-link"></i></a>
 </h1>
-<div id="loading-data." class="section level2" number="14.1">
+<div id="loading-data." class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">14.1</span> Loading Data.<a class="anchor" aria-label="anchor" href="#loading-data."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> Loading Data.<a class="anchor" aria-label="anchor" href="#loading-data."><i class="fas fa-link"></i></a>
 </h2>
 <p>The data that I’ve downloaded is currently in a CSV file. I’m going to use the function File&gt;&gt; Import Dataset &gt;&gt; from base (readr) option.</p>
 <p>When it first gets loaded, I want certain columns to be treated as numeric vectors. The code is below.</p>
@@ -142,9 +143,9 @@
 ## issues, see `problems()` for
 ## details</code></pre>
 </div>
-<div id="data-wrangling" class="section level2" number="14.2">
+<div id="data-wrangling" class="section level2" number="15.2">
 <h2>
-<span class="header-section-number">14.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.2</span> Data Wrangling<a class="anchor" aria-label="anchor" href="#data-wrangling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Examine any problems with the dataset. Notice that there are a lot of randome problems where we treated a column as a numeric vector, but the actual data value was “Unknown” instead. R will convert the value to “NA,” which is fine with us.</p>
 <div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
@@ -263,9 +264,9 @@
 <div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="isolate-the-variables-of-interest." class="section level2" number="14.3">
+<div id="isolate-the-variables-of-interest." class="section level2" number="15.3">
 <h2>
-<span class="header-section-number">14.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.3</span> Isolate the variables of interest.<a class="anchor" aria-label="anchor" href="#isolate-the-variables-of-interest."><i class="fas fa-link"></i></a>
 </h2>
 <p>This uses subsets all rows within the anime dataframe based on the condition in the brackets, and then saves it into a new dataframe called action_anime. The condition is satifised with the “grep” function, which will search for any character string and return “TRUE” if it contains “Action” within the column anime$Genres.</p>
 <div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
@@ -301,9 +302,9 @@
 <code class="sourceCode R"><span><span class="va">anime_score</span><span class="op">&lt;-</span> <span class="va">anime</span><span class="op">$</span><span class="va">Score</span></span>
 <span><span class="va">action_anime_score</span> <span class="op">&lt;-</span> <span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span></span></code></pre></div>
 </div>
-<div id="graph-boxplots." class="section level2" number="14.4">
+<div id="graph-boxplots." class="section level2" number="15.4">
 <h2>
-<span class="header-section-number">14.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.4</span> Graph boxplots.<a class="anchor" aria-label="anchor" href="#graph-boxplots."><i class="fas fa-link"></i></a>
 </h2>
 <p>It looks like the average rating for action animes is indeed higher than the average rating for all animes. But by how much? To answer this question, let’s first graph a boxplot.</p>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
@@ -316,9 +317,9 @@
 <span>        horizontal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/boxplot%20anime-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
-<div id="run-a-two-sample-t-test." class="section level2" number="14.5">
+<div id="run-a-two-sample-t-test." class="section level2" number="15.5">
 <h2>
-<span class="header-section-number">14.5</span> Run a Two Sample T-Test.<a class="anchor" aria-label="anchor" href="#run-a-two-sample-t-test."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.5</span> Run a Two Sample T-Test.<a class="anchor" aria-label="anchor" href="#run-a-two-sample-t-test."><i class="fas fa-link"></i></a>
 </h2>
 <p>Based on the boxplots, it looks like there’s a difference. Action animes appear to be rated higher than the rest. That means:</p>
 <ul>
@@ -343,9 +344,9 @@
 ##     6.510     6.751</code></pre>
 <p>Wow! There’s a serious difference. Look at the p-value for that. Now we need to graph this.</p>
 </div>
-<div id="graph-the-t-distribution-and-test-statistic." class="section level2" number="14.6">
+<div id="graph-the-t-distribution-and-test-statistic." class="section level2" number="15.6">
 <h2>
-<span class="header-section-number">14.6</span> Graph the t-distribution and test statistic.<a class="anchor" aria-label="anchor" href="#graph-the-t-distribution-and-test-statistic."><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.6</span> Graph the t-distribution and test statistic.<a class="anchor" aria-label="anchor" href="#graph-the-t-distribution-and-test-statistic."><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s start by:</p>
 <ol style="list-style-type: decimal">
@@ -381,17 +382,17 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></div>
-<div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></div>
+<div class="next"><a href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="nav-link" href="#loading-data."><span class="header-section-number">14.1</span> Loading Data.</a></li>
-<li><a class="nav-link" href="#data-wrangling"><span class="header-section-number">14.2</span> Data Wrangling</a></li>
-<li><a class="nav-link" href="#isolate-the-variables-of-interest."><span class="header-section-number">14.3</span> Isolate the variables of interest.</a></li>
-<li><a class="nav-link" href="#graph-boxplots."><span class="header-section-number">14.4</span> Graph boxplots.</a></li>
-<li><a class="nav-link" href="#run-a-two-sample-t-test."><span class="header-section-number">14.5</span> Run a Two Sample T-Test.</a></li>
-<li><a class="nav-link" href="#graph-the-t-distribution-and-test-statistic."><span class="header-section-number">14.6</span> Graph the t-distribution and test statistic.</a></li>
+<li><a class="nav-link" href="#intro-to-two-sample-t-tests"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="nav-link" href="#loading-data."><span class="header-section-number">15.1</span> Loading Data.</a></li>
+<li><a class="nav-link" href="#data-wrangling"><span class="header-section-number">15.2</span> Data Wrangling</a></li>
+<li><a class="nav-link" href="#isolate-the-variables-of-interest."><span class="header-section-number">15.3</span> Isolate the variables of interest.</a></li>
+<li><a class="nav-link" href="#graph-boxplots."><span class="header-section-number">15.4</span> Graph boxplots.</a></li>
+<li><a class="nav-link" href="#run-a-two-sample-t-test."><span class="header-section-number">15.5</span> Run a Two Sample T-Test.</a></li>
+<li><a class="nav-link" href="#graph-the-t-distribution-and-test-statistic."><span class="header-section-number">15.6</span> Graph the t-distribution and test statistic.</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -418,7 +419,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 08 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 09 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

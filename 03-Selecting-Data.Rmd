@@ -76,7 +76,7 @@ We can use `[ , ]` where the spot before the comma corresponds to rows and the s
 periodic_table[41:50, c(1, 2, 4)]
 ```
 
-### "Let's eat Grandma!" vs. "Let's eat, Grandma!" {.unnumbered}
+### "Let's eat Grandma!" vs. "Let's eat, Grandma!"
 
 ::: rmdwarning
 **The comma is very important.** Let's look at some examples:

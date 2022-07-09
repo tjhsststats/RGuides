@@ -7,7 +7,7 @@
 <title>Chapter 3 Selecting and Filtering Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="Let’s practice importing data, from 2. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
-<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Selecting and Filtering Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Let’s practice importing data, from 2. Download the periodic table data now, and import it into R as periodic_table. Remember to move this into your working directory: getwd() Since this is a CSV...">
@@ -97,25 +97,26 @@
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
 <li><a class="active" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
 <li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
-<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
 <li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
-<li class="book-part">Linear Regression</li>
-<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">9</span> Interpreting Scatterplots</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
 <li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
-<li><a class="" href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">13</span> Confidence Intervals of One Proportion</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -141,7 +142,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-59">TABLE 3.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-60">TABLE 3.1: </span>The Periodic Table
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -1021,8 +1022,9 @@ NA
 ## 10            50 Sn    
 ## # … with 1 more variable:
 ## #   name_origin &lt;chr&gt;</code></pre>
-<div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3 unnumbered">
-<h3>“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
+<div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> “Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
 </h3>
 <div class="rmdwarning">
 <p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
@@ -1196,7 +1198,7 @@ NA
 <a class="nav-link" href="#selecting-an-element-using"><span class="header-section-number">3.2</span> Selecting an element using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#selecting-a-single-element-using"><span class="header-section-number">3.2.1</span> Selecting a single element using [ , ]</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#selecting-rows-and-columns-using"><span class="header-section-number">3.3</span> Selecting rows and columns using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#lets-eat-grandma-vs.-lets-eat-grandma">“Let’s eat Grandma!” vs. “Let’s eat, Grandma!”</a></li></ul>
+<a class="nav-link" href="#selecting-rows-and-columns-using"><span class="header-section-number">3.3</span> Selecting rows and columns using [ , ]</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#lets-eat-grandma-vs.-lets-eat-grandma"><span class="header-section-number">3.3.1</span> “Let’s eat Grandma!” vs. “Let’s eat, Grandma!”</a></li></ul>
 </li>
 <li>
 <a class="nav-link" href="#replacing-and-removing-data"><span class="header-section-number">3.4</span> Replacing and Removing Data</a><ul class="nav navbar-nav">
@@ -1232,7 +1234,7 @@ NA
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 08 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 09 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

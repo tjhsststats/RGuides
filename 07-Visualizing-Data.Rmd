@@ -1,7 +1,7 @@
 # Visualizing One-Variable Data
 
 ::: rmdtip
-You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/)
+You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch7_Boxplot_Example/)
 :::
 
 Now that we have talked about summarizing data, let's talk about visualizing it.
@@ -36,7 +36,7 @@ Here's a breakdown of the parameters in the histogram above:
 
 **Your turn!** In the box below is a histogram of march_temps at DCA. Label the graph appropriately, and change the color to `darkseagreen4`.
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Hist_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch7_Hist_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
@@ -128,7 +128,7 @@ boxplot(TAVG~month, data=dca_weather,
 -   You add some pretty colors to your boxplots.
 -   You have a y-axis that goes from 0 to 100.
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch6-box-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_Boxplot_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-box-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch7_Boxplot_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
@@ -167,7 +167,7 @@ Blurry graphs happen because your plot window is too small. For some reason, it 
 
 If you run `par()` before the command for any graph, you can stack multiple graphs into the same window. Here's an example:
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch6-par-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_par_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-par-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch7_par_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 
@@ -199,7 +199,7 @@ text(labels=fivenum(june_temps), x=fivenum(june_temps),  y=1.3)
 ```
 # Summarizing and Visualizing Data Exercises {.unnumbered}
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch5-6-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch5_to_6_Exercises/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch5-6-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_to_7_Exercises/" scrolling="no" frameborder="no">
 
 </iframe>
 

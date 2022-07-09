@@ -7,7 +7,7 @@
 <title>Chapter 10 Creating a Linear Model | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="99% of the time in Stats, you’re not just looking for an association. You want a regression line to create a linear model. A regression line summarizes the relationship between the two variables,...">
-<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Creating a Linear Model | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="99% of the time in Stats, you’re not just looking for an association. You want a regression line to create a linear model. A regression line summarizes the relationship between the two variables,...">
@@ -97,25 +97,26 @@
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
 <li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
 <li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
-<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
 <li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
-<li class="book-part">Linear Regression</li>
-<li><a class="" href="interpreting-scatterplots.html"><span class="header-section-number">9</span> Interpreting Scatterplots</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
 <li><a class="active" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
-<li><a class="" href="confidence-intervals-of-one-proportion.html"><span class="header-section-number">13</span> Confidence Intervals of One Proportion</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">14</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">15</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -147,8 +148,8 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">reg_line</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-143"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-143-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-144-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
 FIGURE 10.1: A Scatter Plot of Diamond Weight and Diamond Price
 </p>
 </div>
@@ -166,8 +167,8 @@ FIGURE 10.1: A Scatter Plot of Diamond Weight and Diamond Price
 <span>     ylab<span class="op">=</span> <span class="st">"Residual"</span>,</span>
 <span>     main<span class="op">=</span> <span class="st">"Residual Plot for Orange Tree Regression"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-144"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-144-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-145-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
 FIGURE 10.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 </p>
 </div>
@@ -219,7 +220,7 @@ FIGURE 10.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 ## F-statistic:  166 on 1 and 33 DF,  p-value: 1.93e-14</code></pre>
 <p>By using <code>summary</code>, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the <strong>standard deviation of the residuals</strong> and the <strong>R-Squared Value</strong>. In R, that is labeled as <em>Multiple R-Squared</em>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<span style="display:block;" id="fig:unnamed-chunk-147"></span>
 <img src="resources/images/09-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="100%"><p class="caption">
 FIGURE 10.3: Interpreting a Regression Printout
 </p>
@@ -245,7 +246,7 @@ FIGURE 10.3: Interpreting a Regression Printout
 </iframe>
 <p>As you can see, every dataset here has the same exact <em>r</em> correlation coefficient, and the same <span class="math inline">\(R^2\)</span> coefficient. However, only the first set of data is appropriate for a linear model– the other 3 are clearly not appropriate for a linear model.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<span style="display:block;" id="fig:unnamed-chunk-148"></span>
 <img src="resources/images/09-Linear-Regression/anscombe.png" alt="All four of Anscombe's plots. Taken from https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet" width="90%"><p class="caption">
 FIGURE 10.4: All four of Anscombe’s plots. Taken from <a href="https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet" class="uri">https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet</a>
 </p>
@@ -268,7 +269,7 @@ FIGURE 10.4: All four of Anscombe’s plots. Taken from <a href="https://www.shi
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="interpreting-scatterplots.html"><span class="header-section-number">9</span> Interpreting Scatterplots</a></div>
+<div class="prev"><a href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></div>
 <div class="next"><a href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
@@ -303,7 +304,7 @@ FIGURE 10.4: All four of Anscombe’s plots. Taken from <a href="https://www.shi
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 08 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 09 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

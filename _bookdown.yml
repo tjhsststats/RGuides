@@ -29,6 +29,7 @@ rmd_files:
     "11-Sampling-Distributions.Rmd",
     "12-CLT.Rmd",
     "13-One-Prop-CIs.Rmd",
+    "14-One-Sample-CIs.Rmd",
     "A-Census.Rmd",
     "AB-Two-Sample-T-Test.Rmd",
     "AC-ANOVA-Analysis.Rmd",

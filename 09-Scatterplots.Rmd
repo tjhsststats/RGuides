@@ -1,8 +1,8 @@
-# (PART\*) Linear Regression {.unnumbered}
+# (PART\*) Two-Variable Data: Scatterplots and Regression {.unnumbered}
 
-# Interpreting Scatterplots
+# Scatterplots
 
-## Explanatory and Response Variables, Correlation and Scatterplots
+## Interpreting Scatterplots
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
