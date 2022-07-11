@@ -106,8 +106,8 @@
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
@@ -168,7 +168,7 @@
 <h2>Unmatched parenthesis<a class="anchor" aria-label="anchor" href="#unmatched-parenthesis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Another common error is forgetting or neglecting to finish a call to a function with a closing <code>)</code>. An example of this follows:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="deciphering-common-r-errors.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="deciphering-common-r-errors.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
 <pre><code>Error in parse(text = x, srcfile = src) :
  &lt;text&gt;:2:0: unexpected end of input
 1: mean(x = c(1, 5, 10, 52)
@@ -177,7 +177,7 @@ Calls: &lt;Anonymous&gt; ... evaluate -&gt; parse_all -&gt; parse_all.character 
 Execution halted
 Exited with status 1.</code></pre>
 <p>In this case, there needs to be one more parenthesis added at the end of your call to <code>mean</code>:</p>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">52</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="graphs-are-blurry" class="section level2 unnumbered">

@@ -74,7 +74,7 @@ kable(pq_table, escape=FALSE)
 
 In both cases, **R will always calculate the cumulative area starting from the left** of the distribution. 
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 5%;"}
+::: {.rmd1fr1fr}
 
 <div>
 
@@ -103,11 +103,17 @@ qt(0.85, df=3)
 
 ## One Sample Confidence Interval for $\mu$
 
-Confidence Intervals for a population mean $\mu$ use a **t-distribution** with $n-1$ degrees of freedom.
+Confidence Intervals for a population mean $\mu$ use a **t-distribution** with $n-1$ degrees of freedom. Let's do an example problem:
 
+::: {.rmdnote}
 
+Biologists studying the healing of skin wounds measured the rate at which new cells closed a cut made in the skin of an anesthetized newt. Here are data from a random sample of 18 newts, measured in micrometers (millionths of a meter) per hour:
 
+`29 27 34 40 22 28 14 35 26 35 12 30 23 18 11 22 23 33`
 
+Calculate and interpret a 95% confidence interval for the mean healing rate µ.
+
+:::
 
 
 

@@ -106,8 +106,8 @@
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="active" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
@@ -222,12 +222,19 @@ B_Scores
 <p>Look at the x-axis: this is how we’re measuring the distribution, as it defines each value in terms of points. Since the points aren’t really worth the same, we need to do is rescale both distributions into consistent units. Similarly, if you know how to convert between miles and kilometers, then you can actually compare the distances.</p>
 <p>Instead of using points as our ruler, we will use standard deviations.</p>
 <div class="inline-figure"><img src="resources/images/11-Sampling-Distributions/zscore_def.png" width="80%" style="display: block; margin: auto;"></div>
-<p>&lt;!—&gt; TODO: Create Shiny App for students to calculate z-scores<!----></p>
+</div>
+<div id="z-scores-practice" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Z-Scores Practice<a class="anchor" aria-label="anchor" href="#z-scores-practice"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Your Turn!</strong></p>
+<iframe style="margin:0 auto; min-width: 100%;" id="ch11-z-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Z-Scores_Ex/" scrolling="no" frameborder="no">
+</iframe>
 <p>You might’ve noticed that a bell-shaped curve has been repeatedly drawn as the distribution for all the graphs. This shape is the <strong>Normal Distribution</strong>.</p>
 </div>
-<div id="the-normal-distribution" class="section level2" number="11.2">
+<div id="the-normal-distribution" class="section level2" number="11.3">
 <h2>
-<span class="header-section-number">11.2</span> The Normal Distribution<a class="anchor" aria-label="anchor" href="#the-normal-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3</span> The Normal Distribution<a class="anchor" aria-label="anchor" href="#the-normal-distribution"><i class="fas fa-link"></i></a>
 </h2>
 <div style="display: grid; grid-template-columns: 3fr 1fr; grid-column-gap: 20px;">
 <div>
@@ -264,11 +271,13 @@ B_Scores
 <p>In other words, the Normal distribution is like a thick plot of dots. Each dot represents an outcome. The more likely a particular outcome is, the more dots there should be, clustered around that outcome. The less likely an outcome is, the fewer dots are going to be clustered around that area.</p>
 <p>Close your eyes and point to a random dot. What’s the likelihood that you picked a dot to the left of the mean? If you answered 50%, you’re correct. You had a 50% chance of picking a point to the left of the mean, because half of all possible outcomes are to the left of the mean. So, <em>we can calculate the probability of picking a specific sample that follows the normal distribution.</em></p>
 <p>What makes this connection powerful is that, if a specific distribution is Normal, and we sample randomly, we can find the probability of picking a sample that is <em>greater than or less than a specific z-score</em>.</p>
-<div id="empirical-rule-practice" class="section level3" number="11.2.1">
+<div id="empirical-rule-practice" class="section level3" number="11.3.1">
 <h3>
-<span class="header-section-number">11.2.1</span> Empirical Rule Practice<a class="anchor" aria-label="anchor" href="#empirical-rule-practice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3.1</span> Empirical Rule Practice<a class="anchor" aria-label="anchor" href="#empirical-rule-practice"><i class="fas fa-link"></i></a>
 </h3>
-<!-- Insert Shiny App Here -->
+<p><strong>Your Turn!</strong> Calculate the following Empirical Rule</p>
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Empirical_Rule_Practice/" scrolling="no" frameborder="no">
+</iframe>
 <p>** You cannot answer the last question with the Empirical Rule.** To find the area under the curve that is to the left of 70 inches, you need some special tools to find these probabilities that between integers. Some tools include:</p>
 <ul>
 <li>Calculus.</li>
@@ -277,13 +286,13 @@ B_Scores
 </ul>
 </div>
 </div>
-<div id="solving-for-normal-probability-areas-given-z" class="section level2" number="11.3">
+<div id="solving-for-normal-probability-areas-given-z" class="section level2" number="11.4">
 <h2>
-<span class="header-section-number">11.3</span> Solving for Normal Probability Areas given <span class="math inline">\(z\)</span><a class="anchor" aria-label="anchor" href="#solving-for-normal-probability-areas-given-z"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4</span> Solving for Normal Probability Areas given <span class="math inline">\(z\)</span><a class="anchor" aria-label="anchor" href="#solving-for-normal-probability-areas-given-z"><i class="fas fa-link"></i></a>
 </h2>
-<div id="using-a-z-table" class="section level3" number="11.3.1">
+<div id="using-a-z-table" class="section level3" number="11.4.1">
 <h3>
-<span class="header-section-number">11.3.1</span> Using a z-table<a class="anchor" aria-label="anchor" href="#using-a-z-table"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.1</span> Using a z-table<a class="anchor" aria-label="anchor" href="#using-a-z-table"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>The Standard Normal Probabilities Table</strong> utilizes the <em>standard normal distribution</em>, which has a mean of 0 and a standard deviation of 1. A portion of the table is reproduced below. To use the table, you just have to find the z-score for your data value and then look up the z-score on the table to find the probability.</p>
 <p>In our previous example, we wanted to find the proportion of American adult men that were below 70.25 inches tall. First, calculate the z-score: <span class="math display">\[z= \frac{\bar{x}-\mu}{\sigma}=\frac{5-4}{2}=\frac{1}{2}=0.5\]</span></p>
@@ -292,25 +301,25 @@ B_Scores
 <p>The probability (the area that you shaded) = 0.6915 or 69.15%. On the table, the left-hand margin lists the unit’s place and the tenth’s place of the z-score. The top margin shows the hundredth’s place of the z-score (and also has 0 in the tenth’s place). So, <span class="math inline">\(P(z ≤ 0.50) = 0.6915.\)</span></p>
 <p>The solution to this problem is often written <span class="math inline">\(P(\bar{x} &lt; 5) = P(z ≤ 0.50) = 0.6915\)</span> to show the data value from the original distribution. The question asked “less than”, but there is no difference between “less than” and “less than or equal to” because the “equal to” part is a single line of area which can’t really be measured (even with Calculus!).</p>
 </div>
-<div id="norm-dist-area" class="section level3" number="11.3.2">
+<div id="norm-dist-area" class="section level3" number="11.4.2">
 <h3>
-<span class="header-section-number">11.3.2</span> Using R<a class="anchor" aria-label="anchor" href="#norm-dist-area"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.2</span> Using R<a class="anchor" aria-label="anchor" href="#norm-dist-area"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can also use <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> in R to find the areas under the Normal distribution. To solve for the proportion of American men who are less than 70.25 inches tall:</p>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Recall that we found the associated z-score to be z = 0.5:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.6915</code></pre>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#We can also be lazy, and skip solving for the z-score altogether by specifying the mean= and sd= parameters.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">70.25</span>, mean<span class="op">=</span><span class="fl">69</span>, sd<span class="op">=</span><span class="fl">2.5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.6915</code></pre>
 <p>Notice that all the methods we’ve covered assume that the <strong>area is always to the left of <span class="math inline">\(z\)</span></strong>. If you want to find the area to the right of <span class="math inline">\(z\)</span>, or <span class="math inline">\(P(X≥z)\)</span>, then you need to do <span class="math inline">\(1- P(z≥X)\)</span>.</p>
 </div>
 </div>
-<div id="solving-for-z-given-a-probability" class="section level2" number="11.4">
+<div id="solving-for-z-given-a-probability" class="section level2" number="11.5">
 <h2>
-<span class="header-section-number">11.4</span> Solving for <span class="math inline">\(z\)</span> given a probability<a class="anchor" aria-label="anchor" href="#solving-for-z-given-a-probability"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.5</span> Solving for <span class="math inline">\(z\)</span> given a probability<a class="anchor" aria-label="anchor" href="#solving-for-z-given-a-probability"><i class="fas fa-link"></i></a>
 </h2>
 <p>We found the probabilities given the z-score—but we sometimes need the reverse.</p>
 <p>To do this, we use the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function in R (Q stands for quantile, another word for percentile—see the connection?). <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> finds the z-score for which the area to the left equals the given value. You are answering the question <span class="math inline">\(P(X &lt; z)= \text{Given Area}\)</span> where you are finding little z.</p>
@@ -318,10 +327,10 @@ B_Scores
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 30px; font-size: 0.9em;">
 <div>
 <p>Since we don’t know the upper bound, so we need to use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>:</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.25</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] -0.6745</code></pre>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-160-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-158-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
 <div>
 <p>Now that we know that the z-score associated with the left 0.25 of the curve is <span class="math inline">\(z=-0.6744\)</span>, that means <span class="math inline">\(P(X&lt;-0.6744)=0.25\)</span>.</p>
@@ -333,33 +342,35 @@ B_Scores
 </div>
 </div>
 </div>
-<div id="dist-calc" class="section level2" number="11.5">
+<div id="dist-calc" class="section level2" number="11.6">
 <h2>
-<span class="header-section-number">11.5</span> Distributions Calculator<a class="anchor" aria-label="anchor" href="#dist-calc"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.6</span> Distributions Calculator<a class="anchor" aria-label="anchor" href="#dist-calc"><i class="fas fa-link"></i></a>
 </h2>
-<!-- TODO: Insert Calculator Here -->
+<iframe style="margin:0 auto; min-width: 100%;" id="dist-calc" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Dist_Calculator/" scrolling="no" frameborder="no">
+</iframe>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></div>
+<div class="prev"><a href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></div>
 <div class="next"><a href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#z-scores-and-the-normal-distribution"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="nav-link" href="#intro-to-z-scores"><span class="header-section-number">11.1</span> Intro to Z-Scores</a></li>
+<li><a class="nav-link" href="#z-scores-practice"><span class="header-section-number">11.2</span> Z-Scores Practice</a></li>
 <li>
-<a class="nav-link" href="#the-normal-distribution"><span class="header-section-number">11.2</span> The Normal Distribution</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#empirical-rule-practice"><span class="header-section-number">11.2.1</span> Empirical Rule Practice</a></li></ul>
+<a class="nav-link" href="#the-normal-distribution"><span class="header-section-number">11.3</span> The Normal Distribution</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#empirical-rule-practice"><span class="header-section-number">11.3.1</span> Empirical Rule Practice</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#solving-for-normal-probability-areas-given-z"><span class="header-section-number">11.3</span> Solving for Normal Probability Areas given \(z\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#using-a-z-table"><span class="header-section-number">11.3.1</span> Using a z-table</a></li>
-<li><a class="nav-link" href="#norm-dist-area"><span class="header-section-number">11.3.2</span> Using R</a></li>
+<a class="nav-link" href="#solving-for-normal-probability-areas-given-z"><span class="header-section-number">11.4</span> Solving for Normal Probability Areas given \(z\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-a-z-table"><span class="header-section-number">11.4.1</span> Using a z-table</a></li>
+<li><a class="nav-link" href="#norm-dist-area"><span class="header-section-number">11.4.2</span> Using R</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#solving-for-z-given-a-probability"><span class="header-section-number">11.4</span> Solving for \(z\) given a probability</a></li>
-<li><a class="nav-link" href="#dist-calc"><span class="header-section-number">11.5</span> Distributions Calculator</a></li>
+<li><a class="nav-link" href="#solving-for-z-given-a-probability"><span class="header-section-number">11.5</span> Solving for \(z\) given a probability</a></li>
+<li><a class="nav-link" href="#dist-calc"><span class="header-section-number">11.6</span> Distributions Calculator</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">

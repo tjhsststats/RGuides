@@ -165,8 +165,9 @@ simul_5dice_10trials
 
 **Your turn!** Store the sample space of a 8-sided die into `dice_8`. Then, run a simulation where you throw two 8-sided dice over 6 trials. 
 
-<!-- TODO Insert Ch7_Sampling_Ex learnr module here -->
+<iframe style="margin:0 auto; min-width: 100%;" id="ch8-sampling-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch8_Sampling_Ex/" scrolling="no" frameborder="no">
 
+</iframe>
 
 
 ## Tabluating using Two-Way Tables

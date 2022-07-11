@@ -43,7 +43,13 @@ Instead of using points as our ruler, we will use standard deviations.
 knitr::include_graphics("resources/images/11-Sampling-Distributions/zscore_def.png")
 ```
 
-<!---> TODO: Create Shiny App for students to calculate z-scores<!---->
+## Z-Scores Practice
+
+**Your Turn!** 
+
+<iframe style="margin:0 auto; min-width: 100%;" id="ch11-z-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Z-Scores_Ex/" scrolling="no" frameborder="no">
+
+</iframe>
 
 
 You might’ve noticed that a bell-shaped curve has been repeatedly drawn as the distribution for all the graphs. This shape is the **Normal Distribution**. 
@@ -117,7 +123,11 @@ What makes this connection powerful is that, if a specific distribution is Norma
 
 ### Empirical Rule Practice
 
-<!-- Insert Shiny App Here -->
+**Your Turn!** Calculate the following Empirical Rule
+
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Empirical_Rule_Practice/" scrolling="no" frameborder="no">
+
+</iframe>
 
 
 ** You cannot answer the last question with the Empirical Rule.** To find the area under the curve that is to the left of 70 inches, you need some special tools to find these probabilities that between integers. Some tools include:
@@ -204,8 +214,9 @@ This means any adult man shorter than 67.314 inches falls in the bottom 25% of a
 :::
 
 ## Distributions Calculator {#dist-calc}
-<!-- TODO: Insert Calculator Here -->
 
+<iframe style="margin:0 auto; min-width: 100%;" id="dist-calc" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Dist_Calculator/" scrolling="no" frameborder="no">
 
+</iframe>
 
 

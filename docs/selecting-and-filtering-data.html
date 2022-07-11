@@ -106,8 +106,8 @@
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
@@ -142,7 +142,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-60">TABLE 3.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-58">TABLE 3.1: </span>The Periodic Table
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -903,7 +903,7 @@ NA
 </h2>
 <p>By default, R will organize character strings in alphabetical order. To see this, we’ll introduce two new features: the <code>table</code> function and the <code>$</code> operator.</p>
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></span></code></pre></div>
 <pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid" 
 ##   [5] "Solid"  "Solid"  "Gas"    "Gas"   
@@ -949,18 +949,18 @@ NA
 <span class="header-section-number">3.2.1</span> Selecting a single element using <code>[ , ]</code><a class="anchor" aria-label="anchor" href="#selecting-a-single-element-using"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s say I wanted to select the <code>name</code> for <code>Sodium</code>, that is in row 11, column 3.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">11</span>, <span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 1
 ##   name  
 ##   &lt;chr&gt; 
 ## 1 Sodium</code></pre>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">11</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## [1] "Sodium"</code></pre>
 <p>Notice that both commands above give me the desired value– Sodium– but the formats are different. + In the first command, R gives me back a table with 1 row and 1 column. This isn’t a coincidence, because you pulled directly from the table itself. It’s the difference between copying a “cell” in Excel versus double-clicking on the cell, and then copying the text inside. Here, you directly pulled from the table, so R returns back a value within a table. + The second gives me a single character vector. This makes sense– the <code>$</code> operator selects a single vector <code>name</code> from the table, and then selects the 11th element. Generally, this is the way you want to select a single table.</p>
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium" 
 ##  [4] "Aluminium"  "Silicon"    "Phosphorus"
@@ -974,7 +974,7 @@ NA
 </h2>
 <p>You have now seen how to select specific elements of a vector or a variable, but what if we want a subset of the values in the full data frame across both rows (observations) and columns (variables).?</p>
 <p>We can use <code>[ , ]</code> where the spot before the comma corresponds to rows and the spot after the comma corresponds to columns. Let’s select rows 40 to 50 and columns 1, 2, and 4 from <code>periodic_table</code>:</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 3
 ##    atomic_number symbol name_origin        
@@ -996,7 +996,7 @@ NA
 <div class="rmdwarning">
 <p><strong>The comma is very important.</strong> Let’s look at some examples:</p>
 </div>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 118 × 1
@@ -1013,7 +1013,7 @@ NA
 ##  9 F     
 ## 10 Ne    
 ## # … with 108 more rows</code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of row 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 22
@@ -1027,7 +1027,7 @@ NA
 ## #   atomic_weight &lt;dbl&gt;,
 ## #   aw_uncertainty &lt;dbl&gt;,
 ## #   any_stable_nuclides &lt;chr&gt;, …</code></pre>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 118 × 1
@@ -1044,7 +1044,7 @@ NA
 ##  9 F     
 ## 10 Ne    
 ## # … with 108 more rows</code></pre>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns a single element in Row 2, Column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 1
@@ -1063,7 +1063,7 @@ NA
 <span class="header-section-number">3.4.1</span> Replacing one element<a class="anchor" aria-label="anchor" href="#replacing-one-element"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s say that I accidentally typed ‘Abram’ as my friend’s name, and I want to replace it with ‘Abe’</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span> <span class="st">"Abe"</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
@@ -1079,7 +1079,7 @@ NA
 <span class="header-section-number">3.4.2</span> Replacing columns with a mathematical formula<a class="anchor" aria-label="anchor" href="#replacing-columns-with-a-mathematical-formula"><i class="fas fa-link"></i></a>
 </h3>
 <p>I want to see what everybody’s age is in 50 years.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span><span class="op">+</span><span class="fl">50</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
@@ -1095,7 +1095,7 @@ NA
 <span class="header-section-number">3.4.3</span> Replacing entire columns with another vector<a class="anchor" aria-label="anchor" href="#replacing-entire-columns-with-another-vector"><i class="fas fa-link"></i></a>
 </h3>
 <p>I want to add their last names.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram A"</span>, <span class="st">"Bryant B"</span>, <span class="st">"Colleen C"</span>, <span class="st">"David D"</span>, <span class="st">"Esther E"</span>, <span class="st">"Jeremiah J"</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##        names ages DC_Resident fav_number
@@ -1112,7 +1112,7 @@ NA
 <span class="header-section-number">3.4.4</span> Dropping Rows<a class="anchor" aria-label="anchor" href="#dropping-rows"><i class="fas fa-link"></i></a>
 </h3>
 <p>Or I added the first person by mistake to my Friends list, so I have to drop the first row that represents “Abram A”:</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="va">friends</span></span></code></pre></div>

@@ -36,7 +36,7 @@ Here's a breakdown of the parameters in the histogram above:
 
 **Your turn!** In the box below is a histogram of march_temps at DCA. Label the graph appropriately, and change the color to `darkseagreen4`.
 
-<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch7_Hist_Example/" scrolling="no" frameborder="no">
+<iframe style="margin:0 auto; min-width: 100%;" id="ch7-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch7_Hist_Example/" scrolling="no" frameborder="no">
 
 </iframe>
 

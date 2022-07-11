@@ -106,8 +106,8 @@
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
@@ -136,7 +136,7 @@
 <span class="header-section-number">5.1</span> Creating New Columns using a Vector<a class="anchor" aria-label="anchor" href="#creating-new-columns-using-a-vector"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s return to our original <code>friends</code> dataframe. Rather than replacing original data, we might prefer to add columns to reach the same purpose. Let’s return to the example where I want to include my friend’s last names. A smarter thing to do would be to <strong>add a column.</strong></p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">last_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"J"</span><span class="op">)</span> </span>
 <span><span class="co">#Method 1: Use $</span></span>
 <span></span>
@@ -166,7 +166,7 @@
 <span class="header-section-number">5.2</span> Merging two columns together into a new column<a class="anchor" aria-label="anchor" href="#merging-two-columns-together-into-a-new-column"><i class="fas fa-link"></i></a>
 </h2>
 <p>The last names are great, but we can improve even on this by <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code>ing the <code>names</code> column and the <code>last_names</code> column.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">full_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">friends</span><span class="op">$</span><span class="va">names</span>, <span class="va">friends</span><span class="op">$</span><span class="va">last_names</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number
@@ -191,7 +191,7 @@
 <span class="header-section-number">5.3</span> Merging two numerical columns into a new column<a class="anchor" aria-label="anchor" href="#merging-two-numerical-columns-into-a-new-column"><i class="fas fa-link"></i></a>
 </h2>
 <p>Combining two columns doesn’t make sense for numerical vectors– after all, if we want to combine 4 and 1, we don’t want <code>4, 1</code>, we want 5 as our answer. Let’s say I want to add my friend’s ages to their favorite number (no reason why). Since we can add, subtract, and any other mathematical operation to two vectors as long as they have the same number of elements, this is easy to do.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">age_and_fav_number</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span> <span class="op">+</span> <span class="va">friends</span><span class="op">$</span><span class="va">fav_number</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number

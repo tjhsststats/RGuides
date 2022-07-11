@@ -252,11 +252,8 @@ nav[data-toggle="toc"] .nav .nav .nav .nav > li > a {
     width: auto;
   }
   caption, p.caption {
-    text-align: left;
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-    font-size: 0.7rem;
-    color: #777;
+    margin-top: 0.5rem !important;
+    font-size: 0.7rem !important;
   }
 }
 
@@ -522,27 +519,22 @@ body {
 }
 
 .rmdnote {
-  background-image: url("resources/images/icons/note.png");
   border-color: var(--primary);
   background: #b4d1e2 5px center/3em no-repeat;
 }
 .rmdimportant {
-  background-image: url("resources/images/icons/important.png");
   border-color: var(--success);
   background: #badbcb 5px center/3em no-repeat;
 }
 .rmdcaution {
-  background-image: url("resources/images/icons/caution.png");
   border-color: var(--danger);
   background: #f4c2c7 5px center/3em no-repeat;
 }
 .rmdwarning {
-  background-image: url("resources/images/icons/warning.png");
   border-color: var(--warning);
   background: #ffecb4 5px center/3em no-repeat;
 }
 .rmdtip {
-  background-image: url("resources/images/icons/tip.png");
   border-color: var(--info);
   background: #b6effa 5px center/3em no-repeat;
 }
@@ -556,6 +548,26 @@ body {
 .rmdcaution .btn-copy, .rmdimportant .btn-copy, .rmdnote .btn-copy, .rmdtip .btn-copy, .rmdwarning .btn-copy {
   /* Needs to be set according to margin in callout pre block */
   right: -1rem;
+}
+
+/* Create a special block for grid-template-columns */
+
+.rmd1fr1fr {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-column-gap: 5%;
+}
+
+.rmd1fr2fr {
+  display: grid; 
+  grid-template-columns: 1fr 2fr; 
+  grid-column-gap: 5%;
+}
+
+.rmd2fr1fr {
+  display: grid; 
+  grid-template-columns: 2fr 1fr; 
+  grid-column-gap: 5%;
 }
 
 main ul {

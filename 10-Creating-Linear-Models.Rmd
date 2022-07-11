@@ -1,5 +1,5 @@
 
-# Creating a Linear Model
+# Linear Regression
 
 99% of the time in Stats, you're not just looking for an association. You want a **regression line** to create a linear model.  
 

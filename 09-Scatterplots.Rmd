@@ -1,6 +1,6 @@
 # (PART\*) Two-Variable Data: Scatterplots and Regression {.unnumbered}
 
-# Scatterplots
+# Scatterplots and Correlation
 
 ## Interpreting Scatterplots
 
@@ -149,10 +149,15 @@ If two variables have a strong correlation with each other, all it implies is th
 **The only way to establish causation between two variables is with an experiment.** You will learn more about experimental design later in this course.
 
 
-<!-- TODO: Insert Correlation Game Here -->
+## Correlation Game
+
+**Your turn!** Test your knowledge on correlation by guessing the correlation for each scatterplot.
 
 
 
+<iframe style="margin:0 auto; min-width: 100%;" id="ch9-correlation-game" class="interactive" src="https://kaisamng.shinyapps.io/Ch9_correlation_game/" scrolling="no" frameborder="no">
+
+</iframe>
 
 
 

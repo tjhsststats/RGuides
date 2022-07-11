@@ -106,8 +106,8 @@
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
@@ -136,7 +136,7 @@
 </h2>
 <p>In the last chapter, you learned how to create vectors that included elements, either through <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code>, or <code>:</code>.</p>
 <p>Each vector can be considered a column within a table. So if you want to create a table, you just have to combine the vectors together, right? Let’s combine the <code>friend_names</code> and <code>friend_ages</code> vectors from the previous chapter:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">friend_names</span>, <span class="va">friend_ages</span>, <span class="va">lives_in_dc</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
 <pre><code>##  [1] "Abram"    "Bryant"   "Colleen" 
@@ -147,7 +147,7 @@
 ## [16] "TRUE"     "FALSE"    "TRUE"</code></pre>
 <p>As you can see, all this does is combine two vectors together into a single, longer vector. <strong>It does not give us a table with multiple rows and columns, as expected.</strong></p>
 <p>In order to combine vectors of information into a single data frame, you can use the <code>data.frame</code> function:</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,</span>
 <span>           ages <span class="op">=</span> <span class="va">friend_ages</span>,</span>
 <span>           DC_Resident <span class="op">=</span> <span class="va">lives_in_dc</span>,</span>
@@ -162,7 +162,7 @@
 ## 6 Jeremiah   30        TRUE       9.00</code></pre>
 <p>Here, we have created a <code>names</code> variable in the <code>friends</code> data frame that corresponds to the values in the <code>friend_names</code> vector, and similarly an <code>ages</code> variable in <code>friends</code> that corresponds to the values in <code>friend_ages</code>.</p>
 <p>Note that all three vectors that we used <strong>were of the same length</strong>. You can check the length by using the <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function.</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lives_in_dc</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6 6 6</code></pre>
 <div id="troubleshooting-data.frame" class="section level3" number="2.1.1">
@@ -171,12 +171,12 @@
 </h3>
 <p>If your vectors are not all of equal length, R will return an error.</p>
 <p>In my previous example, I had six friends: <code>Abram, Bryant, Colleen, David, Esther, and Jeremiah</code>. Let’s say that I don’t know whether <code>Jeremiah</code> lives in DC, so my <code>lives_in_dc</code> vector is only a length of 5. I’m overwriting my old lives_in_dc vector with the one below.</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lives_in_dc</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lives_in_dc</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6 6 5</code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Combine the dataframe just like I had before. </span></span>
 <span><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,</span>
 <span>           ages <span class="op">=</span> <span class="va">friend_ages</span>,</span>
@@ -184,13 +184,13 @@
 <span>           stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Error in data.frame(names = friend_names, ages = friend_ages, DC_Resident = lives_in_dc, : arguments imply differing number of rows: 6, 5</code></pre>
 <p>At this point, we have a decision to make. You can either fix the mistake and add the data, or you can leave it as <code>NA</code>. <code>NA</code> is a special value used within R, which we will talk about later.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Force your vector to be a length of 6</span></span>
 <span><span class="va">lives_in_dc</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_names</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">friend_ages</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">lives_in_dc</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6 6 6</code></pre>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Combine the dataframe just like I had before. </span></span>
 <span><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>names <span class="op">=</span> <span class="va">friend_names</span>,</span>
 <span>           ages <span class="op">=</span> <span class="va">friend_ages</span>,</span>
@@ -213,7 +213,7 @@
 </h2>
 <p><strong>XLSX</strong> and <strong>CSV</strong> files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon:</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-52"></span>
+<span style="display:block;" id="fig:unnamed-chunk-50"></span>
 <img src="resources/images/00-Getting-Started/XLSX_File.png" alt="Excel File." width="10%"><p class="caption">
 FIGURE 2.1: Excel File.
 </p>
@@ -221,7 +221,7 @@ FIGURE 2.1: Excel File.
 <p>You can open these files in Excel to preview the data and perform basic data analysis, but for more serious data analysis, and better control of charts and graphics, we can import them into R.</p>
 <div class="rmdtip">
 <p>Before you continue, run this command:</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "/Users/kaisamng/Github/RGuides"</code></pre>
 <p>Whenever we manipulate a file in R, R assumes that the file is within your <strong>working directory</strong>. Think of the working directory as your desk. If you left your math homework at your desk at home, and you need your mom to take a picture of your work, you need to tell her where you left it.</p>
@@ -241,7 +241,7 @@ FIGURE 2.1: Excel File.
 <strong>CSV</strong>: Go to menu &gt; File &gt; Import Dataset &gt; From Text (readr).</li>
 </ul>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-55"></span>
+<span style="display:block;" id="fig:unnamed-chunk-53"></span>
 <img src="resources/images/00-Getting-Started/Import_1.png" alt="Navigating to the Import Menu." width="50%"><p class="caption">
 FIGURE 2.2: Navigating to the Import Menu.
 </p>
@@ -250,7 +250,7 @@ FIGURE 2.2: Navigating to the Import Menu.
 <li>In this case, I am using the anime dataset. Click on “browse” to find the file that you want to import into R.</li>
 </ol>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<span style="display:block;" id="fig:unnamed-chunk-54"></span>
 <img src="resources/images/00-Getting-Started/Import_2.png" alt="The Import Data Window." width="90%"><p class="caption">
 FIGURE 2.3: The Import Data Window.
 </p>

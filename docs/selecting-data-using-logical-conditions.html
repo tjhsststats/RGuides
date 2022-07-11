@@ -106,8 +106,8 @@
 <li class="book-part">Sampling and Prbability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots.html"><span class="header-section-number">9</span> Scatterplots</a></li>
-<li><a class="" href="creating-a-linear-model.html"><span class="header-section-number">10</span> Creating a Linear Model</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
@@ -137,7 +137,7 @@
 <p>Recall in <a href="vectors.html#vector-logical-selection">1.3.1</a> that we could use a logical vector, and the <code>%in%</code> operator, to select elements from a single vector. We can extend these operations into a dataframe.</p>
 <p>At its most basic level, you can use the <code>==</code> operator to test whether one element <strong>exactly</strong> matches another. For example, <code>"gas"=="gas"</code> returns TRUE, but <code>"gas"=="Gas"</code> will return false.</p>
 <p>Let’s say that I want to find any elements that are naturally gasses.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">==</span> <span class="st">"Liquid"</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 200px; font-size:10px;"><code>## # A tibble: 17 × 22
 ##    atomic_number symbol name    name_origin
@@ -168,7 +168,7 @@
 ## #   any_stable_nuclides &lt;chr&gt;, …</code></pre>
 <p>You’ll notice that this returns back a massive table of <code>NAs</code>, rather than just the two elements that exist in liquid state! Why?</p>
 <p>Let’s examine the command <code>periodic_table$state_at_stp=="Liquid"</code> more carefully.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span><span class="op">==</span><span class="st">"Liquid"</span></span></code></pre></div>
 <pre style="max-height: 100px; font-size:10px;"><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE
 ##   [7] FALSE FALSE FALSE FALSE FALSE FALSE
@@ -195,7 +195,7 @@
 <li>This gets passed onto the subset function, which, rather than ignore any row that says FALSE, returns each row as entirely NAs.</li>
 </ul>
 <p>Although this technically does the job you want, it is not a very elegant solution, which is why the <code>%in%</code> operator is better.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="st">"Liquid"</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 2 × 22
 ##   atomic_number symbol name    name_origin 
@@ -211,7 +211,7 @@
 ## #   any_stable_nuclides &lt;chr&gt;, …</code></pre>
 <p>Much better. Notice that, with this call, we didn’t specify any columns for R to filter out, so it left those blank.</p>
 <p>Now we can think about how to subset an entire data frame using the same sort of creation of two logical vectors (one for rows and one for columns):</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span> <span class="op">(</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hydrogen"</span>, <span class="st">"Oxygen"</span><span class="op">)</span> <span class="op">)</span>,</span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"atomic_weight"</span>, <span class="st">"state_at_stp"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 2 × 2
@@ -228,7 +228,7 @@
 </h2>
 <p>These operators are self explanatory. The <code>&lt;</code> and <code>&gt;</code> can be used to select rows based on a <strong>numeric</strong> condition.</p>
 <p><code>!=</code> is the <strong>not equals</strong> operator. This operator allows for both numeric and character types.</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Prints any row whose atomic number is less than 10.</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span><span class="op">&lt;</span><span class="fl">10</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 9 × 22
@@ -250,7 +250,7 @@
 ## #   atomic_weight &lt;dbl&gt;,
 ## #   aw_uncertainty &lt;dbl&gt;,
 ## #   any_stable_nuclides &lt;chr&gt;, …</code></pre>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any row whose state at standard room temperature is not Solid.</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span> <span class="op">!=</span> <span class="st">"Solid"</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 28 × 22
@@ -280,7 +280,7 @@
 </h2>
 <p>Finally, the <code>&amp;</code> operator means <strong>and</strong>, and the <code>|</code> operator means <strong>or</strong>. You can fund <code>|</code> by pressing the shirt key and kitting the “reverse slash” key above the <code>enter</code> key on your keyboard.</p>
 <p>It allows you to combine multiple logical statements together, which may be useful if you have multiple criteria to work on.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any element which is Non-metal AND whose  atomic number is less than 15</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">description</span> <span class="op">!=</span> <span class="st">"Non-metal"</span> <span class="op">&amp;</span> <span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span> <span class="op">&lt;</span><span class="fl">15</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 22
@@ -303,7 +303,7 @@
 ## #   atomic_weight &lt;dbl&gt;,
 ## #   aw_uncertainty &lt;dbl&gt;,
 ## #   any_stable_nuclides &lt;chr&gt;, …</code></pre>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Prints any element which is Non-metal OR whose atomic number is less than 15</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="va">periodic_table</span><span class="op">$</span><span class="va">description</span> <span class="op">!=</span> <span class="st">"Non-metal"</span> <span class="op">|</span> <span class="va">periodic_table</span><span class="op">$</span><span class="va">atomic_number</span> <span class="op">&lt;</span><span class="fl">15</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 115 × 22

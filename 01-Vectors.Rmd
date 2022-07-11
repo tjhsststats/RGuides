@@ -47,31 +47,14 @@ In this class, we will only focus on ***character***, ***double***, and ***logic
 -   **Character** vectors, on the other hand, stores any combination of letters and symbols. As soon as you include a character in any double vector, it will become a character vector.
 -   **Logical** vectors store truth values `TRUE` and `FALSE`. They are useful when meeting a condition.
 
+The `str` command allows us to see each vector type. 
 
-<!-- TODO: Replace this with the Ch2_Vectors_Ex Shiny App. -->
+Press the "Run code" button to see this in action:
 
+<iframe style="margin:0 auto; min-width: 100%;" id="ch1-vectors-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch1_Vectors_Ex/" scrolling="no" frameborder="no">
 
-```{r}
-# Atomic vector of type character.
-character<- "abc"
+</iframe>
 
-# Atomic vector of type double.
-double <- 12.5
-
-# Atomic vector of type logical.
-logical<- TRUE
-
-```
-
-The `str` command allows us to see each vector type.
-
-```{r}
-str(character)
-
-str(double)
-
-str(logical)
-```
 
 ### Concatenating Vectors
 

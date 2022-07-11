@@ -6,7 +6,7 @@
 
 **Remember:**
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 5%;"}
 
 <div>
 A **parameter** is a number that describes some characteristic of the population. In real life, the value of a parameter is usually not known because we cannot examine the entire population.
