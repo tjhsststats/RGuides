@@ -274,4 +274,10 @@ Regardless of whether you calculate the interval by hand or through R, or the TI
 :::
 
 
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```
+
 

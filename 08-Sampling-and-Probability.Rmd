@@ -200,6 +200,10 @@ Now that we have the counts, it is easy for R to find the marginal probabilities
 proportions(table(diamonds$cut, diamonds$color))
 ```
 
-
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```
 
 

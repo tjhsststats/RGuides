@@ -69,7 +69,8 @@ periodic_table[periodic_table$description != "Non-metal" | periodic_table$atomic
 ```
 
 
+```{=html}
 <script>
   iFrameResize({}, ".interactive");
 </script>
-
+```

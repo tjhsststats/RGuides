@@ -160,4 +160,8 @@ If two variables have a strong correlation with each other, all it implies is th
 </iframe>
 
 
-
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```

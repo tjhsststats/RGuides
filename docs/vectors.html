@@ -317,7 +317,9 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <code class="sourceCode R"><span><span class="va">friend_names</span><span class="op">[</span><span class="va">friend_names</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Abram"</span>, <span class="st">"Microsoft Bing"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code>## [1] "Abram"</code></pre>
 <p>The <code>%in%</code> operator looks element-wise in the <code>friend_names</code> vector and then tries to match each entry with the entries in <code>c("Abram", "Microsoft Bing")</code>. Given that “Microsoft Bing” was not in the <code>friend_names</code> list, R does not return it, because the <code>%in%</code> operator returns it as <code>FALSE</code>.</p>
-
+<script>
+  iFrameResize({}, ".interactive");
+</script>
 </div>
 </div>
 </div>

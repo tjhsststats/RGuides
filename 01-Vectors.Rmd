@@ -186,3 +186,9 @@ friend_names[friend_names %in% c("Abram", "Microsoft Bing")]
 ```
 
 The `%in%` operator looks element-wise in the `friend_names` vector and then tries to match each entry with the entries in `c("Abram", "Microsoft Bing")`. Given that "Microsoft Bing" was not in the `friend_names` list, R does not return it, because the `%in%` operator returns it as `FALSE`.
+
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```
