@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Scatterplots and Correlation | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="9.1 Interpreting Scatterplots  An Explanatory Variable is sometimes referred to as an independent variable or a predictor variable. This variable explains the variation in the response variable. ...">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Scatterplots and Correlation | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="9.1 Interpreting Scatterplots  An Explanatory Variable is sometimes referred to as an independent variable or a predictor variable. This variable explains the variation in the response variable. ...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Scatterplots and Correlation | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="9.1 Interpreting Scatterplots  An Explanatory Variable is sometimes referred to as an independent variable or a predictor variable. This variable explains the variation in the response variable. ...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><style>
+    .interactive {
+      position: relative;
+    }  
+    .interactive iframe {
+      position: relative;
+      z-index: 100;
+      border: 0;
+      width: 1px;
+      min-width: 100%;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Homepage</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Prbability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="active" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="scatterplots-and-correlation" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Scatterplots and Correlation<a class="anchor" aria-label="anchor" href="#scatterplots-and-correlation"><i class="fas fa-link"></i></a>
+</h1>
+<div id="interpreting-scatterplots" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Interpreting Scatterplots<a class="anchor" aria-label="anchor" href="#interpreting-scatterplots"><i class="fas fa-link"></i></a>
+</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p>An <strong>Explanatory Variable</strong> is sometimes referred to as an <em>independent variable</em> or a <em>predictor variable</em>. This variable explains the variation in the response variable.</p>
+</div>
+<div>
+<p>A <strong>Response Variable</strong> is sometimes referred to as a <em>dependent variable</em> or an <em>outcome variable</em>. The value of this variable responds to changes in the explanatory variable.</p>
+</div>
+</div>
+<div class="inline-figure"><img src="resources/images/09-Linear-Regression/exp-resp.png" width="100%" style="display: block; margin: auto;"></div>
+<p>The simplest graph for displaying two quantitative variables simultaneously is a <strong>scatterplot</strong>, which uses an x-axis for (traditionally) the explanatory variable, and a y-axis for (traditionally) the response variable.</p>
+<p>For each observational pair, a dot is placed at the intersection of its two values.</p>
+<p>When we have two quantitative variables, we often want to investigate the relationship between them– that is, whether the two variables have an <em>association</em> with each other.</p>
+<div style="display: grid; grid-template-columns: 1.5fr 1fr; grid-column-gap: 5px;">
+<div>
+<p>Let’s take a closer look at the scatterplot on the right. This is a scatterplot of the percent of high school graduates in each state who took the SAT and the state’s mean SAT Math score in a recent year. We think that “percent taking” will help explain “mean score.” So “percent taking” is the explanatory variable and “mean score” is the response variable. What do we see?</p>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/09-Linear-Regression/scatter_ex_1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<ul>
+<li>The graph shows a clear <strong>direction</strong>: the overall pattern moves from upper left to lower right. That is, states in which higher percents of high school graduates take the SAT tend to have lower mean SAT Math scores. We call this a negative association between the two variables.</li>
+<li>The <strong>form</strong> of the relationship is slightly curved. More important, most states fall into one of two distinct <em>clusters.</em> In about half of the states, 25% or fewer graduates took the SAT. In the other half, more than 40% took the SAT.</li>
+<li>The <strong>strength</strong> of a relationship in a scatterplot is determined by how closely the points follow a clear form. The overall relationship in the scatterplot is moderately strong: states with similar percents taking the SAT tend to have roughly similar mean SAT Math scores.</li>
+</ul>
+<p>Ultimately, what we care about when analyzing scatterplots is <strong>linearity</strong>: whether the data is roughly forming the shape of a line, which allows us to fit a straight line on top.</p>
+</div>
+<div id="constructing-scatterplots" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Constructing Scatterplots<a class="anchor" aria-label="anchor" href="#constructing-scatterplots"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let’s return to the <code>Orange</code> data. It looks like this:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Tree
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:right;">
+circumference
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+484
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+664
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1004
+</td>
+<td style="text-align:right;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1231
+</td>
+<td style="text-align:right;">
+120
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1372
+</td>
+<td style="text-align:right;">
+142
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>And you can find the documentation here:</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">?</span><span class="va">Orange</span></span></code></pre></div>
+<p><code>age</code> is represents the age of each tree, and I want to investigate whether the <code>circumference</code> is positively correlated with the <code>age</code> of the tree In that case, I should construct a scatter plot using the <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> command.</p>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>y<span class="op">=</span> <span class="va">Orange</span><span class="op">$</span><span class="va">circumference</span>,</span>
+<span>     x<span class="op">=</span> <span class="va">Orange</span><span class="op">$</span><span class="va">age</span>,</span>
+<span>     main<span class="op">=</span> <span class="st">"Age of Orange Trees vs. Circumference"</span>,</span>
+<span>     xlab<span class="op">=</span> <span class="st">"Age of Tree (Days since Dec. 31, 1968)"</span>,</span>
+<span>     ylab<span class="op">=</span> <span class="st">"Trunk Circumference (mm)"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-132"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-132-1.png" alt="A Scatter Plot of Orange Age and Orange Circumference" width="100%"><p class="caption">
+FIGURE 9.1: A Scatter Plot of Orange Age and Orange Circumference
+</p>
+</div>
+<p>Let’s do DOFS:</p>
+<ul>
+<li>The direction is clearly positive. As the age of the tree increases, the circumference increases too.</li>
+<li>There doesn’t appear to be any major outliers.</li>
+<li>The form of the scatterplot is roughly linear.</li>
+<li>The strength of the scatterplot gets weaker as <code>age</code> increases. In other words, it is fan-shaped, which means the <em>spread</em> of trunk circumference increases as the age of the Orange trees increases. This is worrisome, because it makes it harder to judge linearity, and decide whether a linear model is appropriate. One explanation, in context, is that all the trees started off relatively the same, but there were small genetic variations between the trees that became magnified as they grew bigger.</li>
+</ul>
+<p>At this point, we have to make a decision. Either we stop here, claiming that a linear model isn’t appropriate, or we judge that the increase in variance is not that bad, and enough for us to continue. We’ll continue.</p>
+</div>
+<div id="correlation" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Correlation<a class="anchor" aria-label="anchor" href="#correlation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Look at the two scatterplots below. Which one has the stronger association?</p>
+<div class="inline-figure"><img src="resources/images/09-Linear-Regression/corr.png" width="100%" style="display: block; margin: auto;"></div>
+<p>Surprise! They actually have the same correlation. Look closely at the scales. One has been stretched out to make the points look “further apart”, even though numerically they are the same distance.</p>
+<p>Since it’s easy to be fooled by different scales or by the amount of space around “clouds” of points in a scatterplot, we need a numerical measurement to supplement the graph. <strong>Correlation</strong> is the measure we use.</p>
+<div class="inline-figure"><img src="resources/images/09-Linear-Regression/corr_def.png" width="100%" style="display: block; margin: auto;"></div>
+<div style="display: grid; grid-template-columns: 1fr 2fr; grid-column-gap: 5px;">
+<div>
+<p><strong>The correlation coefficient r is always a number between -1 and 1.</strong> In addition:</p>
+<ul>
+<li><p><em>r</em> indicates the direction of a linear relationship by its sign: r&gt;0 for a positive association and r&lt;0 for a negative association.</p></li>
+<li><p>Values of <em>r</em> near 0 indicate a very weak linear relationship.</p></li>
+<li><p>The extreme values <span class="math inline">\(r=-1\)</span> and <span class="math inline">\(r=1\)</span> occur only in the case of a perfect linear relationship, when the points lie exactly along a straight line.</p></li>
+</ul>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/09-Linear-Regression/corr_exs.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<p>To calculate the correlation coefficient in R, use the <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code> command.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span>y<span class="op">=</span> <span class="va">Orange</span><span class="op">$</span><span class="va">circumference</span>,</span>
+<span>    x<span class="op">=</span> <span class="va">Orange</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0.9135</code></pre>
+<p>The correlation coefficient indicates to us that our data is <strong>strongly positive</strong>, and relatively linear.</p>
+<div id="correlation-is-not-causation" class="section level3" number="9.3.1">
+<h3>
+<span class="header-section-number">9.3.1</span> Correlation is not Causation<a class="anchor" aria-label="anchor" href="#correlation-is-not-causation"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure"><img src="resources/images/09-Linear-Regression/ice_cream_murders.png" width="100%" style="display: block; margin: auto;"></div>
+<p>If two variables have a strong correlation with each other, all it implies is that they are associated with each other— in other words, it suggests that the two variables have a relationship.</p>
+<p><strong>It does not guarantee that the two variables have a relationship with each other.</strong> Ice Cream and Murder Rates tend to be higher in the summer, which suggests a relationship. But that doesn’t mean that ice cream sends people into a murderous frenzy.</p>
+<p><strong>The only way to establish causation between two variables is with an experiment.</strong> You will learn more about experimental design later in this course.</p>
+</div>
+</div>
+<div id="correlation-game" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Correlation Game<a class="anchor" aria-label="anchor" href="#correlation-game"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Your turn!</strong> Test your knowledge on correlation by guessing the correlation for each scatterplot.</p>
+<iframe style="margin:0 auto; min-width: 100%;" id="ch9-correlation-game" class="interactive" src="https://kaisamng.shinyapps.io/Ch9_correlation_game/" scrolling="no" frameborder="no">
+</iframe>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></div>
+<div class="next"><a href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#scatterplots-and-correlation"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="nav-link" href="#interpreting-scatterplots"><span class="header-section-number">9.1</span> Interpreting Scatterplots</a></li>
+<li><a class="nav-link" href="#constructing-scatterplots"><span class="header-section-number">9.2</span> Constructing Scatterplots</a></li>
+<li>
+<a class="nav-link" href="#correlation"><span class="header-section-number">9.3</span> Correlation</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#correlation-is-not-causation"><span class="header-section-number">9.3.1</span> Correlation is not Causation</a></li></ul>
+</li>
+<li><a class="nav-link" href="#correlation-game"><span class="header-section-number">9.4</span> Correlation Game</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/09-Scatterplots.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/09-Scatterplots.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <font size="+2"><strong>Mr. Ng</strong></font>
+        <br>📍 Hopper Commons, Room 229
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+          <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+          <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
+        </div>
+        <div class="col-12 col-md-6 mt-3">
+          <br><strong>Other Links:</strong>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 11 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+</div>
+
+</div>
+</div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
