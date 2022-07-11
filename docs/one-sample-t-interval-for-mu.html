@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 14 One Sample t-Interval for \(\mu\) | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="14.1 The t-distribution    14.2 One Sample Confidence Interval for \(\mu\)">
-<meta name="generator" content="bookdown 0.27.1 with bs4_book()">
+<meta name="description" content="14.1 The t-distribution    Proportions= Normal Distribution (z-distribution) Confidence Intervals for a population proportion \(p\) are based on z-values from the standard Normal distribution....">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
 <meta property="og:title" content="Chapter 14 One Sample t-Interval for \(\mu\) | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="14.1 The t-distribution    14.2 One Sample Confidence Interval for \(\mu\)">
+<meta property="og:description" content="14.1 The t-distribution    Proportions= Normal Distribution (z-distribution) Confidence Intervals for a population proportion \(p\) are based on z-values from the standard Normal distribution....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 One Sample t-Interval for \(\mu\) | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="14.1 The t-distribution    14.2 One Sample Confidence Interval for \(\mu\)">
+<meta name="twitter:description" content="14.1 The t-distribution    Proportions= Normal Distribution (z-distribution) Confidence Intervals for a population proportion \(p\) are based on z-values from the standard Normal distribution....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -134,13 +134,104 @@
 <h2>
 <span class="header-section-number">14.1</span> The t-distribution<a class="anchor" aria-label="anchor" href="#the-t-distribution"><i class="fas fa-link"></i></a>
 </h2>
-<iframe src="https://www.youtube.com/embed/Ea4_eX--mIY?start=12" width="100%" height="400px" data-external="1">
+<iframe src="https://www.youtube.com/embed/Ea4_eX--mIY?start=10" width="100%" height="400px" data-external="1">
 </iframe>
+<div class="rmdnote">
+<div style="display: grid; grid-template-columns: 1fr 3fr; grid-column-gap: 5%;">
+<div>
+<p><strong>Proportions= Normal Distribution (z-distribution)</strong></p>
+<p>Confidence Intervals for a <em>population</em> proportion <span class="math inline">\(p\)</span> are based on z-values from the standard Normal distribution.</p>
+<p>Proportions are really simple to work with, because they’re always standardized—the largest decimal is 1, and the smallest is 0. This means that we don’t have to worry about the spread of the population as much.</p>
 </div>
-<div id="one-sample-confidence-interval-for-mu" class="section level2" number="14.2">
+<div>
+<p><strong>Means= <span class="math inline">\(t\)</span>-distribution</strong></p>
+<p>Means can take any value—they could be negative, they could be 78, they could be 10,000. As a result, the sampling distribution for means naturally has a larger <strong>spread— <u>this means that the sampling distribution is no longer normal.</u></strong></p>
+<div class="inline-figure"><img src="resources/images/14-One-Sample-CIs/Norm_vs_t.png" width="100%" style="display: block; margin: auto;"></div>
+<p>When we only know the sample’s standard deviation <span class="math inline">\(s_x\)</span>—so not the population standard deviation <span class="math inline">\(\sigma\)</span>—the distribution takes on a new shape called the t-distribution. You can see a comparison above.</p>
+<p>The t-distribution has a much larger spread than the normal distribution does—this is to account for the naturally larger spread that sample means would have.</p>
+</div>
+</div>
+</div>
+<p>The <span class="math inline">\(t\)</span>-distributions are a family of symmetric, bell-shaped distributions that are centered at 0, but whose spread is determined by its <strong>degrees of freedom</strong>. The <strong>area of those tails depends on the degrees of freedom the sampling distribution has.</strong> The larger the sample, the closer the t-distribution will get to the Normal distribution. The smaller the sample, the greater its varability, and so the t-distribution compenstates by adding more area in its tails.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 5px;">
+<div>
+<p>When we talk about z-scores within the t-distribution (e.g. how many standard deviations a data point is away from the mean), we still use the same formula, but we now call them <strong>t-values</strong>, to differentiate them from the Normal distribution.</p>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/14-One-Sample-CIs/t_df.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+</div>
+<div id="finding-areas-under-the-t-distribution" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">14.2</span> One Sample Confidence Interval for <span class="math inline">\(\mu\)</span><a class="anchor" aria-label="anchor" href="#one-sample-confidence-interval-for-mu"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> Finding areas under the <span class="math inline">\(t\)</span>-distribution<a class="anchor" aria-label="anchor" href="#finding-areas-under-the-t-distribution"><i class="fas fa-link"></i></a>
 </h2>
+<p>Just like how in <a href="z-scores-and-the-normal-distribution.html#norm-dist-area">11.3.2</a> we used <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to find areas given a <span class="math inline">\(z\)</span>-score, and <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> to find <span class="math inline">\(z\)</span> given a area, we can use <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> and <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> to find the t-distribution.</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Find Area,<br>
+given <span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span>
+</th>
+<th style="text-align:left;">
+Find <span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span>,<br>
+given Area
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Normal (<span class="math inline">\(z\)</span>)
+</td>
+<td style="text-align:left;">
+<code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>
+</td>
+<td style="text-align:left;">
+<code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t\)</span>
+</td>
+<td style="text-align:left;">
+<code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code>
+</td>
+<td style="text-align:left;">
+<code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>In both cases, <strong>R will always calculate the cumulative area starting from the left</strong> of the distribution.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 5%;">
+<div>
+<p>To find any area under the <span class="math inline">\(t\)</span>-distribution, you need the <span class="math inline">\(t\)</span>-value and the degrees of freedom.</p>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">0</span>, df<span class="op">=</span><span class="fl">14</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0.5</code></pre>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.25</span>, df <span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0.85</code></pre>
+</div>
+<div>
+<p>Similarly, to find a corresponding t-value given an area, use <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code>.</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.5</span>, df<span class="op">=</span><span class="fl">14</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.85</span>, df<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 1.25</code></pre>
+</div>
+</div>
+</div>
+<div id="one-sample-confidence-interval-for-mu" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> One Sample Confidence Interval for <span class="math inline">\(\mu\)</span><a class="anchor" aria-label="anchor" href="#one-sample-confidence-interval-for-mu"><i class="fas fa-link"></i></a>
+</h2>
+<p>Confidence Intervals for a population mean <span class="math inline">\(\mu\)</span> use a <strong>t-distribution</strong> with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
 
 </div>
 </div>
@@ -155,7 +246,8 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#one-sample-t-interval-for-mu"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li><a class="nav-link" href="#the-t-distribution"><span class="header-section-number">14.1</span> The t-distribution</a></li>
-<li><a class="nav-link" href="#one-sample-confidence-interval-for-mu"><span class="header-section-number">14.2</span> One Sample Confidence Interval for \(\mu\)</a></li>
+<li><a class="nav-link" href="#finding-areas-under-the-t-distribution"><span class="header-section-number">14.2</span> Finding areas under the \(t\)-distribution</a></li>
+<li><a class="nav-link" href="#one-sample-confidence-interval-for-mu"><span class="header-section-number">14.3</span> One Sample Confidence Interval for \(\mu\)</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -182,7 +274,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 09 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 11 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>
@@ -192,7 +284,7 @@
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -144,7 +144,7 @@ The probability (the area that you shaded) = 0.6915 or 69.15%.  On the table, th
 
 The solution to this problem is often written $P(\bar{x} < 5) = P(z ≤ 0.50) = 0.6915$ to show the data value from the original distribution.  The question asked “less than”, but there is no difference between “less than” and “less than or equal to” because the “equal to” part is a single line of area which can’t really be measured (even with Calculus!).
 
-### Using R
+### Using R {#norm-dist-area}
 
 We can also use `pnorm()` in R to find the areas under the Normal distribution. To solve for the proportion of American men who are less than 70.25 inches tall:
 
