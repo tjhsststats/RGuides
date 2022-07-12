@@ -57,6 +57,16 @@ knitr::include_graphics("resources/images/14-One-Sample-CIs/t_df.png")
 
 :::
 
+### Distributions Calculator {#dist-calc}
+
+Below is an app that calculates the areas of different distributions. Use the normal distribution, keep the mean and sd the same, but slide $a$ around to examine the area underneath each tail. 
+
+Then, change to the $t$-distribution and investigate the area under the tail now. Change the degrees of freedom until you think you know what is going on. 
+
+<iframe style="margin:0 auto; min-width: 100%;" id="dist-calc" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Dist_Calculator/" scrolling="no" frameborder="no">
+
+</iframe>
+
 ## Finding areas under the $t$-distribution
 
 Just like how in \@ref(norm-dist-area) we used  `pnorm()` to find areas given a $z$-score, and `qnorm()` to find $z$ given a area, we can use `pt()` and `qt()` to find the t-distribution.

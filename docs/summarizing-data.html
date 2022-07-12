@@ -88,23 +88,23 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Homepage</a></li>
+<li><a class="" href="index.html">🏠 Homepage</a></li>
 <li class="book-part">Getting Started</li>
-<li><a class="" href="installing-r-and-rstudio.html">Installing R and RStudio</a></li>
-<li><a class="" href="interacting-with-r-studio.html">Interacting with R Studio</a></li>
+<li><a class="" href="installing-r-and-rstudio.html">⬇️ Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">🖥 Interacting with R Studio</a></li>
 <li class="book-part">Working with Data</li>
 <li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
-<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> Creating Dataframes</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
 <li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
 <li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
 <li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
-<li><a class="" href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
 <li><a class="active" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></li>
-<li><a class="" href="summarizing-and-visualizing-data-exercises.html">Summarizing and Visualizing Data Exercises</a></li>
-<li class="book-part">Sampling and Prbability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> Sampling and Probability</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 📈 Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Probability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🧮 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
 <li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
@@ -6685,9 +6685,10 @@ NA
 <code class="sourceCode R"><span><span class="co">#This will return an error-- since dca_weather </span></span>
 <span><span class="co">#has multiple columns, R doesn't know which column you want.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">)</span> </span></code></pre></div>
-<pre><code>## Warning in mean.default(dca_weather):
-## argument is not numeric or logical:
-## returning NA</code></pre>
+<pre><code>## Warning in
+## mean.default(dca_weather):
+## argument is not numeric or
+## logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">)</span></span></code></pre></div>
@@ -6728,13 +6729,15 @@ NA
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 3 × 12
-##   STATION     NAME   year month   day  TAVG
-##   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
-## 1 USW00013743 WASH…  2022     6    18    77
-## 2 USW00013743 WASH…  2022     6    19    70
-## 3 USW00013743 WASH…  2022     6    20    72
-## # … with 6 more variables: TMAX &lt;dbl&gt;,
-## #   TMIN &lt;dbl&gt;, AWND &lt;dbl&gt;, PRCP &lt;dbl&gt;,
+##   STATION    NAME   year month
+##   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 USW000137… WASH…  2022     6
+## 2 USW000137… WASH…  2022     6
+## 3 USW000137… WASH…  2022     6
+## # … with 8 more variables:
+## #   day &lt;int&gt;, TAVG &lt;dbl&gt;,
+## #   TMAX &lt;dbl&gt;, TMIN &lt;dbl&gt;,
+## #   AWND &lt;dbl&gt;, PRCP &lt;dbl&gt;,
 ## #   SNOW &lt;dbl&gt;, SNWD &lt;dbl&gt;</code></pre>
 <p>At this point, we have a choice to make. Obviously, the data for June 20th wasn’t available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn’t make sense to treat <code>NA</code> as 0, because clearly the temperature wasn’t 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any <code>NAs</code> in the data.</p>
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
@@ -6808,8 +6811,8 @@ FIGURE 6.1: A comparison between Base R commands and dplyr commands.
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="vectors-and-dataframe-exercises.html">Vectors and Dataframe Exercises</a></div>
-<div class="next"><a href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> Visualizing One-Variable Data</a></div>
+<div class="prev"><a href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></div>
+<div class="next"><a href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 📈 Visualizing One-Variable Data</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
@@ -6845,7 +6848,7 @@ FIGURE 6.1: A comparison between Base R commands and dplyr commands.
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 11 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 12 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

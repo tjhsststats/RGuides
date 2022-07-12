@@ -1,4 +1,4 @@
-# Visualizing One-Variable Data
+# 📈 Visualizing One-Variable Data
 
 ::: rmdtip
 You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch7_Boxplot_Example/)
@@ -197,7 +197,7 @@ text(labels=fivenum(june_temps), x=fivenum(june_temps),  y=1.3)
   iFrameResize({}, ".interactive");
 </script>
 ```
-# Summarizing and Visualizing Data Exercises {.unnumbered}
+# 🛠 Summarizing and Visualizing Data Exercises {.unnumbered}
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch5-6-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Ch6_to_7_Exercises/" scrolling="no" frameborder="no">
 

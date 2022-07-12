@@ -43,7 +43,7 @@ Instead of using points as our ruler, we will use standard deviations.
 knitr::include_graphics("resources/images/11-Sampling-Distributions/zscore_def.png")
 ```
 
-## Z-Scores Practice
+### Z-Scores Practice
 
 **Your Turn!** 
 
@@ -76,11 +76,19 @@ knitr::include_graphics("resources/images/11-Sampling-Distributions/galton_board
 :::
 
 Normal distributions have several special facts:
+
 -	All Normal curves have the same overall shape: symmetric, single-peaked, bell-shaped. 
+
 -	Any specific Normal curve is completely described by giving its mean μ and its standard deviation $σ$. 
+
 -	The mean is located at the center of the symmetric curve and is the same as the median. Changing μ without changing σ moves the Normal curve along the horizontal axis without changing its spread. 
+
 -	The standard deviation σ controls the spread of a Normal curve. Curves with larger standard deviations are more spread out. 
+
 -	A Normal distribution with a mean $μ=0$ and a standard deviation $σ=1$ is called The Standard Normal Distribution.
+
+
+### The Empirical Rule
 
 In a normal distribution 68% of the values lie within 1 standard deviation of the mean, 95% of the values lie within 2 standard deviations of the mean, and 99.7% of the values lie within 3 standard deviations of the mean.
 
@@ -113,6 +121,8 @@ knitr::include_graphics("resources/images/11-Sampling-Distributions/empirical_ru
 
 Since 23 and 27 are 1 standard deviation above and below the mean, the shaded area is 0.68.
 
+###Probabilities ARE Areas
+
 Why can we equate *areas under a curve* with the *probability of getting a z-score greater than or less than $z$*? Part of the reason is because the Normal Distribution is a **density curve**. Imagine that the normal distribution is a picture, and you've zoomed all the way into the picture. Instead of a shaded area, what you'll see instead is a block of pixels. 
 
 In other words, the Normal distribution is like a thick plot of dots. Each dot represents an outcome. The more likely a particular outcome is, the more dots there should be, clustered around that outcome. The less likely an outcome is, the fewer dots are going to be clustered around that area.
@@ -130,10 +140,12 @@ What makes this connection powerful is that, if a specific distribution is Norma
 </iframe>
 
 
-** You cannot answer the last question with the Empirical Rule.** To find the area under the curve that is to the left of 70 inches, you need some special tools to find these probabilities that between integers. Some tools include:
+**You cannot answer the last question with the Empirical Rule.** To find the area under the curve that is to the left of 70 inches, you need some special tools to find these probabilities that between integers. Some tools include:
 
 - Calculus. 
+
 - Luckily, this Calculus has already been done and has been recorded in the **Standard Normal Probabilities Table**. This is Table II on pages T-3 &4 in the back of your textbook.
+
 -Or better yet, using R.
 
 ## Solving for Normal Probability Areas given $z$
@@ -170,14 +182,19 @@ pnorm(70.25, mean=69, sd=2.5)
 
 Notice that all the methods we've covered assume that the **area is always to the left of $z$**. If you want to find the area to the right of $z$, or $P(X≥z)$, then you need to do $1- P(z≥X)$.
 
+### Solving for Normal areas Practice
+
+**Your Turn
+
 ## Solving for $z$ given a probability
 
 We found the probabilities given the z-score—but we sometimes need the reverse. 
 
 To do this, we use the `qnorm()` function in R (Q stands for quantile, another word for percentile—see the connection?).  `qnorm()` finds the z-score for which the area to the left equals the given value.  You are answering the question $P(X < z)= \text{Given Area}$ where you are finding little z. 
 
-For example, what is the highest z-score for heights of adult men  that will mark where the bottom 25%? What you are looking for is the bottom 25% of the shaded area, which is represented by $P(X< z) =0.25$. 
+For example, what is the highest z-score for heights of adult men that will mark where the bottom 25%? What you are looking for is the bottom 25% of the shaded area, which is represented by $P(X< z) =0.25$. 
 
+::::{.rmdtip}
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 30px; font-size: 0.9em;"}
 
@@ -213,11 +230,14 @@ This means any adult man shorter than 67.314 inches falls in the bottom 25% of a
 
 :::
 
-## Distributions Calculator {#dist-calc}
+::::
 
-<iframe style="margin:0 auto; min-width: 100%;" id="dist-calc" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Dist_Calculator/" scrolling="no" frameborder="no">
+
+<iframe style="margin:0 auto; min-width: 100%;" id="qnorm-pnorm-practice" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_qnorm_pnorm_practice/" scrolling="no" frameborder="no">
 
 </iframe>
+
+
 
 ```{=html}
 <script>

@@ -48,7 +48,7 @@ friends
 
 ```
 
-# Vectors and Dataframe Exercises {-}
+# 🛠 Vectors and Dataframe Exercises {-}
 
 <iframe style="margin:0 auto; min-width: 100%;" id="ch2-4-exercises" class="interactive" src="https://kaisamng.shinyapps.io/Chapters_2_4_Exercises/" scrolling="no" frameborder="no">
 

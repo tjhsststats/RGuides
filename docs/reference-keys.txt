@@ -85,6 +85,7 @@ performing-simulations
 carrying-out-simulations-in-r-using-sample
 sampling-from-a-table-using-slice_sample
 repeating-trials
+simulations-practice
 tabluating-using-two-way-tables
 deriving-marginal-probabilities-proportions-from-a-two-way-table
 scatterplots-and-correlation
@@ -101,12 +102,13 @@ z-scores-and-the-normal-distribution
 intro-to-z-scores
 z-scores-practice
 the-normal-distribution
+the-empirical-rule
 empirical-rule-practice
 solving-for-normal-probability-areas-given-z
 using-a-z-table
 norm-dist-area
+solving-for-normal-areas-practice
 solving-for-z-given-a-probability
-dist-calc
 the-central-limit-theorem
 review-parameter-vs.-statistic
 the-sampling-distribution
@@ -122,8 +124,10 @@ state
 plan-check-for-conditions
 do
 conclude
+one-proportion-confidence-interval-practice
 one-sample-t-interval-for-mu
 the-t-distribution
+dist-calc
 finding-areas-under-the-t-distribution
 one-sample-confidence-interval-for-mu
 intro-to-two-sample-t-tests

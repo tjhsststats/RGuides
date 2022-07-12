@@ -18,7 +18,7 @@ description: |
 code_folding: show
 ---
 
-# Homepage {.unnumbered}
+# 🏠 Homepage {.unnumbered}
 
 This website serves as a digital companion for TJ students taking RS1, or any other TJ students who need a quick intro to data science.
 
@@ -94,3 +94,4 @@ When you become rich and famous later on, please remember me.
 knitr::include_app("https://www.youtube.com/embed/BvWefB4NGGI")
 
 ```
+
