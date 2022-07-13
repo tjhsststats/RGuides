@@ -1,4 +1,4 @@
-# Selecting and Filtering Data
+# 👆 Selecting and Filtering Data
 
 ::: rmdtip
 Let's practice importing data, from \@ref(dataframe). Download the [periodic table](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/periodic-table-data.csv){target="_blank"} data now, and import it into R as `periodic_table`.

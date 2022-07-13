@@ -219,12 +219,12 @@ $$ \text{Margin of Error}= z^* \sqrt{\frac{p(1-p)}{n}}$$
 
 Plugging in the numbers from our example, we have:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {.rmd1fr1fr}
 
 <div>
 **Mathematically:**
 
-$$ \text{Margin of Error}= \\ \text{qnorm} * \sqrt{\frac{0.48(1-0.58)}{1029}} \\= 0.036231 $$
+$$ \text{Margin of Error}= \\ 2.326 * \sqrt{\frac{0.48(1-0.58)}{1029}} \\= 0.036231 $$
 
 </div>
 
@@ -232,7 +232,7 @@ $$ \text{Margin of Error}= \\ \text{qnorm} * \sqrt{\frac{0.48(1-0.58)}{1029}} \\
 **R Code**
 
 ```{r}
-moe<- qnorm(0.99) * sqrt((0.48)*(1-0.48)/1029)
+moe<- 2.326 * sqrt((0.48)*(1-0.48)/1029)
 moe
 ```
 
@@ -242,10 +242,27 @@ moe
 
 Finally, we can create a 98% confidence interval.
 
+:::{.rmd1fr1fr}
+
+<div>
+
 ```{r}
-0.48+ moe
+#Lower Bound
 0.48- moe
 ```
+
+</div>
+
+<div>
+
+```{r}
+#Upper Bound
+0.48+ moe
+```
+
+</div>
+
+:::
 
 :::{.rmdtip}
 

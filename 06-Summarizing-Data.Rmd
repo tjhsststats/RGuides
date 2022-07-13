@@ -1,6 +1,6 @@
 # (PART\*) Presenting Data {.unnumbered}
 
-# Summarizing Data
+# 📚 Summarizing Data
 
 Let's do some more practice. Download the [`dca_weather` dataset](https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv){target="_blank"}, which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day. This data is taken from [NOAA's Website](https://www.ncdc.noaa.gov/cdo-web/){target="_blank"}.
 

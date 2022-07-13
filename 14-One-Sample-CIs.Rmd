@@ -125,16 +125,185 @@ Calculate and interpret a 95% confidence interval for the mean healing rate µ.
 
 :::
 
+### State
+
+:::{.rmdtip}
+
+We want to construct a One Sample Confidence Interval of the mean number of closed skin wounds in newts, with 95% confidence.
+
+:::
+
+```{r}
+newts <- c(29, 27, 34, 40, 22, 28, 14, 35, 26, 35, 12, 30, 23, 18, 11, 22, 23, 33)
+
+paste("Mean: ", mean(newts), "SD:", sd(newts), "n:", length(newts), sep= " ")
+
+
+```
+
+So $\bar{x} = 25.67$, $s_\bar{x}= 8.324$, and $n=18$.
+
+### Plan: Check for Conditions
+
+:::{.rmdtip}
+
+There are three conditions you need to check for:
+
+- **Random**: The sample must be a random sample. This diminishes sampling bias.
+
+- **Normal**: $n \ge 30$. This generally helps us fulfill the central limit theorem, so the sampling distribution of $\bar{x}$ is approximately Normal. **This number should be an integer, since it represents counts in the sample.** 
+
+:::{.rmdcaution}
+
+**However**, the $t$-distribution is what we call a *robust distribution*. Even if our sample size is less than 30, we can still proceed with our analysis provided the following:
+
+  - *Sample size less than 15:* Use $t$ procedures if the data appear close to Normal (roughly symmetric, single peak, no outliers). If the data are clearly skewed or if outliersa re present, do not use $t$. 
+    
+  - *Sample size at least 15:* The $t$ procedures can be used except in the presence of outliers or strong skewness.
+    
+  - *Sample size greater than 30*: The $t$ procedures can be used even for clearly skewed distributions when the sample is larger than 30.
+
+:::
+
+- **Independent (10% Condition)**: The number of successes (observational units in $\bar{x}$) and the number of failures (observation units *not* in $\bar{x}$) must be less than 10% of the population.
+
+:::
+
+- **Random**: Stated that this is a random sample of 18 newts.
+
+- **Normal**: $n \ngeq 30$, so we must look at the histogram of our data.
+
+```{r, out.width="70%"}
+hist(newts)
+```
+
+Since our sample size is at least 15 but less than 30, we need to check for any outliers or strong skewness. The histogram does not appear to show either, so we pass the Normal condition.
+
+- **Independent**: $18 * 10= 180$. It is reasonable to assume that there are more than 180 newts in the total population being sampled, so we pass this condition.
+
+Since we pass all three conditions, we can continue.
+
+
+### Do
+
+Let's do this manually first. Recall the formulas for a Confidence Interval and the Margin of Error. 
+
+$$\text{C.I.}= \bar{x} \pm \text{Margin of Error}$$
+$$= \bar{x} \pm t^*(\text{Standard Error})$$
+
+Recalling what we learned in \@ref(samp-mean), we can substitute that Standard Error formula with the standard deviation of the sampling distribution, size $n$:
+
+$$\text{C.I.}= \bar{x} \pm t^*(\frac{s_\bar{x}}{\sqrt{n}})$$
+
+:::{.rmdimportant}
+
+**DEFINITION: Standard error of the sample mean**
+
+The standard error of the sample mean x is $\frac{s_\bar{x}}{\sqrt{n}}$ , where s_\bar{x} is the sample standard deviation. It describes how far $\bar{x}$ will be from $\mu$, on average, in repeated SRSs of size $n$.
+
+
+:::
+
+1. Find $t^*$. Since our confidence level is 95%, that means we're solving for the area outside of the middle 95% of the $t$ distribution, with $n-1= 18-1=17$ degrees of freedom. 
+
+Since $t$ is symmetric, that means 2.5% is on either end of the tail. 95%+2.5% means we will solve for the 97.5th percentile. 
+
+```{r}
+qt(0.975, df= 17)
+```
+
+Our $t^*$ value is 2.11.
+
+2. Solve for the Margin of Error:
+
+::: {.rmd1fr1fr}
+
+<div>
+**Mathematically:**
+
+$$ \text{Margin of Error}= \\ 2.11 * \frac{8.324}{\sqrt{18}} \\= 4.14 $$
+
+</div>
+
+<div>
+**R Code**
+
+```{r}
+moe<- qt(0.975, df=17) * sd(newts)/sqrt(18)
+```
+
+</div>
+
+:::
+
+Finally, we can create a 95% confidence interval.
+
+:::{.rmd1fr1fr}
+
+<div>
+
+```{r}
+#Lower Bound
+25.667 - moe
+```
+
+</div>
+
+<div>
+
+```{r}
+#Upper Bound
+25.667 + moe
+```
+
+</div>
+
+:::
+
+:::{.rmdtip}
+
+$$ \text{95% CI}= \bar{x} \pm \text{M.o.E}= 25.667 \pm 4.14 =  [21.53, 29.81]$$
+:::
+
+**Fortunately,** R *does* have a function that creates the confidence interval automatically, using the `t.test` function:
+
+```{r, eval=FALSE}
+t.test(newts, conf.level=0.95)
+```
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/15-One-Samp-CIs/t-test-ci.png")
+
+```
+
+Ignore the other output for now-- we will save that for the next chapter.
+
+### Conclude
+
+We are 95% Confident that the interval from 21.53 wounds to 29.31 wounds captures the true mean number of closed skin wounds in newts.
+
+**You must always use context.** Failure to do so would mean lost points. 
 
 
 
+:::{.rmdwarning}
+
+Regardless of whether you calculate the interval by hand, R, or the TI-84, you **must** complete the State, Plan, and Conclude portions as shown. Failure to do so results in lost points.
+
+:::
 
 
+## One Samp Confidence Interval Practice
+
+<iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch13_One_Prop_Z_Practice/" scrolling="no" frameborder="no">
+
+</iframe>
 
 
-
-
-
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```
 
 
 

@@ -23,10 +23,10 @@ fig:unnamed-chunk-169
 fig:unnamed-chunk-170
 fig:unnamed-chunk-171
 fig:unnamed-chunk-172
-tab:unnamed-chunk-194
-tab:unnamed-chunk-201
 tab:unnamed-chunk-203
-fig:unnamed-chunk-206
+tab:unnamed-chunk-210
+tab:unnamed-chunk-212
+fig:unnamed-chunk-215
 vectors
 basic-commands
 vector-overview
@@ -130,6 +130,11 @@ the-t-distribution
 dist-calc
 finding-areas-under-the-t-distribution
 one-sample-confidence-interval-for-mu
+state-1
+plan-check-for-conditions-1
+do-1
+conclude-1
+one-samp-confidence-interval-practice
 intro-to-two-sample-t-tests
 loading-data.
 data-wrangling

@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 6 Summarizing Data | 📊 TJ RS1 with R</title>
+<title>Chapter 6 📚 Summarizing Data | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="Let’s do some more practice. Download the dca_weather dataset, which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day. This data is taken from...">
 <meta name="generator" content="bookdown 0.27.3 with bs4_book()">
-<meta property="og:title" content="Chapter 6 Summarizing Data | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 6 📚 Summarizing Data | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Let’s do some more practice. Download the dca_weather dataset, which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day. This data is taken from...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 6 Summarizing Data | 📊 TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 6 📚 Summarizing Data | 📊 TJ RS1 with R">
 <meta name="twitter:description" content="Let’s do some more practice. Download the dca_weather dataset, which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day. This data is taken from...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,8 @@
         font-size: 0.98rem;
     }
     </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@18657a9/css/all.min.css" rel="stylesheet" type="text/css">
+<style>
     .interactive {
       position: relative;
     }  
@@ -95,18 +96,18 @@
 <li class="book-part">Working with Data</li>
 <li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
-<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> Selecting and Filtering Data</a></li>
-<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> Selecting Data Using Logical Conditions</a></li>
-<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> Creating New Data</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> ✨ Creating New Data</a></li>
 <li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
-<li><a class="active" href="summarizing-data.html"><span class="header-section-number">6</span> Summarizing Data</a></li>
+<li><a class="active" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
 <li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 📈 Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Probability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🧮 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> Scatterplots and Correlation</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span><i class="fa-solid fa-chart-scatter"></i> Scatterplots and Correlation</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
@@ -128,7 +129,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="summarizing-data" class="section level1" number="6">
 <h1>
-<span class="header-section-number">6</span> Summarizing Data<a class="anchor" aria-label="anchor" href="#summarizing-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> 📚 Summarizing Data<a class="anchor" aria-label="anchor" href="#summarizing-data"><i class="fas fa-link"></i></a>
 </h1>
 <p>Let’s do some more practice. Download the <a href="https://downgit.github.io/#/home?url=https://github.com/kaisamng/RGuides/blob/main/resources/data/dca_weather.csv" target="_blank"><code>dca_weather</code> dataset</a>, which gives the minimum and maximum temperatures in Arlington, VA, and also the amount of rainfall each day. This data is taken from <a href="https://www.ncdc.noaa.gov/cdo-web/" target="_blank">NOAA’s Website</a>.</p>
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px;  font-size: 10px; margin-left: auto; margin-right: auto;">
@@ -6685,9 +6686,7 @@ NA
 <code class="sourceCode R"><span><span class="co">#This will return an error-- since dca_weather </span></span>
 <span><span class="co">#has multiple columns, R doesn't know which column you want.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">)</span> </span></code></pre></div>
-<pre><code>## Warning in
-## mean.default(dca_weather):
-## argument is not numeric or
+<pre><code>## Warning in mean.default(dca_weather): argument is not numeric or
 ## logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
@@ -6729,16 +6728,12 @@ NA
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dca_weather</span><span class="op">[</span><span class="fl">169</span><span class="op">:</span><span class="fl">171</span>,<span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 3 × 12
-##   STATION    NAME   year month
-##   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 USW000137… WASH…  2022     6
-## 2 USW000137… WASH…  2022     6
-## 3 USW000137… WASH…  2022     6
-## # … with 8 more variables:
-## #   day &lt;int&gt;, TAVG &lt;dbl&gt;,
-## #   TMAX &lt;dbl&gt;, TMIN &lt;dbl&gt;,
-## #   AWND &lt;dbl&gt;, PRCP &lt;dbl&gt;,
-## #   SNOW &lt;dbl&gt;, SNWD &lt;dbl&gt;</code></pre>
+##   STATION    NAME   year month   day  TAVG  TMAX  TMIN  AWND  PRCP  SNOW
+##   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 USW000137… WASH…  2022     6    18    77    79    67  16.1     0     0
+## 2 USW000137… WASH…  2022     6    19    70    80    60  14.3     0     0
+## 3 USW000137… WASH…  2022     6    20    72    NA    NA  NA      NA    NA
+## # … with 1 more variable: SNWD &lt;dbl&gt;</code></pre>
 <p>At this point, we have a choice to make. Obviously, the data for June 20th wasn’t available when I downloaded it, because I downloaded this data on June 23rd. In this case though, it doesn’t make sense to treat <code>NA</code> as 0, because clearly the temperature wasn’t 0 degrees in June. However, we can still draw conclusions about the data that we have, and so we can tell R to ignore any <code>NAs</code> in the data.</p>
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">TMAX</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -6816,7 +6811,7 @@ FIGURE 6.1: A comparison between Base R commands and dplyr commands.
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#summarizing-data"><span class="header-section-number">6</span> Summarizing Data</a></li>
+<li><a class="nav-link" href="#summarizing-data"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
 <li>
 <a class="nav-link" href="#quantitative-variables-mean-median-fivenum-iqr-and-sd"><span class="header-section-number">6.1</span> Quantitative Variables: mean(), median(), fivenum(), IQR(), and sd()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#the-dreaded-na-response"><span class="header-section-number">6.1.1</span> The dreaded NA response</a></li></ul>
 </li>
@@ -6848,7 +6843,7 @@ FIGURE 6.1: A comparison between Base R commands and dplyr commands.
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 12 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 13 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>
