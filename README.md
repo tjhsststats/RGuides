@@ -6,7 +6,7 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
 
 ##### Proposed Table of Contents
 
-~~1.  Getting Started
+~~1.  Getting Started~~
 
     A.  Installing R and R Studio
 
@@ -24,19 +24,19 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
 
     D.  Loading Data from Excel or CSV
 
-2.  Summarizing Data
+~~2.  Summarizing Data~~
 
     A. Data Visualization using Base R
 
-3. Sampling and Probability
+~~3. Sampling and Probability~~
     
     A. Creating Simulations
 
-4. Linear Regression
+~~4. Linear Regression~~
     
-5. Sampling Distributions~~
+~~5. Sampling Distributions~~
 
-6. Confidence Intervals
+~~6. Confidence Intervals~~
 
 7. Significance Testing
 

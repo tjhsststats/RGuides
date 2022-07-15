@@ -107,17 +107,19 @@
 <li class="book-part">Sampling and Probability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🧮 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span><i class="fa-solid fa-chart-scatter"></i> Scatterplots and Correlation</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span>  Scatterplots and Correlation</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
 <li><a class="active" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
+<li class="book-part">Significance Tests</li>
+<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -246,9 +248,9 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 <p>$= 0.48</p>
 </blockquote>
 </div>
-<div id="plan-check-for-conditions" class="section level3" number="13.3.2">
+<div id="One-Prop-Conditions" class="section level3" number="13.3.2">
 <h3>
-<span class="header-section-number">13.3.2</span> Plan: Check for Conditions<a class="anchor" aria-label="anchor" href="#plan-check-for-conditions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3.2</span> Plan: Check for Conditions<a class="anchor" aria-label="anchor" href="#One-Prop-Conditions"><i class="fas fa-link"></i></a>
 </h3>
 <div class="rmdtip">
 <p>Before we figure out what the appropriate <strong>Critical Value</strong> is associated with a 98% confidence level, we need to ensure that the sampling distribution follows the normal distribution. There are three conditions you need to check for:</p>
@@ -260,16 +262,16 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 </div>
 <p>Let’s see how this works in our example:</p>
 <blockquote>
-<p><strong>Random</strong>: The sample of 1029 US adults was randomly selected.</p>
+<p><strong>Random</strong>: The sample of 1029 US adults was randomly selected. ✅</p>
 </blockquote>
 <blockquote>
-<p><strong>Normal</strong>: To use a Normal approximation for the sampling distribution of <span class="math inline">\(\hat{p}\)</span>, we need both <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span>. Since we don’t know <span class="math inline">\(p\)</span>, we use <span class="math inline">\(\hat{p}\)</span> instead.</p>
+<p><strong>Normal</strong>: To use a Normal approximation for the sampling distribution of <span class="math inline">\(\hat{p}\)</span>, we need both <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span>. Since we don’t know <span class="math inline">\(p\)</span>, we use <span class="math inline">\(\hat{p}\)</span> instead. ✅</p>
 </blockquote>
 <blockquote>
-<p>We check that <span class="math inline">\(np = 1029(0.48)= 494 \ge 10\)</span> and <span class="math inline">\(n(1-p) = 1029(1-0.48) =535 \ge 10\)</span>. Since both are greater than 10</p>
+<p>We check that <span class="math inline">\(np = 1029(0.48)= 494 \ge 10\)</span> and <span class="math inline">\(n(1-p) = 1029(1-0.48) =535 \ge 10\)</span>. Since both are greater than 10, we meet this condition.</p>
 </blockquote>
 <blockquote>
-<p><strong>Independent</strong>: If our is sample size <span class="math inline">\(n=1029\)</span> is exactly 10% of the population, then that means the population size is <span class="math inline">\(10*1029=10290\)</span>. Given that we know that there are way more than 10,290 adults in the U.S., it is reasonable to assume that our sample size is less than 10% of the population.</p>
+<p><strong>Independent</strong>: If our is sample size <span class="math inline">\(n=1029\)</span> is exactly 10% of the population, then that means the smallest possible population size is <span class="math inline">\(10*1029=10290\)</span>. Given that we know that there are way more than 10,290 adults in the U.S., it is reasonable to assume that our sample size is less than 10% of the population. ✅</p>
 </blockquote>
 <p>Since we pass all three conditions, we can continue.</p>
 </div>
@@ -277,7 +279,7 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 <h3>
 <span class="header-section-number">13.3.3</span> Do<a class="anchor" aria-label="anchor" href="#do"><i class="fas fa-link"></i></a>
 </h3>
-<p>Unfortuntately, R doesn’t have a built in command for calculating a one proportion Z-Interval automatically, but it is quite simple to do through computer.</p>
+<p>Let’s start off with talking about how to the confidence interval manually.</p>
 <p>First, we need to calculate the critical value <strong><span class="math inline">\(z^*\)</span> </strong>. If our confidence level is the middle 98% of the normal distribution, that means 2% is outside the middle 98%. Thus, there is 1% remaining on either side of the tail.</p>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-173-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>To do this, use the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function.</p>
@@ -306,6 +308,7 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 <pre><code>## [1] 0.03623</code></pre>
 </div>
 </div>
+<div class="rmdtip">
 <p>Finally, we can create a 98% confidence interval.</p>
 <div class="rmd1fr1fr">
 <div>
@@ -321,7 +324,6 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 <pre><code>## [1] 0.5162</code></pre>
 </div>
 </div>
-<div class="rmdtip">
 <p><span class="math display">\[ \text{98% CI}= \hat{p} \pm \text{M.o.E}= 0.48 \pm 0.036231 =  [0.4437683, 0.5162317]\]</span></p>
 </div>
 </div>
@@ -338,14 +340,26 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 <p>We are 98% Confident that the interval from 0.44377 to 0.51623 captures the true proportion of U.S. adults who “often or always” get enough sleep in the past 7 nights.</p>
 </blockquote>
 <p><strong>You must always use context.</strong> Failure to do so would mean lost points.</p>
+</div>
+</div>
+<div id="one-prop-z-test-R" class="section level2" number="13.4">
+<h2>
+<span class="header-section-number">13.4</span> In R<a class="anchor" aria-label="anchor" href="#one-prop-z-test-R"><i class="fas fa-link"></i></a>
+</h2>
+<p>Finally, there is a built-in way to do this in R, using the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> command. Instead of inputting the actual <span class="math inline">\(\hat{p}\)</span>, however, you input the count of “successes” within the context of the problem. If 48% of U.S. Adults report that they “often or always” get enough sleep, then <span class="math inline">\(0.48*1029=493.92\)</span>, which we round up to <span class="math inline">\(494\)</span> and attribute the decimal to rounding error.</p>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x<span class="op">=</span> <span class="fl">494</span>,</span>
+<span>          n<span class="op">=</span><span class="fl">1029</span>,</span>
+<span>          conf.level <span class="op">=</span> <span class="fl">0.98</span>,</span>
+<span>          correct<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="resources/images/13-One-Prop-CIs/R_One_Prop_CI.png" width="100%" style="display: block; margin: auto;"></div>
 <div class="rmdwarning">
 <p>Regardless of whether you calculate the interval by hand or through R, or the TI-84, you <strong>must</strong> complete the State, Plan, and Conclude portions as shown. Failure to do so results in lost points.</p>
 </div>
 </div>
-</div>
-<div id="one-proportion-confidence-interval-practice" class="section level2" number="13.4">
+<div id="one-proportion-confidence-interval-practice" class="section level2" number="13.5">
 <h2>
-<span class="header-section-number">13.4</span> One Proportion Confidence Interval Practice<a class="anchor" aria-label="anchor" href="#one-proportion-confidence-interval-practice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5</span> One Proportion Confidence Interval Practice<a class="anchor" aria-label="anchor" href="#one-proportion-confidence-interval-practice"><i class="fas fa-link"></i></a>
 </h2>
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch13_One_Prop_Z_Practice/" scrolling="no" frameborder="no">
 </iframe>
@@ -366,12 +380,13 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
 <li>
 <a class="nav-link" href="#confidence-intervals-of-one-proportion"><span class="header-section-number">13.3</span> Confidence Intervals of One Proportion</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#state"><span class="header-section-number">13.3.1</span> State</a></li>
-<li><a class="nav-link" href="#plan-check-for-conditions"><span class="header-section-number">13.3.2</span> Plan: Check for Conditions</a></li>
+<li><a class="nav-link" href="#One-Prop-Conditions"><span class="header-section-number">13.3.2</span> Plan: Check for Conditions</a></li>
 <li><a class="nav-link" href="#do"><span class="header-section-number">13.3.3</span> Do</a></li>
 <li><a class="nav-link" href="#conclude"><span class="header-section-number">13.3.4</span> Conclude</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#one-proportion-confidence-interval-practice"><span class="header-section-number">13.4</span> One Proportion Confidence Interval Practice</a></li>
+<li><a class="nav-link" href="#one-prop-z-test-R"><span class="header-section-number">13.4</span> In R</a></li>
+<li><a class="nav-link" href="#one-proportion-confidence-interval-practice"><span class="header-section-number">13.5</span> One Proportion Confidence Interval Practice</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -398,7 +413,7 @@ FIGURE 13.5: Lowering the confidence level leads to more precise intervals, but 
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 13 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 15 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

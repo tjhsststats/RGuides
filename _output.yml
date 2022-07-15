@@ -1,5 +1,5 @@
 bookdown::bs4_book:
-  theme:
+  theme: 
     primary: "#07679f"
     danger: "#dc3545"
     success: "#198754"
@@ -14,3 +14,4 @@ bookdown::bs4_book:
     sharing: null
   includes:
     in_header: resources/bookdown/header.html
+  

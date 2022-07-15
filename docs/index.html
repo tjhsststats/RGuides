@@ -107,17 +107,19 @@
 <li class="book-part">Sampling and Probability</li>
 <li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🧮 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span><i class="fa-solid fa-chart-scatter"></i> Scatterplots and Correlation</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span>  Scatterplots and Correlation</a></li>
 <li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
 <li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
 <li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
+<li class="book-part">Significance Tests</li>
+<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">15</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">16</span> Intro to ANOVA Analysis</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -138,10 +140,13 @@
 <li>
 <p>Like mathematics, there are many different ways to get to the same point. The advantage of R is that it is easily accessible to everyone to learn, and easily accessible for everyone to develop. It is easy for someone to code and publish their own approach to a problem.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>This turns out to be both a blessing and a curse. We offer <em>one</em> way to clean your data, run a t-test, etc. Chances are that, if you google your problem, you will find someone with completely different code. That code is just as good as the code we include here.</p></li>
+<li><p>This turns out to be both a blessing and a curse. We offer <em>one</em> way to clean your data, run a t-test, etc. <strong>Chances are that, if you google your problem, you will find someone with completely different code. That’s okay.</strong></p></li>
 <li><p>In fact, we actively encourage you to find different ways of doing code, if it makes sense to you. R is a vast, wide, universe. Go out there and explore.</p></li>
 </ol>
 </li>
+</ol>
+<div class="rmdimportant">
+<ol start="2" style="list-style-type: decimal">
 <li>
 <p><strong>Three Before Me Rule:</strong> If you encounter a problem you are expected to ask three people before you ask your teacher. Some people you can ask are:</p>
 <ul>
@@ -152,6 +157,7 @@
 </ul>
 </li>
 </ol>
+</div>
 </div>
 <div id="acknowledgements" class="section level2 unnumbered">
 <h2>Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"><i class="fas fa-link"></i></a>
@@ -223,7 +229,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 13 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 15 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

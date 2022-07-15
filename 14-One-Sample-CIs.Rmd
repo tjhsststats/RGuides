@@ -271,7 +271,7 @@ $$ \text{95% CI}= \bar{x} \pm \text{M.o.E}= 25.667 \pm 4.14 =  [21.53, 29.81]$$
 t.test(newts, conf.level=0.95)
 ```
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("resources/images/15-One-Samp-CIs/t-test-ci.png")
+knitr::include_graphics("resources/images/14-One-Sample-CIs/t-test-ci.png")
 
 ```
 

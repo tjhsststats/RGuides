@@ -26,9 +26,11 @@ This website serves as a digital companion for TJ students taking RS1, or any ot
 
 1.  Like mathematics, there are many different ways to get to the same point. The advantage of R is that it is easily accessible to everyone to learn, and easily accessible for everyone to develop. It is easy for someone to code and publish their own approach to a problem.
 
-    a.  This turns out to be both a blessing and a curse. We offer *one* way to clean your data, run a t-test, etc. Chances are that, if you google your problem, you will find someone with completely different code. That code is just as good as the code we include here.
+    a.  This turns out to be both a blessing and a curse. We offer *one* way to clean your data, run a t-test, etc. **Chances are that, if you google your problem, you will find someone with completely different code. That's okay.**
 
     b.  In fact, we actively encourage you to find different ways of doing code, if it makes sense to you. R is a vast, wide, universe. Go out there and explore.
+
+:::{.rmdimportant}
 
 2.  **Three Before Me Rule:** If you encounter a problem you are expected to ask three people before you ask your teacher. Some people you can ask are:
 
@@ -39,6 +41,8 @@ This website serves as a digital companion for TJ students taking RS1, or any ot
     -   The search bar in the textbook.
 
     -   Another friend. An older student. Your brother. Heck, even your parents.
+
+:::
 
 ## Acknowledgements {.unnumbered}
 

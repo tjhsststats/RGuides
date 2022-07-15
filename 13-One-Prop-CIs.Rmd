@@ -151,7 +151,7 @@ Then, list out statistics that are important to the problem:
 
 > $\hat{p}= 0.48
 
-### Plan: Check for Conditions
+### Plan: Check for Conditions {#One-Prop-Conditions}
 
 :::{.rmdtip}
 
@@ -167,13 +167,14 @@ Before we figure out what the appropriate **Critical Value** is associated with 
 
 Let's see how this works in our example:
 
-> **Random**: The sample of 1029 US adults was randomly selected.
+> **Random**: The sample of 1029 US adults was randomly selected. ✅
 
-> **Normal**: To use a Normal approximation for the sampling distribution of $\hat{p}$, we need both $np$ and $n(1-p)$. Since we don't know $p$, we use $\hat{p}$ instead. 
 
-> We check that $np = 1029(0.48)= 494 \ge 10$ and $n(1-p) = 1029(1-0.48) =535 \ge 10$. Since both are greater than 10
+> **Normal**: To use a Normal approximation for the sampling distribution of $\hat{p}$, we need both $np$ and $n(1-p)$. Since we don't know $p$, we use $\hat{p}$ instead. ✅
 
-> **Independent**: If our is sample size $n=1029$ is exactly 10% of the population, then that means the population size is $10*1029=10290$. Given that we know that there are way more than 10,290 adults in the U.S., it is reasonable to assume that our sample size is less than 10% of the population.
+> We check that $np = 1029(0.48)= 494 \ge 10$ and $n(1-p) = 1029(1-0.48) =535 \ge 10$. Since both are greater than 10, we meet this condition. 
+
+> **Independent**: If our is sample size $n=1029$ is exactly 10% of the population, then that means the smallest possible population size is $10*1029=10290$. Given that we know that there are way more than 10,290 adults in the U.S., it is reasonable to assume that our sample size is less than 10% of the population. ✅
 
 
 Since we pass all three conditions, we can continue.
@@ -181,7 +182,7 @@ Since we pass all three conditions, we can continue.
 
 ### Do
 
-Unfortuntately, R doesn't have a built in command for calculating a one proportion Z-Interval automatically, but it is quite simple to do through computer.
+Let's start off with talking about how to the confidence interval manually.
 
 First, we need to calculate the critical value **$z^*$ **. If our confidence level is the middle 98% of the normal distribution, that means 2% is outside the middle 98%. Thus, there is 1% remaining on either side of the tail.
 
@@ -240,6 +241,8 @@ moe
 
 :::
 
+::::{.rmdtip}
+
 Finally, we can create a 98% confidence interval.
 
 :::{.rmd1fr1fr}
@@ -264,10 +267,10 @@ Finally, we can create a 98% confidence interval.
 
 :::
 
-:::{.rmdtip}
+
 
 $$ \text{98% CI}= \hat{p} \pm \text{M.o.E}= 0.48 \pm 0.036231 =  [0.4437683, 0.5162317]$$
-:::
+::::
 
 ### Conclude
 
@@ -284,6 +287,25 @@ In our example, it's:
 > We are 98% Confident that the interval from 0.44377 to 0.51623 captures the true proportion of U.S. adults who "often or always" get enough sleep in the past 7 nights. 
 
 **You must always use context.** Failure to do so would mean lost points. 
+
+## In R {#one-prop-z-test-R}
+
+Finally, there is a built-in way to do this in R, using the `prop.test()` command. Instead of inputting the actual $\hat{p}$, however, you input the count of "successes" within the context of the problem. If 48% of U.S. Adults report that they "often or always" get enough sleep, then $0.48*1029=493.92$, which we round up to $494$ and attribute the decimal to rounding error.
+
+```{r, eval=FALSE}
+prop.test(x= 494,
+          n=1029,
+          conf.level = 0.98,
+          correct=FALSE)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/13-One-Prop-CIs/R_One_Prop_CI.png")
+```
+
+
+
+
 
 :::{.rmdwarning}
 

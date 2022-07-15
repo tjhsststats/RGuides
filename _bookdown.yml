@@ -1,17 +1,3 @@
-# To Build the Book
-
-# 1. Consider deleting cache_directory/, book_temp_files/ and any 
-#    stray book_temp.Rmd.
-# 2. Run renv::status() to make sure things are OK. Run renv::snapshot() 
-#    and confirm/push any changes in renv.lock if needed.
-# 3. Change output_dir to "docs".
-# 4. Uncomment desired rmd_files line, but add in a tab.
-# 5. Restart R.
-# 6. library(bookdown); clean_book(TRUE)
-# 7. Press "Build Book" in Build pane.
-# 8. Revert _bookdown.yml after chunks start processing.
-# 9. Commit and push changes in docs/ directory.
-
 output_dir: "docs"
 rmd_files:
   [ "index.Rmd",
@@ -30,9 +16,10 @@ rmd_files:
     "12-CLT.Rmd",
     "13-One-Prop-CIs.Rmd",
     "14-One-Sample-CIs.Rmd",
-    "A-Census.Rmd",
+    "15-Intro-Significance-Tests.Rmd",
     "AB-Two-Sample-T-Test.Rmd",
     "AC-ANOVA-Analysis.Rmd",
+    "A-Census.Rmd",
     "Errors.Rmd",
     "references.Rmd", # Must have comma after last entry
   ]

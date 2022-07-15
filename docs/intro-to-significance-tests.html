@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 15 Intro to Significance Tests | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="15.1 Conceptually: Significance Testing= Quantifying Sussiness The basketball team at a state university claims that each of their players makes 80% of their free throw shots. Do you think that...">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Intro to Significance Tests | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="15.1 Conceptually: Significance Testing= Quantifying Sussiness The basketball team at a state university claims that each of their players makes 80% of their free throw shots. Do you think that...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 15 Intro to Significance Tests | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="15.1 Conceptually: Significance Testing= Quantifying Sussiness The basketball team at a state university claims that each of their players makes 80% of their free throw shots. Do you think that...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@18657a9/css/all.min.css" rel="stylesheet" type="text/css">
+<style>
+    .interactive {
+      position: relative;
+    }  
+    .interactive iframe {
+      position: relative;
+      z-index: 100;
+      border: 0;
+      width: 1px;
+      min-width: 100%;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">🏠 Homepage</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">⬇️ Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">🖥 Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> ✨ Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 📈 Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Probability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🧮 Sampling and Probability</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span>  Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
+<li class="book-part">Significance Tests</li>
+<li><a class="active" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-significance-tests" class="section level1" number="15">
+<h1>
+<span class="header-section-number">15</span> Intro to Significance Tests<a class="anchor" aria-label="anchor" href="#intro-to-significance-tests"><i class="fas fa-link"></i></a>
+</h1>
+<div id="conceptually-significance-testing-quantifying-sussiness" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Conceptually: Significance Testing= Quantifying Sussiness<a class="anchor" aria-label="anchor" href="#conceptually-significance-testing-quantifying-sussiness"><i class="fas fa-link"></i></a>
+</h2>
+<p>The basketball team at a state university claims that each of their players makes 80% of their free throw shots. Do you think that the team actually can make 80% of their free throw shots, or are they just flexing? To test this claim, we’ll ask a player from the team to shoot free throws.</p>
+<p>Ask a State University player to shoot free throws by clicking SHOOT. You can get more data by clicking Shoot repeatedly. Do the data appear to agree with the 80% claim or to give evidence against it? When you are satisfied, click “Show true probability” to see the truth for this player. Click NEW SHOOTER to test a different player, who may have a different free throw percent.</p>
+<iframe height="480" style="margin:0 auto; min-width: 100%;" id="ch15-bball" src="https://digitalfirst.bfwpub.com/stats_applet/asset/15_reasoning/index.html" scrolling="no" frameborder="no">
+</iframe>
+<div class="rmd2fr1fr">
+<div>
+<p>Suppose we test out another player—Player #3, and he makes 32 out of the 50 free throws that we give him. His sample proportion of made shots is <span class="math inline">\(\hat{p}=\frac{32}{50}=0.64\)</span>. What can we conclude about the player’s claim to 80% based on this one sample?</p>
+<p>The answer is: not much. If he tells you that he was just having a bad day, or he’s just having bad luck, you can’t call him out on his lies, because you have a single sample. A single sample, as we already know, is not enough, because of <strong>sampling variability</strong>. How do we prove that he’s not simply having bad luck, but is just untalented?</p>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/15-Intro-Significance-Tests/suss.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<p>When we take the evidence (<span class="math inline">\(\hat{p}=0.64\)</span>) and weight it against a claim (that <span class="math inline">\(p=0.8\)</span>), consider that there are only two explanations:</p>
+<ol style="list-style-type: decimal">
+<li><p>The player’s claim is correct (<span class="math inline">\(p=0.8\)</span>), and by extraordinary bad luck, a very unlikely outcome occurred.</p></li>
+<li><p>The population proportion is actually less than 0.8, so the sample result is not an unlikely outcome.</p></li>
+</ol>
+<p>We know that the chance outcome of an unlucky sample is non-zero– that it can happen. The trick to proving the basketball player wrong is <em>quantifying how unlikely he could’ve had a bad day, assuming he’s telling the truth.</em> Assuming <span class="math inline">\(p=0.8\)</span> is true, how likely could we have gotten <span class="math inline">\(\hat{p}=0.64\)</span>? This is a significance test.</p>
+<p>We can create a simulation of 50 free throws with 400 trials, assuming that the probability is true. Since we know our simulation was carried out truly by chance, we have a measurable way to outline how probable the player would’ve made 0.64 of shots.</p>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bball_0.8</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, times<span class="op">=</span><span class="fl">40</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, times<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">simul_400_trials_50n</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">400</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">bball_0.8</span>, <span class="fl">50</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">results_simul_400_trials_50n</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">simul_400_trials_50n</span><span class="op">)</span> <span class="op">/</span><span class="fl">50</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">results_simul_400_trials_50n</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">results_simul_400_trials_50n</span>, method <span class="op">=</span> <span class="st">"stack"</span>, </span>
+<span>           offset <span class="op">=</span> <span class="fl">.4</span>, </span>
+<span>           at <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>           pch <span class="op">=</span> <span class="fl">19</span>,</span>
+<span>           col <span class="op">=</span> <span class="st">"steelblue"</span>, </span>
+<span>           main <span class="op">=</span> <span class="st">"Results of 400 trials with 50 shots each"</span>, </span>
+<span>           xlab <span class="op">=</span> <span class="st">"Proportion made"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="fl">0.64</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-200"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-200-1.png" alt="In 400 simulations, there were only two trials where our shooter got such an unlucky phat." width="80%"><p class="caption">
+FIGURE 15.1: In 400 simulations, there were only two trials where our shooter got such an unlucky phat.
+</p>
+</div>
+<p>In our simulation, there were only 2 trials out of 400 that the player would’ve made 64% of his shots or less. Based on this simulation, our estimate of this probability is <span class="math inline">\(\frac{2}{400}=0.005\)</span>. The observed statistic, <span class="math inline">\(\hat{p}=\frac{32}{50}=0.64\)</span>, is so unlikely if the actual parameter value is p=0.8, that it give convincing evidence that the player’s claim is not true.</p>
+<p>Explanation 1 might be correct—he could’ve just been unlucky. But the probability that such a result could’ve occurred just by chance is so small (less than <span class="math inline">\(\frac{1}{100}\)</span>) that we are quite confident that Explanation 2 is right.</p>
+<p>The process for significance tests is very similar to confidence intervals– we will use <strong>State, Plan, Do,</strong> and <strong>Conclude.</strong></p>
+</div>
+<div id="one-proportion-z-test" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> One Proportion Z-Test<a class="anchor" aria-label="anchor" href="#one-proportion-z-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>A One-Proportion Z-Test is, frankly, the most useless significance test. However, we teach it because it is a good stepping stone to the other significance tests. Here’s the example problem:</p>
+<div class="rmdnote">
+<p>A state’s Division of Motor Vehicles (DMV) claims that 60% of teens pass their driving test on their first attempt. An investigative reporter examines an SRS of the DMV records for 125 teens: 66 of them passed the test on their first try.</p>
+<p>Is this good evidence that the DMV’s claim is incorrect? Carry out a test at the at the <span class="math inline">\(\alpha = .05\)</span> significance level to help answer this question.</p>
+</div>
+<div id="state-2" class="section level3" number="15.2.1">
+<h3>
+<span class="header-section-number">15.2.1</span> State<a class="anchor" aria-label="anchor" href="#state-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Assuming the statement is true is called the <strong>Null Hypothesis.</strong> It assumes that there is no difference between the claimed parameter (true proportion), and the sample proportion we measure.</p>
+<p>The Alternative Hypothesis <strong><em>is</em></strong> that there is a difference between the claimed parameter, and the sample proportion we measure. In this case, it means the statistic we measured is so significantly different from the assumed “true claimed parameter,” that it simply couldn’t have happened by chance. In this case, we have good evidence that the claim about the proportion is false.</p>
+<div class="inline-figure"><img src="resources/images/15-Intro-Significance-Tests/def_null_alt.png" width="100%" style="display: block; margin: auto;"></div>
+<p>In this case, the <strong>claim</strong> from the DMV is that 60% of their teens pass the driving test on the first try. Our sample proportion is <span class="math inline">\(\hat{p}= \frac{66}{125}= 0.528\)</span>, which becomes evidence for or against the DMV’s claim that <span class="math inline">\(p=0.6\)</span>. Is <span class="math inline">\(\hat{p}= 0.528\)</span> so significantly different from the claim of <span class="math inline">\(p=0.6\)</span>, that it becomes evidence against the DMV’s claim?</p>
+<p><strong>Given that our sample proportion is lower than the claim, we suspect that the true proportion is lower than 60%, so we set our alternative hypothesis appropriately, like below.</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Hypothesis
+</th>
+<th style="text-align:left;">
+Meaning
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(H_0: p = 0.60\)</span>
+</td>
+<td style="text-align:left;">
+Our sample proportion falls within the realm of chance, and isn’t THAT different from the claim. We have no evidence that their claim is likely suss.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(H_a: p&lt;0.60\)</span>
+</td>
+<td style="text-align:left;">
+Our sample proportion is so different from what the company claims that <span class="math inline">\(\hat{p}\)</span> is enough evidence to show their claim is likely suss. We suspect that the true proportion of teenagers passing the DMV test is lower.
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>… where <span class="math inline">\(p\)</span> is the true, long-run proportion of teenagers who take the DMV and pass the DMV test on the first try.</p>
+<p>Finally, we want to state a red line for determining whether something is suss. If the probability that we would’ve gotten that measured statistic is less than ______, then we had enough evidence to reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_a\)</span>. This threshold is our significance level, called <strong>alpha.</strong></p>
+<div class="rmd1fr2fr">
+<div>
+<p>By tradition, <span class="math inline">\(\alpha=0.05\)</span>. That means that if we calculate that the probability of getting <span class="math inline">\(\hat{p}=0.528\)</span> by pure chance was less than 0.05, we can say the company is suss.</p>
+</div>
+<div>
+<div class="inline-figure"><img src="resources/images/15-Intro-Significance-Tests/def_alpha.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+</div>
+<div id="plan" class="section level3" number="15.2.2">
+<h3>
+<span class="header-section-number">15.2.2</span> Plan<a class="anchor" aria-label="anchor" href="#plan"><i class="fas fa-link"></i></a>
+</h3>
+<p>The conditions remain the same three as <a href="one-proportion-z-interval-for-hatp.html#One-Prop-Conditions">13.3.2</a>.</p>
+<blockquote>
+<p><strong>Random</strong>: The sample of 125 teens was randomly selected. ✅</p>
+</blockquote>
+<blockquote>
+<p><strong>Normal</strong>: To use a Normal approximation for the sampling distribution of <span class="math inline">\(\hat{p}\)</span>, we need both <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span>. Since we don’t know <span class="math inline">\(p\)</span>, we use <span class="math inline">\(\hat{p}\)</span> instead.</p>
+</blockquote>
+<blockquote>
+<p>We check that <span class="math inline">\(np = 125(0.528)= 66 \ge 10\)</span> and <span class="math inline">\(n(1-p) = 125(1-0.528) =59 \ge 10\)</span>. Since both are greater than 10, we fulfill this condition. ✅</p>
+</blockquote>
+<blockquote>
+<p><strong>Independent</strong>: If our is sample size <span class="math inline">\(n=125\)</span> is exactly 10% of the population, then that means the smallest possible population size is <span class="math inline">\(10*125=1250\)</span>. Given that we know that there are way more than 1250 students taking a road test every year, it is reasonable to assume that our sample size is less than 10% of the population. ✅</p>
+</blockquote>
+<p>Since we pass all three conditions, we can continue with our significance test.</p>
+</div>
+<div id="do-2" class="section level3" number="15.2.3">
+<h3>
+<span class="header-section-number">15.2.3</span> Do<a class="anchor" aria-label="anchor" href="#do-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>We’ll first manually do the z-test.</p>
+<p><em>Assuming that the null hypothesis is true</em>, that means that there exists a sampling distribution of size <span class="math inline">\(n=1029\)</span> centered at <span class="math inline">\(p=0.60\)</span> with a standard deviation of <span class="math inline">\(\sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{0.6(1-0.6)}{125}} = 0.0438178\)</span></p>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-204-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>Where would our sample proportion exist on this sampling distribution? Not only is <span class="math inline">\(\hat{p}=0.528\)</span> left of the center, but we should also be able to derive a z-score of how many standard deviations our sample <span class="math inline">\(\hat{p}\)</span> is from the mean. This number is called the <strong>test statistic</strong>.</p>
+<div class="rmdimportant">
+<p><strong>Definition: Test Statistic</strong></p>
+<p>A <strong>test statistic</strong> measures how far a sample statistic diverges from what we could expect if the null hypothesis <span class="math inline">\(H_0\)</span> were true, in standardized units. That is,</p>
+<p><span class="math display">\[\text{test statistic} = \frac{\text{statistic} - \text{parameter}}{\text{stadard deviation of the statistic}}\]</span></p>
+</div>
+<p>To calculate this test statistic, let’s plug it into our formula, knowing that the null hypothesis parameter (the claim) <span class="math inline">\(\mu_0 = 0.6\)</span>, the sample statistic is <span class="math inline">\(\hat{p}=0.528\)</span>, and the standard deviation was <span class="math inline">\(\sqrt{\frac{0.6(1-0.6)}{125}} = 0.0438178\)</span>.</p>
+<p><span class="math display">\[\text{test statistic}= \frac{0.528 - 0.6}{0.0438178}= -1.643167\]</span></p>
+<p>This means that, if <span class="math inline">\(H_0\)</span> were true, the sample we received was 1.64 standard deviations below the mean. We can now use <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to derive that probability we would’ve received this score, assuming the DMV is telling the truth.</p>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.643167</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 0.05017</code></pre>
+<p>This number is called the <strong>p-value</strong>.</p>
+<div class="rmdimportant">
+<p><strong>Definition: P-Value</strong></p>
+<p>The probability, computed assuming <span class="math inline">\(H_0\)</span> is true, that the statistic (such as <span class="math inline">\(\hat{p}\)</span> or <span class="math inline">\(\bar{x}\)</span>) would take a value as extreme as or more extreme than the one actually observed is called the <strong>P-Value</strong> of the test. The smaller the P-Value, the stronger the evidence against <span class="math inline">\(H_0\)</span> provided by the data.</p>
+</div>
+<p>If the DMV’s claim is true, then that means we would have a 5.01% chance of getting our sample <span class="math inline">\(\hat{p}=0.528\)</span> or lower. Is this enough to prove that the DMV is not telling the truth?</p>
+</div>
+<div id="conclude-2" class="section level3" number="15.2.4">
+<h3>
+<span class="header-section-number">15.2.4</span> Conclude<a class="anchor" aria-label="anchor" href="#conclude-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Fortunately, you already set a threshold for whether you would reject, or fail to reject: the alpha value <span class="math inline">\(\alpha\)</span>.</p>
+<ul>
+<li><p>If P-Value &gt; <span class="math inline">\(\alpha\)</span>, you fail to reject <span class="math inline">\(H_0\)</span>. You do not have sufficient evidence to reject the null hypothesis, and therefore we could’ve gotten our different sample proportion by chance, due to sampling variability.</p></li>
+<li><p>If P-Value &lt; <span class="math inline">\(\alpha\)</span>, you reject <span class="math inline">\(H_0\)</span>. You have sufficient evidence to reject the null hypothesis, and your sample statistic is <strong>significantly significant from the claim in the null hypothesis</strong>.</p></li>
+</ul>
+<p>Based on our p-value, even though it is very close to 0.05, it is still slightly above 0.05. Because of this, we:</p>
+<blockquote>
+<p>Fail to reject <span class="math inline">\(H_0\)</span>. There is not sufficient evidence that the first time passing rate of teenagers taking the driving test is less than 60%.</p>
+</blockquote>
+<div class="rmdwarning">
+<p>You <strong>NEVER</strong> “accept” the null hypothesis or alternative hypothesis. You either reject, or fail to reject the null hypothesis. Just because you have strong evidence against the null hypothesis does not necessarily mean that your alternative is true.</p>
+</div>
+</div>
+</div>
+<div id="in-r" class="section level2" number="15.3">
+<h2>
+<span class="header-section-number">15.3</span> In R<a class="anchor" aria-label="anchor" href="#in-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can use the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> command that was referenced in <a href="one-proportion-z-interval-for-hatp.html#one-prop-z-test-R">13.4</a>. We include two extra parameters: <code>p=</code> and <code>alternative=</code>, were <code>p=</code> is the null hypothesis probability, and <code>alternative=</code> is the alternative hypothesis.</p>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">66</span>,</span>
+<span>          n<span class="op">=</span><span class="fl">125</span>,</span>
+<span>          p<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span>          alternative<span class="op">=</span><span class="st">"less"</span>,</span>
+<span>          correct<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test
+##  without continuity
+##  correction
+## 
+## data:  66 out of 125, null probability 0.6
+## X-squared = 2.7, df = 1,
+## p-value = 0.05
+## alternative hypothesis: true p is less than 0.6
+## 95 percent confidence interval:
+##  0.0000 0.6001
+## sample estimates:
+##     p 
+## 0.528</code></pre>
+<p>The <code>alternative=</code> parameter takes on three possible arguments:</p>
+<ul>
+<li><p><code>greater</code> or <code>less</code>: these are where we believe the true <span class="math inline">\(p\)</span> value is less than, or greater than, the null hypothesis. These are <strong>One-Sided Tests</strong>, because we only calculate the area under the curve from one side of the sampling distribution.</p></li>
+<li><p><code>two-sided</code>: this is where we believe the true <span class="math inline">\(p\)</span> value is either greater than <u>or</u> less than the null. We have no idea which way it goes, so out of caution, we examine both p-values. These are <strong>Two-Sided Tests</strong>, because we only calculate the area under the curve from both sides of the sampling distribution at the same time. If you do not specify your alternative hypothesis, R will default to this parameter.</p></li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></div>
+<div class="next"><a href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro-to-significance-tests"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
+<li><a class="nav-link" href="#conceptually-significance-testing-quantifying-sussiness"><span class="header-section-number">15.1</span> Conceptually: Significance Testing= Quantifying Sussiness</a></li>
+<li>
+<a class="nav-link" href="#one-proportion-z-test"><span class="header-section-number">15.2</span> One Proportion Z-Test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#state-2"><span class="header-section-number">15.2.1</span> State</a></li>
+<li><a class="nav-link" href="#plan"><span class="header-section-number">15.2.2</span> Plan</a></li>
+<li><a class="nav-link" href="#do-2"><span class="header-section-number">15.2.3</span> Do</a></li>
+<li><a class="nav-link" href="#conclude-2"><span class="header-section-number">15.2.4</span> Conclude</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#in-r"><span class="header-section-number">15.3</span> In R</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/15-Intro-Significance-Tests.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/15-Intro-Significance-Tests.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <font size="+2"><strong>Mr. Ng</strong></font>
+        <br>📍 Hopper Commons, Room 229
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+          <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+          <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
+        </div>
+        <div class="col-12 col-md-6 mt-3">
+          <br><strong>Other Links:</strong>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 15 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+</div>
+
+</div>
+</div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
