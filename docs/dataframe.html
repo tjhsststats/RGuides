@@ -115,9 +115,10 @@
 <li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></li>
+<li><a class="" href="one-sample-t-test.html"><span class="header-section-number">16</span> One-Sample \(t\)-test</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">17</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
@@ -142,14 +143,10 @@
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">friend_names</span>, <span class="va">friend_ages</span>, <span class="va">lives_in_dc</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre><code>##  [1] "Abram"    "Bryant"  
-##  [3] "Colleen"  "David"   
-##  [5] "Esther"   "Jeremiah"
-##  [7] "34"       "35"      
-##  [9] "32"       "29"      
-## [11] "30"       "30"      
-## [13] "TRUE"     "FALSE"   
-## [15] "FALSE"    "TRUE"    
+<pre><code>##  [1] "Abram"    "Bryant"   "Colleen"  "David"   
+##  [5] "Esther"   "Jeremiah" "34"       "35"      
+##  [9] "32"       "29"       "30"       "30"      
+## [13] "TRUE"     "FALSE"    "FALSE"    "TRUE"    
 ## [17] "FALSE"    "TRUE"</code></pre>
 <p>As you can see, all this does is combine two vectors together into a single, longer vector. <strong>It does not give us a table with multiple rows and columns, as expected.</strong></p>
 <p>In order to combine vectors of information into a single data frame, you can use the <code>data.frame</code> function:</p>
@@ -159,20 +156,13 @@
 <span>           DC_Resident <span class="op">=</span> <span class="va">lives_in_dc</span>,</span>
 <span>           fav_number <span class="op">=</span> <span class="va">friend_fav_number</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre><code>##      names ages DC_Resident
-## 1    Abram   34        TRUE
-## 2   Bryant   35       FALSE
-## 3  Colleen   32       FALSE
-## 4    David   29        TRUE
-## 5   Esther   30       FALSE
-## 6 Jeremiah   30        TRUE
-##   fav_number
-## 1       1.00
-## 2       2.17
-## 3      26.00
-## 4       7.00
-## 5      10.00
-## 6       9.00</code></pre>
+<pre><code>##      names ages DC_Resident fav_number
+## 1    Abram   34        TRUE       1.00
+## 2   Bryant   35       FALSE       2.17
+## 3  Colleen   32       FALSE      26.00
+## 4    David   29        TRUE       7.00
+## 5   Esther   30       FALSE      10.00
+## 6 Jeremiah   30        TRUE       9.00</code></pre>
 <p>Here, we have created a <code>names</code> variable in the <code>friends</code> data frame that corresponds to the values in the <code>friend_names</code> vector, and similarly an <code>ages</code> variable in <code>friends</code> that corresponds to the values in <code>friend_ages</code>.</p>
 <p>Note that all three vectors that we used <strong>were of the same length</strong>. You can check the length by using the <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
@@ -226,7 +216,7 @@
 </h2>
 <p><strong>XLSX</strong> and <strong>CSV</strong> files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon:</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-50"></span>
+<span style="display:block;" id="fig:unnamed-chunk-53"></span>
 <img src="resources/images/00-Getting-Started/XLSX_File.png" alt="Excel File." width="10%"><p class="caption">
 FIGURE 2.1: Excel File.
 </p>
@@ -254,7 +244,7 @@ FIGURE 2.1: Excel File.
 <strong>CSV</strong>: Go to menu &gt; File &gt; Import Dataset &gt; From Text (readr).</li>
 </ul>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-53"></span>
+<span style="display:block;" id="fig:unnamed-chunk-56"></span>
 <img src="resources/images/00-Getting-Started/Import_1.png" alt="Navigating to the Import Menu." width="50%"><p class="caption">
 FIGURE 2.2: Navigating to the Import Menu.
 </p>
@@ -263,7 +253,7 @@ FIGURE 2.2: Navigating to the Import Menu.
 <li>In this case, I am using the anime dataset. Click on “browse” to find the file that you want to import into R.</li>
 </ol>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-54"></span>
+<span style="display:block;" id="fig:unnamed-chunk-57"></span>
 <img src="resources/images/00-Getting-Started/Import_2.png" alt="The Import Data Window." width="90%"><p class="caption">
 FIGURE 2.3: The Import Data Window.
 </p>

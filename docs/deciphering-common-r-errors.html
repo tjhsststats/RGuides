@@ -115,9 +115,10 @@
 <li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></li>
+<li><a class="" href="one-sample-t-test.html"><span class="header-section-number">16</span> One-Sample \(t\)-test</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">17</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="active" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
@@ -171,7 +172,7 @@
 <h2>Unmatched parenthesis<a class="anchor" aria-label="anchor" href="#unmatched-parenthesis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Another common error is forgetting or neglecting to finish a call to a function with a closing <code>)</code>. An example of this follows:</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="deciphering-common-r-errors.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="deciphering-common-r-errors.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">52</span>)</span></code></pre></div>
 <pre><code>Error in parse(text = x, srcfile = src) :
  &lt;text&gt;:2:0: unexpected end of input
 1: mean(x = c(1, 5, 10, 52)
@@ -180,7 +181,7 @@ Calls: &lt;Anonymous&gt; ... evaluate -&gt; parse_all -&gt; parse_all.character 
 Execution halted
 Exited with status 1.</code></pre>
 <p>In this case, there needs to be one more parenthesis added at the end of your call to <code>mean</code>:</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">52</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="graphs-are-blurry" class="section level2 unnumbered">

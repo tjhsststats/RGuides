@@ -115,9 +115,10 @@
 <li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="active" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></li>
+<li><a class="" href="one-sample-t-test.html"><span class="header-section-number">16</span> One-Sample \(t\)-test</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">17</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
@@ -263,9 +264,9 @@ Normal (<span class="math inline">\(z\)</span>)
 <pre><code>## [1] "Mean:  25.6666666666667 SD: 8.32430883900032 n: 18"</code></pre>
 <p>So <span class="math inline">\(\bar{x} = 25.67\)</span>, <span class="math inline">\(s_\bar{x}= 8.324\)</span>, and <span class="math inline">\(n=18\)</span>.</p>
 </div>
-<div id="plan-check-for-conditions" class="section level3" number="14.3.2">
+<div id="one-samp-conditions" class="section level3" number="14.3.2">
 <h3>
-<span class="header-section-number">14.3.2</span> Plan: Check for Conditions<a class="anchor" aria-label="anchor" href="#plan-check-for-conditions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.2</span> Plan: Check for Conditions<a class="anchor" aria-label="anchor" href="#one-samp-conditions"><i class="fas fa-link"></i></a>
 </h3>
 <div class="rmdtip">
 <p>There are three conditions you need to check for:</p>
@@ -287,16 +288,16 @@ Normal (<span class="math inline">\(z\)</span>)
 </ul>
 </div>
 <ul>
-<li><p><strong>Random</strong>: Stated that this is a random sample of 18 newts.</p></li>
-<li><p><strong>Normal</strong>: <span class="math inline">\(n \ngeq 30\)</span>, so we must look at the histogram of our data.</p></li>
+<li><p><strong>Random</strong>: Stated that this is a random sample of 18 newts. ✅</p></li>
+<li><p><strong>Normal</strong>: <span class="math inline">\(n \ngeq 30\)</span>, so we must look at the histogram of our data. ✅</p></li>
 </ul>
 <div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">newts</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-189-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-192-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Since our sample size is at least 15 but less than 30, we need to check for any outliers or strong skewness. The histogram does not appear to show either, so we pass the Normal condition.</p>
 <ul>
 <li>
-<strong>Independent</strong>: <span class="math inline">\(18 * 10= 180\)</span>. It is reasonable to assume that there are more than 180 newts in the total population being sampled, so we pass this condition.</li>
+<strong>Independent</strong>: <span class="math inline">\(18 * 10= 180\)</span>. It is reasonable to assume that there are more than 180 newts in the total population being sampled, so we pass this condition. ✅</li>
 </ul>
 <p>Since we pass all three conditions, we can continue.</p>
 </div>
@@ -386,7 +387,7 @@ Normal (<span class="math inline">\(z\)</span>)
 
   <div class="chapter-nav">
 <div class="prev"><a href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></div>
-<div class="next"><a href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></div>
+<div class="next"><a href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
@@ -398,7 +399,7 @@ Normal (<span class="math inline">\(z\)</span>)
 <li>
 <a class="nav-link" href="#one-sample-confidence-interval-for-mu"><span class="header-section-number">14.3</span> One Sample Confidence Interval for \(\mu\)</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#state-1"><span class="header-section-number">14.3.1</span> State</a></li>
-<li><a class="nav-link" href="#plan-check-for-conditions"><span class="header-section-number">14.3.2</span> Plan: Check for Conditions</a></li>
+<li><a class="nav-link" href="#one-samp-conditions"><span class="header-section-number">14.3.2</span> Plan: Check for Conditions</a></li>
 <li><a class="nav-link" href="#do-1"><span class="header-section-number">14.3.3</span> Do</a></li>
 <li><a class="nav-link" href="#conclude-1"><span class="header-section-number">14.3.4</span> Conclude</a></li>
 </ul>

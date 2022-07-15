@@ -143,7 +143,7 @@ paste("Mean: ", mean(newts), "SD:", sd(newts), "n:", length(newts), sep= " ")
 
 So $\bar{x} = 25.67$, $s_\bar{x}= 8.324$, and $n=18$.
 
-### Plan: Check for Conditions
+### Plan: Check for Conditions {#one-samp-conditions}
 
 :::{.rmdtip}
 
@@ -169,9 +169,9 @@ There are three conditions you need to check for:
 
 :::
 
-- **Random**: Stated that this is a random sample of 18 newts.
+- **Random**: Stated that this is a random sample of 18 newts. ✅
 
-- **Normal**: $n \ngeq 30$, so we must look at the histogram of our data.
+- **Normal**: $n \ngeq 30$, so we must look at the histogram of our data. ✅
 
 ```{r, out.width="70%"}
 hist(newts)
@@ -179,7 +179,7 @@ hist(newts)
 
 Since our sample size is at least 15 but less than 30, we need to check for any outliers or strong skewness. The histogram does not appear to show either, so we pass the Normal condition.
 
-- **Independent**: $18 * 10= 180$. It is reasonable to assume that there are more than 180 newts in the total population being sampled, so we pass this condition.
+- **Independent**: $18 * 10= 180$. It is reasonable to assume that there are more than 180 newts in the total population being sampled, so we pass this condition. ✅
 
 Since we pass all three conditions, we can continue.
 

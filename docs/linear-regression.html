@@ -115,9 +115,10 @@
 <li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></li>
+<li><a class="" href="one-sample-t-test.html"><span class="header-section-number">16</span> One-Sample \(t\)-test</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">17</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
@@ -151,8 +152,8 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">reg_line</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-142"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-142-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-145-1.png" alt="A Scatter Plot of Diamond Weight and Diamond Price" width="100%"><p class="caption">
 FIGURE 10.1: A Scatter Plot of Diamond Weight and Diamond Price
 </p>
 </div>
@@ -170,8 +171,8 @@ FIGURE 10.1: A Scatter Plot of Diamond Weight and Diamond Price
 <span>     ylab<span class="op">=</span> <span class="st">"Residual"</span>,</span>
 <span>     main<span class="op">=</span> <span class="st">"Residual Plot for Orange Tree Regression"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-143"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-143-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-146-1.png" alt="Resdial Plot for the Orange Tree linear model, stored as reg_line" width="100%"><p class="caption">
 FIGURE 10.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 </p>
 </div>
@@ -195,35 +196,26 @@ FIGURE 10.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 ## lm(formula = Orange$circumference ~ Orange$age)
 ## 
 ## Residuals:
-##    Min     1Q Median     3Q 
-## -46.31 -14.95  -0.08  19.70 
-##    Max 
-##  45.11 
+##    Min     1Q Median     3Q    Max 
+## -46.31 -14.95  -0.08  19.70  45.11 
 ## 
 ## Coefficients:
-##             Estimate
-## (Intercept) 17.39965
-## Orange$age   0.10677
-##             Std. Error
-## (Intercept)    8.62266
-## Orange$age     0.00828
-##             t value Pr(&gt;|t|)
-## (Intercept)    2.02    0.052
-## Orange$age    12.90  1.9e-14
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 17.39965    8.62266    2.02    0.052
+## Orange$age   0.10677    0.00828   12.90  1.9e-14
 ##                
 ## (Intercept) .  
 ## Orange$age  ***
 ## ---
 ## Signif. codes:  
-##   0 '***' 0.001 '**' 0.01
-##   '*' 0.05 '.' 0.1 ' ' 1
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 23.7 on 33 degrees of freedom
 ## Multiple R-squared:  0.835,  Adjusted R-squared:  0.83 
 ## F-statistic:  166 on 1 and 33 DF,  p-value: 1.93e-14</code></pre>
 <p>By using <code>summary</code>, you get a computer regression printout that helps you evaluate whether the linear regression line is appropriate. The two numbers that you care about are the <strong>standard deviation of the residuals</strong> and the <strong>R-Squared Value</strong>. In R, that is labeled as <em>Multiple R-Squared</em>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<span style="display:block;" id="fig:unnamed-chunk-148"></span>
 <img src="resources/images/09-Linear-Regression/Regression-Printout.png" alt="Interpreting a Regression Printout" width="100%"><p class="caption">
 FIGURE 10.3: Interpreting a Regression Printout
 </p>
@@ -249,7 +241,7 @@ FIGURE 10.3: Interpreting a Regression Printout
 </iframe>
 <p>As you can see, every dataset here has the same exact <em>r</em> correlation coefficient, and the same <span class="math inline">\(R^2\)</span> coefficient. However, only the first set of data is appropriate for a linear model– the other 3 are clearly not appropriate for a linear model.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-146"></span>
+<span style="display:block;" id="fig:unnamed-chunk-149"></span>
 <img src="resources/images/09-Linear-Regression/anscombe.png" alt="All four of Anscombe's plots. Taken from https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet" width="90%"><p class="caption">
 FIGURE 10.4: All four of Anscombe’s plots. Taken from <a href="https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet" class="uri">https://www.shinyapps.org/apps/RGraphCompendium/index.php#anscombes-quartet</a>
 </p>

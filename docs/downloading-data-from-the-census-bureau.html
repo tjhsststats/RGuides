@@ -115,9 +115,10 @@
 <li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
 <li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="intro-to-significance-tests.html"><span class="header-section-number">15</span> Intro to Significance Tests</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">16</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></li>
+<li><a class="" href="one-sample-t-test.html"><span class="header-section-number">16</span> One-Sample \(t\)-test</a></li>
+<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">17</span> Intro to Two-Sample T-Tests</a></li>
+<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="active" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
@@ -152,11 +153,11 @@
 <h2>Install the <code>tidycensus</code> package<a class="anchor" aria-label="anchor" href="#install-the-tidycensus-package"><i class="fas fa-link"></i></a>
 </h2>
 <p>The package that easily downloads Census Bureau data is called <code>tidycensus</code>. Install the package and load it.</p>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidycensus"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://walker-data.com/tidycensus/">"tidycensus"</a></span><span class="op">)</span></span></code></pre></div>
 <p>Then, install your Census API Key into R with this command.</p>
-<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://walker-data.com/tidycensus/reference/census_api_key.html">census_api_key</a></span><span class="op">(</span><span class="st">"&lt;Census Key Goes Here&gt;"</span>, install<span class="op">=</span><span class="cn">TRUE</span>, overwrite<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Restart your R Session by clicking on Menu’s Session &gt;&gt; Restart R Session. Then, reload the tidycensus library by running <code><a href="https://walker-data.com/tidycensus/">library("tidycensus")</a></code>.</p>
 </div>
@@ -211,7 +212,7 @@
 <li><p>Notice the “geography” is “zcta,” which is the Census Bureau’s equivalent of a ZIP Code.</p></li>
 <li><p>state=“VA” variable helps limit the scope of our data to just VA, otherwise it will download all US.</p></li>
 </ul>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">income_with_children</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://walker-data.com/tidycensus/reference/get_acs.html">get_acs</a></span><span class="op">(</span>geography<span class="op">=</span><span class="st">"zcta"</span>,</span>
 <span>                  state<span class="op">=</span><span class="st">"VA"</span>,</span>
 <span>                  variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B19125_002"</span><span class="op">)</span>,</span>
@@ -228,7 +229,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="kable_wrapper">
 <caption>
-<span id="tab:unnamed-chunk-233">TABLE 17.3: </span>Zip Code Data for Household Income for Households with Children, and Without Children
+<span id="tab:unnamed-chunk-244">TABLE 18.3: </span>Zip Code Data for Household Income for Households with Children, and Without Children
 </caption>
 <tbody><tr>
 <td>
@@ -30748,7 +30749,7 @@ B19125_003
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="intro-to-anova-analysis.html"><span class="header-section-number">17</span> Intro to ANOVA Analysis</a></div>
+<div class="prev"><a href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></div>
 <div class="next"><a href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>

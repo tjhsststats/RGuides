@@ -1,6 +1,6 @@
 # (PART\*) Significance Tests {.unnumbered}
 
-# Intro to Significance Tests
+# One Proportion Z-Test
 
 ## Conceptually: Significance Testing= Quantifying Sussiness
 
@@ -85,7 +85,7 @@ Explanation 1 might be correct—he could’ve just been unlucky. But the probab
 
 The process for significance tests is very similar to confidence intervals-- we will use **State, Plan, Do,** and **Conclude.**
 
-## One Proportion Z-Test
+## One Proportion $Z$-Test
 
 A One-Proportion Z-Test is, frankly, the most useless significance test. However, we teach it because it is a good stepping stone to the other significance tests. Here's the example problem:
 
@@ -125,6 +125,12 @@ kable(null_alt, escape=F, booktabs=TRUE)
 
 
 … where $p$ is the true, long-run proportion of teenagers who take the DMV and pass the DMV test on the first try. 
+
+:::{.rmdwarning}
+
+The null and alternative hypothesis are ALWAYS about your population parameter, which is $p$. It is NEVER about your sample statistic, because you don't need to test the sample statistic. You already have it. Remember the goal is always to use your sample statistic to make inferences about the larger population.
+
+:::
 
 Finally, we want to state a red line for determining whether something is suss. If the probability that we would’ve gotten that measured statistic is less than ______, then we had enough evidence to reject $H_0$ in favor of $H_a$. This threshold is our significance level, called **alpha.**
 
@@ -253,4 +259,8 @@ The `alternative=` parameter takes on three possible arguments:
 
 - `two-sided`: this is where we believe the true $p$ value is either greater than <u>or</u> less than the null. We have no idea which way it goes, so out of caution, we examine both p-values. These are  **Two-Sided Tests**, because we only calculate the area under the curve from both sides of the sampling distribution at the same time. If you do not specify your alternative hypothesis, R will default to this parameter.
 
+:::{.rmdwarning}
 
+Again, regardless of whether you calculate the interval by hand, R, or the TI-84, you **must** complete the State, Plan, and Conclude portions as shown. Failure to do so results in lost points.
+
+:::

@@ -232,6 +232,7 @@ This means any adult man shorter than 67.314 inches falls in the bottom 25% of a
 
 ::::
 
+## Chapter 11 Exercises
 
 <iframe style="margin:0 auto; min-width: 100%;" id="qnorm-pnorm-practice" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_qnorm_pnorm_practice/" scrolling="no" frameborder="no">
 
