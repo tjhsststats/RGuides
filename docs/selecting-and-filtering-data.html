@@ -146,7 +146,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-61">TABLE 3.1: </span>The Periodic Table
+<span id="tab:unnamed-chunk-58">TABLE 3.1: </span>The Periodic Table
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -909,30 +909,26 @@ NA
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid" 
-##   [6] "Solid"  "Gas"    "Gas"    "Gas"    "Gas"   
-##  [11] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [16] "Solid"  "Gas"    "Gas"    "Solid"  "Solid" 
-##  [21] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [26] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [31] "Solid"  "Solid"  "Solid"  "Solid"  "Liquid"
-##  [36] "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [41] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [46] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [51] "Solid"  "Solid"  "Solid"  "Gas"    "Solid" 
-##  [56] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [61] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [66] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [71] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [76] "Solid"  "Solid"  "Solid"  "Solid"  "Liquid"
-##  [81] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [86] "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [91] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [96] "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-## [101] "Solid"  "Solid"  "Solid"  NA       NA      
-## [106] NA       NA       NA       NA       NA      
-## [111] NA       NA       NA       NA       NA      
-## [116] NA       NA       NA</code></pre>
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
+##   [7] "Gas"    "Gas"    "Gas"    "Gas"    "Solid"  "Solid" 
+##  [13] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"   
+##  [19] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [25] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [31] "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Gas"   
+##  [37] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [43] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [49] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"   
+##  [55] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [61] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [67] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [73] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [79] "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid" 
+##  [85] "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
+##  [91] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [97] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+## [103] "Solid"  NA       NA       NA       NA       NA      
+## [109] NA       NA       NA       NA       NA       NA      
+## [115] NA       NA       NA       NA</code></pre>
 <p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
 </div>
 <div id="selecting-an-element-using" class="section level2" number="3.2">
@@ -960,10 +956,9 @@ NA
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium" 
-##  [4] "Aluminium"  "Silicon"    "Phosphorus"
-##  [7] "Sulfur"     "Chlorine"   "Argon"     
-## [10] "Potassium"  "Calcium"</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium" 
+##  [5] "Silicon"    "Phosphorus" "Sulfur"     "Chlorine"  
+##  [9] "Argon"      "Potassium"  "Calcium"</code></pre>
 </div>
 </div>
 <div id="selecting-rows-and-columns-using" class="section level2" number="3.3">
@@ -975,18 +970,18 @@ NA
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 3
-##    atomic_number symbol name_origin                 
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                       
-##  1            41 Nb     Niobe, daughter of king Tan…
-##  2            42 Mo     the Greek molybdos meaning …
-##  3            43 Tc     the Greek tekhn??tos meanin…
-##  4            44 Ru     Ruthenia, the New Latin nam…
-##  5            45 Rh     the Greek rhodos, meaning '…
-##  6            46 Pd     the then recently discovere…
-##  7            47 Ag     English word (argentum in L…
-##  8            48 Cd     the New Latin cadmia, from …
-##  9            49 In     indigo                      
-## 10            50 Sn     English word (stannum in La…</code></pre>
+##    atomic_number symbol name_origin                         
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                               
+##  1            41 Nb     Niobe, daughter of king Tantalus fr…
+##  2            42 Mo     the Greek molybdos meaning 'lead'   
+##  3            43 Tc     the Greek tekhn??tos meaning 'artif…
+##  4            44 Ru     Ruthenia, the New Latin name for Ru…
+##  5            45 Rh     the Greek rhodos, meaning 'rose col…
+##  6            46 Pd     the then recently discovered astero…
+##  7            47 Ag     English word (argentum in Latin)    
+##  8            48 Cd     the New Latin cadmia, from King Kad…
+##  9            49 In     indigo                              
+## 10            50 Sn     English word (stannum in Latin)</code></pre>
 <div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3" number="3.3.1">
 <h3>
 <span class="header-section-number">3.3.1</span> “Let’s eat Grandma!” vs. “Let’s eat, Grandma!”<a class="anchor" aria-label="anchor" href="#lets-eat-grandma-vs.-lets-eat-grandma"><i class="fas fa-link"></i></a>
@@ -1015,16 +1010,16 @@ NA
 <code class="sourceCode R"><span><span class="co">#Returns all of row 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 22
-##   atomic_number symbol name   name_origin      group
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;
-## 1             2 He     Helium the Greek helio…    18
-## # … with 17 more variables: period &lt;dbl&gt;,
-## #   block &lt;chr&gt;, state_at_stp &lt;chr&gt;,
+##   atomic_number symbol name   name_origin group period block
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+## 1             2 He     Helium the Greek …    18      1 s    
+## # … with 15 more variables: state_at_stp &lt;chr&gt;,
 ## #   occurrence &lt;chr&gt;, description &lt;chr&gt;,
 ## #   atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
 ## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
 ## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
-## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, …</code></pre>
+## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;,
+## #   bp_predicted &lt;lgl&gt;, heat_capacity &lt;dbl&gt;, …</code></pre>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span> ,<span class="fl">2</span><span class="op">]</span></span></code></pre></div>

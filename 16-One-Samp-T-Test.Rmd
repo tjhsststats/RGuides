@@ -89,7 +89,7 @@ There are two approaches to this in R: either you use actual sample data, or sum
 
 ### Using Summary Statistics
 
-R doesn't have a built in function that takes summary statistics, so we need to install a package called `BSDA`. Once you've loaded the library, you want to use the `tsum.test()` command from the package. For instructions on how to load a package, check out \@ref(packages).
+R doesn't have a built in function that takes summary statistics, so we need to install a package called `BSDA`. Once you've loaded the library, you want to use the `tsum.test()` command from the package. For instructions on how to load a package, check out [installing and loading packages](https://kaisamng.github.io/RGuides/interacting-with-r-studio.html#loading-a-package).
 
 ```{r message=FALSE, warning=FALSE}
 library(BSDA)

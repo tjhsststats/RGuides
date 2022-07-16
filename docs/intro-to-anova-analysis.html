@@ -147,7 +147,7 @@
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-224">TABLE 18.1: </span>The Flowers Dataset
+<span id="tab:unnamed-chunk-221">TABLE 18.1: </span>The Flowers Dataset
 </caption>
 <thead><tr>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
@@ -425,7 +425,7 @@ NA
 <div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  margin-left: auto; margin-right: auto;">
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-226">TABLE 18.2: </span>Flowers Dataset, Long-Form Data
+<span id="tab:unnamed-chunk-223">TABLE 18.2: </span>Flowers Dataset, Long-Form Data
 </caption>
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
@@ -1016,7 +1016,7 @@ H. caribea yellow
 </h2>
 <p>The variances for <em>three</em> populations is naturally larger than the variance of two populations. Just like how two populations naturally have a larger variance, and thus requires the t-distribution (which has more “area” under the tails), we need to use a different distribution that takes into account this larger variance (which has even more “area” under the tails. This distribution is called the <strong>F-Distribution</strong>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-229"></span>
+<span style="display:block;" id="fig:unnamed-chunk-226"></span>
 <img src="resources/images/AC-ANOVA-Analysis/F_Dist.png" alt="The F-Distribution" width="35%"><p class="caption">
 FIGURE 18.1: The F-Distribution
 </p>
@@ -1085,21 +1085,21 @@ FIGURE 18.1: The F-Distribution
 ## Fit: aov(formula = Length ~ Species, data = na.omit(Flowers_long))
 ## 
 ## $Species
-##                                     diff     lwr
-## H. caribea red-H. bihai           -7.886  -9.022
-## H. caribea yellow-H. bihai       -11.417 -12.672
-## H. caribea yellow-H. caribea red  -3.531  -4.689
-##                                      upr p adj
-## H. caribea red-H. bihai           -6.750     0
-## H. caribea yellow-H. bihai       -10.163     0
-## H. caribea yellow-H. caribea red  -2.373     0</code></pre>
+##                                     diff     lwr     upr
+## H. caribea red-H. bihai           -7.886  -9.022  -6.750
+## H. caribea yellow-H. bihai       -11.417 -12.672 -10.163
+## H. caribea yellow-H. caribea red  -3.531  -4.689  -2.373
+##                                  p adj
+## H. caribea red-H. bihai              0
+## H. caribea yellow-H. bihai           0
+## H. caribea yellow-H. caribea red     0</code></pre>
 <p>You can also plot these results, as shown below:</p>
 <div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Margins will spill over, so you need to adjust these</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">13</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conflevel<span class="op">=</span><span class="fl">.95</span><span class="op">)</span>, las<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-234-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-231-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Notice that the x-axis doesn’t even include 0– our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).</p>
 
 </div>

@@ -143,11 +143,10 @@
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">friend_names</span>, <span class="va">friend_ages</span>, <span class="va">lives_in_dc</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre><code>##  [1] "Abram"    "Bryant"   "Colleen"  "David"   
-##  [5] "Esther"   "Jeremiah" "34"       "35"      
-##  [9] "32"       "29"       "30"       "30"      
-## [13] "TRUE"     "FALSE"    "FALSE"    "TRUE"    
-## [17] "FALSE"    "TRUE"</code></pre>
+<pre><code>##  [1] "Abram"    "Bryant"   "Colleen"  "David"    "Esther"  
+##  [6] "Jeremiah" "34"       "35"       "32"       "29"      
+## [11] "30"       "30"       "TRUE"     "FALSE"    "FALSE"   
+## [16] "TRUE"     "FALSE"    "TRUE"</code></pre>
 <p>As you can see, all this does is combine two vectors together into a single, longer vector. <strong>It does not give us a table with multiple rows and columns, as expected.</strong></p>
 <p>In order to combine vectors of information into a single data frame, you can use the <code>data.frame</code> function:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
@@ -216,7 +215,7 @@
 </h2>
 <p><strong>XLSX</strong> and <strong>CSV</strong> files are how many datasets are stored. They open through the Excel app. You can tell that they are Excel from its icon:</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-53"></span>
+<span style="display:block;" id="fig:unnamed-chunk-50"></span>
 <img src="resources/images/00-Getting-Started/XLSX_File.png" alt="Excel File." width="10%"><p class="caption">
 FIGURE 2.1: Excel File.
 </p>
@@ -244,7 +243,7 @@ FIGURE 2.1: Excel File.
 <strong>CSV</strong>: Go to menu &gt; File &gt; Import Dataset &gt; From Text (readr).</li>
 </ul>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-56"></span>
+<span style="display:block;" id="fig:unnamed-chunk-53"></span>
 <img src="resources/images/00-Getting-Started/Import_1.png" alt="Navigating to the Import Menu." width="50%"><p class="caption">
 FIGURE 2.2: Navigating to the Import Menu.
 </p>
@@ -253,7 +252,7 @@ FIGURE 2.2: Navigating to the Import Menu.
 <li>In this case, I am using the anime dataset. Click on “browse” to find the file that you want to import into R.</li>
 </ol>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<span style="display:block;" id="fig:unnamed-chunk-54"></span>
 <img src="resources/images/00-Getting-Started/Import_2.png" alt="The Import Data Window." width="90%"><p class="caption">
 FIGURE 2.3: The Import Data Window.
 </p>
