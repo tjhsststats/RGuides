@@ -1,6 +1,6 @@
 # (PART\*) Significance Tests {.unnumbered}
 
-# One Proportion Z-Test
+# 1️⃣ One Proportion Z-Test for Proportions
 
 ## Conceptually: Significance Testing= Quantifying Sussiness
 

@@ -1,4 +1,4 @@
-# 📈 Visualizing One-Variable Data
+# 👀 Visualizing One-Variable Data
 
 ::: rmdtip
 You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch7_Boxplot_Example/)

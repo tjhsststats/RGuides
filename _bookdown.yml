@@ -18,8 +18,8 @@ rmd_files:
     "14-One-Sample-CIs.Rmd",
     "15-One-Prop-Z-Test.Rmd",
     "16-One-Samp-T-Test.Rmd",
-    "AB-Two-Sample-T-Test.Rmd",
-    "AC-ANOVA-Analysis.Rmd",
+    "17-Two-Sample-Inference.Rmd",
+    "18-ANOVA-Analysis.Rmd",
     "A-Census.Rmd",
     "Errors.Rmd",
     "references.Rmd", # Must have comma after last entry

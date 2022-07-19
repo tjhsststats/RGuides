@@ -1,0 +1,261 @@
+# 2️⃣ Two Sample Confidence Intervals and Significance Tests
+
+Suppose your family is taking a road trip and stops in an unfamiliar town. Your family craves burgers, and asks you to pick a place. Your options are either a local restaurant, or McDonald's. Which one would you choose?
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/17-Two-Sample-Inference/burger_comparison.png")
+
+
+```
+
+This is a trick question, because the burger itself doesn't matter. If you go local, how do you know if you're picking a really good restaurant, or a really bad restaurant? On the other hand, a McDonald's burger is always going to be the same quality, no matter which location you choose-- that's the allure of the chain restaurant. It means that, for you to compare two burgers with each other, you need to compare the **spread** of each burger's distribution.
+
+To create a confidence interval, or run a significance test, or two proportions or two means, the procedure is very similar to their one sample counterparts. However, we need to use a different standard error, by adding up the variances from the two distributions. 
+
+
+## The Sampling Distribution for Two Proportions
+
+:::{.rmdnote}
+
+Choose a SRS of size $n_1$ from Population 1 with a proportion of successes $p_1$, and second, independent SRS of size $n_2$ from Population 2 with proportion of successes $p_2$.
+
+Let $\hat{p}_1$ and $\hat{p}_2$ be the sample proportions derived from Populations 1 and 2, respectively. The sampling distribution of $\hat{p}_{1-2}$ is **approximately Normal**, **centered** at $\hat{p}_{1-2}$, with **a standard deviation** of 
+
+$$ \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}} $$
+
+:::
+
+This is only true when the following conditions are met:
+
+### Conditions for Inference of Two Means {#two-prop-conditions}
+
+:::{.rmdtip}
+
+- **Random**: Both samples must be randomly sampled.
+
+- **Normal**: The counts for $n_1\hat{p}_1$, $n_1(1-\hat{p}_1)$, $n_2\hat{p}_2$, and $n_2(1-\hat{p}_2)$ must all be greater than or equal to 10.
+
+- **Independent**: Both samples $n_1$ and $n_2$ must be less than 10 percent of their Populations, respectively.
+
+:::
+
+
+## Two-Prop Confidence Intervals
+
+:::{.rmdnote}
+
+When the Random, Normal, and Independent conditions are met, an approximate level *C* confidence interval for $\hat{p}_1 - \hat{p}_2$ is
+
+$$(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}} $$
+:::
+
+
+:::{.rmdimportant}
+
+After narrowly avoiding a lawsuit for selling oversized widgets, the Widget Factory developed two new manufacturing processes.  They are to be compared based on the proportion of defective widgets.  For process A, a random sample of 765 widgets indicated that 15 were defective.  For process B (a much more expensive process), a random sample of 375 widgets indicated that 6 were defective.  Construct and interpret a 99% confidence interval for the difference in the population proportions. 
+
+:::
+
+**State:** we want to construct a 99% confidence interval estimating the true difference of $\hat{p}_1 - \hat{p}_2$, which is the true difference in defective rates in process A versus process B. 
+
+**Plan:** all conditions from \@ref(two-prop-conditions) should be met.
+
+**Do:** To construct a two-proportion confidence interval, use the `prop.test()` command as before. This time, instead of passing one single `x` and `n`, pass along a vector of two elements, representing $p_1$ and $p_2$ in order.
+
+```{r}
+prop.test(x=c(15, 6),
+          n=c(765, 375),
+          conf.level = 0.99,
+          correct = FALSE)
+```
+
+**Conclude:** We are 99% confident that the true difference between the proportion of defective widgets in process A versus process B is between -1.749% and 2.471%. 
+
+
+
+## Two Prop Z-Test
+
+:::{.rmdimportant}
+
+Refer to the previous widget example. Do these data support the claim that process B produces fewer defective widgets at 1% significance?
+
+:::
+
+
+
+
+**State:** Conduct a two proportion z-test at the $\alpha=0.01$ level.
+
+$\hat{p}_1= \frac{15}{765}=0.019607$, which is the proportion of defective widgets from process A, and $\hat{p}_2= \frac{6}{375}= 0.016$, which is the proportion of defective widgets from process B. That means $\hat{p}_1 - \hat{p}_2= 0.003607$ is the difference in proportions of defective widgets of process A versus process B. 
+
+Because $\hat{p}_2$ is lower than $\hat{p}_1$, we suspect that the defective rates for process B is lower than process A. We will use this for our alternative hypothesis. 
+
+$H_0: p_1-p_2=0$ There is no difference between the defective rates made with process A versus process B.
+
+$H_a: p_1-p_2 >0$ There is a  difference between the defective rates made with process A versus process B. Process A has a higher defective rate than process B, which means the difference between these two should be positive.
+
+**Plan:** The conditions are the same as \@ref(two-prop-conditions)
+
+**Do:** To run a two-proportion z-test, just use the `prop.test()` command again. 
+
+```{r}
+prop.test(x=c(15, 6),
+          n=c(765, 375),
+          correct = FALSE)
+```
+
+Although we don't need to specify a confidence level here, because we are running a significance test, what we care most about  is the p-value and the test statistic. 
+
+**Conclude:** Since $p=0.6704$ and $p> \alpha$, we fail to reject $H_0$. There is not sufficient evidence that process B produces fewer defective widgets at 1% significance. 
+
+
+
+
+## The Sampling Distribution for Two Means
+
+:::{.rmdnote}
+
+Choose an SRS of size $n_1$ from Population 1 with mean $\mu_1$ and standard deviation $\sigma_1$, and another independent sample of size $n_2$ from Population 2, with mean $\mu_2$ and standard deviation $\sigma_2$. 
+
+Let $\bar{x}_1$ and $\bar{x}_2$ be the sample proportions derived from Populations 1 and 2, respectively. The sampling distribution of $\bar{x}_{1-2}$ is **approximately Normal**, **centered** at $\bar{x}_{1-2}$, with **a standard deviation** of 
+
+$$ \sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}} $$
+
+:::
+
+This is only true when the following conditions are met:
+
+
+
+### Conditions for Inference of Two Means {#two-samp-conditions}
+
+::::{.rmdtip}
+
+- **Random**: Both samples must be randomly sampled.
+
+- **Normal**: The counts for $\bar{x}_1$ and $\bar{x}_2$ must all be greater than or equal to 30. 
+
+:::{.rmdcaution}
+
+**If they are not**, then you can still pass the Normal condition provided that at least one of the following is true:
+
+  - Both samples were taken from populations that are approximately Normal.
+
+  - Both sample sizes are *greater than 15*, and both samples do not show the presence of outliers or strong skewness.
+
+  - Both sample sizes are *less than 15*, and the data in both samples appears close to Normal, with no outliers or clear skew.
+
+:::
+
+  - **Independent**: Both samples $n_1$ and $n_2$ must be less than 10 percent of their Populations, respectively.
+
+::::
+
+## Two-Sample Confidence Interval for Means
+
+:::{.rmdnote}
+
+When the Random, Normal, and Independent conditions are met, an approximate level $C$ confidence interval for $\bar{x}_1-\bar{x}_2$ is 
+$$\bar{x}_1-\bar{x}_2 \pm t^* \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}  $$
+
+Here, $t^*$ is the critical value for the confidence level C for the distribution with degrees of freedom. To calculate the degrees of freedom, we either use **technology** or **the smaller of $n_1 -1$ and $n_2 -1$**.
+
+:::
+
+Technology tends to give us a more accurate estimate of the degrees of freedom for a combined distribution, with greater degrees of freedom. However, this is difficult to calculate, and requires knowledge of calculus to explain. If you are calculating by hand, you can always use the more conservative estimate, which is the smaller of $n_1 -1$ and $n_2 -1$. This is a "safer" estimate because it gives you fewer degrees of freedom (and hence more area in the tails of $t$), but the answer should be close to what you get with technology.
+
+Notice that we don't use $\sigma$ here, but $s_x$, which is the standard deviation of the sample. That's because we don't know $\sigma$-- which is the reason why we use $t$. 
+
+
+:::{.rmdimportant}
+College financial aid offices expect students to use summer earnings to help pay for college. But how large are these earnings? One large university studied this question by asking a random sample of 1296 students who had summer jobs how much they earned. The financial aid office separated the responses into two groups based on gender. Here are the data in summary form:
+
+```{r, echo=FALSE}
+college_earnings <- data.frame(group= c("Males", "Females"),
+                               n= c(675, 621),
+                               x= c("$1884.52", "$1360.39"),
+                               sx= c("$1368.37", "$1037.46"))
+
+colnames(college_earnings) <-c("Group", "$n$", "$\\bar{x}$", "$s_x$")
+
+knitr::kable(college_earnings, escape=T)
+
+```
+
+:::
+
+Construct and interpret a 90% confidence interval for the difference between the mean summer earnings of male and female students at this university.
+
+**State:** we want to construct a two-sample $t$-interval with 90% confidence for the difference between the mean summer earnings of male and female students at this university. 
+
+$x_1= 1884.52$ and $x_2= 1360.39$, so $x_1 - x_2 = 524.13$. That means the average difference between male and female summer earnings in our samples was $524.13. 
+
+**Plan:** all conditions from \@ref(two-samp-conditions) should be met.
+
+**Do:** To construct the confidence interval in R, just use the `t.test()` or `tsum.test()` commands again. Since I have summary statistics, I will use `tsum.test()`.
+
+Because you have two variables to test, the `tsum.test()` command differentiates them as `mean.x` and `mean.y`. I will use `x` for males and `y` for females.
+
+```{r, message=FALSE, warning=FALSE}
+library(BSDA)
+tsum.test(mean.x=1884.52,
+          s.x=1368.37,
+          n.x=675,
+          mean.y=1360.39,
+          s.y=1037.46,
+          n.y=621)
+
+```
+
+Notice that the degrees of freedom here are 1249.2. If you were to calculate this by hand, the degrees of freedom would be $n_2-1 = 621-1=620$, because that is the lesser of the two sample sizes. 
+
+**Conclude:** we are 90% confident that the true average difference in summer earnings between males and females at this particular university is between \$324.42 and \$655.84.
+
+
+
+
+## Two Sample T-Test  
+
+:::{.rmdimportant}
+
+Refer to the previous example. Is there a significant difference between the mean earnings of males and females at this university, at the 5% significance level?
+
+:::
+
+
+
+**State:** Conduct a two-sample significance test at $\alpha=0.05$
+
+$x_1= 1884.52$, which is the average summer earnings for males at this university. $x_2= 1360.39$, which is the average summer earnings for females at this university. That means $x_1 - x_2= 524.13$ is the average difference between summer earnings for males versus females at this university.
+
+Since we see that $x_1$ is higher than $x_2$, (males earn more than females), we will use this to construct our alternative hypothesis.
+
+$H_0: x_1 - x_2=0$ There is no difference in average summer earnings between males and females at the university.
+
+$H_a: x_1 - x_2 >0$ There is a difference, and the average summer earnings for males is higher than that for females at this university.
+
+**Plan:** all conditions listed in \@ref(two-samp-conditions) should be met.
+
+**Do:** since we have summary statistics here, use the `tsum.test()`. This time, you must include the parameters `mu=` and `alternative=`, which are your two hypotheses.
+
+```{r, message=FALSE, warning=FALSE}
+library(BSDA)
+tsum.test(mean.x=1884.52,
+          s.x=1368.37,
+          n.x=675,
+          mean.y=1360.39,
+          s.y=1037.46,
+          n.y=621,
+          mu=0,
+          alternative="greater")
+
+```
+
+
+**Conclude:** Since $p = 6.217*10^{-15} \approx 0$, and $p < \alpha$, we reject $H_0$. There is sufficient evidence that the average summer earnings for males is higher than the average summer earnings for females at this university.
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+detach("package:BSDA", unload=TRUE)
+```

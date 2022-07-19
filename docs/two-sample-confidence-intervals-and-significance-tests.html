@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 17 2️⃣ Two Sample Confidence Intervals and Significance Tests | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="Suppose your family is taking a road trip and stops in an unfamiliar town. Your family craves burgers, and asks you to pick a place. Your options are either a local restaurant, or McDonald’s....">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta property="og:title" content="Chapter 17 2️⃣ Two Sample Confidence Intervals and Significance Tests | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Suppose your family is taking a road trip and stops in an unfamiliar town. Your family craves burgers, and asks you to pick a place. Your options are either a local restaurant, or McDonald’s....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 17 2️⃣ Two Sample Confidence Intervals and Significance Tests | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="Suppose your family is taking a road trip and stops in an unfamiliar town. Your family craves burgers, and asks you to pick a place. Your options are either a local restaurant, or McDonald’s....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@18657a9/css/all.min.css" rel="stylesheet" type="text/css">
+<style>
+    .interactive {
+      position: relative;
+    }  
+    .interactive iframe {
+      position: relative;
+      z-index: 100;
+      border: 0;
+      width: 1px;
+      min-width: 100%;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">🏠 Homepage</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">⬇️ Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">🖥 Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> ✨ Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 👀 Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Probability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🎲 Sampling and Probability</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> 📈 Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> 🔮 Linear Regression</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> 🎯 The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
+<li class="book-part">Significance Tests</li>
+<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">15</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
+<li><a class="" href="one-sample-t-test-for-means.html"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></li>
+<li><a class="active" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
+<li><a class="" href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">↕️ Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">😥 Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="two-sample-confidence-intervals-and-significance-tests" class="section level1" number="17">
+<h1>
+<span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests<a class="anchor" aria-label="anchor" href="#two-sample-confidence-intervals-and-significance-tests"><i class="fas fa-link"></i></a>
+</h1>
+<p>Suppose your family is taking a road trip and stops in an unfamiliar town. Your family craves burgers, and asks you to pick a place. Your options are either a local restaurant, or McDonald’s. Which one would you choose?</p>
+<div class="inline-figure"><img src="resources/images/17-Two-Sample-Inference/burger_comparison.png" width="80%" style="display: block; margin: auto;"></div>
+<p>This is a trick question, because the burger itself doesn’t matter. If you go local, how do you know if you’re picking a really good restaurant, or a really bad restaurant? On the other hand, a McDonald’s burger is always going to be the same quality, no matter which location you choose– that’s the allure of the chain restaurant. It means that, for you to compare two burgers with each other, you need to compare the <strong>spread</strong> of each burger’s distribution.</p>
+<p>To create a confidence interval, or run a significance test, or two proportions or two means, the procedure is very similar to their one sample counterparts. However, we need to use a different standard error, by adding up the variances from the two distributions.</p>
+<div id="the-sampling-distribution-for-two-proportions" class="section level2" number="17.1">
+<h2>
+<span class="header-section-number">17.1</span> The Sampling Distribution for Two Proportions<a class="anchor" aria-label="anchor" href="#the-sampling-distribution-for-two-proportions"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p>Choose a SRS of size <span class="math inline">\(n_1\)</span> from Population 1 with a proportion of successes <span class="math inline">\(p_1\)</span>, and second, independent SRS of size <span class="math inline">\(n_2\)</span> from Population 2 with proportion of successes <span class="math inline">\(p_2\)</span>.</p>
+<p>Let <span class="math inline">\(\hat{p}_1\)</span> and <span class="math inline">\(\hat{p}_2\)</span> be the sample proportions derived from Populations 1 and 2, respectively. The sampling distribution of <span class="math inline">\(\hat{p}_{1-2}\)</span> is <strong>approximately Normal</strong>, <strong>centered</strong> at <span class="math inline">\(\hat{p}_{1-2}\)</span>, with <strong>a standard deviation</strong> of</p>
+<p><span class="math display">\[ \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}} \]</span></p>
+</div>
+<p>This is only true when the following conditions are met:</p>
+<div id="two-prop-conditions" class="section level3" number="17.1.1">
+<h3>
+<span class="header-section-number">17.1.1</span> Conditions for Inference of Two Means<a class="anchor" aria-label="anchor" href="#two-prop-conditions"><i class="fas fa-link"></i></a>
+</h3>
+<div class="rmdtip">
+<ul>
+<li><p><strong>Random</strong>: Both samples must be randomly sampled.</p></li>
+<li><p><strong>Normal</strong>: The counts for <span class="math inline">\(n_1\hat{p}_1\)</span>, <span class="math inline">\(n_1(1-\hat{p}_1)\)</span>, <span class="math inline">\(n_2\hat{p}_2\)</span>, and <span class="math inline">\(n_2(1-\hat{p}_2)\)</span> must all be greater than or equal to 10.</p></li>
+<li><p><strong>Independent</strong>: Both samples <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> must be less than 10 percent of their Populations, respectively.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="two-prop-confidence-intervals" class="section level2" number="17.2">
+<h2>
+<span class="header-section-number">17.2</span> Two-Prop Confidence Intervals<a class="anchor" aria-label="anchor" href="#two-prop-confidence-intervals"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p>When the Random, Normal, and Independent conditions are met, an approximate level <em>C</em> confidence interval for <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is</p>
+<p><span class="math display">\[(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}} \]</span></p>
+</div>
+<div class="rmdimportant">
+<p>After narrowly avoiding a lawsuit for selling oversized widgets, the Widget Factory developed two new manufacturing processes. They are to be compared based on the proportion of defective widgets. For process A, a random sample of 765 widgets indicated that 15 were defective. For process B (a much more expensive process), a random sample of 375 widgets indicated that 6 were defective. Construct and interpret a 99% confidence interval for the difference in the population proportions.</p>
+</div>
+<p><strong>State:</strong> we want to construct a 99% confidence interval estimating the true difference of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>, which is the true difference in defective rates in process A versus process B.</p>
+<p><strong>Plan:</strong> all conditions from <a href="two-sample-confidence-intervals-and-significance-tests.html#two-prop-conditions">17.1.1</a> should be met.</p>
+<p><strong>Do:</strong> To construct a two-proportion confidence interval, use the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> command as before. This time, instead of passing one single <code>x</code> and <code>n</code>, pass along a vector of two elements, representing <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> in order.</p>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">6</span><span class="op">)</span>,</span>
+<span>          n<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">765</span>, <span class="fl">375</span><span class="op">)</span>,</span>
+<span>          conf.level <span class="op">=</span> <span class="fl">0.99</span>,</span>
+<span>          correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions without continuity
+##  correction
+## 
+## data:  c(15, 6) out of c(765, 375)
+## X-squared = 0.18, df = 1, p-value = 0.7
+## alternative hypothesis: two.sided
+## 99 percent confidence interval:
+##  -0.01749  0.02471
+## sample estimates:
+##  prop 1  prop 2 
+## 0.01961 0.01600</code></pre>
+<p><strong>Conclude:</strong> We are 99% confident that the true difference between the proportion of defective widgets in process A versus process B is between -1.749% and 2.471%.</p>
+</div>
+<div id="two-prop-z-test" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> Two Prop Z-Test<a class="anchor" aria-label="anchor" href="#two-prop-z-test"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdimportant">
+<p>Refer to the previous widget example. Do these data support the claim that process B produces fewer defective widgets at 1% significance?</p>
+</div>
+<p><strong>State:</strong> Conduct a two proportion z-test at the <span class="math inline">\(\alpha=0.01\)</span> level.</p>
+<p><span class="math inline">\(\hat{p}_1= \frac{15}{765}=0.019607\)</span>, which is the proportion of defective widgets from process A, and <span class="math inline">\(\hat{p}_2= \frac{6}{375}= 0.016\)</span>, which is the proportion of defective widgets from process B. That means <span class="math inline">\(\hat{p}_1 - \hat{p}_2= 0.003607\)</span> is the difference in proportions of defective widgets of process A versus process B.</p>
+<p>Because <span class="math inline">\(\hat{p}_2\)</span> is lower than <span class="math inline">\(\hat{p}_1\)</span>, we suspect that the defective rates for process B is lower than process A. We will use this for our alternative hypothesis.</p>
+<p><span class="math inline">\(H_0: p_1-p_2=0\)</span> There is no difference between the defective rates made with process A versus process B.</p>
+<p><span class="math inline">\(H_a: p_1-p_2 &gt;0\)</span> There is a difference between the defective rates made with process A versus process B. Process A has a higher defective rate than process B, which means the difference between these two should be positive.</p>
+<p><strong>Plan:</strong> The conditions are the same as <a href="two-sample-confidence-intervals-and-significance-tests.html#two-prop-conditions">17.1.1</a></p>
+<p><strong>Do:</strong> To run a two-proportion z-test, just use the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> command again.</p>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">6</span><span class="op">)</span>,</span>
+<span>          n<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">765</span>, <span class="fl">375</span><span class="op">)</span>,</span>
+<span>          correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions without continuity
+##  correction
+## 
+## data:  c(15, 6) out of c(765, 375)
+## X-squared = 0.18, df = 1, p-value = 0.7
+## alternative hypothesis: two.sided
+## 95 percent confidence interval:
+##  -0.01245  0.01966
+## sample estimates:
+##  prop 1  prop 2 
+## 0.01961 0.01600</code></pre>
+<p>Although we don’t need to specify a confidence level here, because we are running a significance test, what we care most about is the p-value and the test statistic.</p>
+<p><strong>Conclude:</strong> Since <span class="math inline">\(p=0.6704\)</span> and <span class="math inline">\(p&gt; \alpha\)</span>, we fail to reject <span class="math inline">\(H_0\)</span>. There is not sufficient evidence that process B produces fewer defective widgets at 1% significance.</p>
+</div>
+<div id="the-sampling-distribution-for-two-means" class="section level2" number="17.4">
+<h2>
+<span class="header-section-number">17.4</span> The Sampling Distribution for Two Means<a class="anchor" aria-label="anchor" href="#the-sampling-distribution-for-two-means"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p>Choose an SRS of size <span class="math inline">\(n_1\)</span> from Population 1 with mean <span class="math inline">\(\mu_1\)</span> and standard deviation <span class="math inline">\(\sigma_1\)</span>, and another independent sample of size <span class="math inline">\(n_2\)</span> from Population 2, with mean <span class="math inline">\(\mu_2\)</span> and standard deviation <span class="math inline">\(\sigma_2\)</span>.</p>
+<p>Let <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> be the sample proportions derived from Populations 1 and 2, respectively. The sampling distribution of <span class="math inline">\(\bar{x}_{1-2}\)</span> is <strong>approximately Normal</strong>, <strong>centered</strong> at <span class="math inline">\(\bar{x}_{1-2}\)</span>, with <strong>a standard deviation</strong> of</p>
+<p><span class="math display">\[ \sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}} \]</span></p>
+</div>
+<p>This is only true when the following conditions are met:</p>
+<div id="two-samp-conditions" class="section level3" number="17.4.1">
+<h3>
+<span class="header-section-number">17.4.1</span> Conditions for Inference of Two Means<a class="anchor" aria-label="anchor" href="#two-samp-conditions"><i class="fas fa-link"></i></a>
+</h3>
+<div class="rmdtip">
+<ul>
+<li><p><strong>Random</strong>: Both samples must be randomly sampled.</p></li>
+<li><p><strong>Normal</strong>: The counts for <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> must all be greater than or equal to 30.</p></li>
+</ul>
+<div class="rmdcaution">
+<p><strong>If they are not</strong>, then you can still pass the Normal condition provided that at least one of the following is true:</p>
+<ul>
+<li><p>Both samples were taken from populations that are approximately Normal.</p></li>
+<li><p>Both sample sizes are <em>greater than 15</em>, and both samples do not show the presence of outliers or strong skewness.</p></li>
+<li><p>Both sample sizes are <em>less than 15</em>, and the data in both samples appears close to Normal, with no outliers or clear skew.</p></li>
+</ul>
+</div>
+<ul>
+<li>
+<strong>Independent</strong>: Both samples <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> must be less than 10 percent of their Populations, respectively.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="two-sample-confidence-interval-for-means" class="section level2" number="17.5">
+<h2>
+<span class="header-section-number">17.5</span> Two-Sample Confidence Interval for Means<a class="anchor" aria-label="anchor" href="#two-sample-confidence-interval-for-means"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdnote">
+<p>When the Random, Normal, and Independent conditions are met, an approximate level <span class="math inline">\(C\)</span> confidence interval for <span class="math inline">\(\bar{x}_1-\bar{x}_2\)</span> is
+<span class="math display">\[\bar{x}_1-\bar{x}_2 \pm t^* \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}  \]</span></p>
+<p>Here, <span class="math inline">\(t^*\)</span> is the critical value for the confidence level C for the distribution with degrees of freedom. To calculate the degrees of freedom, we either use <strong>technology</strong> or <strong>the smaller of <span class="math inline">\(n_1 -1\)</span> and <span class="math inline">\(n_2 -1\)</span></strong>.</p>
+</div>
+<p>Technology tends to give us a more accurate estimate of the degrees of freedom for a combined distribution, with greater degrees of freedom. However, this is difficult to calculate, and requires knowledge of calculus to explain. If you are calculating by hand, you can always use the more conservative estimate, which is the smaller of <span class="math inline">\(n_1 -1\)</span> and <span class="math inline">\(n_2 -1\)</span>. This is a “safer” estimate because it gives you fewer degrees of freedom (and hence more area in the tails of <span class="math inline">\(t\)</span>), but the answer should be close to what you get with technology.</p>
+<p>Notice that we don’t use <span class="math inline">\(\sigma\)</span> here, but <span class="math inline">\(s_x\)</span>, which is the standard deviation of the sample. That’s because we don’t know <span class="math inline">\(\sigma\)</span>– which is the reason why we use <span class="math inline">\(t\)</span>.</p>
+<div class="rmdimportant">
+<p>College financial aid offices expect students to use summer earnings to help pay for college. But how large are these earnings? One large university studied this question by asking a random sample of 1296 students who had summer jobs how much they earned. The financial aid office separated the responses into two groups based on gender. Here are the data in summary form:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(\bar{x}\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(s_x\)</span>
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Males
+</td>
+<td style="text-align:right;">
+675
+</td>
+<td style="text-align:left;">
+$1884.52
+</td>
+<td style="text-align:left;">
+$1368.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Females
+</td>
+<td style="text-align:right;">
+621
+</td>
+<td style="text-align:left;">
+$1360.39
+</td>
+<td style="text-align:left;">
+$1037.46
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Construct and interpret a 90% confidence interval for the difference between the mean summer earnings of male and female students at this university.</p>
+<p><strong>State:</strong> we want to construct a two-sample <span class="math inline">\(t\)</span>-interval with 90% confidence for the difference between the mean summer earnings of male and female students at this university.</p>
+<p><span class="math inline">\(x_1= 1884.52\)</span> and <span class="math inline">\(x_2= 1360.39\)</span>, so <span class="math inline">\(x_1 - x_2 = 524.13\)</span>. That means the average difference between male and female summer earnings in our samples was $524.13.</p>
+<p><strong>Plan:</strong> all conditions from <a href="two-sample-confidence-intervals-and-significance-tests.html#two-samp-conditions">17.4.1</a> should be met.</p>
+<p><strong>Do:</strong> To construct the confidence interval in R, just use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> or <code><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test()</a></code> commands again. Since I have summary statistics, I will use <code><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test()</a></code>.</p>
+<p>Because you have two variables to test, the <code><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test()</a></code> command differentiates them as <code>mean.x</code> and <code>mean.y</code>. I will use <code>x</code> for males and <code>y</code> for females.</p>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/alanarnholt/BSDA">BSDA</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test</a></span><span class="op">(</span>mean.x<span class="op">=</span><span class="fl">1884.52</span>,</span>
+<span>          s.x<span class="op">=</span><span class="fl">1368.37</span>,</span>
+<span>          n.x<span class="op">=</span><span class="fl">675</span>,</span>
+<span>          mean.y<span class="op">=</span><span class="fl">1360.39</span>,</span>
+<span>          s.y<span class="op">=</span><span class="fl">1037.46</span>,</span>
+<span>          n.y<span class="op">=</span><span class="fl">621</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Welch Modified Two-Sample t-Test
+## 
+## data:  Summarized x and y
+## t = 7.8, df = 1249, p-value = 1e-14
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  392.4 655.8
+## sample estimates:
+## mean of x mean of y 
+##      1885      1360</code></pre>
+<p>Notice that the degrees of freedom here are 1249.2. If you were to calculate this by hand, the degrees of freedom would be <span class="math inline">\(n_2-1 = 621-1=620\)</span>, because that is the lesser of the two sample sizes.</p>
+<p><strong>Conclude:</strong> we are 90% confident that the true average difference in summer earnings between males and females at this particular university is between $324.42 and $655.84.</p>
+</div>
+<div id="two-sample-t-test" class="section level2" number="17.6">
+<h2>
+<span class="header-section-number">17.6</span> Two Sample T-Test<a class="anchor" aria-label="anchor" href="#two-sample-t-test"><i class="fas fa-link"></i></a>
+</h2>
+<div class="rmdimportant">
+<p>Refer to the previous example. Is there a significant difference between the mean earnings of males and females at this university, at the 5% significance level?</p>
+</div>
+<p><strong>State:</strong> Conduct a two-sample significance test at <span class="math inline">\(\alpha=0.05\)</span></p>
+<p><span class="math inline">\(x_1= 1884.52\)</span>, which is the average summer earnings for males at this university. <span class="math inline">\(x_2= 1360.39\)</span>, which is the average summer earnings for females at this university. That means <span class="math inline">\(x_1 - x_2= 524.13\)</span> is the average difference between summer earnings for males versus females at this university.</p>
+<p>Since we see that <span class="math inline">\(x_1\)</span> is higher than <span class="math inline">\(x_2\)</span>, (males earn more than females), we will use this to construct our alternative hypothesis.</p>
+<p><span class="math inline">\(H_0: x_1 - x_2=0\)</span> There is no difference in average summer earnings between males and females at the university.</p>
+<p><span class="math inline">\(H_a: x_1 - x_2 &gt;0\)</span> There is a difference, and the average summer earnings for males is higher than that for females at this university.</p>
+<p><strong>Plan:</strong> all conditions listed in <a href="two-sample-confidence-intervals-and-significance-tests.html#two-samp-conditions">17.4.1</a> should be met.</p>
+<p><strong>Do:</strong> since we have summary statistics here, use the <code><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test()</a></code>. This time, you must include the parameters <code>mu=</code> and <code>alternative=</code>, which are your two hypotheses.</p>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/alanarnholt/BSDA">BSDA</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test</a></span><span class="op">(</span>mean.x<span class="op">=</span><span class="fl">1884.52</span>,</span>
+<span>          s.x<span class="op">=</span><span class="fl">1368.37</span>,</span>
+<span>          n.x<span class="op">=</span><span class="fl">675</span>,</span>
+<span>          mean.y<span class="op">=</span><span class="fl">1360.39</span>,</span>
+<span>          s.y<span class="op">=</span><span class="fl">1037.46</span>,</span>
+<span>          n.y<span class="op">=</span><span class="fl">621</span>,</span>
+<span>          mu<span class="op">=</span><span class="fl">0</span>,</span>
+<span>          alternative<span class="op">=</span><span class="st">"greater"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Welch Modified Two-Sample t-Test
+## 
+## data:  Summarized x and y
+## t = 7.8, df = 1249, p-value = 6e-15
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  413.6    NA
+## sample estimates:
+## mean of x mean of y 
+##      1885      1360</code></pre>
+<p><strong>Conclude:</strong> Since <span class="math inline">\(p = 6.217*10^{-15} \approx 0\)</span>, and <span class="math inline">\(p &lt; \alpha\)</span>, we reject <span class="math inline">\(H_0\)</span>. There is sufficient evidence that the average summer earnings for males is higher than the average summer earnings for females at this university.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="one-sample-t-test-for-means.html"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></div>
+<div class="next"><a href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#two-sample-confidence-intervals-and-significance-tests"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
+<li>
+<a class="nav-link" href="#the-sampling-distribution-for-two-proportions"><span class="header-section-number">17.1</span> The Sampling Distribution for Two Proportions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#two-prop-conditions"><span class="header-section-number">17.1.1</span> Conditions for Inference of Two Means</a></li></ul>
+</li>
+<li><a class="nav-link" href="#two-prop-confidence-intervals"><span class="header-section-number">17.2</span> Two-Prop Confidence Intervals</a></li>
+<li><a class="nav-link" href="#two-prop-z-test"><span class="header-section-number">17.3</span> Two Prop Z-Test</a></li>
+<li>
+<a class="nav-link" href="#the-sampling-distribution-for-two-means"><span class="header-section-number">17.4</span> The Sampling Distribution for Two Means</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#two-samp-conditions"><span class="header-section-number">17.4.1</span> Conditions for Inference of Two Means</a></li></ul>
+</li>
+<li><a class="nav-link" href="#two-sample-confidence-interval-for-means"><span class="header-section-number">17.5</span> Two-Sample Confidence Interval for Means</a></li>
+<li><a class="nav-link" href="#two-sample-t-test"><span class="header-section-number">17.6</span> Two Sample T-Test</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/17-Two-Sample-Inference.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/17-Two-Sample-Inference.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <font size="+2"><strong>Mr. Ng</strong></font>
+        <br>📍 Hopper Commons, Room 229
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+          <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+          <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
+        </div>
+        <div class="col-12 col-md-6 mt-3">
+          <br><strong>Other Links:</strong>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 19 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+</div>
+
+</div>
+</div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

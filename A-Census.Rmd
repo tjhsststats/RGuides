@@ -1,6 +1,6 @@
 # (PART\*) Miscellaneous {.unnumbered}
 
-# Downloading Data from the Census Bureau {-}
+# ↕️ Downloading Data from the Census Bureau {-}
 
 The Census Bureau is one of the richest sources of data about Americans. Best of all, it's free! 
 

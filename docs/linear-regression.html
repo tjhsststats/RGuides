@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 10 Linear Regression | 📊 TJ RS1 with R</title>
+<title>Chapter 10 🔮 Linear Regression | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="99% of the time in Stats, you’re not just looking for an association. You want a regression line to create a linear model. A regression line summarizes the relationship between the two variables,...">
 <meta name="generator" content="bookdown 0.27.3 with bs4_book()">
-<meta property="og:title" content="Chapter 10 Linear Regression | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 10 🔮 Linear Regression | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="99% of the time in Stats, you’re not just looking for an association. You want a regression line to create a linear model. A regression line summarizes the relationship between the two variables,...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 10 Linear Regression | 📊 TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 10 🔮 Linear Regression | 📊 TJ RS1 with R">
 <meta name="twitter:description" content="99% of the time in Stats, you’re not just looking for an association. You want a regression line to create a linear model. A regression line summarizes the relationship between the two variables,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -102,26 +102,26 @@
 <li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
 <li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 📈 Visualizing One-Variable Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 👀 Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Probability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🧮 Sampling and Probability</a></li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🎲 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span>  Scatterplots and Correlation</a></li>
-<li><a class="active" href="linear-regression.html"><span class="header-section-number">10</span> Linear Regression</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> 📈 Scatterplots and Correlation</a></li>
+<li><a class="active" href="linear-regression.html"><span class="header-section-number">10</span> 🔮 Linear Regression</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
 <li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
-<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> The Central Limit Theorem</a></li>
-<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> One Proportion Z-Interval for \(\hat{p}\)</a></li>
-<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> One Sample t-Interval for \(\mu\)</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> 🎯 The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="one-proportion-z-test.html"><span class="header-section-number">15</span> One Proportion Z-Test</a></li>
-<li><a class="" href="one-sample-t-test.html"><span class="header-section-number">16</span> One-Sample \(t\)-test</a></li>
-<li><a class="" href="intro-to-two-sample-t-tests.html"><span class="header-section-number">17</span> Intro to Two-Sample T-Tests</a></li>
-<li><a class="" href="intro-to-anova-analysis.html"><span class="header-section-number">18</span> Intro to ANOVA Analysis</a></li>
+<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">15</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
+<li><a class="" href="one-sample-t-test-for-means.html"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></li>
+<li><a class="" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
+<li><a class="" href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="downloading-data-from-the-census-bureau.html">Downloading Data from the Census Bureau</a></li>
-<li><a class="" href="deciphering-common-r-errors.html">Deciphering Common R Errors</a></li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">↕️ Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">😥 Deciphering Common R Errors</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -132,7 +132,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="linear-regression" class="section level1" number="10">
 <h1>
-<span class="header-section-number">10</span> Linear Regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> 🔮 Linear Regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
 </h1>
 <p>99% of the time in Stats, you’re not just looking for an association. You want a <strong>regression line</strong> to create a linear model.</p>
 <p>A <strong>regression line</strong> summarizes the relationship between the two variables, but only in a specific setting: when one of the variables helps explain or predict the other. <em>Regression, unlike correlation, requires that we have an explanatory variable and a response variable.</em></p>
@@ -204,8 +204,7 @@ FIGURE 10.2: Resdial Plot for the Orange Tree linear model, stored as reg_line
 ## (Intercept) 17.39965    8.62266    2.02    0.052 .  
 ## Orange$age   0.10677    0.00828   12.90  1.9e-14 ***
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 23.7 on 33 degrees of freedom
 ## Multiple R-squared:  0.835,  Adjusted R-squared:  0.83 
@@ -261,12 +260,12 @@ FIGURE 10.4: All four of Anscombe’s plots. Taken from <a href="https://www.shi
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="scatterplots-and-correlation.html"><span class="header-section-number">9</span>  Scatterplots and Correlation</a></div>
+<div class="prev"><a href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> 📈 Scatterplots and Correlation</a></div>
 <div class="next"><a href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#linear-regression"><span class="header-section-number">10</span> Linear Regression</a></li>
+<li><a class="nav-link" href="#linear-regression"><span class="header-section-number">10</span> 🔮 Linear Regression</a></li>
 <li><a class="nav-link" href="#create-a-residual-plot"><span class="header-section-number">10.1</span> Create a Residual Plot</a></li>
 <li><a class="nav-link" href="#print-regression-output"><span class="header-section-number">10.2</span> Print Regression Output</a></li>
 <li><a class="nav-link" href="#regression-wisdom"><span class="header-section-number">10.3</span> Regression Wisdom</a></li>
@@ -296,7 +295,7 @@ FIGURE 10.4: All four of Anscombe’s plots. Taken from <a href="https://www.shi
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 15 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 19 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

@@ -1,6 +1,6 @@
 # (PART\*) Two-Variable Data: Scatterplots and Regression {.unnumbered}
 
-# <i class="fa-solid fa-chart-scatter"></i> Scatterplots and Correlation
+# 📈 Scatterplots and Correlation
 
 ## Interpreting Scatterplots
 

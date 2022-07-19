@@ -1,4 +1,4 @@
-# One Proportion Z-Interval for $\hat{p}$
+# 1️⃣『』 One Proportion Z-Interval for $\hat{p}$
 
 ::: {style="display: grid; grid-template-columns: 6fr 1fr; grid-column-gap: 10px;"}
 

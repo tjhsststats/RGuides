@@ -1,4 +1,4 @@
-# One-Sample $t$-test
+# 1️⃣ One-Sample t-test for Means
 
 A one-sample $t$ test is very similar to the procedure for a one-sample $t$-interval. We still use **State, Plan, Do**, and **Conclude**, and we similarly derive a $p$-value at the end to make a decision about the claim. 
 

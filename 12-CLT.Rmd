@@ -1,4 +1,4 @@
-# The Central Limit Theorem
+# 🎯 The Central Limit Theorem
 
 ## Review: Parameter vs. Statistic
 

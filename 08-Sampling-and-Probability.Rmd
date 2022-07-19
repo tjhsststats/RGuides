@@ -1,6 +1,6 @@
 # (PART\*) Sampling and Probability {.unnumbered}
 
-# 🧮 Sampling and Probability
+# 🎲 Sampling and Probability
 
 ## An overview on probability
 

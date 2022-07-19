@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 18 One-Way ANOVA | 📊 TJ RS1 with R</title>
+<meta name="author" content="Mr. Ng">
+<meta name="description" content="18.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on...">
+<meta name="generator" content="bookdown 0.27.3 with bs4_book()">
+<meta property="og:title" content="Chapter 18 One-Way ANOVA | 📊 TJ RS1 with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="18.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 18 One-Way ANOVA | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="18.1 Comparing Several means: Hummingbirds and Tropical Flowers Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower Heliconia on...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="resources/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon-16x16.png">
+<link rel="manifest" href="resources/images/site.webmanifest">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<style>
+    #content {
+        font-size: 0.98rem;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js" type="text/javascript"></script><link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@18657a9/css/all.min.css" rel="stylesheet" type="text/css">
+<style>
+    .interactive {
+      position: relative;
+    }  
+    .interactive iframe {
+      position: relative;
+      z-index: 100;
+      border: 0;
+      width: 1px;
+      min-width: 100%;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">📊 TJ RS1 with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">🏠 Homepage</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="installing-r-and-rstudio.html">⬇️ Installing R and RStudio</a></li>
+<li><a class="" href="interacting-with-r-studio.html">🖥 Interacting with R Studio</a></li>
+<li class="book-part">Working with Data</li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
+<li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
+<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> ✨ Creating New Data</a></li>
+<li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
+<li class="book-part">Presenting Data</li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 👀 Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
+<li class="book-part">Sampling and Probability</li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🎲 Sampling and Probability</a></li>
+<li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> 📈 Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> 🔮 Linear Regression</a></li>
+<li class="book-part">Sampling Distributions and Confidence Intervals</li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> 🎯 The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
+<li class="book-part">Significance Tests</li>
+<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">15</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
+<li><a class="" href="one-sample-t-test-for-means.html"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></li>
+<li><a class="" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
+<li><a class="active" href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">↕️ Downloading Data from the Census Bureau</a></li>
+<li><a class="" href="deciphering-common-r-errors.html">😥 Deciphering Common R Errors</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/kaisamng/RGuides">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="one-way-anova" class="section level1" number="18">
+<h1>
+<span class="header-section-number">18</span> One-Way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"><i class="fas fa-link"></i></a>
+</h1>
+<div id="comparing-several-means-hummingbirds-and-tropical-flowers" class="section level2" number="18.1">
+<h2>
+<span class="header-section-number">18.1</span> Comparing Several means: Hummingbirds and Tropical Flowers<a class="anchor" aria-label="anchor" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ethan Temeles and W. John Kress of Amherst College studied the relationship between varieties of the tropical flower <em>Heliconia</em> on the island of Dominica and the different species of hummingbirds that pollinate the flowers. Over time, the researchers believe, the lengths of the flowers and the forms of the hummingbirds’ beaks have evolved to match each other. If that is true, flower varieties pollinated by different hummingbird species should have distinct distributions of length.</p>
+<p>The table below gives length measurements (in millimeters) for random samples of three varieties of <em>Heliconia</em>, each pollinated by a different species of hummingbird. Do the three varieties display distinct distributions of length? In particular, do the mean lengths of their flowers differ?</p>
+<p>For the flower data, I made a CSV file from the textbook data, and then imported it into R.</p>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Flowers</span><span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"resources/data/Flowers.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers</span><span class="op">)</span> <span class="co">#View the Flowers Dataset</span></span></code></pre></div>
+<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-227">TABLE 18.1: </span>Dominica Flowers
+</caption>
+<thead><tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+H. bihai
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+H. caribea red
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+H. caribea yellow
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+47.12
+</td>
+<td style="text-align:right;">
+41.90
+</td>
+<td style="text-align:right;">
+36.78
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.75
+</td>
+<td style="text-align:right;">
+42.01
+</td>
+<td style="text-align:right;">
+37.02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.81
+</td>
+<td style="text-align:right;">
+41.93
+</td>
+<td style="text-align:right;">
+36.52
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47.12
+</td>
+<td style="text-align:right;">
+43.09
+</td>
+<td style="text-align:right;">
+36.11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.67
+</td>
+<td style="text-align:right;">
+41.47
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47.43
+</td>
+<td style="text-align:right;">
+41.69
+</td>
+<td style="text-align:right;">
+35.45
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.44
+</td>
+<td style="text-align:right;">
+39.78
+</td>
+<td style="text-align:right;">
+38.13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.64
+</td>
+<td style="text-align:right;">
+40.57
+</td>
+<td style="text-align:right;">
+37.10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.07
+</td>
+<td style="text-align:right;">
+39.63
+</td>
+<td style="text-align:right;">
+35.17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.34
+</td>
+<td style="text-align:right;">
+42.18
+</td>
+<td style="text-align:right;">
+36.82
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.15
+</td>
+<td style="text-align:right;">
+40.66
+</td>
+<td style="text-align:right;">
+36.66
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50.26
+</td>
+<td style="text-align:right;">
+37.87
+</td>
+<td style="text-align:right;">
+35.68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50.12
+</td>
+<td style="text-align:right;">
+39.16
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.34
+</td>
+<td style="text-align:right;">
+37.40
+</td>
+<td style="text-align:right;">
+34.57
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46.94
+</td>
+<td style="text-align:right;">
+38.20
+</td>
+<td style="text-align:right;">
+34.63
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.36
+</td>
+<td style="text-align:right;">
+38.07
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.10
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+37.97
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.79
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.23
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.87
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+37.78
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+38.01
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>In order for R to process the data, I need to convert the data from “wide” format to “long” format. I also need to let R know that each species should be treated as a “factor,” which means that it is a type of categorical variable (so I can sort out data based on Species) later on.</p>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Flowers_long</span><span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">Flowers</span>, <span class="st">"Species"</span>, <span class="st">"Length"</span>, factor_key<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">Flowers_long</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></span></code></pre></div>
+<div class="table" style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:500px;  font-size: 10px; margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-229">TABLE 18.2: </span>Dominica Flowers, Long-Form Data
+</caption>
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Species
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Length
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+50.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+50.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+46.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+48.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+42.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+43.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+41.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+40.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+42.18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+40.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+37.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+38.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+37.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+35.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+38.13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+37.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+35.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+35.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+34.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+34.63
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Let’s follow the strategy we learned way back in Unit 1: use graphs and numerical summaries to compare the three distributions of flower length. Here are the summary statistics we will use in further analysis:</p>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mean_and_sd</span><span class="op">&lt;-</span> <span class="va">Flowers_long</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span>, </span>
+<span>            sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">Length</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mean_and_sd</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.60
+</td>
+<td style="text-align:right;">
+1.2129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.71
+</td>
+<td style="text-align:right;">
+1.7988
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.18
+</td>
+<td style="text-align:right;">
+0.9753
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>What do we see? The three varieties differ so much in flower length that there is little overlap among them. In particular, the flowers of bihai are longer than either red or yellow. The mean lengths are 47.6 mm for H. bihai, 39.7 mm for H. caribaea red, and 36.2 mm for H. caribaea yellow. Are these observed differences in sample means statistically significant? We must develop a test for comparing more than two population means.</p>
+</div>
+<div id="the-f-test" class="section level2" number="18.2">
+<h2>
+<span class="header-section-number">18.2</span> The F Test<a class="anchor" aria-label="anchor" href="#the-f-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>We want to test the null hypothesis that there are no differences among the mean lengths for the three populations of flowers:</p>
+<p><span class="math inline">\(H_0:\mu_1 =\mu_2 =\mu_3\)</span></p>
+<p>The alternative hypothesis is that there is some difference. That is, not all three population means are equal:</p>
+<p><span class="math inline">\(H_a\)</span> : not all of <span class="math inline">\(\mu_1, \mu_2, \text{ and }\mu_3\)</span> are equal</p>
+<p>The alternative hypothesis is no longer one-sided or two-sided. It is “many-sided” because it allows any relationship other than “all three equal.”</p>
+<p>For example, Ha includes the case in which m2 = m3 but m1 has a different value.</p>
+<p>When the conditions for inference are met, the appropriate significance test for comparing means is the analysis of variance F test. Analysis of variance is usually abbreviated as ANOVA.</p>
+</div>
+<div id="check-for-conditions" class="section level2" number="18.3">
+<h2>
+<span class="header-section-number">18.3</span> Check for Conditions<a class="anchor" aria-label="anchor" href="#check-for-conditions"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that we have stated our Null and Alternative Hypotheses, we can check for the four conditions required for One-Way ANOVA:</p>
+<div class="rmdnote">
+<ul>
+<li><p><strong>Random</strong>: Researchers took separate random samples of 16 bihaii, 23 red, and 15 Heliconia flowers.</p></li>
+<li><p><strong>Normal</strong>: We entered the data into R and made side by side boxplots. Although the distributions for the bihai and red varieties show some right-skewness, we don’t see nay strong skewness or outliers that would prevent the use of one-way ANOVA.</p></li>
+</ul>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Flowers_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Length</span>, y<span class="op">=</span><span class="va">Species</span>, fill<span class="op">=</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"Flower Lengths from Textbook"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span> <span class="co">#This overlays a jittered dotplot on top of the boxplot.</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/boxplot%20Flowers-1.png" width="100%" style="display: block; margin: auto;"></div>
+<ul>
+<li><p><strong>Independent</strong>: Researchers took independent samples of bihai, red, and yellow Heliconia. because sampling without replacement was used, there must be at least 10(16) = 160 bihai, 10(23) = 230 red, and 10(15) = 150 yellow flowers. This is pretty safe to assume.</p></li>
+<li><p><strong>Same SD</strong>: In a one-way ANOVA, you must check whether the largest sample SD divided by the smallest SD has a ratio less than 2. Our sample standard deviations are:</p></li>
+</ul>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+H. bihai
+</td>
+<td style="text-align:right;">
+47.60
+</td>
+<td style="text-align:right;">
+1.2129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea red
+</td>
+<td style="text-align:right;">
+39.71
+</td>
+<td style="text-align:right;">
+1.7988
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. caribea yellow
+</td>
+<td style="text-align:right;">
+36.18
+</td>
+<td style="text-align:right;">
+0.9753
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>These standard deviations satisfy our rule of thumb that (largest SD)/ (smallest SD) is less than 2, so we can proceed.</p>
+</div>
+<p>Since we have satifised all 4 conditions, we can safely use ANOVA to compare the mean lengths of the three populations.</p>
+</div>
+<div id="the-f-distribution" class="section level2" number="18.4">
+<h2>
+<span class="header-section-number">18.4</span> The F Distribution<a class="anchor" aria-label="anchor" href="#the-f-distribution"><i class="fas fa-link"></i></a>
+</h2>
+<p>The variances for <em>three</em> populations is naturally larger than the variance of two populations. Just like how two populations naturally have a larger variance, and thus requires the t-distribution (which has more “area” under the tails), we need to use a different distribution that takes into account this larger variance (which has even more “area” under the tails. This distribution is called the <strong>F-Distribution</strong>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-232"></span>
+<img src="resources/images/18-ANOVA-Analysis/F_Dist.png" alt="The F-Distribution" width="35%"><p class="caption">
+FIGURE 18.1: The F-Distribution
+</p>
+</div>
+<p>The <strong><em>F</em>-distributions</strong> are a family of right-skewed distributions that take only values greater than 0. Above are some possible shapes. A specific F distribution is determined by the degrees of freedom of the numerator and denominator of the F statistic. When describing an F distribution, always give the numerator degrees of freedom first. Our notation will be F (df1, df2) for the F distribution with df1 degrees of freedom in the numerator and df2 degrees of freedom in the denominator. <em>Interchanging the degrees of freedom changes the distribution, so the order is important.</em></p>
+<div id="finding-the-degrees-of-freedom-for-f" class="section level3" number="18.4.1">
+<h3>
+<span class="header-section-number">18.4.1</span> Finding the Degrees of Freedom for F<a class="anchor" aria-label="anchor" href="#finding-the-degrees-of-freedom-for-f"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the two earlier examples, we compared the mean lengths for three varieties of flowers,so k=3.The three sample sizes are n1 =16,n2 =23,and n3 =15. The total number of observations is therefore N = 16 + 23 + 15 = 54. The ANOVA F test has numerator degrees of freedom <span class="math display">\[k - 1 = 3 - 1 = 2\]</span> and denominator degrees of freedom <span class="math display">\[N - k = 54 - 3 = 51\]</span>.</p>
+<div class="inline-figure"><img src="resources/images/18-ANOVA-Analysis/F_Dist_Overview.png" width="55%" style="display: block; margin: auto;"></div>
+</div>
+<div id="understanding-the-f-statistic" class="section level3" number="18.4.2">
+<h3>
+<span class="header-section-number">18.4.2</span> Understanding the F Statistic<a class="anchor" aria-label="anchor" href="#understanding-the-f-statistic"><i class="fas fa-link"></i></a>
+</h3>
+<p>Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the distance the statistic is away from our Null Hypothesis. This distance is called the F Statistic.</p>
+<p>The F Statistic is calculated by doing:</p>
+<p><span class="math display">\[ F= \frac{\text{variation among the sample means}}{\text{variation among individuals within the same sample}} \]</span></p>
+<p>Specifically, the variation is calculated by dividing the <em>Mean Square for Groups</em> by the <em>Mean Square for Error</em>. The statistic is reproduced below, but you should know that you’d never have to do this by hand– R will do it all for you.</p>
+<div class="inline-figure"><img src="resources/images/18-ANOVA-Analysis/ANOVA_F_Test.png" width="65%" style="display: block; margin: auto;"></div>
+</div>
+<div id="calculate-the-f-statistic" class="section level3" number="18.4.3">
+<h3>
+<span class="header-section-number">18.4.3</span> Calculate the F Statistic<a class="anchor" aria-label="anchor" href="#calculate-the-f-statistic"><i class="fas fa-link"></i></a>
+</h3>
+<p>Just like we had a test statistic in a two-sample t-test, we need something similar to tell us the <em>distance</em> the statistic is away from our Null Hypothesis. This distance is called the F Statistic.</p>
+<p>The F Statistic is calculated by doing:</p>
+</div>
+</div>
+<div id="conducting-the-one-way-anova" class="section level2" number="18.5">
+<h2>
+<span class="header-section-number">18.5</span> Conducting the one-way ANOVA<a class="anchor" aria-label="anchor" href="#conducting-the-one-way-anova"><i class="fas fa-link"></i></a>
+</h2>
+<p>Of course, the previous pages gave you a <em>very</em> brief background of a one-way ANOVA test.</p>
+<p>It turns out that conducting the test itself in R is very easy– R even calculates the degrees of freedom for you.</p>
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Flowers_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span></span>
+<span><span class="va">anova.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">Length</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">Flowers_long</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova.test</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Species      2   1083     541     259 &lt;2e-16 ***
+## Residuals   51    107       2                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther <em>is</em> a significant difference between the three species.</p>
+</div>
+<div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="18.6">
+<h2>
+<span class="header-section-number">18.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons<a class="anchor" aria-label="anchor" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><i class="fas fa-link"></i></a>
+</h2>
+<p>Knowing that there is a difference is often not enough– what if you want to know exactly <em>which</em> means were significantly different from each other? In this case, we’d have to conduct a two-sample t-test for every possible two means that we have, which could be irritating, especially if we are comparing many means with each other.</p>
+<p>This is where a Tukey Post-Hoc Pairwise Comparison comes into play. The name sounds scary, but the following is true:</p>
+<ul>
+<li><p>A guy named Tukey created this method.</p></li>
+<li><p>“Post-Hoc” means “after the fact” in Latin. After knowing the fact that there is a difference among all three means from a one-way ANOVA, you can perform this procedure.</p></li>
+<li><p>“Pairwise Comparision” means you compare two things with each other.</p></li>
+</ul>
+<p>To perform the pairwise comparison, run the <em>TukeyHSD()</em> command on your anova.test model.</p>
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conf.level<span class="op">=</span><span class="fl">.95</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = Length ~ Species, data = na.omit(Flowers_long))
+## 
+## $Species
+##                                     diff     lwr     upr p adj
+## H. caribea red-H. bihai           -7.886  -9.022  -6.750     0
+## H. caribea yellow-H. bihai       -11.417 -12.672 -10.163     0
+## H. caribea yellow-H. caribea red  -3.531  -4.689  -2.373     0</code></pre>
+<p>You can also plot these results, as shown below:</p>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Margins will spill over, so you need to adjust these</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">13</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova.test</span>, conflevel<span class="op">=</span><span class="fl">.95</span><span class="op">)</span>, las<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-237-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>Notice that the x-axis doesn’t even include 0– our pairwise comparisons illustrate that all of the species are significantly different from each other in terms of mean length. Notice that none of the confidence intervals include 0 (what does that mean?).</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></div>
+<div class="next"><a href="downloading-data-from-the-census-bureau.html">↕️ Downloading Data from the Census Bureau</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#one-way-anova"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
+<li><a class="nav-link" href="#comparing-several-means-hummingbirds-and-tropical-flowers"><span class="header-section-number">18.1</span> Comparing Several means: Hummingbirds and Tropical Flowers</a></li>
+<li><a class="nav-link" href="#the-f-test"><span class="header-section-number">18.2</span> The F Test</a></li>
+<li><a class="nav-link" href="#check-for-conditions"><span class="header-section-number">18.3</span> Check for Conditions</a></li>
+<li>
+<a class="nav-link" href="#the-f-distribution"><span class="header-section-number">18.4</span> The F Distribution</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#finding-the-degrees-of-freedom-for-f"><span class="header-section-number">18.4.1</span> Finding the Degrees of Freedom for F</a></li>
+<li><a class="nav-link" href="#understanding-the-f-statistic"><span class="header-section-number">18.4.2</span> Understanding the F Statistic</a></li>
+<li><a class="nav-link" href="#calculate-the-f-statistic"><span class="header-section-number">18.4.3</span> Calculate the F Statistic</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#conducting-the-one-way-anova"><span class="header-section-number">18.5</span> Conducting the one-way ANOVA</a></li>
+<li><a class="nav-link" href="#conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons"><span class="header-section-number">18.6</span> Conclude Pt. 2: Creating Tukey Post-Hoc Pairwise Comparisons</a></li>
+</ul>
+      <div class="book-extra" hidden>
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/kaisamng/RGuides/blob/main/18-ANOVA-Analysis.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/kaisamng/RGuides/edit/main/18-ANOVA-Analysis.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <font size="+2"><strong>Mr. Ng</strong></font>
+        <br>📍 Hopper Commons, Room 229
+        <br><img style="vertical-align:middle; filter: invert(1); height: 1em; padding-right: 5px;" src="https://tjhsst.fcps.edu/sites/default/files/TJ%20LogoTransparent.png"><a class="text-light" href="https://tjhsst.fcps.edu" target="_blank" rel="noopener">Thomas Jefferson High School for Science and Technology</a>
+          <br><strong>✉️ Email: </strong><a class="text-light" href="mailto:kng@fcps.edu"> kng@fcps.edu (before 5 PM please)</a> 
+          <br><strong> 🕒 Office Hours:</strong> Fridays, 8A and 8B
+        </div>
+        <div class="col-12 col-md-6 mt-3">
+          <br><strong>Other Links:</strong>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
+          <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 19 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+</div>
+
+</div>
+</div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
