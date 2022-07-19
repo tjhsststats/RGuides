@@ -27,7 +27,7 @@ fig:unnamed-chunk-200
 tab:unnamed-chunk-227
 tab:unnamed-chunk-229
 fig:unnamed-chunk-232
-tab:unnamed-chunk-247
+tab:unnamed-chunk-255
 vectors
 basic-commands
 vector-overview
@@ -173,3 +173,5 @@ understanding-the-f-statistic
 calculate-the-f-statistic
 conducting-the-one-way-anova
 conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons
+run-a-two-sample-t-test.
+graph-the-t-distribution-and-test-statistic.

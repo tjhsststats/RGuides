@@ -20,8 +20,9 @@ rmd_files:
     "16-One-Samp-T-Test.Rmd",
     "17-Two-Sample-Inference.Rmd",
     "18-ANOVA-Analysis.Rmd",
-    "A-Census.Rmd",
     "Errors.Rmd",
+    "B-Data-Wrangling.Rmd",
+    "A-Census.Rmd",
     "references.Rmd", # Must have comma after last entry
   ]
 

@@ -8,29 +8,29 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
 
 ~~1.  Getting Started~~
 
-    A.  Installing R and R Studio
+~~    A.  Installing R and R Studio~~
 
-    B.  Basic R Commands
+~~    B.  Basic R Commands~~
 
-        i.  Performing Basic Calculations
+~~        i.  Performing Basic Calculations~~
 
-        ii. Storing data and variables by name
+~~        ii. Storing data and variables by name~~
 
-        iii. Storing a vector
+~~        iii. Storing a vector~~
 
-        iv. Concatenating Vectors
+~~        iv. Concatenating Vectors~~
 
-    C.  Creating Your Own Dataframe
+~~    C.  Creating Your Own Dataframe~~
 
-    D.  Loading Data from Excel or CSV
+~~    D.  Loading Data from Excel or CSV~~
 
 ~~2.  Summarizing Data~~
 
-    A. Data Visualization using Base R
+~~    A. Data Visualization using Base R~~
 
 ~~3. Sampling and Probability~~
     
-    A. Creating Simulations
+~~    A. Creating Simulations~~
 
 ~~4. Linear Regression~~
     
@@ -38,13 +38,13 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
 
 ~~6. Confidence Intervals~~
 
-7. Significance Testing
+~~7. Significance Testing~~
 
-    A. One Sample Z and T Testing
+~~    A. One Sample Z and T Testing~~
     
-    B. Two Sample Z and T Testing
+~~    B. Two Sample Z and T Testing~~
 
-    C. One-Way ANOVA
+~~    C. One-Way ANOVA~~
     
 8. Beyond
 
@@ -56,4 +56,4 @@ It is silly and maybe a little too ambitious, but hopefully this will serve as a
     
     D. gganimate
     
-    E. Downloading Census Bureau Data
+~~    E. Downloading Census Bureau Data~~

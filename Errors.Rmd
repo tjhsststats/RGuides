@@ -1,3 +1,5 @@
+# (PART\*) Miscellaneous {.unnumbered}
+
 # 😥 Deciphering Common R Errors {-}
 
 *Adapted from @usedtor2016 *

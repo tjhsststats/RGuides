@@ -123,11 +123,9 @@ knitr::include_graphics("resources/images/13-One-Prop-CIs/35CI.gif")
 
 ## Confidence Intervals of One Proportion
 
-Let's do an example problem.
-
 ::: {.rmdnote}
 
-Sleep Awareness Week begins in the spring with the release of the National Sleep Foundation’s annual poll of U.S. sleep habits and ends with the beginning of daylight savings time, when most people lose an hour of sleep. In the foundation’s simple random sample of 1029 U.S. adults, 48% reported that they “often or always” got enough sleep during the last 7 nights.
+**Example:**Sleep Awareness Week begins in the spring with the release of the National Sleep Foundation’s annual poll of U.S. sleep habits and ends with the beginning of daylight savings time, when most people lose an hour of sleep. In the foundation’s simple random sample of 1029 U.S. adults, 48% reported that they “often or always” got enough sleep during the last 7 nights.
 
 Construct a 98% confidence interval for the proportion of adults that "often or always" got enough sleep during the last 7 nights.
 

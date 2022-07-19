@@ -4,7 +4,7 @@ A one-sample $t$ test is very similar to the procedure for a one-sample $t$-inte
 
 :::{.rmdimportant}
 
-A manufacturer of bolts claims that the mean length is 4.5 inches.  A random sample of 35 bolts yields a mean of 4.525 inches and a standard deviation of 0.05 inches.  Does the data provide sufficient evidence to indicate that the mean length is not 4.5 inches?  Use a significance level $\alpha=0.01$.
+**Example:** A manufacturer of bolts claims that the mean length is 4.5 inches.  A random sample of 35 bolts yields a mean of 4.525 inches and a standard deviation of 0.05 inches.  Does the data provide sufficient evidence to indicate that the mean length is not 4.5 inches?  Use a significance level $\alpha=0.01$.
 
 :::
 

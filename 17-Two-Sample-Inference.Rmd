@@ -52,7 +52,7 @@ $$(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}
 
 :::{.rmdimportant}
 
-After narrowly avoiding a lawsuit for selling oversized widgets, the Widget Factory developed two new manufacturing processes.  They are to be compared based on the proportion of defective widgets.  For process A, a random sample of 765 widgets indicated that 15 were defective.  For process B (a much more expensive process), a random sample of 375 widgets indicated that 6 were defective.  Construct and interpret a 99% confidence interval for the difference in the population proportions. 
+**Example:** After narrowly avoiding a lawsuit for selling oversized widgets, the Widget Factory developed two new manufacturing processes.  They are to be compared based on the proportion of defective widgets.  For process A, a random sample of 765 widgets indicated that 15 were defective.  For process B (a much more expensive process), a random sample of 375 widgets indicated that 6 were defective.  Construct and interpret a 99% confidence interval for the difference in the population proportions. 
 
 :::
 
@@ -77,7 +77,7 @@ prop.test(x=c(15, 6),
 
 :::{.rmdimportant}
 
-Refer to the previous widget example. Do these data support the claim that process B produces fewer defective widgets at 1% significance?
+**Example:** Refer to the previous widget example. Do these data support the claim that process B produces fewer defective widgets at 1% significance?
 
 :::
 
@@ -168,7 +168,7 @@ Notice that we don't use $\sigma$ here, but $s_x$, which is the standard deviati
 
 
 :::{.rmdimportant}
-College financial aid offices expect students to use summer earnings to help pay for college. But how large are these earnings? One large university studied this question by asking a random sample of 1296 students who had summer jobs how much they earned. The financial aid office separated the responses into two groups based on gender. Here are the data in summary form:
+**Example:** College financial aid offices expect students to use summer earnings to help pay for college. But how large are these earnings? One large university studied this question by asking a random sample of 1296 students who had summer jobs how much they earned. The financial aid office separated the responses into two groups based on gender. Here are the data in summary form:
 
 ```{r, echo=FALSE}
 college_earnings <- data.frame(group= c("Males", "Females"),
@@ -218,7 +218,7 @@ Notice that the degrees of freedom here are 1249.2. If you were to calculate thi
 
 :::{.rmdimportant}
 
-Refer to the previous example. Is there a significant difference between the mean earnings of males and females at this university, at the 5% significance level?
+**Example:** Refer to the previous example. Is there a significant difference between the mean earnings of males and females at this university, at the 5% significance level?
 
 :::
 
@@ -259,3 +259,8 @@ tsum.test(mean.x=1884.52,
 ```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 detach("package:BSDA", unload=TRUE)
 ```
+
+
+
+
+

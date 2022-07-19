@@ -1,6 +1,38 @@
-# Intro to Two-Sample T-Tests
+# Wrangling Data {-}
 
-## Loading Data. 
+:::{.rmd2fr1fr}
+<div>
+No, not the kind of wrangling on the left (although that IS the original definition of "wrangling").
+
+When we talk about data wrangling, we are speaking of the process of transforming data so that it becomes easier for us to analyze and process. Even though data exists everywhere and is easily available, most of the time, it will not be given to you in a format that is easily analyzable. 
+</div>
+
+<div>
+
+```{r, echo=FALSE}
+knitr::include_graphics("resources/images/B-Data-Wrangling/bull_wrangling.png")
+```
+
+</div>
+
+:::
+
+Some examples of this include:
+
+- The data is in the wrong format-- like being in Fahrenheit for temperature instead of Celsius.
+
+- The data has `NA`s or is missing.
+
+- The data has typos and errors. 
+
+- The data is in wide format and you need long format data, or vice versa. 
+
+In all cases, you want to process the data so that it is usable for yourself. What "usable" will depend not only on your project's needs, but also your personal preference. As a result, rather than write a second textbook, an example is included below for a two-sample t-test. 
+
+
+## Loading Data {-}
+
+The data I'm using here is the [Anime Recommendations Database from kaggle](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database). It encompasses individual ratings of 12.294 anime made by 73,516 users. I downloaded the data and placed it in my R working directory.
 
 The data that I've downloaded is currently in a CSV file. I'm going to use the function File>> Import Dataset >> from base (readr) option. 
 
@@ -11,9 +43,9 @@ library(readr)
 anime <- read_csv("resources/data/anime.csv", col_types = cols(MAL_ID = col_number(), Score = col_number(), Episodes = col_number(), Popularity = col_number(), Members = col_number(), Favorites = col_number(), Watching = col_number(), Completed = col_number(), `On-Hold` = col_number(), Dropped = col_number(),`Plan to Watch` = col_number(), `Score-10` = col_number(), `Score-9` = col_number(), `Score-8` = col_number(), `Score-7` = col_number(), `Score-6` = col_number(), `Score-5` = col_number(), `Score-4` = col_number(), `Score-3` = col_number(), `Score-2` = col_number(),`Score-1` = col_number()))
 ```
 
-## Data Wrangling
+## Data Wrangling {-}
 
-Examine any problems with the dataset. Notice that there are a lot of randome problems where we treated a column as a numeric vector, but the actual data value was "Unknown" instead. R will convert the value to "NA," which is fine with us.
+Examine any problems with the dataset. Notice that there are a lot of random places where we treated a column as a numeric vector, but the actual data value was "Unknown" instead. R will convert the value to "NA," which is fine with us.
 
 ```{r problems}
 problems(anime)
@@ -35,7 +67,7 @@ Save the new file as a R dataframe.
 save(anime, file="resources/data/anime.RData")
 ```
 
-## Isolate the variables of interest.
+## Isolate the variables of interest {-}
 
 This uses subsets all rows within the anime dataframe based on the condition in the brackets, and then saves it into a new dataframe called action_anime. The condition is satifised with the "grep" function, which will search for any character string and return "TRUE" if it contains "Action" within the column anime$Genres. 
 
@@ -63,7 +95,7 @@ action_anime_score <- action_anime$Score
 ```
 
 
-## Graph boxplots.
+## Graph boxplots {-}
 
 It looks like the average rating for action animes is indeed higher than the average rating for all animes. But by how much? To answer this question, let's first graph a boxplot.
 ```{r boxplot anime}

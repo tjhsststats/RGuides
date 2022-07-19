@@ -94,7 +94,7 @@
 <li><a class="" href="installing-r-and-rstudio.html">⬇️ Installing R and RStudio</a></li>
 <li><a class="" href="interacting-with-r-studio.html">🖥 Interacting with R Studio</a></li>
 <li class="book-part">Working with Data</li>
-<li><a class="" href="vectors.html"><span class="header-section-number">1</span> Vectors</a></li>
+<li><a class="" href="vectors.html"><span class="header-section-number">1</span> 📑 Vectors</a></li>
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
 <li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
 <li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
@@ -120,8 +120,9 @@
 <li><a class="active" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
 <li><a class="" href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
 <li class="book-part">Miscellaneous</li>
-<li><a class="" href="downloading-data-from-the-census-bureau.html">↕️ Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="deciphering-common-r-errors.html">😥 Deciphering Common R Errors</a></li>
+<li><a class="" href="wrangling-data.html">Wrangling Data</a></li>
+<li><a class="" href="downloading-data-from-the-census-bureau.html">📲️ Downloading Data from the Census Bureau</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -170,7 +171,7 @@
 <p><span class="math display">\[(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}} \]</span></p>
 </div>
 <div class="rmdimportant">
-<p>After narrowly avoiding a lawsuit for selling oversized widgets, the Widget Factory developed two new manufacturing processes. They are to be compared based on the proportion of defective widgets. For process A, a random sample of 765 widgets indicated that 15 were defective. For process B (a much more expensive process), a random sample of 375 widgets indicated that 6 were defective. Construct and interpret a 99% confidence interval for the difference in the population proportions.</p>
+<p><strong>Example:</strong> After narrowly avoiding a lawsuit for selling oversized widgets, the Widget Factory developed two new manufacturing processes. They are to be compared based on the proportion of defective widgets. For process A, a random sample of 765 widgets indicated that 15 were defective. For process B (a much more expensive process), a random sample of 375 widgets indicated that 6 were defective. Construct and interpret a 99% confidence interval for the difference in the population proportions.</p>
 </div>
 <p><strong>State:</strong> we want to construct a 99% confidence interval estimating the true difference of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>, which is the true difference in defective rates in process A versus process B.</p>
 <p><strong>Plan:</strong> all conditions from <a href="two-sample-confidence-intervals-and-significance-tests.html#two-prop-conditions">17.1.1</a> should be met.</p>
@@ -199,7 +200,7 @@
 <span class="header-section-number">17.3</span> Two Prop Z-Test<a class="anchor" aria-label="anchor" href="#two-prop-z-test"><i class="fas fa-link"></i></a>
 </h2>
 <div class="rmdimportant">
-<p>Refer to the previous widget example. Do these data support the claim that process B produces fewer defective widgets at 1% significance?</p>
+<p><strong>Example:</strong> Refer to the previous widget example. Do these data support the claim that process B produces fewer defective widgets at 1% significance?</p>
 </div>
 <p><strong>State:</strong> Conduct a two proportion z-test at the <span class="math inline">\(\alpha=0.01\)</span> level.</p>
 <p><span class="math inline">\(\hat{p}_1= \frac{15}{765}=0.019607\)</span>, which is the proportion of defective widgets from process A, and <span class="math inline">\(\hat{p}_2= \frac{6}{375}= 0.016\)</span>, which is the proportion of defective widgets from process B. That means <span class="math inline">\(\hat{p}_1 - \hat{p}_2= 0.003607\)</span> is the difference in proportions of defective widgets of process A versus process B.</p>
@@ -273,7 +274,7 @@
 <p>Technology tends to give us a more accurate estimate of the degrees of freedom for a combined distribution, with greater degrees of freedom. However, this is difficult to calculate, and requires knowledge of calculus to explain. If you are calculating by hand, you can always use the more conservative estimate, which is the smaller of <span class="math inline">\(n_1 -1\)</span> and <span class="math inline">\(n_2 -1\)</span>. This is a “safer” estimate because it gives you fewer degrees of freedom (and hence more area in the tails of <span class="math inline">\(t\)</span>), but the answer should be close to what you get with technology.</p>
 <p>Notice that we don’t use <span class="math inline">\(\sigma\)</span> here, but <span class="math inline">\(s_x\)</span>, which is the standard deviation of the sample. That’s because we don’t know <span class="math inline">\(\sigma\)</span>– which is the reason why we use <span class="math inline">\(t\)</span>.</p>
 <div class="rmdimportant">
-<p>College financial aid offices expect students to use summer earnings to help pay for college. But how large are these earnings? One large university studied this question by asking a random sample of 1296 students who had summer jobs how much they earned. The financial aid office separated the responses into two groups based on gender. Here are the data in summary form:</p>
+<p><strong>Example:</strong> College financial aid offices expect students to use summer earnings to help pay for college. But how large are these earnings? One large university studied this question by asking a random sample of 1296 students who had summer jobs how much they earned. The financial aid office separated the responses into two groups based on gender. Here are the data in summary form:</p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:left;">
@@ -354,7 +355,7 @@ $1037.46
 <span class="header-section-number">17.6</span> Two Sample T-Test<a class="anchor" aria-label="anchor" href="#two-sample-t-test"><i class="fas fa-link"></i></a>
 </h2>
 <div class="rmdimportant">
-<p>Refer to the previous example. Is there a significant difference between the mean earnings of males and females at this university, at the 5% significance level?</p>
+<p><strong>Example:</strong> Refer to the previous example. Is there a significant difference between the mean earnings of males and females at this university, at the 5% significance level?</p>
 </div>
 <p><strong>State:</strong> Conduct a two-sample significance test at <span class="math inline">\(\alpha=0.05\)</span></p>
 <p><span class="math inline">\(x_1= 1884.52\)</span>, which is the average summer earnings for males at this university. <span class="math inline">\(x_2= 1360.39\)</span>, which is the average summer earnings for females at this university. That means <span class="math inline">\(x_1 - x_2= 524.13\)</span> is the average difference between summer earnings for males versus females at this university.</p>
