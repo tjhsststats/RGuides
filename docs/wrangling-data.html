@@ -169,61 +169,50 @@
 <div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/problems.html">problems</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 16,570 × 5
-##      row   col expected actual  file                                 
-##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;                                
-##  1    13     8 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  2   213     8 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  3   873     8 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  4  1095     8 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  5  1267    33 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  6  1406     3 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  7  1506     3 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  8  1580     3 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-##  9  1580    34 a number Unknown /Users/kaisamng/Github/RGuides/resou…
-## 10  1701     3 a number Unknown /Users/kaisamng/Github/RGuides/resou…
+##      row   col expected actual  file                                                   
+##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;                                                  
+##  1    13     8 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  2   213     8 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  3   873     8 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  4  1095     8 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  5  1267    33 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  6  1406     3 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  7  1506     3 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  8  1580     3 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+##  9  1580    34 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
+## 10  1701     3 a number Unknown /Users/kaisamng/Github/RGuides/resources/data/anime.csv
 ## # … with 16,560 more rows</code></pre>
 <div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name      Score Genders `English name` `Japanese name` Type 
-##    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;
-## 1      1 Cowboy B…  8.78 Action… Cowboy Bebop   カウボーイビバ… TV   
-## 2      5 Cowboy B…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie
-## 3      6 Trigun     8.24 Action… Trigun         トライガン      TV   
-## 4      7 Witch Hu…  7.27 Action… Witch Hunter … Witch Hunter R… TV   
-## 5      8 Bouken O…  6.98 Advent… Beet the Vand… 冒険王ビィト    TV   
-## 6     15 Eyeshiel…  7.95 Action… Unknown        アイシールド21  TV   
-## # … with 28 more variables: Episodes &lt;dbl&gt;, Aired &lt;chr&gt;,
-## #   Premiered &lt;chr&gt;, Producers &lt;chr&gt;, Licensors &lt;chr&gt;,
-## #   Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;,
-## #   Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;,
-## #   Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;,
-## #   `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;,
-## #   `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;, …</code></pre>
+##   MAL_ID Name        Score Genders `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    
+## 1      1 Cowboy Beb…  8.78 Action… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati…
+## 2      5 Cowboy Beb…  8.39 Action… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic…
+## 3      6 Trigun       8.24 Action… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati…
+## 4      7 Witch Hunt…  7.27 Action… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati…
+## 5      8 Bouken Ou …  6.98 Advent… Beet the Vand… 冒険王ビィト    TV          52 Sep … Fall 2004 TV Tokyo… Unknown  
+## 6     15 Eyeshield …  7.95 Action… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi…
+## # … with 23 more variables: Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;,
+## #   Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
+## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;,
+## #   `Score-6` &lt;dbl&gt;, `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;, `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"      
-##  [5] "English name"  "Japanese name" "Type"          "Episodes"     
-##  [9] "Aired"         "Premiered"     "Producers"     "Licensors"    
-## [13] "Studios"       "Source"        "Duration"      "Rating"       
-## [17] "Ranked"        "Popularity"    "Members"       "Favorites"    
-## [21] "Watching"      "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"      
-## [29] "Score-7"       "Score-6"       "Score-5"       "Score-4"      
-## [33] "Score-3"       "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genders"       "English name"  "Japanese name" "Type"         
+##  [8] "Episodes"      "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"       
+## [15] "Duration"      "Rating"        "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"     
+## [22] "Completed"     "On-Hold"       "Dropped"       "Plan to Watch" "Score-10"      "Score-9"       "Score-8"      
+## [29] "Score-7"       "Score-6"       "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>If you look, for some reason the “Genres” column is named “Genders.” Let’s rename to “Genres.”</p>
 <div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span><span class="op">==</span><span class="st">"Genders"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Genres"</span></span></code></pre></div>
 <p>Verify that the column names are now correct.</p>
-<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"       
-##  [5] "English name"  "Japanese name" "Type"          "Episodes"     
-##  [9] "Aired"         "Premiered"     "Producers"     "Licensors"    
-## [13] "Studios"       "Source"        "Duration"      "Rating"       
-## [17] "Ranked"        "Popularity"    "Members"       "Favorites"    
-## [21] "Watching"      "Completed"     "On-Hold"       "Dropped"      
-## [25] "Plan to Watch" "Score-10"      "Score-9"       "Score-8"      
-## [29] "Score-7"       "Score-6"       "Score-5"       "Score-4"      
-## [33] "Score-3"       "Score-2"       "Score-1"</code></pre>
+<pre><code>##  [1] "MAL_ID"        "Name"          "Score"         "Genres"        "English name"  "Japanese name" "Type"         
+##  [8] "Episodes"      "Aired"         "Premiered"     "Producers"     "Licensors"     "Studios"       "Source"       
+## [15] "Duration"      "Rating"        "Ranked"        "Popularity"    "Members"       "Favorites"     "Watching"     
+## [22] "Completed"     "On-Hold"       "Dropped"       "Plan to Watch" "Score-10"      "Score-9"       "Score-8"      
+## [29] "Score-7"       "Score-6"       "Score-5"       "Score-4"       "Score-3"       "Score-2"       "Score-1"</code></pre>
 <p>Save the new file as a R dataframe.</p>
 <div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">anime</span>, file<span class="op">=</span><span class="st">"resources/data/anime.RData"</span><span class="op">)</span></span></code></pre></div>
@@ -238,21 +227,18 @@
 <div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 35
-##   MAL_ID Name       Score Genres `English name` `Japanese name` Type 
-##    &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;
-## 1      1 Cowboy Be…  8.78 Actio… Cowboy Bebop   カウボーイビバ… TV   
-## 2      5 Cowboy Be…  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie
-## 3      6 Trigun      8.24 Actio… Trigun         トライガン      TV   
-## 4      7 Witch Hun…  7.27 Actio… Witch Hunter … Witch Hunter R… TV   
-## 5     15 Eyeshield…  7.95 Actio… Unknown        アイシールド21  TV   
-## 6     18 Initial D…  8.15 Actio… Unknown        頭文字〈イニシ… TV   
-## # … with 28 more variables: Episodes &lt;dbl&gt;, Aired &lt;chr&gt;,
-## #   Premiered &lt;chr&gt;, Producers &lt;chr&gt;, Licensors &lt;chr&gt;,
-## #   Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;,
-## #   Ranked &lt;chr&gt;, Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;,
-## #   Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;, Dropped &lt;dbl&gt;,
-## #   `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;,
-## #   `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;, `Score-6` &lt;dbl&gt;, …</code></pre>
+##   MAL_ID Name         Score Genres `English name` `Japanese name` Type  Episodes Aired Premiered Producers Licensors
+##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    
+## 1      1 Cowboy Bebop  8.78 Actio… Cowboy Bebop   カウボーイビバ… TV          26 Apr … Spring 1… Bandai V… Funimati…
+## 2      5 Cowboy Bebo…  8.39 Actio… Cowboy Bebop:… カウボーイビバ… Movie        1 Sep … Unknown   Sunrise,… Sony Pic…
+## 3      6 Trigun        8.24 Actio… Trigun         トライガン      TV          26 Apr … Spring 1… Victor E… Funimati…
+## 4      7 Witch Hunte…  7.27 Actio… Witch Hunter … Witch Hunter R… TV          26 Jul … Summer 2… TV Tokyo… Funimati…
+## 5     15 Eyeshield 21  7.95 Actio… Unknown        アイシールド21  TV         145 Apr … Spring 2… TV Tokyo… VIZ Medi…
+## 6     18 Initial D F…  8.15 Actio… Unknown        頭文字〈イニシ… TV          24 Apr … Spring 2… OB Plann… Funimati…
+## # … with 23 more variables: Studios &lt;chr&gt;, Source &lt;chr&gt;, Duration &lt;chr&gt;, Rating &lt;chr&gt;, Ranked &lt;chr&gt;,
+## #   Popularity &lt;dbl&gt;, Members &lt;dbl&gt;, Favorites &lt;dbl&gt;, Watching &lt;dbl&gt;, Completed &lt;dbl&gt;, `On-Hold` &lt;dbl&gt;,
+## #   Dropped &lt;dbl&gt;, `Plan to Watch` &lt;dbl&gt;, `Score-10` &lt;dbl&gt;, `Score-9` &lt;dbl&gt;, `Score-8` &lt;dbl&gt;, `Score-7` &lt;dbl&gt;,
+## #   `Score-6` &lt;dbl&gt;, `Score-5` &lt;dbl&gt;, `Score-4` &lt;dbl&gt;, `Score-3` &lt;dbl&gt;, `Score-2` &lt;dbl&gt;, `Score-1` &lt;dbl&gt;</code></pre>
 <p>We’re interested in how people rated these animes. Let’s calculate the score column for each.</p>
 <div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">action_anime</span><span class="op">$</span><span class="va">Score</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -380,7 +366,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 19 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 22 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

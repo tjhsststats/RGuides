@@ -910,23 +910,16 @@ NA
 <p>Let’s say I’m interested in elements in a gas, liquid, and solid state at room temperature. Looking at the <code>periodic_table</code> columns, I see that the column that gives me that information is <code>state_at_stp</code>.</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">state_at_stp</span></span></code></pre></div>
-<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"   
-##   [8] "Gas"    "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid" 
-##  [15] "Solid"  "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid" 
-##  [22] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [29] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid"
-##  [36] "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [43] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [50] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid" 
-##  [57] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [64] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [71] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [78] "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid" 
-##  [85] "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [92] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
-##  [99] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  NA       NA      
-## [106] NA       NA       NA       NA       NA       NA       NA      
-## [113] NA       NA       NA       NA       NA       NA</code></pre>
+<pre style="max-height: 100px; font-size:10px;"><code>##   [1] "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Gas"    "Gas"    "Solid"  "Solid" 
+##  [13] "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [25] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Gas"   
+##  [37] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [49] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [61] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [73] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Liquid" "Solid"  "Solid"  "Solid"  "Solid" 
+##  [85] "Solid"  "Gas"    "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid" 
+##  [97] "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  "Solid"  NA       NA       NA       NA       NA      
+## [109] NA       NA       NA       NA       NA       NA       NA       NA       NA       NA</code></pre>
 <p>As you can see, to access specific variables inside a data frame, we can do so by entering the name of the data frame followed by <code>$</code> and the name of the variable. (Note that spaces in variable names will not work. You’ll likely learn that the hard way, as I have.)</p>
 </div>
 <div id="selecting-an-element-using" class="section level2" number="3.2">
@@ -954,9 +947,8 @@ NA
 <p>Recall the use of <code>[ ]</code> when a vector was printed, to help us better understand where we were in printing a large vector. We can use this same tool to select the tenth to the twentieth elements of the <code>periodic_table$name</code> variable:</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"   
-##  [6] "Phosphorus" "Sulfur"     "Chlorine"   "Argon"      "Potassium" 
-## [11] "Calcium"</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##  [1] "Neon"       "Sodium"     "Magnesium"  "Aluminium"  "Silicon"    "Phosphorus" "Sulfur"     "Chlorine"  
+##  [9] "Argon"      "Potassium"  "Calcium"</code></pre>
 </div>
 </div>
 <div id="selecting-rows-and-columns-using" class="section level2" number="3.3">
@@ -968,17 +960,17 @@ NA
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 10 × 3
-##    atomic_number symbol name_origin                                  
-##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                        
-##  1            41 Nb     Niobe, daughter of king Tantalus from Greek …
-##  2            42 Mo     the Greek molybdos meaning 'lead'            
-##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'    
-##  4            44 Ru     Ruthenia, the New Latin name for Russia      
-##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'    
-##  6            46 Pd     the then recently discovered asteroid Pallas…
-##  7            47 Ag     English word (argentum in Latin)             
-##  8            48 Cd     the New Latin cadmia, from King Kadmos       
-##  9            49 In     indigo                                       
+##    atomic_number symbol name_origin                                                                  
+##            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                                                        
+##  1            41 Nb     Niobe, daughter of king Tantalus from Greek mythology                        
+##  2            42 Mo     the Greek molybdos meaning 'lead'                                            
+##  3            43 Tc     the Greek tekhn??tos meaning 'artificial'                                    
+##  4            44 Ru     Ruthenia, the New Latin name for Russia                                      
+##  5            45 Rh     the Greek rhodos, meaning 'rose coloured'                                    
+##  6            46 Pd     the then recently discovered asteroid Pallas, considered a planet at the time
+##  7            47 Ag     English word (argentum in Latin)                                             
+##  8            48 Cd     the New Latin cadmia, from King Kadmos                                       
+##  9            49 In     indigo                                                                       
 ## 10            50 Sn     English word (stannum in Latin)</code></pre>
 <div id="lets-eat-grandma-vs.-lets-eat-grandma" class="section level3" number="3.3.1">
 <h3>
@@ -1008,14 +1000,11 @@ NA
 <code class="sourceCode R"><span><span class="co">#Returns all of row 2:</span></span>
 <span><span class="va">periodic_table</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre style="max-height: 150px; font-size:10px;"><code>## # A tibble: 1 × 22
-##   atomic_number symbol name   name_origin          group period block
-##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
-## 1             2 He     Helium the Greek helios, '…    18      1 s    
-## # … with 15 more variables: state_at_stp &lt;chr&gt;, occurrence &lt;chr&gt;,
-## #   description &lt;chr&gt;, atomic_weight &lt;dbl&gt;, aw_uncertainty &lt;dbl&gt;,
-## #   any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
-## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;,
-## #   mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
+##   atomic_number symbol name   name_origin       group period block state_at_stp occurrence description atomic_weight
+##           &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;dbl&gt;
+## 1             2 He     Helium the Greek helios…    18      1 s     Gas          Primordial Noble gas            4.00
+## # … with 11 more variables: aw_uncertainty &lt;dbl&gt;, any_stable_nuclides &lt;chr&gt;, density &lt;dbl&gt;,
+## #   density_predicted &lt;lgl&gt;, melting_point &lt;dbl&gt;, mp_predicted &lt;lgl&gt;, boiling_point &lt;dbl&gt;, bp_predicted &lt;lgl&gt;,
 ## #   heat_capacity &lt;dbl&gt;, electronegativity &lt;dbl&gt;, abundance &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Returns all of column 2:</span></span>
@@ -1166,7 +1155,7 @@ NA
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 19 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 22 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

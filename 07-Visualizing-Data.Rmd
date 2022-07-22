@@ -1,7 +1,7 @@
 # 👀 Visualizing One-Variable Data
 
 ::: rmdtip
-You can find more examples of charts and graphics at [R Charts](https://kaisamng.shinyapps.io/Ch7_Boxplot_Example/)
+You can find more examples of charts and graphics at [R Charts](https://r-charts.com/)
 :::
 
 Now that we have talked about summarizing data, let's talk about visualizing it.
