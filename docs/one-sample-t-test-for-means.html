@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 16 1️⃣ One-Sample t-test for Means | 📊 TJ RS1 with R</title>
+<title>Chapter 15 1️⃣ One-Sample t-test for Means | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
 <meta name="description" content="A one-sample \(t\) test is very similar to the procedure for a one-sample \(t\)-interval. We still use State, Plan, Do, and Conclude, and we similarly derive a \(p\)-value at the end to make a...">
 <meta name="generator" content="bookdown 0.27.3 with bs4_book()">
-<meta property="og:title" content="Chapter 16 1️⃣ One-Sample t-test for Means | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 15 1️⃣ One-Sample t-test for Means | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="A one-sample \(t\) test is very similar to the procedure for a one-sample \(t\)-interval. We still use State, Plan, Do, and Conclude, and we similarly derive a \(p\)-value at the end to make a...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 16 1️⃣ One-Sample t-test for Means | 📊 TJ RS1 with R">
+<meta name="twitter:title" content="Chapter 15 1️⃣ One-Sample t-test for Means | 📊 TJ RS1 with R">
 <meta name="twitter:description" content="A one-sample \(t\) test is very similar to the procedure for a one-sample \(t\)-interval. We still use State, Plan, Do, and Conclude, and we similarly derive a \(p\)-value at the end to make a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -97,28 +97,28 @@
 <li><a class="" href="vectors.html"><span class="header-section-number">1</span> 📑 Vectors</a></li>
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
 <li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
-<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
-<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> ✨ Creating New Data</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">4</span> ✨ Creating New Data</a></li>
 <li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 👀 Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> 📚 Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> 👀 Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Probability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🎲 Sampling and Probability</a></li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">7</span> 🎲 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> 📈 Scatterplots and Correlation</a></li>
-<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> 🔮 Linear Regression</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">8</span> 📈 Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">9</span> 🔮 Linear Regression</a></li>
+<li><a class="" href="linear-regression-exercises.html">Linear Regression Exercises 🛠</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
-<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
-<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> 🎯 The Central Limit Theorem</a></li>
-<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
-<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
+<li><a class="" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">10</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">11</span> 🎯 The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">12</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">13</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">15</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
-<li><a class="active" href="one-sample-t-test-for-means.html"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></li>
-<li><a class="" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
-<li><a class="" href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
+<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">14</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
+<li><a class="active" href="one-sample-t-test-for-means.html"><span class="header-section-number">15</span> 1️⃣ One-Sample t-test for Means</a></li>
+<li><a class="" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">16</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
+<li><a class="" href="one-way-anova.html"><span class="header-section-number">17</span> One-Way ANOVA</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="deciphering-common-r-errors.html">😥 Deciphering Common R Errors</a></li>
 <li><a class="" href="wrangling-data.html">Wrangling Data</a></li>
@@ -131,17 +131,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="one-sample-t-test-for-means" class="section level1" number="16">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="one-sample-t-test-for-means" class="section level1" number="15">
 <h1>
-<span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means<a class="anchor" aria-label="anchor" href="#one-sample-t-test-for-means"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15</span> 1️⃣ One-Sample t-test for Means<a class="anchor" aria-label="anchor" href="#one-sample-t-test-for-means"><i class="fas fa-link"></i></a>
 </h1>
 <p>A one-sample <span class="math inline">\(t\)</span> test is very similar to the procedure for a one-sample <span class="math inline">\(t\)</span>-interval. We still use <strong>State, Plan, Do</strong>, and <strong>Conclude</strong>, and we similarly derive a <span class="math inline">\(p\)</span>-value at the end to make a decision about the claim.</p>
 <div class="rmdimportant">
 <p><strong>Example:</strong> A manufacturer of bolts claims that the mean length is 4.5 inches. A random sample of 35 bolts yields a mean of 4.525 inches and a standard deviation of 0.05 inches. Does the data provide sufficient evidence to indicate that the mean length is not 4.5 inches? Use a significance level <span class="math inline">\(\alpha=0.01\)</span>.</p>
 </div>
-<div id="state-3" class="section level2" number="16.1">
+<div id="state-3" class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">16.1</span> State<a class="anchor" aria-label="anchor" href="#state-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> State<a class="anchor" aria-label="anchor" href="#state-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Perform a one-sample <span class="math inline">\(t\)</span>-test on the mean length of bolts from this manufacturer at the <span class="math inline">\(\alpha=0.01\)</span> level. We also have the following numbers:</p>
 <ul>
@@ -156,21 +156,21 @@
 <li><p><span class="math inline">\(H_a: \mu &gt; 4.5\)</span></p></li>
 </ul>
 </div>
-<div id="plan-1" class="section level2" number="16.2">
+<div id="plan-1" class="section level2" number="15.2">
 <h2>
-<span class="header-section-number">16.2</span> Plan<a class="anchor" aria-label="anchor" href="#plan-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.2</span> Plan<a class="anchor" aria-label="anchor" href="#plan-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>The three conditions are very similar to <a href="one-sample-t-interval-for-mu.html#one-samp-conditions">14.3.2</a>.</p>
+<p>The three conditions are very similar to <a href="one-sample-t-interval-for-mu.html#one-samp-conditions">13.3.2</a>.</p>
 <p><strong>Random</strong>: it is stated that this is a random sample. ✅</p>
 <p><strong>Normal</strong>: <span class="math inline">\(n=35 \ge 30\)</span>. ✅</p>
 <p><strong>Independent</strong>: In order for <span class="math inline">\(n=35\)</span> to be less than 10% of our population, our population needs to be greater than <span class="math inline">\(10*35= 350\)</span>. It’s reasonable to assume that this manufacturer makes more than 350 bolts a day, so we can continue. ✅</p>
 <p>Since we pass all three of our conditions, we can continue with the t-test.</p>
 </div>
-<div id="do-3" class="section level2" number="16.3">
+<div id="do-3" class="section level2" number="15.3">
 <h2>
-<span class="header-section-number">16.3</span> Do<a class="anchor" aria-label="anchor" href="#do-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.3</span> Do<a class="anchor" aria-label="anchor" href="#do-3"><i class="fas fa-link"></i></a>
 </h2>
-<p>As stated in <a href="the-central-limit-theorem.html#samp-prop">12.5.1</a>, assuming that the null hypothesis is true, our sample of <span class="math inline">\(n=35\)</span> bolts exists within a sampling distribution that follows the <strong><span class="math inline">\(t\)</span>-distribution</strong>. It also has the following characteristics:</p>
+<p>As stated in <a href="the-central-limit-theorem.html#samp-prop">11.5.1</a>, assuming that the null hypothesis is true, our sample of <span class="math inline">\(n=35\)</span> bolts exists within a sampling distribution that follows the <strong><span class="math inline">\(t\)</span>-distribution</strong>. It also has the following characteristics:</p>
 <ul>
 <li><p><span class="math inline">\(\mu_0=\mu=4.5\)</span></p></li>
 <li><p><span class="math inline">\(s_\bar{x}= \frac{s_x}{\sqrt{n}}= \frac{0.05}{\sqrt{35}}= 0.0084515\)</span></p></li>
@@ -186,20 +186,20 @@
 <span><span class="fl">1</span><span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">2.958039892</span>, df<span class="op">=</span> <span class="fl">34</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0028</code></pre>
 </div>
-<div id="conclude-3" class="section level2" number="16.4">
+<div id="conclude-3" class="section level2" number="15.4">
 <h2>
-<span class="header-section-number">16.4</span> Conclude<a class="anchor" aria-label="anchor" href="#conclude-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.4</span> Conclude<a class="anchor" aria-label="anchor" href="#conclude-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Since $ 0.01 &gt; 0.0028$, so <span class="math inline">\(\alpha &gt; p\)</span>, we reject <span class="math inline">\(H_0\)</span>. There is sufficient evidence that the mean length of the bolts from this manufacturer is greater than 4.5 inches.</p>
 </div>
-<div id="in-r-1" class="section level2" number="16.5">
+<div id="in-r-1" class="section level2" number="15.5">
 <h2>
-<span class="header-section-number">16.5</span> In R<a class="anchor" aria-label="anchor" href="#in-r-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.5</span> In R<a class="anchor" aria-label="anchor" href="#in-r-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are two approaches to this in R: either you use actual sample data, or summary statistics.</p>
-<div id="using-summary-statistics" class="section level3" number="16.5.1">
+<div id="using-summary-statistics" class="section level3" number="15.5.1">
 <h3>
-<span class="header-section-number">16.5.1</span> Using Summary Statistics<a class="anchor" aria-label="anchor" href="#using-summary-statistics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.5.1</span> Using Summary Statistics<a class="anchor" aria-label="anchor" href="#using-summary-statistics"><i class="fas fa-link"></i></a>
 </h3>
 <p>R doesn’t have a built in function that takes summary statistics, so we need to install a package called <code>BSDA</code>. Once you’ve loaded the library, you want to use the <code><a href="https://alanarnholt.github.io/BSDA/reference/tsum.test.html">tsum.test()</a></code> command from the package. For instructions on how to load a package, check out <a href="https://kaisamng.github.io/RGuides/interacting-with-r-studio.html#loading-a-package">installing and loading packages</a>.</p>
 <div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
@@ -222,9 +222,9 @@
 ## mean of x 
 ##     4.525</code></pre>
 </div>
-<div id="using-actual-data" class="section level3" number="16.5.2">
+<div id="using-actual-data" class="section level3" number="15.5.2">
 <h3>
-<span class="header-section-number">16.5.2</span> Using actual data<a class="anchor" aria-label="anchor" href="#using-actual-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.5.2</span> Using actual data<a class="anchor" aria-label="anchor" href="#using-actual-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you have actual data, use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> command. Let’s say I have actual data for 35 bolts:</p>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
@@ -262,20 +262,20 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">15</span> 1️⃣ One Proportion Z-Test for Proportions</a></div>
-<div class="next"><a href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></div>
+<div class="prev"><a href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">14</span> 1️⃣ One Proportion Z-Test for Proportions</a></div>
+<div class="next"><a href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">16</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#one-sample-t-test-for-means"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></li>
-<li><a class="nav-link" href="#state-3"><span class="header-section-number">16.1</span> State</a></li>
-<li><a class="nav-link" href="#plan-1"><span class="header-section-number">16.2</span> Plan</a></li>
-<li><a class="nav-link" href="#do-3"><span class="header-section-number">16.3</span> Do</a></li>
-<li><a class="nav-link" href="#conclude-3"><span class="header-section-number">16.4</span> Conclude</a></li>
+<li><a class="nav-link" href="#one-sample-t-test-for-means"><span class="header-section-number">15</span> 1️⃣ One-Sample t-test for Means</a></li>
+<li><a class="nav-link" href="#state-3"><span class="header-section-number">15.1</span> State</a></li>
+<li><a class="nav-link" href="#plan-1"><span class="header-section-number">15.2</span> Plan</a></li>
+<li><a class="nav-link" href="#do-3"><span class="header-section-number">15.3</span> Do</a></li>
+<li><a class="nav-link" href="#conclude-3"><span class="header-section-number">15.4</span> Conclude</a></li>
 <li>
-<a class="nav-link" href="#in-r-1"><span class="header-section-number">16.5</span> In R</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#using-summary-statistics"><span class="header-section-number">16.5.1</span> Using Summary Statistics</a></li>
-<li><a class="nav-link" href="#using-actual-data"><span class="header-section-number">16.5.2</span> Using actual data</a></li>
+<a class="nav-link" href="#in-r-1"><span class="header-section-number">15.5</span> In R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-summary-statistics"><span class="header-section-number">15.5.1</span> Using Summary Statistics</a></li>
+<li><a class="nav-link" href="#using-actual-data"><span class="header-section-number">15.5.2</span> Using actual data</a></li>
 </ul>
 </li>
 </ul>
@@ -304,7 +304,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 22 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 25 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

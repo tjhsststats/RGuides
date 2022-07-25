@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 Z-Scores and the Normal Distribution | 📊 TJ RS1 with R</title>
+<title>Chapter 10 Z-Scores and the Normal Distribution | 📊 TJ RS1 with R</title>
 <meta name="author" content="Mr. Ng">
-<meta name="description" content="11.1 Intro to Z-Scores Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80%...">
+<meta name="description" content="10.1 Intro to Z-Scores Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80%...">
 <meta name="generator" content="bookdown 0.27.3 with bs4_book()">
-<meta property="og:title" content="Chapter 11 Z-Scores and the Normal Distribution | 📊 TJ RS1 with R">
+<meta property="og:title" content="Chapter 10 Z-Scores and the Normal Distribution | 📊 TJ RS1 with R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="11.1 Intro to Z-Scores Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80%...">
+<meta property="og:description" content="10.1 Intro to Z-Scores Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80%...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 Z-Scores and the Normal Distribution | 📊 TJ RS1 with R">
-<meta name="twitter:description" content="11.1 Intro to Z-Scores Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80%...">
+<meta name="twitter:title" content="Chapter 10 Z-Scores and the Normal Distribution | 📊 TJ RS1 with R">
+<meta name="twitter:description" content="10.1 Intro to Z-Scores Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80%...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -97,28 +97,28 @@
 <li><a class="" href="vectors.html"><span class="header-section-number">1</span> 📑 Vectors</a></li>
 <li><a class="" href="dataframe.html"><span class="header-section-number">2</span> 🔢 Creating Dataframes</a></li>
 <li><a class="" href="selecting-and-filtering-data.html"><span class="header-section-number">3</span> 👆 Selecting and Filtering Data</a></li>
-<li><a class="" href="selecting-data-using-logical-conditions.html"><span class="header-section-number">4</span> 🤔 Selecting Data Using Logical Conditions</a></li>
-<li><a class="" href="creating-new-data.html"><span class="header-section-number">5</span> ✨ Creating New Data</a></li>
+<li><a class="" href="creating-new-data.html"><span class="header-section-number">4</span> ✨ Creating New Data</a></li>
 <li><a class="" href="vectors-and-dataframe-exercises.html">🛠 Vectors and Dataframe Exercises</a></li>
 <li class="book-part">Presenting Data</li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">6</span> 📚 Summarizing Data</a></li>
-<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">7</span> 👀 Visualizing One-Variable Data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">5</span> 📚 Summarizing Data</a></li>
+<li><a class="" href="visualizing-one-variable-data.html"><span class="header-section-number">6</span> 👀 Visualizing One-Variable Data</a></li>
 <li><a class="" href="summarizing-and-visualizing-data-exercises.html">🛠 Summarizing and Visualizing Data Exercises</a></li>
 <li class="book-part">Sampling and Probability</li>
-<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">8</span> 🎲 Sampling and Probability</a></li>
+<li><a class="" href="sampling-and-probability.html"><span class="header-section-number">7</span> 🎲 Sampling and Probability</a></li>
 <li class="book-part">Two-Variable Data: Scatterplots and Regression</li>
-<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">9</span> 📈 Scatterplots and Correlation</a></li>
-<li><a class="" href="linear-regression.html"><span class="header-section-number">10</span> 🔮 Linear Regression</a></li>
+<li><a class="" href="scatterplots-and-correlation.html"><span class="header-section-number">8</span> 📈 Scatterplots and Correlation</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">9</span> 🔮 Linear Regression</a></li>
+<li><a class="" href="linear-regression-exercises.html">Linear Regression Exercises 🛠</a></li>
 <li class="book-part">Sampling Distributions and Confidence Intervals</li>
-<li><a class="active" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
-<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">12</span> 🎯 The Central Limit Theorem</a></li>
-<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">13</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
-<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">14</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
+<li><a class="active" href="z-scores-and-the-normal-distribution.html"><span class="header-section-number">10</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="" href="the-central-limit-theorem.html"><span class="header-section-number">11</span> 🎯 The Central Limit Theorem</a></li>
+<li><a class="" href="one-proportion-z-interval-for-hatp.html"><span class="header-section-number">12</span> 1️⃣『』 One Proportion Z-Interval for \(\hat{p}\)</a></li>
+<li><a class="" href="one-sample-t-interval-for-mu.html"><span class="header-section-number">13</span> 1️⃣『』 One Sample t-Interval for \(\mu\)</a></li>
 <li class="book-part">Significance Tests</li>
-<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">15</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
-<li><a class="" href="one-sample-t-test-for-means.html"><span class="header-section-number">16</span> 1️⃣ One-Sample t-test for Means</a></li>
-<li><a class="" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">17</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
-<li><a class="" href="one-way-anova.html"><span class="header-section-number">18</span> One-Way ANOVA</a></li>
+<li><a class="" href="one-proportion-z-test-for-proportions.html"><span class="header-section-number">14</span> 1️⃣ One Proportion Z-Test for Proportions</a></li>
+<li><a class="" href="one-sample-t-test-for-means.html"><span class="header-section-number">15</span> 1️⃣ One-Sample t-test for Means</a></li>
+<li><a class="" href="two-sample-confidence-intervals-and-significance-tests.html"><span class="header-section-number">16</span> 2️⃣ Two Sample Confidence Intervals and Significance Tests</a></li>
+<li><a class="" href="one-way-anova.html"><span class="header-section-number">17</span> One-Way ANOVA</a></li>
 <li class="book-part">Miscellaneous</li>
 <li><a class="" href="deciphering-common-r-errors.html">😥 Deciphering Common R Errors</a></li>
 <li><a class="" href="wrangling-data.html">Wrangling Data</a></li>
@@ -131,13 +131,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="z-scores-and-the-normal-distribution" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="z-scores-and-the-normal-distribution" class="section level1" number="10">
 <h1>
-<span class="header-section-number">11</span> Z-Scores and the Normal Distribution<a class="anchor" aria-label="anchor" href="#z-scores-and-the-normal-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Z-Scores and the Normal Distribution<a class="anchor" aria-label="anchor" href="#z-scores-and-the-normal-distribution"><i class="fas fa-link"></i></a>
 </h1>
-<div id="intro-to-z-scores" class="section level2" number="11.1">
+<div id="intro-to-z-scores" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">11.1</span> Intro to Z-Scores<a class="anchor" aria-label="anchor" href="#intro-to-z-scores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Intro to Z-Scores<a class="anchor" aria-label="anchor" href="#intro-to-z-scores"><i class="fas fa-link"></i></a>
 </h2>
 <p>Suppose you and your friend just took a TJ Math 3 test. Your math teacher is Mr. Ng, and their teacher is Mr. B. You get your test back, and you’re disappointed with the 80% that you received.</p>
 <p>Weirdly enough, your friend also received an 80%! You assume that your friend and you similarly, since you studied together. Since you studied together and both got 80s, you’re considering dumping your friend as a study buddy.</p>
@@ -227,9 +227,9 @@ B_Scores
 <p>Look at the x-axis: this is how we’re measuring the distribution, as it defines each value in terms of points. Since the points aren’t really worth the same, we need to do is rescale both distributions into consistent units. Similarly, if you know how to convert between miles and kilometers, then you can actually compare the distances.</p>
 <p>Instead of using points as our ruler, we will use standard deviations.</p>
 <div class="inline-figure"><img src="resources/images/11-Sampling-Distributions/zscore_def.png" width="80%" style="display: block; margin: auto;"></div>
-<div id="z-scores-practice" class="section level3" number="11.1.1">
+<div id="z-scores-practice" class="section level3" number="10.1.1">
 <h3>
-<span class="header-section-number">11.1.1</span> Z-Scores Practice<a class="anchor" aria-label="anchor" href="#z-scores-practice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1.1</span> Z-Scores Practice<a class="anchor" aria-label="anchor" href="#z-scores-practice"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Your Turn!</strong></p>
 <iframe style="margin:0 auto; min-width: 100%;" id="ch11-z-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Z-Scores_Ex/" scrolling="no" frameborder="no">
@@ -237,9 +237,9 @@ B_Scores
 <p>You might’ve noticed that a bell-shaped curve has been repeatedly drawn as the distribution for all the graphs. This shape is the <strong>Normal Distribution</strong>.</p>
 </div>
 </div>
-<div id="the-normal-distribution" class="section level2" number="11.2">
+<div id="the-normal-distribution" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">11.2</span> The Normal Distribution<a class="anchor" aria-label="anchor" href="#the-normal-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> The Normal Distribution<a class="anchor" aria-label="anchor" href="#the-normal-distribution"><i class="fas fa-link"></i></a>
 </h2>
 <div style="display: grid; grid-template-columns: 3fr 1fr; grid-column-gap: 20px;">
 <div>
@@ -257,9 +257,9 @@ B_Scores
 <li><p>The standard deviation σ controls the spread of a Normal curve. Curves with larger standard deviations are more spread out.</p></li>
 <li><p>A Normal distribution with a mean <span class="math inline">\(μ=0\)</span> and a standard deviation <span class="math inline">\(σ=1\)</span> is called The Standard Normal Distribution.</p></li>
 </ul>
-<div id="the-empirical-rule" class="section level3" number="11.2.1">
+<div id="the-empirical-rule" class="section level3" number="10.2.1">
 <h3>
-<span class="header-section-number">11.2.1</span> The Empirical Rule<a class="anchor" aria-label="anchor" href="#the-empirical-rule"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.1</span> The Empirical Rule<a class="anchor" aria-label="anchor" href="#the-empirical-rule"><i class="fas fa-link"></i></a>
 </h3>
 <p>In a normal distribution 68% of the values lie within 1 standard deviation of the mean, 95% of the values lie within 2 standard deviations of the mean, and 99.7% of the values lie within 3 standard deviations of the mean.</p>
 <div class="inline-figure"><img src="resources/images/11-Sampling-Distributions/empirical_rule.png" width="100%" style="display: block; margin: auto;"></div>
@@ -284,9 +284,9 @@ B_Scores
 <p>Close your eyes and point to a random dot. What’s the likelihood that you picked a dot to the left of the mean? If you answered 50%, you’re correct. You had a 50% chance of picking a point to the left of the mean, because half of all possible outcomes are to the left of the mean. So, <em>we can calculate the probability of picking a specific sample that follows the normal distribution.</em></p>
 <p>What makes this connection powerful is that, if a specific distribution is Normal, and we sample randomly, we can find the probability of picking a sample that is <em>greater than or less than a specific z-score</em>.</p>
 </div>
-<div id="empirical-rule-practice" class="section level3" number="11.2.2">
+<div id="empirical-rule-practice" class="section level3" number="10.2.2">
 <h3>
-<span class="header-section-number">11.2.2</span> Empirical Rule Practice<a class="anchor" aria-label="anchor" href="#empirical-rule-practice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2.2</span> Empirical Rule Practice<a class="anchor" aria-label="anchor" href="#empirical-rule-practice"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Your Turn!</strong> Calculate the following Empirical Rule</p>
 <iframe style="margin:0 auto; min-width: 100%;" id="ch6-hist-ex" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_Empirical_Rule_Practice/" scrolling="no" frameborder="no">
@@ -299,13 +299,13 @@ B_Scores
 <p>-Or better yet, using R.</p>
 </div>
 </div>
-<div id="solving-for-normal-probability-areas-given-z" class="section level2" number="11.3">
+<div id="solving-for-normal-probability-areas-given-z" class="section level2" number="10.3">
 <h2>
-<span class="header-section-number">11.3</span> Solving for Normal Probability Areas given <span class="math inline">\(z\)</span><a class="anchor" aria-label="anchor" href="#solving-for-normal-probability-areas-given-z"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Solving for Normal Probability Areas given <span class="math inline">\(z\)</span><a class="anchor" aria-label="anchor" href="#solving-for-normal-probability-areas-given-z"><i class="fas fa-link"></i></a>
 </h2>
-<div id="using-a-z-table" class="section level3" number="11.3.1">
+<div id="using-a-z-table" class="section level3" number="10.3.1">
 <h3>
-<span class="header-section-number">11.3.1</span> Using a z-table<a class="anchor" aria-label="anchor" href="#using-a-z-table"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3.1</span> Using a z-table<a class="anchor" aria-label="anchor" href="#using-a-z-table"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>The Standard Normal Probabilities Table</strong> utilizes the <em>standard normal distribution</em>, which has a mean of 0 and a standard deviation of 1. A portion of the table is reproduced below. To use the table, you just have to find the z-score for your data value and then look up the z-score on the table to find the probability.</p>
 <p>In our previous example, we wanted to find the proportion of American adult men that were below 70.25 inches tall. First, calculate the z-score: <span class="math display">\[z= \frac{\bar{x}-\mu}{\sigma}=\frac{5-4}{2}=\frac{1}{2}=0.5\]</span></p>
@@ -314,9 +314,9 @@ B_Scores
 <p>The probability (the area that you shaded) = 0.6915 or 69.15%. On the table, the left-hand margin lists the unit’s place and the tenth’s place of the z-score. The top margin shows the hundredth’s place of the z-score (and also has 0 in the tenth’s place). So, <span class="math inline">\(P(z ≤ 0.50) = 0.6915.\)</span></p>
 <p>The solution to this problem is often written <span class="math inline">\(P(\bar{x} &lt; 5) = P(z ≤ 0.50) = 0.6915\)</span> to show the data value from the original distribution. The question asked “less than”, but there is no difference between “less than” and “less than or equal to” because the “equal to” part is a single line of area which can’t really be measured (even with Calculus!).</p>
 </div>
-<div id="norm-dist-area" class="section level3" number="11.3.2">
+<div id="norm-dist-area" class="section level3" number="10.3.2">
 <h3>
-<span class="header-section-number">11.3.2</span> Using R<a class="anchor" aria-label="anchor" href="#norm-dist-area"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3.2</span> Using R<a class="anchor" aria-label="anchor" href="#norm-dist-area"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can also use <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> in R to find the areas under the Normal distribution. To solve for the proportion of American men who are less than 70.25 inches tall:</p>
 <div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
@@ -329,16 +329,16 @@ B_Scores
 <pre><code>## [1] 0.6915</code></pre>
 <p>Notice that all the methods we’ve covered assume that the <strong>area is always to the left of <span class="math inline">\(z\)</span></strong>. If you want to find the area to the right of <span class="math inline">\(z\)</span>, or <span class="math inline">\(P(X≥z)\)</span>, then you need to do <span class="math inline">\(1- P(z≥X)\)</span>.</p>
 </div>
-<div id="solving-for-normal-areas-practice" class="section level3" number="11.3.3">
+<div id="solving-for-normal-areas-practice" class="section level3" number="10.3.3">
 <h3>
-<span class="header-section-number">11.3.3</span> Solving for Normal areas Practice<a class="anchor" aria-label="anchor" href="#solving-for-normal-areas-practice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3.3</span> Solving for Normal areas Practice<a class="anchor" aria-label="anchor" href="#solving-for-normal-areas-practice"><i class="fas fa-link"></i></a>
 </h3>
 <p>**Your Turn</p>
 </div>
 </div>
-<div id="solving-for-z-given-a-probability" class="section level2" number="11.4">
+<div id="solving-for-z-given-a-probability" class="section level2" number="10.4">
 <h2>
-<span class="header-section-number">11.4</span> Solving for <span class="math inline">\(z\)</span> given a probability<a class="anchor" aria-label="anchor" href="#solving-for-z-given-a-probability"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> Solving for <span class="math inline">\(z\)</span> given a probability<a class="anchor" aria-label="anchor" href="#solving-for-z-given-a-probability"><i class="fas fa-link"></i></a>
 </h2>
 <p>We found the probabilities given the z-score—but we sometimes need the reverse.</p>
 <p>To do this, we use the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function in R (Q stands for quantile, another word for percentile—see the connection?). <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> finds the z-score for which the area to the left equals the given value. You are answering the question <span class="math inline">\(P(X &lt; z)= \text{Given Area}\)</span> where you are finding little z.</p>
@@ -363,9 +363,9 @@ B_Scores
 </div>
 </div>
 </div>
-<div id="chapter-11-exercises" class="section level2" number="11.5">
+<div id="chapter-11-exercises" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">11.5</span> Chapter 11 Exercises<a class="anchor" aria-label="anchor" href="#chapter-11-exercises"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> Chapter 11 Exercises<a class="anchor" aria-label="anchor" href="#chapter-11-exercises"><i class="fas fa-link"></i></a>
 </h2>
 <iframe style="margin:0 auto; min-width: 100%;" id="qnorm-pnorm-practice" class="interactive" src="https://kaisamng.shinyapps.io/Ch11_qnorm_pnorm_practice/" scrolling="no" frameborder="no">
 </iframe>
@@ -375,30 +375,30 @@ B_Scores
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="linear-regression.html"><span class="header-section-number">10</span> 🔮 Linear Regression</a></div>
-<div class="next"><a href="the-central-limit-theorem.html"><span class="header-section-number">12</span> 🎯 The Central Limit Theorem</a></div>
+<div class="prev"><a href="linear-regression-exercises.html">Linear Regression Exercises 🛠</a></div>
+<div class="next"><a href="the-central-limit-theorem.html"><span class="header-section-number">11</span> 🎯 The Central Limit Theorem</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Chapter Contents</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#z-scores-and-the-normal-distribution"><span class="header-section-number">11</span> Z-Scores and the Normal Distribution</a></li>
+<li><a class="nav-link" href="#z-scores-and-the-normal-distribution"><span class="header-section-number">10</span> Z-Scores and the Normal Distribution</a></li>
 <li>
-<a class="nav-link" href="#intro-to-z-scores"><span class="header-section-number">11.1</span> Intro to Z-Scores</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#z-scores-practice"><span class="header-section-number">11.1.1</span> Z-Scores Practice</a></li></ul>
+<a class="nav-link" href="#intro-to-z-scores"><span class="header-section-number">10.1</span> Intro to Z-Scores</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#z-scores-practice"><span class="header-section-number">10.1.1</span> Z-Scores Practice</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#the-normal-distribution"><span class="header-section-number">11.2</span> The Normal Distribution</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-empirical-rule"><span class="header-section-number">11.2.1</span> The Empirical Rule</a></li>
-<li><a class="nav-link" href="#empirical-rule-practice"><span class="header-section-number">11.2.2</span> Empirical Rule Practice</a></li>
+<a class="nav-link" href="#the-normal-distribution"><span class="header-section-number">10.2</span> The Normal Distribution</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-empirical-rule"><span class="header-section-number">10.2.1</span> The Empirical Rule</a></li>
+<li><a class="nav-link" href="#empirical-rule-practice"><span class="header-section-number">10.2.2</span> Empirical Rule Practice</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#solving-for-normal-probability-areas-given-z"><span class="header-section-number">11.3</span> Solving for Normal Probability Areas given \(z\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#using-a-z-table"><span class="header-section-number">11.3.1</span> Using a z-table</a></li>
-<li><a class="nav-link" href="#norm-dist-area"><span class="header-section-number">11.3.2</span> Using R</a></li>
-<li><a class="nav-link" href="#solving-for-normal-areas-practice"><span class="header-section-number">11.3.3</span> Solving for Normal areas Practice</a></li>
+<a class="nav-link" href="#solving-for-normal-probability-areas-given-z"><span class="header-section-number">10.3</span> Solving for Normal Probability Areas given \(z\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-a-z-table"><span class="header-section-number">10.3.1</span> Using a z-table</a></li>
+<li><a class="nav-link" href="#norm-dist-area"><span class="header-section-number">10.3.2</span> Using R</a></li>
+<li><a class="nav-link" href="#solving-for-normal-areas-practice"><span class="header-section-number">10.3.3</span> Solving for Normal areas Practice</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#solving-for-z-given-a-probability"><span class="header-section-number">11.4</span> Solving for \(z\) given a probability</a></li>
-<li><a class="nav-link" href="#chapter-11-exercises"><span class="header-section-number">11.5</span> Chapter 11 Exercises</a></li>
+<li><a class="nav-link" href="#solving-for-z-given-a-probability"><span class="header-section-number">10.4</span> Solving for \(z\) given a probability</a></li>
+<li><a class="nav-link" href="#chapter-11-exercises"><span class="header-section-number">10.5</span> Chapter 11 Exercises</a></li>
 </ul>
       <div class="book-extra" hidden>
         <ul class="list-unstyled">
@@ -425,7 +425,7 @@ B_Scores
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 22 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>📊 TJ RS1 with R</strong> was written by Mr. Ng. It was last built on 25 July, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

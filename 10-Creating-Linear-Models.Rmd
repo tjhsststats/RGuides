@@ -113,5 +113,16 @@ Always ask yourself these questions when you are fitting as linear model to your
 </script>
 ```
 
+# Linear Regression Exercises 🛠 {.unnumbered}
 
+<iframe style="margin:0 auto; min-width: 100%;" id="ch10-linear-models" class="interactive" src="https://kaisamng.shinyapps.io/Ch9_LinReg_Exercises/" scrolling="no" frameborder="no">
+
+</iframe>
+
+
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```
 

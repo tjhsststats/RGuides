@@ -1,6 +1,6 @@
-# 🤔 Selecting Data Using Logical Conditions
+## 🤔 Selecting Data Using Logical Conditions
 
-## Using `%in%`
+### Using `%in%`
 
 Recall in \@ref(vector-logical-selection) that we could use a logical vector, and the `%in%` operator, to select elements from a single vector. We can extend these operations into a dataframe.
 
@@ -42,7 +42,7 @@ The extra parentheses around `periodic_table$name %in% c("Hydrogen", "Oxygen")` 
 
 There are many more complicated ways to subset a data frame and one can use the `subset` function built into R, but in my experience, whenever you want to do anything more complicated than what we have done here, it is easier to use the `filter` and `select` functions in the `dplyr` package.
 
-## Using Comparison Operators `<` and `>`
+### Using Comparison Operators `<` and `>`
 These operators are self explanatory. The `<` and `>` can be used to select rows based on a **numeric** condition.
 
 `!=` is the **not equals** operator. This operator allows for both numeric and character types. 
@@ -55,7 +55,7 @@ periodic_table[periodic_table$atomic_number<10,]
 periodic_table[periodic_table$state_at_stp != "Solid",]
 ```
 
-## Combining logical operators with "or", "and" conditions
+### Combining logical operators with "or", "and" conditions
 Finally, the `&` operator means **and**, and the `|` operator means **or**. You can fund `|` by pressing the shirt key and kitting the "reverse slash" key above the `enter` key on your keyboard. 
 
 It allows you to combine multiple logical statements together, which may be useful if you have multiple criteria to work on.
