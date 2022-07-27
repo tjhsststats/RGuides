@@ -1,6 +1,6 @@
 ---
-title: "📊 TJ RS1 with R"
-author: "Mr. Ng"
+title: "Intro to R @ TJ"
+author: "Kai Sam Ng"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [bib/packages.bib, bib/references.bib]
