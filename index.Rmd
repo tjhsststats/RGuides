@@ -20,7 +20,11 @@ code_folding: show
 
 # 🏠 Homepage {.unnumbered}
 
-This website serves as a digital companion for TJ students taking RS1, or any other TJ students who need a quick intro to data science.
+This website serves as a digital companion for TJ students taking RS1, or any other TJ students who need a quick intro to data science. If you want to see what R is capable of, click "run code" below. Try it! It might take ~15 seconds to load.
+
+<iframe style="margin:0 auto; min-width: 100%;" id="gganimate" class="interactive" src="https://kaisamng.shinyapps.io/gganimate/" scrolling="no" frameborder="no">
+
+</iframe>
 
 ## General Guidelines to Start {.unnumbered}
 
@@ -99,3 +103,8 @@ knitr::include_app("https://www.youtube.com/embed/BvWefB4NGGI")
 
 ```
 
+```{=html}
+<script>
+  iFrameResize({}, ".interactive");
+</script>
+```
