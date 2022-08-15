@@ -44,10 +44,15 @@ Here's a breakdown of the parameters in the histogram above:
 
 Unfortunately, there's no built in function to create dotplots in R. We have to repurpose the `stripchart` command in order to make something closest to a dotplot.
 
-Below, I will graph the `TAVG`, average temperature, from the `dca_weather` dataset in June, when `month` equals 6.
+First, I will store  `TAVG`, average temperature, from the `dca_weather` dataset in June, when `month` equals 6. I will save this data into a variable called `june_temps`.
 
 ```{r}
 june_temps<- dca_weather$TAVG[dca_weather$month %in% 6]
+```
+
+Here's the code for creating a dotplot. Notice that `june_temps` is actually a vector (a list of many numbers). 
+
+```{r}
 stripchart(june_temps, method = "stack", 
            offset = .5, 
            at = 0, 

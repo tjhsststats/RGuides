@@ -159,7 +159,7 @@
 </ol>
 <p>We know that the chance outcome of an unlucky sample is non-zero– that it can happen. The trick to proving the basketball player wrong is <em>quantifying how unlikely he could’ve had a bad day, assuming he’s telling the truth.</em> Assuming <span class="math inline">\(p=0.8\)</span> is true, how likely could we have gotten <span class="math inline">\(\hat{p}=0.64\)</span>? This is a significance test.</p>
 <p>We can create a simulation of 50 free throws with 400 trials, assuming that the probability is true. Since we know our simulation was carried out truly by chance, we have a measurable way to outline how probable the player would’ve made 0.64 of shots.</p>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bball_0.8</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, times<span class="op">=</span><span class="fl">40</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, times<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">simul_400_trials_50n</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">400</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">bball_0.8</span>, <span class="fl">50</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">results_simul_400_trials_50n</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">simul_400_trials_50n</span><span class="op">)</span> <span class="op">/</span><span class="fl">50</span></span>
@@ -174,8 +174,8 @@
 <span>           xlab <span class="op">=</span> <span class="st">"Proportion made"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="fl">0.64</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-200"></span>
-<img src="book_temp_files/figure-html/unnamed-chunk-200-1.png" alt="In 400 simulations, there were only two trials where our shooter got such an unlucky phat." width="80%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-201"></span>
+<img src="book_temp_files/figure-html/unnamed-chunk-201-1.png" alt="In 400 simulations, there were only two trials where our shooter got such an unlucky phat." width="80%"><p class="caption">
 FIGURE 14.1: In 400 simulations, there were only two trials where our shooter got such an unlucky phat.
 </p>
 </div>
@@ -268,7 +268,7 @@ Our sample proportion is so different from what the company claims that <span cl
 </h3>
 <p>We’ll first manually do the z-test.</p>
 <p><em>Assuming that the null hypothesis is true</em>, that means that there exists a sampling distribution of size <span class="math inline">\(n=1029\)</span> centered at <span class="math inline">\(p=0.60\)</span> with a standard deviation of <span class="math inline">\(\sqrt{\frac{p(1-p)}{n}} = \sqrt{\frac{0.6(1-0.6)}{125}} = 0.0438178\)</span></p>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-204-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-205-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Where would our sample proportion exist on this sampling distribution? Not only is <span class="math inline">\(\hat{p}=0.528\)</span> left of the center, but we should also be able to derive a z-score of how many standard deviations our sample <span class="math inline">\(\hat{p}\)</span> is from the mean. This number is called the <strong>test statistic</strong>.</p>
 <div class="rmdimportant">
 <p><strong>Definition: Test Statistic</strong></p>
@@ -278,7 +278,7 @@ Our sample proportion is so different from what the company claims that <span cl
 <p>To calculate this test statistic, let’s plug it into our formula, knowing that the null hypothesis parameter (the claim) <span class="math inline">\(\mu_0 = 0.6\)</span>, the sample statistic is <span class="math inline">\(\hat{p}=0.528\)</span>, and the standard deviation was <span class="math inline">\(\sqrt{\frac{0.6(1-0.6)}{125}} = 0.0438178\)</span>.</p>
 <p><span class="math display">\[\text{test statistic}= \frac{0.528 - 0.6}{0.0438178}= -1.643167\]</span></p>
 <p>This means that, if <span class="math inline">\(H_0\)</span> were true, the sample we received was 1.64 standard deviations below the mean. We can now use <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to derive that probability we would’ve received this score, assuming the DMV is telling the truth.</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.643167</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.05017</code></pre>
 <p>This number is called the <strong>p-value</strong>.</p>
@@ -311,15 +311,14 @@ Our sample proportion is so different from what the company claims that <span cl
 <span class="header-section-number">14.3</span> In R<a class="anchor" aria-label="anchor" href="#in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can use the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> command that was referenced in <a href="one-proportion-z-interval-for-hatp.html#one-prop-z-test-R">12.4</a>. We include two extra parameters: <code>p=</code> and <code>alternative=</code>, were <code>p=</code> is the null hypothesis probability, and <code>alternative=</code> is the alternative hypothesis.</p>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">66</span>,</span>
 <span>          n<span class="op">=</span><span class="fl">125</span>,</span>
 <span>          p<span class="op">=</span><span class="fl">0.6</span>,</span>
 <span>          alternative<span class="op">=</span><span class="st">"less"</span>,</span>
 <span>          correct<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
-##  1-sample proportions test without continuity
-##  correction
+##  1-sample proportions test without continuity correction
 ## 
 ## data:  66 out of 125, null probability 0.6
 ## X-squared = 2.7, df = 1, p-value = 0.05
@@ -383,7 +382,7 @@ Our sample proportion is so different from what the company claims that <span cl
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 08 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 15 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

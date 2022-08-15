@@ -185,17 +185,19 @@
 <span class="header-section-number">6.3</span> Dotplots<a class="anchor" aria-label="anchor" href="#dotplots"><i class="fas fa-link"></i></a>
 </h2>
 <p>Unfortunately, there’s no built in function to create dotplots in R. We have to repurpose the <code>stripchart</code> command in order to make something closest to a dotplot.</p>
-<p>Below, I will graph the <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in June, when <code>month</code> equals 6.</p>
+<p>First, I will store <code>TAVG</code>, average temperature, from the <code>dca_weather</code> dataset in June, when <code>month</code> equals 6. I will save this data into a variable called <code>june_temps</code>.</p>
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, </span>
+<code class="sourceCode R"><span><span class="va">june_temps</span><span class="op">&lt;-</span> <span class="va">dca_weather</span><span class="op">$</span><span class="va">TAVG</span><span class="op">[</span><span class="va">dca_weather</span><span class="op">$</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">6</span><span class="op">]</span></span></code></pre></div>
+<p>Here’s the code for creating a dotplot. Notice that <code>june_temps</code> is actually a vector (a list of many numbers).</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart</a></span><span class="op">(</span><span class="va">june_temps</span>, method <span class="op">=</span> <span class="st">"stack"</span>, </span>
 <span>           offset <span class="op">=</span> <span class="fl">.5</span>, </span>
 <span>           at <span class="op">=</span> <span class="fl">0</span>, </span>
 <span>           pch <span class="op">=</span> <span class="fl">19</span>,</span>
 <span>           col <span class="op">=</span> <span class="st">"steelblue"</span>, </span>
 <span>           main <span class="op">=</span> <span class="st">"Average June Temperatures at DCA"</span>, </span>
 <span>           xlab <span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-101-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-102-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>As before, you pass several parameters into <code><a href="https://rdrr.io/r/graphics/stripchart.html">stripchart()</a></code>. You can safely ignore <code>stack=</code>, <code>offset=</code>, and <code>at=</code>. Just include them, any time you need a dotplot.</p>
 <p><code>pch=</code> is a parameter that you can feel free to modify. It specifies the style of each dot. For a list of different dot styles you can use, <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">click here.</a></p>
 </div>
@@ -208,13 +210,13 @@
 <span class="header-section-number">6.4.1</span> Single Boxplots<a class="anchor" aria-label="anchor" href="#single-boxplots"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let’s start off with the most simple case: making one boxplot with one variable. I’ll make a boxplot of June Temperatures in DCA:</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">june_temps</span>,</span>
 <span>        col<span class="op">=</span><span class="st">"pink"</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Boxplot of June Temperatures at DCA Airport"</span>,</span>
 <span>        xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>,</span>
 <span>        horizontal<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-102-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-103-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>By default, the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command will create boxplots in the vertical orientation (more on this later). If you want to have the boxplots become horizontal, set the <code>horizontal=</code> parameter to <code>TRUE</code>.</p>
 </div>
 <div id="grouped-boxplots" class="section level3" number="6.4.2">
@@ -223,18 +225,18 @@
 </h3>
 <p>Normally, you don’t just make one boxplot, but several boxplots to compare variance <em>within groups</em>. To do this, we have to give the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> command a second <strong>grouping variable</strong>, which we indicate with the <code>~</code> operator.</p>
 <p>Usually, both the variable you want to graph and the variable you want to group by are in the same dataset, so we specify it with the <code>data=</code> parameter. Below are the bosplots for <code>TAVG</code> with the <code>dca_weather</code> dataset, grouped by <code>month</code>.</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,</span>
 <span>        col<span class="op">=</span><span class="st">"skyblue"</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,</span>
 <span>        xlab<span class="op">=</span> <span class="st">"Month"</span>,</span>
 <span>        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-103-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-104-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>The <code>~</code> variable effectively tells R which axis to to place each variable in, based on <code>y~x</code>. In other words, since the first variable is <code>TAVG</code>, that goes on the y-axis, and <code>month</code> goes on the x-axis. We have effectively set <code>month</code> as our grouping variable.</p>
 <p>Look at what happens when you switch the axes around:</p>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">month</span><span class="op">~</span><span class="va">TAVG</span>, data<span class="op">=</span><span class="va">dca_weather</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-104-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-105-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Yep. It’s not pretty. Be careful of which variable goes where.</p>
 </div>
 <div id="customizing-boxplot" class="section level3" number="6.4.3">
@@ -242,14 +244,14 @@
 <span class="header-section-number">6.4.3</span> Customizing <code>boxplot()</code><a class="anchor" aria-label="anchor" href="#customizing-boxplot"><i class="fas fa-link"></i></a>
 </h3>
 <p>Here’s an idea of the things you can do with boxplots:</p>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">TAVG</span><span class="op">~</span><span class="va">month</span>, data<span class="op">=</span><span class="va">dca_weather</span>,</span>
 <span>        col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"skyblue"</span>, <span class="st">"darkcyan"</span>, <span class="st">"cadetblue1"</span>, <span class="st">"chartreuse"</span>, <span class="st">"forestgreen"</span>, <span class="st">"darkorange"</span><span class="op">)</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Daily Average Temperatures at DCA Airport, by Month"</span>,</span>
 <span>        xlab<span class="op">=</span> <span class="st">"Month"</span>,</span>
 <span>        ylab<span class="op">=</span><span class="st">"Temperature (Fahrenheit)"</span>,</span>
 <span>        names<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-105-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-106-1.png" width="100%" style="display: block; margin: auto;"></div>
 <ul>
 <li>In our original graph, <code>Months</code> were labeled as their numbers. If you want to give custom names for each group, use the <code>names=</code> parameter. Remember to set the <code>names=</code> parameter to a vector equal to the number of boxplots there are, otherwise, R will return an error.</li>
 <li>If you want to give your boxplots different colors, set <code>col=</code> to a character vector of color names. Remember the length of this vector also needs to be equal to the number of boxplots.</li>
@@ -319,14 +321,14 @@
 </h3>
 <p>Every graph in R can be thought of as a layer– if you want to add anything on top of your graph, it is represented as a subsequent call after your plot command.</p>
 <p>For example, if I wanted to overlay a five number summary on top of each part of the boxplot, I run the <code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code> command. Inside the text command, I tell R what <code>labels=</code> to place, and at which <code>x=</code> value they should be placed at.</p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">june_temps</span>,</span>
 <span>        col<span class="op">=</span><span class="st">"pink"</span>,</span>
 <span>        main<span class="op">=</span> <span class="st">"Boxplot of June Temperatures at DCA Airport"</span>,</span>
 <span>        xlab<span class="op">=</span> <span class="st">"Temperature (Fahrenheit)"</span>,</span>
 <span>        horizontal<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">june_temps</span><span class="op">)</span>, x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/fivenum.html">fivenum</a></span><span class="op">(</span><span class="va">june_temps</span><span class="op">)</span>,  y<span class="op">=</span><span class="fl">1.3</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-109-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-110-1.png" width="100%" style="display: block; margin: auto;"></div>
 <script>
   iFrameResize({}, ".interactive");
 </script>
@@ -388,7 +390,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 08 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 15 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

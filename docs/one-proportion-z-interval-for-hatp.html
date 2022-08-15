@@ -171,7 +171,7 @@
 <p>The margin of error, is based on standard deviation of the sampling distribution (as referenced in <a href="the-central-limit-theorem.html#samp-prop">11.5.1</a> and <a href="the-central-limit-theorem.html#samp-mean">11.4</a>) and the <strong>critical value</strong> derived from the <strong>Confidence Level</strong>. In other words, <span class="math inline">\(\text{Margin of Error}= \text{critical value} * \text{standard deviation of sampling distribution}\)</span> (You do not need to know the Margin of Error calculation yet, as we will revisit this later.)</p>
 <p>Graphically speaking, a confidence interval looks like this:</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-168"></span>
+<span style="display:block;" id="fig:unnamed-chunk-169"></span>
 <img src="resources/images/13-One-Prop-CIs/CI_Annotation.png" alt="Confidence Interval, Annotated" width="70%"><p class="caption">
 FIGURE 12.1: Confidence Interval, Annotated
 </p>
@@ -190,7 +190,7 @@ FIGURE 12.1: Confidence Interval, Annotated
 </div>
 <div>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-169"></span>
+<span style="display:block;" id="fig:unnamed-chunk-170"></span>
 <img src="resources/images/13-One-Prop-CIs/Norm_95_Percent.png" alt="The middle 95% of the Normal distribution is associated with the z-scores 1.96 and -1.96." width="100%"><p class="caption">
 FIGURE 12.2: The middle 95% of the Normal distribution is associated with the z-scores 1.96 and -1.96.
 </p>
@@ -199,7 +199,7 @@ FIGURE 12.2: The middle 95% of the Normal distribution is associated with the z-
 </div>
 <p>If you repeatedly took samples from the population of size <span class="math inline">\(n\)</span>, you can expect that 95% of the confidence intervals that you construct will capture the population parameter.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-170"></span>
+<span style="display:block;" id="fig:unnamed-chunk-171"></span>
 <img src="resources/images/13-One-Prop-CIs/95CI.gif" alt="Repeatedly creating multiple confidence intervals over and over. THis is a recording from https://seeing-theory.brown.edu/frequentist-inference/index.html#section2" width="100%"><p class="caption">
 FIGURE 12.3: Repeatedly creating multiple confidence intervals over and over. THis is a recording from <a href="https://seeing-theory.brown.edu/frequentist-inference/index.html#section2" class="uri">https://seeing-theory.brown.edu/frequentist-inference/index.html#section2</a>
 </p>
@@ -210,7 +210,7 @@ FIGURE 12.3: Repeatedly creating multiple confidence intervals over and over. TH
 <p>Your confidence interval either captures the true population parameter, or it doesn’t capture it. That probability is either 0% or 100%.</p>
 <p>A 95% confidence interval states that, <strong>over repeated sampling</strong>, around 95% of the confidence intervals you construct will capture the true population parameter.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-171"></span>
+<span style="display:block;" id="fig:unnamed-chunk-172"></span>
 <img src="resources/images/13-One-Prop-CIs/CL_Interp.png" alt="To say that $\bar{x} \pm 10$ is a 95% confidence interval for the population mean $\mu$ is to say that, in repeated samples, 95% of these intervals will capture $\mu$." width="100%"><p class="caption">
 FIGURE 12.4: To say that <span class="math inline">\(\bar{x} \pm 10\)</span> is a 95% confidence interval for the population mean <span class="math inline">\(\mu\)</span> is to say that, in repeated samples, 95% of these intervals will capture <span class="math inline">\(\mu\)</span>.
 </p>
@@ -218,7 +218,7 @@ FIGURE 12.4: To say that <span class="math inline">\(\bar{x} \pm 10\)</span> is 
 </div>
 <p>If you lower the confidence level, the width of the confidence intervals decreases, and you get more red confidence intervals.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-172"></span>
+<span style="display:block;" id="fig:unnamed-chunk-173"></span>
 <img src="resources/images/13-One-Prop-CIs/35CI.gif" alt="Lowering the confidence level leads to more precise intervals, but increases the likelihood of not correctlly capturing the population parameter." width="100%"><p class="caption">
 FIGURE 12.5: Lowering the confidence level leads to more precise intervals, but increases the likelihood of not correctlly capturing the population parameter.
 </p>
@@ -282,12 +282,12 @@ FIGURE 12.5: Lowering the confidence level leads to more precise intervals, but 
 </h3>
 <p>Let’s start off with talking about how to the confidence interval manually.</p>
 <p>First, we need to calculate the critical value <strong><span class="math inline">\(z^*\)</span> </strong>. If our confidence level is the middle 98% of the normal distribution, that means 2% is outside the middle 98%. Thus, there is 1% remaining on either side of the tail.</p>
-<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-173-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-174-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>To do this, use the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function.</p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.01</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] -2.326</code></pre>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.99</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2.326</code></pre>
 <p>Notice that they are both the same magnitude, so we only take the positive value.</p>
@@ -303,7 +303,7 @@ FIGURE 12.5: Lowering the confidence level leads to more precise intervals, but 
 </div>
 <div>
 <p><strong>R Code</strong></p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">moe</span><span class="op">&lt;-</span> <span class="fl">2.326</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0.48</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fl">0.48</span><span class="op">)</span><span class="op">/</span><span class="fl">1029</span><span class="op">)</span></span>
 <span><span class="va">moe</span></span></code></pre></div>
 <pre><code>## [1] 0.03623</code></pre>
@@ -313,13 +313,13 @@ FIGURE 12.5: Lowering the confidence level leads to more precise intervals, but 
 <p>Finally, we can create a 98% confidence interval.</p>
 <div class="rmd1fr1fr">
 <div>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Lower Bound</span></span>
 <span><span class="fl">0.48</span><span class="op">-</span> <span class="va">moe</span></span></code></pre></div>
 <pre><code>## [1] 0.4438</code></pre>
 </div>
 <div>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Upper Bound</span></span>
 <span><span class="fl">0.48</span><span class="op">+</span> <span class="va">moe</span></span></code></pre></div>
 <pre><code>## [1] 0.5162</code></pre>
@@ -348,7 +348,7 @@ FIGURE 12.5: Lowering the confidence level leads to more precise intervals, but 
 <span class="header-section-number">12.4</span> In R<a class="anchor" aria-label="anchor" href="#one-prop-z-test-R"><i class="fas fa-link"></i></a>
 </h2>
 <p>Finally, there is a built-in way to do this in R, using the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> command. Instead of inputting the actual <span class="math inline">\(\hat{p}\)</span>, however, you input the count of “successes” within the context of the problem. If 48% of U.S. Adults report that they “often or always” get enough sleep, then <span class="math inline">\(0.48*1029=493.92\)</span>, which we round up to <span class="math inline">\(494\)</span> and attribute the decimal to rounding error.</p>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x<span class="op">=</span> <span class="fl">494</span>,</span>
 <span>          n<span class="op">=</span><span class="fl">1029</span>,</span>
 <span>          conf.level <span class="op">=</span> <span class="fl">0.98</span>,</span>
@@ -414,7 +414,7 @@ FIGURE 12.5: Lowering the confidence level leads to more precise intervals, but 
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 08 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 15 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>
