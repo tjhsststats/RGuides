@@ -1064,7 +1064,8 @@ FIGURE 17.1: The F-Distribution
 ## Species      2   1083     541     259 &lt;2e-16 ***
 ## Residuals   51    107       2                   
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Looking at the P Value for Species, the one-way ANOVA Test tells us that there is a very significant difference between the average lengths of the 3 species. Thus, we reject the Null Hypothesis, and in favor of the Alternative Hypothesis that ther <em>is</em> a significant difference between the three species.</p>
 </div>
 <div id="conclude-pt.-2-creating-tukey-post-hoc-pairwise-comparisons" class="section level2" number="17.6">
@@ -1087,10 +1088,14 @@ FIGURE 17.1: The F-Distribution
 ## Fit: aov(formula = Length ~ Species, data = na.omit(Flowers_long))
 ## 
 ## $Species
-##                                     diff     lwr     upr p adj
-## H. caribea red-H. bihai           -7.886  -9.022  -6.750     0
-## H. caribea yellow-H. bihai       -11.417 -12.672 -10.163     0
-## H. caribea yellow-H. caribea red  -3.531  -4.689  -2.373     0</code></pre>
+##                                     diff     lwr     upr
+## H. caribea red-H. bihai           -7.886  -9.022  -6.750
+## H. caribea yellow-H. bihai       -11.417 -12.672 -10.163
+## H. caribea yellow-H. caribea red  -3.531  -4.689  -2.373
+##                                  p adj
+## H. caribea red-H. bihai              0
+## H. caribea yellow-H. bihai           0
+## H. caribea yellow-H. caribea red     0</code></pre>
 <p>You can also plot these results, as shown below:</p>
 <div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Margins will spill over, so you need to adjust these</span></span>
@@ -1150,7 +1155,7 @@ FIGURE 17.1: The F-Distribution
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 15 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 14 December, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>

@@ -167,13 +167,20 @@
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">full_names</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">friends</span><span class="op">$</span><span class="va">names</span>, <span class="va">friends</span><span class="op">$</span><span class="va">last_names</span><span class="op">)</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names full_names
-## 1    Abram   34        TRUE       1.00          A    Abram A
-## 2   Bryant   35       FALSE       2.17          B   Bryant B
-## 3  Colleen   32       FALSE      26.00          C  Colleen C
-## 4    David   29        TRUE       7.00          D    David D
-## 5   Esther   30       FALSE      10.00          E   Esther E
-## 6 Jeremiah   30        TRUE       9.00          J Jeremiah J</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names
+## 1    Abram   34        TRUE       1.00          A
+## 2   Bryant   35       FALSE       2.17          B
+## 3  Colleen   32       FALSE      26.00          C
+## 4    David   29        TRUE       7.00          D
+## 5   Esther   30       FALSE      10.00          E
+## 6 Jeremiah   30        TRUE       9.00          J
+##   full_names
+## 1    Abram A
+## 2   Bryant B
+## 3  Colleen C
+## 4    David D
+## 5   Esther E
+## 6 Jeremiah J</code></pre>
 <p>The paste function takes separate elements and combines them into one. Notice that this is different from the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, which keeps elements separate into a single list.</p>
 <p>There are many other ways to also combine columns together, like the <code>stringr</code> package or the <code>tidyr</code> package, which you can learn here, but are outside the scope of the book.</p>
 </div>
@@ -185,13 +192,20 @@
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends</span><span class="op">$</span><span class="va">age_and_fav_number</span><span class="op">&lt;-</span> <span class="va">friends</span><span class="op">$</span><span class="va">ages</span> <span class="op">+</span> <span class="va">friends</span><span class="op">$</span><span class="va">fav_number</span></span>
 <span><span class="va">friends</span></span></code></pre></div>
-<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names full_names age_and_fav_number
-## 1    Abram   34        TRUE       1.00          A    Abram A              35.00
-## 2   Bryant   35       FALSE       2.17          B   Bryant B              37.17
-## 3  Colleen   32       FALSE      26.00          C  Colleen C              58.00
-## 4    David   29        TRUE       7.00          D    David D              36.00
-## 5   Esther   30       FALSE      10.00          E   Esther E              40.00
-## 6 Jeremiah   30        TRUE       9.00          J Jeremiah J              39.00</code></pre>
+<pre style="max-height: 150px; font-size:10px;"><code>##      names ages DC_Resident fav_number last_names
+## 1    Abram   34        TRUE       1.00          A
+## 2   Bryant   35       FALSE       2.17          B
+## 3  Colleen   32       FALSE      26.00          C
+## 4    David   29        TRUE       7.00          D
+## 5   Esther   30       FALSE      10.00          E
+## 6 Jeremiah   30        TRUE       9.00          J
+##   full_names age_and_fav_number
+## 1    Abram A              35.00
+## 2   Bryant B              37.17
+## 3  Colleen C              58.00
+## 4    David D              36.00
+## 5   Esther E              40.00
+## 6 Jeremiah J              39.00</code></pre>
 </div>
 </div>
   <div class="chapter-nav">
@@ -230,7 +244,7 @@
           <br><strong>Other Links:</strong>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px; filter: invert(1) brightness(0);" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9Ijg2cHgiIGhlaWdodD0iNzBweCIgdmlld0JveD0iMCAwIDg2IDcwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGcgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgc3Ryb2tlPSIjNDg0ODQ4IiBzdHJva2Utd2lkdGg9IjYiPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSI0MyIgY3k9IjM1IiByPSIyOSI+PC9jaXJjbGU+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik00Myw2IEw0Myw2NCI+PC9wYXRoPgogICAgICAgICAgICA8cGF0aCBkPSJNNDMsNjEgTDc3LDYgTDksNiBMNDMsNjEgWiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="><a class="text-light" href="https://ion.tjhsst.edu" target="_blank" rel="noopener">ION</a>
           <br><img style="vertical-align:middle; height: 1em; padding-right: 5px;" src="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico"><a class="text-light" href="https://lms.fcps.edu" target="_blank" rel="noopener">Schoology</a>
-          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 15 August, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
+          <br><br><small><strong>Intro to R @ TJ</strong> was written by Kai Sam Ng. It was last built on 14 December, 2022. <br>This book was built by the <a class="text-light" href="https://bookdown.org" target="_blank" rel="noopener">bookdown</a> R package.</small>
 </div>
 
 </div>
